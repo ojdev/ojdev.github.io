@@ -4,12 +4,11 @@ environment:
     access_token:
         secure: yydO4qqPZlTZA26etI/kKny2IeCXFkOAxTc3BTFm+EaV9vBRxsNy/IdnzCbcxsv0
 install:
-    - ps: Install-Product node 11.0 
+    - ps: Install-Product node 12.1 
     - node --version
     - npm --version
     - npm install
     - npm install hexo-cli -g
-    - npm install hexo-deployer-git --save
 
     
 build_script:
