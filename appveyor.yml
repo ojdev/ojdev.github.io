@@ -15,8 +15,7 @@ install:
 build_script:
     - hexo clean
     - hexo g
-    - hexo d
-    
+        
 artifacts:
     - path: public
     
