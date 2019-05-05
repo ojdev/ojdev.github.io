@@ -85,9 +85,6 @@ sns:
   email: luacloud@gmail.com
   github: https://github.com/ojdev
 
-footer:
-  
-
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
