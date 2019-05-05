@@ -80,6 +80,14 @@ theme: inside
 profile:
   bio: 我越来越懒了
   email: luacloud@gmail.com
+
+sns:
+  email: luacloud@gmail.com
+  github: https://github.com/ojdev
+
+footer:
+  
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
