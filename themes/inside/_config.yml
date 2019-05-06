@@ -35,7 +35,7 @@ profile:
 # Sidebar menu
 menu:
   Home: /
-  # About: /about
+  About: /About
   # Links: /links
   # Github: https://github.com/username
 
