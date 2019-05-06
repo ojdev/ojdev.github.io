@@ -76,15 +76,6 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: inside
 
-## Profile
-profile:
-  bio: 我越来越懒了
-  email: luacloud@gmail.com
-
-sns:
-  email: luacloud@gmail.com
-  github: https://github.com/ojdev
-
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:

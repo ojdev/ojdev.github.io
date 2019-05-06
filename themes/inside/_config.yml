@@ -25,7 +25,7 @@ appearance:
 # Sidebar profile
 profile:
   # `email` will fallback to `hexo.config.email` if not specified
-  email:
+  email: luacloud@gmail.com
 
   # Avatar URL, email address will be used for gravatar(https://en.gravatar.com) avatar if not specified.
   # avatar:
@@ -46,7 +46,7 @@ sns:
   email:
   # `feed` will fallback to `hexo.config.feed.path` if not specified
   feed:
-  github:
+  github: https://github.com/ojdev
   twitter:
   facebook:
   google+:
@@ -92,7 +92,7 @@ page:
   # reward: true
 
   # Display copyright notice, default to `false`
-  # copyright: true
+  copyright: true
 
 
 # Post
