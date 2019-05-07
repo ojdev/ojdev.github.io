@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+<meta charset="utf-8">
+<title>C#方法延迟返回结果 - 狐狸的后山</title>
+<base href="/">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<link rel="canonical" href="http://ojdev.github.io/post/C-方法延迟返回结果/">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta name="description" content="不知道标题恰不恰当，只不过我的需求是这个样子的： 例如一个方法A，返回值是bool类型的，但是方法执行过程中，需要另一个方法B执行结束，但是还不能直接调用B方法，可是B是等待外部信号才执行。所以需要延迟一下，等B方法执行了才返回结果。 找了些资料，找到了AutoResetEvent，可以达到我的目的，但是否是最适合的，就不知道了，由于我的项目中所谓的B方法是RS232端口读数据的，然后解析出来的返">
+<meta property="og:type" content="website">
+<meta property="og:title" content="C#方法延迟返回结果">
+<meta property="og:url" content="http://ojdev.github.io/post/C-方法延迟返回结果/index.html">
+<meta property="og:site_name" content="狐狸的后山">
+<meta property="og:description" content="不知道标题恰不恰当，只不过我的需求是这个样子的： 例如一个方法A，返回值是bool类型的，但是方法执行过程中，需要另一个方法B执行结束，但是还不能直接调用B方法，可是B是等待外部信号才执行。所以需要延迟一下，等B方法执行了才返回结果。 找了些资料，找到了AutoResetEvent，可以达到我的目的，但是否是最适合的，就不知道了，由于我的项目中所谓的B方法是RS232端口读数据的，然后解析出来的返">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.gravatar.com/avatar/f820f6f293a33e619f00d525a8b79b2d?s=160">
+<meta property="og:updated_time" content="2019-05-07T09:19:49.756Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C#方法延迟返回结果">
+<meta name="twitter:description" content="不知道标题恰不恰当，只不过我的需求是这个样子的： 例如一个方法A，返回值是bool类型的，但是方法执行过程中，需要另一个方法B执行结束，但是还不能直接调用B方法，可是B是等待外部信号才执行。所以需要延迟一下，等B方法执行了才返回结果。 找了些资料，找到了AutoResetEvent，可以达到我的目的，但是否是最适合的，就不知道了，由于我的项目中所谓的B方法是RS232端口读数据的，然后解析出来的返">
+<meta name="twitter:image" content="https://www.gravatar.com/avatar/f820f6f293a33e619f00d525a8b79b2d?s=160">
+<link rel="stylesheet" href="/fonts.b9b22ef890c930ac7a13.css">
+<link rel="stylesheet" href="/styles.f3ea1e219d757e5d89f5.css">
+<link rel="stylesheet" href="/theme.b7d02d8e322273ca38f7.css">
+<script src="/config.cb84aa8797eeda10efeb.js"></script>
+</head>
+<body>
+<is-d2a57d></is-d2a57d>
+<script src="/runtime.a5dd35324ddfd942bef1.js"></script>
+<script src="/polyfills.bd3fb034406e30e3b5dc.js"></script>
+<script src="/main.54734ab978f98119b312.zh-Hans.js"></script></body>
+</html>
