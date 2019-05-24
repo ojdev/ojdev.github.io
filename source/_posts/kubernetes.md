@@ -23,7 +23,9 @@ tags: hyperV, minikube, kubernetes, windows10
 ```bash
 minikube config set vm-driver hyperv
 ```
-hyperV的交换机名成
+* 如果使用linux真机可以指定vm-driver为none，这样就不需要配置交换机
+
+hyperV的交换机
 ```bash
  minikube config set hyperv-virtual-switch "Default Switch"
  ```
@@ -31,24 +33,33 @@ hyperV的交换机名成
 
  ## 创建集群
 
-因为需要从google下载iso，所以需要一个代理
- ```bash
- set HTTPS_PROXY=127.0.0.1:1080
- set HTTP_PROXY=192.168.0.252:1081
- set NO_PROXY=172.17.0.0/12,localhost,127.0.0.1,192.168.0.1/24
- ```
- 
-172.17.0.0/12是minikube的ip段，是不需要代理的，其他的是本地资源的地址也是不需要代理的，如果不写NO_PROXY，创建集群的时候可能会出现问题
-
- 或者手动下载iso放到本地的服务器
- ```bash
- minikube config set iso-url http://127.0.0.1/minikube-v1.1.0.iso
- ```
-
-推荐使用本地服务器
-
 开始创建集群
 
  ```bash
- minikube start
+ minikube start --image-mirror-country cn --memory 1024 --cpus 2 --registry-mirror https://*******.mirror.aliyuncs.com
+ ```
+
+ 带参数--image-mirror-country cn，设置成cn就贴心的将镜像拉取送google改到了杭州aliyun
+ --registry-mirror的镜像地址则会直接给docker
+
+ 可能会失败好几遍，每次失败就```minikube delete```然后重新创建就可以了
+ 
+ 最后成功内容如下
+ 
+ ```bash
+ * minikube v1.1.0 on windows (amd64)
+* checking main repository and mirrors for images
+* using image repository registry.cn-hangzhou.aliyuncs.com/google_containers
+* Creating hyperv VM (CPUs=2, Memory=2048MB, Disk=20000MB) ...
+* Configuring environment for Kubernetes v1.14.2 on Docker 18.09.6
+* Pulling images ...
+* Launching Kubernetes ...
+* Verifying: apiserver proxy etcd scheduler controller dns
+* Done! kubectl is now configured to use "minikube"
+ ```
+
+ # 控制台
+
+ ```bash
+ minikube dashboard
  ```
