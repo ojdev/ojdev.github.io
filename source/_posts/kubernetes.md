@@ -36,7 +36,7 @@ hyperV的交换机
 开始创建集群
 
  ```bash
- minikube start --image-mirror-country cn --memory 1024 --cpus 2 --registry-mirror https://*******.mirror.aliyuncs.com
+ minikube start --profile k8s-master --image-mirror-country cn --memory 1024 --cpus 2 --registry-mirror https://*******.mirror.aliyuncs.com
  ```
 
  带参数--image-mirror-country cn，设置成cn就贴心的将镜像拉取送google改到了杭州aliyun
