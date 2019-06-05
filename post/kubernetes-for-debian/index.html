@@ -7,24 +7,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 <link rel="canonical" href="http://ojdev.github.io/post/kubernetes-for-debian/">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
-<meta name="description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian12apt updateapt upgrade -y 关闭交换内存  kubernetes 的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与 CPU 和内存限制固定在一起。 所以如果调度程序发送一个 pod 到一台机器，它不应该使用交换，设计者不">
+<meta name="description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian12apt updateapt upgrade -y ##开启root的ssh登录 修改/etc/ssh/sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启/etc/init.d/ssh resta">
 <meta name="keywords" content="k8s,debian9">
 <meta property="og:type" content="website">
 <meta property="og:title" content="k8s的环境搭建">
 <meta property="og:url" content="http://ojdev.github.io/post/kubernetes-for-debian/index.html">
 <meta property="og:site_name" content="狐狸的后山">
-<meta property="og:description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian12apt updateapt upgrade -y 关闭交换内存  kubernetes 的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与 CPU 和内存限制固定在一起。 所以如果调度程序发送一个 pod 到一台机器，它不应该使用交换，设计者不">
+<meta property="og:description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian12apt updateapt upgrade -y ##开启root的ssh登录 修改/etc/ssh/sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启/etc/init.d/ssh resta">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.gravatar.com/avatar/f820f6f293a33e619f00d525a8b79b2d?s=160">
-<meta property="og:updated_time" content="2019-06-03T10:34:38.439Z">
+<meta property="og:updated_time" content="2019-06-05T03:36:11.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s的环境搭建">
-<meta name="twitter:description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian12apt updateapt upgrade -y 关闭交换内存  kubernetes 的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与 CPU 和内存限制固定在一起。 所以如果调度程序发送一个 pod 到一台机器，它不应该使用交换，设计者不">
+<meta name="twitter:description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian12apt updateapt upgrade -y ##开启root的ssh登录 修改/etc/ssh/sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启/etc/init.d/ssh resta">
 <meta name="twitter:image" content="https://www.gravatar.com/avatar/f820f6f293a33e619f00d525a8b79b2d?s=160">
 <link rel="stylesheet" href="/fonts.b9b22ef890c930ac7a13.css">
 <link rel="stylesheet" href="/styles.f3ea1e219d757e5d89f5.css">
 <link rel="stylesheet" href="/theme.b7d02d8e322273ca38f7.css">
-<script src="/config.6eb815b896eed5eff8a9.js"></script>
+<script src="/config.f8eb2233abe5bc97d2eb.js"></script>
 </head>
 <body>
 <is-d2a57d></is-d2a57d>
