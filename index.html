@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>狐狸的后山</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="狐狸的后山">
+<meta property="og:url" content="http://ojdev.github.io/index.html">
+<meta property="og:site_name" content="狐狸的后山">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="狐狸的后山">
+  
+    <link rel="alternate" href="/atom.xml" title="狐狸的后山" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狐狸的后山</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ojdev.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-SonarQube" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/12/SonarQube/" class="article-date">
+  <time datetime="2019-06-12T02:48:13.000Z" itemprop="datePublished">2019-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/12/SonarQube/">在AzureDevops中集成SonarQube</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://www.sonarqube.org" target="_blank" rel="noopener">SonarQube</a>是管理代码质量的一个平台，有商业版也可以本地部署。</p>
+<blockquote>
+<p><a href="http://www.sonarqube.org" target="_blank" rel="noopener">SonarQube</a>需要Jdk的支持；</p>
+<p>ElasticSearch是可选的；</p>
+<p>数据库使用jdbc；</p>
+</blockquote>
+<p>本内容使用Docker进行部署</p>
+<p>##docker-compose.yaml<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="string">CodeQuality.SonarQube:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">sonarqube:lts</span>  <span class="comment">##新版，7.x只能对master分支进行分析，需要商业授权</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">codequality-sonarqube</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">SONARQUBE_JDBC_USERNAME=$&#123;DB_POSTGRESQL_USER&#125;</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">SONARQUBE_JDBC_PASSWORD=$&#123;DB_POSTGRESQL_PASS&#125;</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">SONARQUBE_JDBC_URL=jdbc:postgresql://$&#123;DB_POSTGRESQL_URL_AND_PORT&#125;/sonar</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"2303:9000"</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"2302:9002"</span>    </span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"/etc/timezone:/etc/timezone"</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"/etc/localtime:/etc/localtime"</span>          </span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br></pre></td></tr></table></figure></p>
+<p>这里使用了pgsql。</p>
+<p>部署完成后要进行配置，用admin进行登录，点击右上角头像，选择我的账户-&gt;安全</p>
+<p>在令牌下输入一个令牌名选择”生成”,复制生成的令牌。</p>
+<p>在AzureDevops中安装<a href="https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarqube" target="_blank" rel="noopener">SonarQube</a></p>
+<p>进入azure devops中，进入项目，进入到设置中的服务连接，新建服务连接中找到SonarQube服务连接，输入任意的名称，Server Url输入http://[部署的地址]:2303,Token输入刚刚生成的令牌，保存即可。</p>
+<p>以.net core生成PR审阅的时候顺便做代码质量检测举例，其他的项目有些麻烦。</p>
+<ol>
+<li>在生成定义中添加任务<code>Prepare Analysis Configuration</code></li>
+<li>在<code>SonarQube Server Endpoint</code>中选择我们刚刚创建的服务连接</li>
+<li>ProjectKey中填入一个名字，推荐使用<code>$(Build.Repository.Name)</code>用仓储的名字</li>
+<li>Project Name可以留空</li>
+<li>Project Version写一个版本号，推荐使用<code>PR$(Build.BuildNumber)</code><br>以上推荐做成任务组。</li>
+</ol>
+<p>继续添加.net core生成过程，Restore、Build、Test、项目路径要选择成解决方案文件。</p>
+<p>然后添加任务<code>Run Code Analysis</code></p>
+<p>添加任务<code>Publish Quality Gate Result</code></p>
+<p>这样，在每次PR生成的时候就会自动去做代码质量检测，商业版授权，会将检测中的不合理内容直接更新到PR中，非商业代理则需要登录SonarQube去查看。</p>
+<p>以上是基本的操作，内容待优化。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ojdev.github.io/2019/06/12/SonarQube/" data-id="cjwst3i1w0009nsmjcrk82qi6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DevOps-Azure-DevOps-SonarQube/">DevOps, Azure DevOps, SonarQube</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-kubernetes-for-debian" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/03/kubernetes-for-debian/" class="article-date">
+  <time datetime="2019-06-03T09:31:00.000Z" itemprop="datePublished">2019-06-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/03/kubernetes-for-debian/">k8s的环境搭建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>依然是模拟环境，使用windows10的hyperV。</p>
+<p>在虚拟机中安装debian9，只要核心的那种，开openssh的。</p>
+<p>更新debian<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt upgrade -y</span><br></pre></td></tr></table></figure></p>
+<p>##开启root的ssh登录</p>
+<p>修改<code>/etc/ssh/sshd_config</code>中的 <code>PermitRootLogin</code>为<code>PermitRootLogin yes</code>，保存<br>然后重启<code>/etc/init.d/ssh restart</code><br>非必须</p>
+<p>##关闭交换内存</p>
+<blockquote>
+<p>kubernetes 的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与 CPU 和内存限制固定在一起。 所以如果调度程序发送一个 pod 到一台机器，它不应该使用交换，设计者不想交换，因为它会减慢速度，所以关闭 swap 主要是为了性能考虑。当然为了一些节省资源的场景，比如运行容器数量较多，可添加 kubelet 参数 –fail-swap-on=false 来解决。</p>
+</blockquote>
+<p>##然后安装<a href="https://opsx.alibaba.com/mirror?lang=zh-CN" target="_blank" rel="noopener">k8s的aliyun源</a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install -y apt-transport-https</span><br><span class="line">curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - </span><br><span class="line">cat &lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list</span><br><span class="line">deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main</span><br><span class="line">EOF  </span><br><span class="line">apt-get update</span><br><span class="line">apt-get install -y kubelet kubeadm kubectl</span><br><span class="line">apt-mark hold kubelet kubeadm kubectl</span><br></pre></td></tr></table></figure></p>
+<p>##添加docker源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -</span><br><span class="line"></span><br><span class="line">cat &lt;&lt;EOF&gt;/etc/apt/sources.list.d/docker.list</span><br><span class="line">deb [arch=amd64] https://download.docker.com/linux/debian stretch stable</span><br><span class="line">EOF</span><br><span class="line">apt update</span><br><span class="line">apt install -y docker-ce</span><br></pre></td></tr></table></figure>
+<p>##添加docker的aliyun镜像源<a href="https://kubernetes.io/docs/setup/cri/" target="_blank" rel="noopener">参考</a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF&gt;/etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">  "registry-mirrors": ["https://********.mirror.aliyuncs.com"],</span><br><span class="line">  "exec-opts": ["native.cgroupdriver=systemd"],</span><br><span class="line">  "log-driver": "json-file",</span><br><span class="line">  "log-opts": &#123;</span><br><span class="line">    "max-size": "100m"</span><br><span class="line">  &#125;,</span><br><span class="line">  "storage-driver": "overlay2"</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">mkdir -p /etc/systemd/system/docker.service.d</span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure></p>
+<p>重启系统，让所有配置生效。</p>
+<p>##开始集群初始化<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers</span><br></pre></td></tr></table></figure></p>
+<p><code>--image-repository</code>指定拉取镜像的地址，避免从google无法访问的情况<br>成功后的内容<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Your Kubernetes control-plane has initialized successfully!</span><br><span class="line"></span><br><span class="line">To start using your cluster, you need to run the following as a regular user:</span><br><span class="line"></span><br><span class="line">  mkdir -p $HOME/.kube</span><br><span class="line">  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">  sudo chown $(id -u):$(id -g) $HOME/.kube/config</span><br><span class="line"></span><br><span class="line">You should now deploy a pod network to the cluster.</span><br><span class="line">Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:</span><br><span class="line">  https://kubernetes.io/docs/concepts/cluster-administration/addons/</span><br><span class="line"></span><br><span class="line">Then you can join any number of worker nodes by running the following on each as root:</span><br><span class="line"></span><br><span class="line">kubeadm join 172.17.183.236:6443 --token 4xr9ys.yxaxewry4xarkghy \</span><br><span class="line">    --discovery-token-ca-cert-hash sha256:3a73933bfd0fb5e2fe2e045292a395d55c652e9e8a141111335b1710350f9d37</span><br></pre></td></tr></table></figure></p>
+<p>创建成功后根据提示进行操作，记录最下面的链接语句，以备其他节点接入。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ojdev.github.io/2019/06/03/kubernetes-for-debian/" data-id="cjwst3i2r000ynsmjo270kdf5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s-debian9/">k8s,debian9</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-kubernetes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/22/kubernetes/" class="article-date">
+  <time datetime="2019-05-22T08:59:56.000Z" itemprop="datePublished">2019-05-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/22/kubernetes/">在windows上创建kubernetes集群</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><blockquote>
+<p>Windows 10 Pro 1903<br><a href="https://github.com/kubernetes/minikube" target="_blank" rel="noopener">Minikube</a><br>代理环境（127.0.0.1:1080）</p>
+</blockquote>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="下载minikube"><a href="#下载minikube" class="headerlink" title="下载minikube"></a>下载minikube</h2><p><a href="https://github.com/kubernetes/minikube/releases/tag/v1.1.0" target="_blank" rel="noopener">Release</a><br>下载最新的版本，保存到F:\k8s文件夹中，并重命名为<code>mikikube</code></p>
+<p>在小娜哪里搜索env，选择<code>编辑系统环境变量</code>,在path节点中增加<code>F:\k8s</code>；增加新的环境变量<code>MINIKUBE_HOME</code>值为<code>F:\\k8s</code>(注意是双斜杠)</p>
+<p>打开命令提示行，推荐<a href="https://github.com/microsoft/terminal" target="_blank" rel="noopener">terminal</a></p>
+<p>对minikube进行配置:</p>
+<p>使用hyperv创建<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube config <span class="built_in">set</span> vm-driver hyperv</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>如果使用linux真机可以指定vm-driver为none，这样就不需要配置交换机</li>
+</ul>
+<p>hyperV的交换机<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube config <span class="built_in">set</span> hyperv-virtual-switch <span class="string">"Default Switch"</span></span><br></pre></td></tr></table></figure></p>
+<p> 有空格需要用双引号包起来</p>
+<h2 id="创建集群"><a href="#创建集群" class="headerlink" title="创建集群"></a>创建集群</h2><p>开始创建集群</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube start --profile k8s-master --image-mirror-country cn --memory 1024 --cpus 2 --registry-mirror https://*******.mirror.aliyuncs.com</span><br></pre></td></tr></table></figure>
+<p> 带参数–image-mirror-country cn，设置成cn就贴心的将镜像拉取送google改到了杭州aliyun<br> –registry-mirror的镜像地址则会直接给docker</p>
+<p> 可能会失败好几遍，每次失败就<figure class="highlight plain"><figcaption><span>delete```然后重新创建就可以了</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"> 最后成功内容如下</span><br><span class="line"> </span><br><span class="line"> ```bash</span><br><span class="line"> * minikube v1.1.0 on windows (amd64)</span><br><span class="line">* checking main repository and mirrors for images</span><br><span class="line">* using image repository registry.cn-hangzhou.aliyuncs.com/google_containers</span><br><span class="line">* Creating hyperv VM (CPUs=2, Memory=2048MB, Disk=20000MB) ...</span><br><span class="line">* Configuring environment for Kubernetes v1.14.2 on Docker 18.09.6</span><br><span class="line">* Pulling images ...</span><br><span class="line">* Launching Kubernetes ...</span><br><span class="line">* Verifying: apiserver proxy etcd scheduler controller dns</span><br><span class="line">* Done! kubectl is now configured to use &quot;minikube&quot;</span><br></pre></td></tr></table></figure></p>
+<h1 id="控制台"><a href="#控制台" class="headerlink" title="控制台"></a>控制台</h1> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube dashboard</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ojdev.github.io/2019/05/22/kubernetes/" data-id="cjwst3i2r000znsmjpzab1neq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hyperV-minikube-kubernetes-windows10/">hyperV, minikube, kubernetes, windows10</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-canpian-11" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/07/canpian-11/" class="article-date">
+  <time datetime="2019-05-07T08:00:00.000Z" itemprop="datePublished">2019-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/07/canpian-11/">canpian-11</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ojdev.github.io/2019/05/07/canpian-11/" data-id="cjwst3i2b000ensmjxo8liywx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-rabbitmq-eventbus-netcore" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/06/rabbitmq-eventbus-netcore/" class="article-date">
+  <time datetime="2019-05-06T05:52:00.000Z" itemprop="datePublished">2019-05-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/知识储备/">知识储备</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/06/rabbitmq-eventbus-netcore/">RabbitMQ.EventBus.AspNetCore</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.nuget.org/packages/RabbitMQ.EventBus.AspNetCore" target="_blank" rel="noopener"><img src="https://img.shields.io/nuget/v/RabbitMQ.EventBus.AspNetCore.svg?style=popout" alt="NuGet"></a>  <a href="https://www.nuget.org/packages/RabbitMQ.EventBus.AspNetCore" target="_blank" rel="noopener"><img src="https://img.shields.io/nuget/dt/RabbitMQ.EventBus.AspNetCore.svg?style=popout" alt="NuGet"></a></p>
+<p><code>RabbitMQ.EventBus.AspNetCore</code>是一个基于官方<code>RabbitMQ.Client</code>的二次封装包，专门针对<code>Net Core</code>项目进行开发，在<code>微服务</code>中进行消息的传递使用起来比较方便。</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ol>
+<li>断线重连机制</li>
+<li>可扩展</li>
+<li>消费失败自动打回</li>
+</ol>
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><h4 id="1-注册"><a href="#1-注册" class="headerlink" title="1. 注册"></a>1. 注册</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ConfigureServices</span>(<span class="params">IServiceCollection services</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">string</span> assemblyName = <span class="keyword">typeof</span>(Startup).GetTypeInfo().Assembly.GetName().Name;</span><br><span class="line">    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);</span><br><span class="line">    services.AddRabbitMQEventBus(()=&gt;<span class="string">"amqp://guest:guest@192.168.0.252:5672/"</span>, eventBusOptionAction: eventBusOption =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        eventBusOption.ClientProvidedAssembly(assemblyName);</span><br><span class="line">        eventBusOption.EnableRetryOnFailure(<span class="literal">true</span>, <span class="number">5000</span>, TimeSpan.FromSeconds(<span class="number">30</span>));</span><br><span class="line">        eventBusOption.RetryOnFailure(TimeSpan.FromMilliseconds(<span class="number">100</span>));</span><br><span class="line">        eventBusOption.AddLogging(LogLevel.Warning);</span><br><span class="line">    &#125;);</span><br><span class="line">    services.AddButterfly(butterfly =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        butterfly.CollectorUrl = <span class="string">"http://192.168.0.252:6401"</span>;</span><br><span class="line">        butterfly.Service = <span class="string">"RabbitMQEventBusTest"</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-订阅消息"><a href="#2-订阅消息" class="headerlink" title="2. 订阅消息"></a>2. 订阅消息</h4><h5 id="2-1-自动订阅消息"><a href="#2-1-自动订阅消息" class="headerlink" title="2.1 自动订阅消息"></a>2.1 自动订阅消息</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configure</span>(<span class="params">IApplicationBuilder app, IHostingEnvironment env, IServiceTracer tracer</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (env.IsDevelopment())</span><br><span class="line">    &#123;</span><br><span class="line">        app.UseDeveloperExceptionPage();</span><br><span class="line">    &#125;</span><br><span class="line">    app.RabbitMQEventBusAutoSubscribe();</span><br><span class="line">    app.UseMvc();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-2-手动订阅消息"><a href="#2-2-手动订阅消息" class="headerlink" title="2.2 手动订阅消息"></a>2.2 手动订阅消息</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configure</span>(<span class="params">IApplicationBuilder app, IHostingEnvironment env, IRabbitMQEventBus eventBus</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (env.IsDevelopment())</span><br><span class="line">    &#123;</span><br><span class="line">        app.UseDeveloperExceptionPage();</span><br><span class="line">    &#125;</span><br><span class="line">    eventBus.Serialize&lt;EventMessage, EventMessageHandler&gt;();</span><br><span class="line">    app.UseMvc();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-发消息"><a href="#3-发消息" class="headerlink" title="3. 发消息"></a>3. 发消息</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Route(<span class="meta-string">"api/[controller]"</span>)</span>]</span><br><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EventBusController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> IRabbitMQEventBus _eventBus;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">EventBusController</span>(<span class="params">IRabbitMQEventBus eventBus</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _eventBus = eventBus ?? <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(eventBus));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// GET api/values</span></span><br><span class="line">    [<span class="meta">HttpGet</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> IActionResult <span class="title">Send</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _eventBus.Publish(<span class="keyword">new</span></span><br><span class="line">        &#123;</span><br><span class="line">            Body = <span class="string">"发送消息"</span>,</span><br><span class="line">            Time = DateTimeOffset.Now</span><br><span class="line">        &#125;, exchange: <span class="string">"RabbitMQ.EventBus.Simple"</span>, routingKey: <span class="string">"rabbitmq.eventbus.test"</span>);</span><br><span class="line">        <span class="keyword">return</span> Ok();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-订阅消息"><a href="#4-订阅消息" class="headerlink" title="4. 订阅消息"></a>4. 订阅消息</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">EventBus(Exchange = <span class="meta-string">"RabbitMQ.EventBus.Simple"</span>, RoutingKey = <span class="meta-string">"rabbitmq.eventbus.test"</span>)</span>]</span><br><span class="line">[<span class="meta">EventBus(Exchange = <span class="meta-string">"RabbitMQ.EventBus.Simple"</span>, RoutingKey = <span class="meta-string">"rabbitmq.eventbus.test1"</span>)</span>]</span><br><span class="line">[<span class="meta">EventBus(Exchange = <span class="meta-string">"RabbitMQ.EventBus.Simple"</span>, RoutingKey = <span class="meta-string">"rabbitmq.eventbus.test2"</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MessageBody</span> : <span class="title">IEvent</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Body &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> DateTimeOffset Time &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class MessageBodyHandle : IEventHandler&lt;MessageBody&gt;, IDisposable</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> ILogger&lt;MessageBodyHandle&gt; _logger;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MessageBodyHandle</span>(<span class="params">ILogger&lt;MessageBodyHandle&gt; logger</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _logger = logger ?? <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(logger));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"释放"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Task <span class="title">Handle</span>(<span class="params">EventHandlerArgs&lt;MessageBody1&gt; args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _logger.Information(args.Original);</span><br><span class="line">        _logger.Information(args.Redelivered);</span><br><span class="line">        _logger.Information(args.Exchange);</span><br><span class="line">        _logger.Information(args.RoutingKey);</span><br><span class="line"></span><br><span class="line">        _logger.Information(args.Event.Body);</span><br><span class="line">        <span class="keyword">return</span> Task.CompletedTask;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ojdev.github.io/2019/05/06/rabbitmq-eventbus-netcore/" data-id="cjwst3i2r0011nsmjntmu63wk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-develop-tools-and-faq" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/05/develop-tools-and-faq/" class="article-date">
+  <time datetime="2019-05-05T14:50:00.000Z" itemprop="datePublished">2019-05-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/知识储备/">知识储备</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/05/develop-tools-and-faq/">开发过程中需要用到的工具以及相关知识目录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>框架类</li>
+<li><ul>
+<li><a href="https://www.elastic.co/cn/products/stack/elasticsearch-sql" target="_blank" rel="noopener">ElasticSearch SQL</a></li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest.html" target="_blank" rel="noopener">文档</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><a href="https://github.com/elastic/elastic-charts" target="_blank" rel="noopener">Elastic Charts</a> </li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li><a href="https://elastic.github.io/elastic-charts/" target="_blank" rel="noopener">演示</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>知识类</li>
+<li><ul>
+<li><a href="https://github.com/kulend/Dnc.Api.Throttle" target="_blank" rel="noopener">适用于Dot Net Core的WebApi接口限流框架</a></li>
+</ul>
+</li>
+<li><ul>
+<li><a href="https://harttle.land/2017/04/04/using-http-cache.html" target="_blank" rel="noopener">使用 HTTP 缓存：Etag, Last-Modified 与 Cache-Control</a></li>
+</ul>
+</li>
+<li><ul>
+<li><a href="https://docs.microsoft.com/zh-cn/aspnet/core/performance/caching/distributed?view=aspnetcore-2.2" target="_blank" rel="noopener">分布式缓存在 ASP.NET Core 中</a></li>
+</ul>
+</li>
+<li><ul>
+<li><a href="https://docs.microsoft.com/zh-cn/aspnet/core/security/cors?view=aspnetcore-2.2" target="_blank" rel="noopener">启用 ASP.NET Core 中的跨域请求 (CORS)</a></li>
+</ul>
+</li>
+<li>工具类</li>
+<li><ul>
+<li><a href="http://naotu.baidu.com/" target="_blank" rel="noopener">百度脑图</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ojdev.github.io/2019/05/05/develop-tools-and-faq/" data-id="cjwst3i2r000tnsmjt6rgkn38" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jinyong" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/08/14/jinyong/" class="article-date">
+  <time datetime="2012-08-14T08:28:56.000Z" itemprop="datePublished">2012-08-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/08/14/jinyong/">金庸武侠编年史</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>公元前476年 西施送入吴国；范蠡遇到阿青，阿青传越国剑士剑法。</p>
+<p>公元前473年 越国灭掉吴国；范蠡与西施隐居，阿青离去。</p>
+<p>526年 南北朝时期，印度高僧菩提达摩来到中国，在嵩山少林寺面壁九年，创立中国禅宗。 隋朝末年，李靖将《易筋经》中的武学奥秘，尽数领悟。</p>
+<p>694年 明教传至中土。 唐朝末叶，嘉兴剑术名家改良越女剑法。</p>
+<p>877年 丐帮建立。</p>
+<p>936年—946年 少林寺法慧禅师练成了一指禅。</p>
+<p>1030年 慕容博出生。</p>
+<p>1047年 慕容博伤黄眉僧。</p>
+<p>1051年 扫地僧到少林寺。</p>
+<p>1060年 萧峰出生。</p>
+<p>1061年 雁门关外乱石谷大战。</p>
+<p>1062年 萧远山到少林偷研武功。</p>
+<p>1063年 丁春秋暗算师门。</p>
+<p>1064年 慕容复出生。</p>
+<p>1065年 波斯“山中老人”霍山自创“乾坤大挪移”。</p>
+<p>1069年 虚竹出生。</p>
+<p>1071年 段誉出生。</p>
+<p>1072年 慕容博伤崔百泉。</p>
+<p>1074年 阿朱出生。</p>
+<p>1077年 慕容博诈死。</p>
+<p>1083年 萧峰接任丐帮帮主。</p>
+<p>1090年 鸠摩智单挑天龙寺六僧。</p>
+<p>1091年 萧峰离开丐帮。</p>
+<p>1092年 聚贤庄大战。</p>
+<p>1093年 无崖子去世；虚竹接任逍遥派掌门，同年被西夏招为驸马；少林寺门外混战；扫地僧讲经说法。</p>
+<p>1094年 大理段正明禅位侄子段誉；萧峰自尽。</p>
+<p>1110年 黄裳雕版印行万寿道藏。</p>
+<p>1112年 王重阳出生。</p>
+<p>1120年 黄裳向明教的高手挑战。</p>
+<p>1127年—1130年 少林寺灵兴禅师花了三十九年练成了一指禅。</p>
+<p>1140年 独孤求败创独孤九剑第九式破气式。</p>
+<p>1158年 段智兴出生。</p>
+<p>1162年 柯镇恶（江南七怪之首）出生。</p>
+<p>1163年 周伯通出生。</p>
+<p>1164年 黄裳完成九阴真经。洪七公出生。</p>
+<p>1168年 欧阳锋出生。</p>
+<p>1170年 独孤求败郁寂而终。</p>
+<p>1171年 黄药师出生。</p>
+<p>1173年 曲灵风出生。</p>
+<p>1178年 裘千仞出生。</p>
+<p>1183年 金轮法王出生。</p>
+<p>1184年 朱子柳出生。</p>
+<p>1186年 陈玄风 欧阳克出生。</p>
+<p>1190年 火工头陀大开杀戒。</p>
+<p>1196年 王重阳再入古墓，于棺上刻下部分九阴真经，并留“玉女心经，欲胜全真；重阳一生，不弱于人” 的文字，后某日无名僧与王重阳斗酒参阅九阴创九阳；宦官创葵花宝典。</p>
+<p>1200年 第一次华山论剑。</p>
+<p>1203年 重阳真人拜访段皇爷，废了欧阳峰20年蛤蟆功；王重阳仙逝。</p>
+<p>1205年 郭靖出生</p>
+<p>1206年 裘千仞伤瑛姑幼子。</p>
+<p>1208年 黄蓉出生。</p>
+<p>1220年 小龙女出生。 1223年 穆念慈比武招亲。</p>
+<p>1225年 第二次华山论剑；成吉思汗去世。</p>
+<p>1224年 杨过出生。</p>
+<p>1244年 洪七公、欧阳峰去世。</p>
+<p>1244年 杨过小龙女双剑合壁初试锋芒挫败金轮法王；杨过学弹指神通。</p>
+<p>1244年 郭襄出生；杨过断臂，初入独孤求败剑冢。</p>
+<p>1247年 张三丰出生。</p>
+<p>1257年 明教石教主圣火令为丐帮所夺。</p>
+<p>1259年 杨过飞石击毙蒙哥大汗；第三次华山论剑。</p>
+<p>1262年 郭襄游少林。</p>
+<p>1273年 一代大侠郭靖和黄蓉战死襄阳。</p>
+<p>1296年 金毛狮王谢逊出生。</p>
+<p>1317年 谢逊离开师父成昆，加入明教。</p>
+<p>1318年 武当六弟子殷梨亭出生。</p>
+<p>1323年 成昆杀谢逊一家。</p>
+<p>1336年 谢逊及张翠山夫妇至冰火岛。</p>
+<p>1337年 张三丰九十大寿；张无忌出生。</p>
+<p>1338年 元兵剿灭袁州明教义军，常遇春、彭莹玉侥幸逃脱。</p>
+<p>1339年 周芷若出生。</p>
+<p>1340年 汝阳王女儿敏敏特穆尔出生，元帝封其“绍敏郡主”。</p>
+<p>1341年 小昭出生。</p>
+<p>1346年 张三丰百岁大寿；张翠山殷素素夫妇自尽。</p>
+<p>1351年 张无忌得九阳神功。</p>
+<p>1357年 六大派围攻光明顶；张无忌任明教教主；张三丰首创太极神功。</p>
+<p>1358年 小昭远走波斯。 1359年 少林屠狮英雄会；白眉鹰王殷天正去世。</p>
+<p>1360年 张无忌隐退，光明左使杨逍继任为明教第三十五代教主。</p>
+<p>1400年 莆田少林寺得葵花宝典。</p>
+<p>1401年 岳肃蔡子峰偷录葵花宝典；渡元禅师习辟邪剑法。</p>
+<p>1402年 华山派分气宗剑宗。</p>
+<p>1406年 日月神教十长老破五岳剑派剑法。</p>
+<p>1420年 日月教袭武当山，张三丰手抄一部《太极拳经》和青年时佩带的真武剑被抢。</p>
+<p>1458年 武当派开山祖师张三丰仙逝，享年212岁。（据《古今太极拳谱及源流阐秘》李师融先生的考证）</p>
+<p>1479年 华山派气宗剑宗之争。</p>
+<p>1486年 任盈盈出生。</p>
+<p>1493年 东方不败篡日月神教教主之位；任我行被囚地牢。</p>
+<p>1503年 余沧海灭福威镖局。</p>
+<p>1504年 令狐冲学得独孤九剑。</p>
+<p>1505年 任我行重夺日月神教教主。</p>
+<p>1506年 任我行去世。</p>
+<p>1509年 令狐冲任盈盈喜结良缘。</p>
+<p>1610年 金蛇郎君夏雪宜惨遭灭门之祸。</p>
+<p>1612年 金蛇郎君夏雪宜得到云南五仙教的镇教“三宝”。</p>
+<p>1623年 袁承志出生。</p>
+<p>1643年 袁承志被推举为七省江湖首领，同年率众人挫毁西洋红夷大炮。</p>
+<p>1644年 袁承志助阿九挫败成王与曹化淳篡位阴谋；李自成攻入北京，明亡；吴三桂降清；李岩夫妇自杀身亡。</p>
+<p>1645年 袁承志、夏青青避居海外。</p>
+<p>1655年 韦小宝出生。</p>
+<p>1669年 康熙韦小宝擒鳌拜。</p>
+<p>1670年 韦小宝出任天地会青木堂香主。</p>
+<p>1698年 武当派掌门陆菲青出生。</p>
+<p>1733年 陈家洛出生。</p>
+<p>1753年腊月，苗人凤和胡一刀决战；胡斐出生。</p>
+<p>1780年三月十五日，苗人凤和胡斐决战。</p>
+<p>1927年二月六日 金庸出生。</p>
+<p>我也是网上转来的，所有有没有不对的地方，我还真不知道，毕竟金庸大师的小说没看多少，而电视剧都是改编自小说，改了很多地方的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ojdev.github.io/2012/08/14/jinyong/" data-id="cjwst3i2r000wnsmj69m3otl8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-recollect-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/08/13/recollect-1/" class="article-date">
+  <time datetime="2012-08-13T08:23:13.000Z" itemprop="datePublished">2012-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/08/13/recollect-1/">回忆遐想，秋</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>不知不觉的就来了。上个月热的要命，办公室不大，6个电脑开5个，空调等于没有用，那制冷的能力根本抵消不了这5个电脑的散热能力，还有四个活人身上散发的热量。天天的先开窗然后关窗开空调，可是依然热的要死的。天天中午最热的那阵子都要去外面的仓买（注：小卖店、小超市、买东西的地方）去买冰棒来凉快一下。</p>
+<p>这几年每年都会注意一下天气的变化，总结出来就是，冬天越来越短了，夏天越来越热了，冬天越来越暖了，夏天雨越来越少了。我记得小的时候，夏天最热的时候是在8月份的时候，这个时候地里已经挂锄了，没有地里的活了，于是三五成群的小伙伴就本着村东面的大河去洗澡，说去洗澡其实就是去玩水。那时候亚布力滑雪场还没有大规模的修建，所以也没有水污染，水是清澈见底的，脚踩在河边的沙子上是烫的，然后下到水里是凉凉的，踩着河卵石的脚底痒痒的，不时有小鱼从脚边蹿过去，还记得有一次在水里扑腾着，一个小朋友“啊”的一声，站了起来，手里抓着一条鱼，他说不知道什么东西钻他手里了，一害怕就抓起来了。</p>
+<p>以前的夏天躲避炎热的方法很多很多，如果不去下水那么随便找一棵大树下面坐着也很凉爽，或者我是个爱吓跑的，就走街串巷，农村的树多，所以很多地方走，路都是被树荫遮盖着的。即使在屋里里面，也凉爽，我现在想来，也许是农村都是低矮的平房，没有钢筋混凝土的高楼，所以也不会吸收那么大的热量，所以不热。坐着屋里，看着外面的蓝天，清澈无比。</p>
+<p>后来随着时间的推移，农村也在变化，亚布力滑雪场大建，上游水库蓄水，然后还有开木器场的，化塑料的，修路的要在河里采河沙，一切都变了，路边的树没了。河里的水永远的都浑浊的，我想，即使是黄河，也不过如此的颜色吧。也就是在那几年我知道了一个词叫做沙尘暴，第二年纠正了这个词叫扬沙。</p>
+<p>印象非常深刻，是在四五月份的时候，路边的草已经发芽了，但是头一年路边的花干枯的杆茎没处理，所以还在路边，那天早上出门到处都是黄澄澄的，屋里的灯从外面隔着玻璃看都是淡蓝色的光，很诡异，我就出门了，想看看外面都什么样了，走在公路上，能见度只有三五十米的样子，用手扫一下路边的花茎，一股子灰就扬了起来，不知道为什么，那时候感觉就是末日的感觉，可我竟然还挺开心的。</p>
+<p>回家后开了电视才知道，是沙尘暴来了。原来这就是沙尘暴，自打那年之后，每一年都没落下过，每一年都会有扬沙的天气。</p>
+<p>也是在那些年之后，炎热的夏天我也只是抱这个鱼竿到河边找个地方躲着钓鱼而不再下水了。</p>
+<p>破坏自然环境的都是人们自己，那个小村子也是，为了微小的一次利益，遗留下来的是长久的伤害，现在可能很多地方都有小龙虾，麻辣小龙虾这道菜。小的时候我见过那东西，我们叫蝲蛄。村子那山里小河流汇集的河里就有，而且很多，随便翻个石头可能都看得到，但自打有一年，几个人想吃鱼了，于是带着一包药从最上游的地方撒下去之后，就什么都没了。那一次他们的确实惠了，但是自此，小龙虾在那里就绝迹了，知道大约五六年之后，才听说有人在河里抓到过一只。山上的树少了，河水也小了，物种也少了。</p>
+<p>今年的秋天我感觉来的格外的早，上周开始就觉得冷了，虽然我同事还是高呼热死了，但是我已经感觉到了凉意，尤其是早晚的时候，很突然，回想一下自打有了《2012》这部电影后，很多人就没安生过，整天纠结末日来了怎么办，还有整天吵着盼着末日赶快来的。当然，也有我这样无所谓的。毕竟，若电影里那是事实，一般来说也是躲不掉的吧，所以，对于必输的结果去耗费时间琢磨他干嘛。生活中的很多事情和很多选择不也是这样吗，只是有时候明明知道了结果但是还是抱着一线的侥幸而已。这几年来，地震，海啸，从来没断过，我大中华也在经历了天灾后通过微博爆出了更多的人祸，想想这几年发生的，汶川地震、青海地震、还有各个城市的造海运动，然后去年的728，今年的启东还有四川那个什么来着。天灾人祸不断，所以末日之的是自然的末日还是其他的末日呢？</p>
+<p>写了这么多，就如标题一样，只是遐想和回忆。</p>
+<p>秋天来了，感觉来的太早了，如此而已。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ojdev.github.io/2012/08/13/recollect-1/" data-id="cjwst3i370013nsmj3obm6512" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-yeshiwen-h2o" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/08/03/yeshiwen-h2o/" class="article-date">
+  <time datetime="2012-08-03T08:24:45.000Z" itemprop="datePublished">2012-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/08/03/yeshiwen-h2o/">教练终于承认，曾给叶诗文服用一种叫做一氧化二氢的液体</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>叶诗文的教练终于承认了！曾给叶诗文服用一种叫做一氧化二氢的液体！</p>
+<p>一氧化二氢是有危害的，是危险品，下面来列举一下一氧化二氢都有什么样的危害：</p>
+<ol>
+<li>又叫做“氢氧基酸”，是酸雨的主要成分；</li>
+<li>对泥土流失有促进作用；</li>
+<li>对温室效应有推动作用；</li>
+<li>它是腐蚀的成因；</li>
+<li>过多的摄取可能导致各种不适；</li>
+<li>皮肤与其固体形式长时间的接触会导致严重的组织损伤；</li>
+<li>被吸入肺部可以致命；</li>
+<li>处在气体状态时，它能引起严重灼伤；</li>
+<li>在不可救治的癌症病人肿瘤中已经发现该物质；</li>
+<li>对此物质上瘾的人离开它168小时便会死亡；</li>
+</ol>
+<p>看到了吗，这是一个很可怕的东西啊！在看看一氧化二氢都被应用到什么地方：</p>
+<ol>
+<li>各式各样的残忍的[动物]研究；</li>
+<li>[美国海军]有秘密的一氧化二氢的传播网；</li>
+<li>全世界的[河流]及[湖泊]都被一氧化二氢污染；</li>
+<li>常常配合杀虫剂使用；洗过以后，[农产品]仍然被这种物质污染；</li>
+<li>在一些“[垃圾食品]”和其它食品中的[食品添加剂</li>
+</ol>
+<p>教练为什么要给叶诗文服用这么危险的东西呢？这么危险的东西在比赛中到底起到了什么作用呢？这个所谓的一氧化二氢到底是什么秘密武器呢？</p>
+<p>其实我是知道的，因为我也服用过，而且这个东西的依赖性特别的强，我现在已经离不了了。因为依赖性太强，一旦离开这个东西不再服用，人就会死亡。</p>
+<p>现在我就要告诉你们为什么教练要给叶诗文服用这个一氧化二氢，因为：叶诗文渴了。</p>
+<p>为什么渴了就要服用一氧化二氢呢？因为一氧化二氢的化学方程式是这样的H2O，一个氧两个氢气，大家知道氧气和氢气都是可燃的，且燃点很低。同时服用在某些情况下可以让人精神焕发的。</p>
+<p>但是也不可以过量的服用，副作用也是很强的。</p>
+<p>对了这东西还有个俗名，叫做水。</p>
+<p>大家不要喷我啊～</p>
+<p>开个玩笑嘛～</p>
+<p>因为今天在微博上看到了有转发教练承认曾给叶诗文服用一氧化二氢的微博，竟然真的有人去喷啊～</p>
+<p>没文化真可怕啊～</p>
+<p>不过，这倒是让我想起来，初中刚学化学那会发懵，讲到氧化硫，那么有没有一氧化二硫，有没有一氧化二氧气，有没有一氧化二氢，老师说，那就是水</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ojdev.github.io/2012/08/03/yeshiwen-h2o/" data-id="cjwst3i370014nsmj5wst8ii8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-july-1-2012-1-seconds" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/06/30/july-1-2012-1-seconds/" class="article-date">
+  <time datetime="2012-06-30T08:17:37.000Z" itemprop="datePublished">2012-06-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/06/30/july-1-2012-1-seconds/">7月1日全球增加1秒，出现7:59:60不影响日常生活</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>7月1日将出现7：59：60闰秒调整对市民没影响</p>
+</blockquote>
+<p>据新华社电 （记者帅安宁、周润健）为了让“原子时”与“世界时”协调一致，北京时间7月1日全球将增加一秒，届时，将出现7：59：60的特殊现象。天文专家表示，感兴趣的中国公众可试着在当日7时59分59秒时将自己的电子表或是手机上的时间“拨”慢一秒。</p>
+<p>“世界时”“原子时”要协调</p>
+<p>我国天文教育专家、天津市天文学会理事赵之珩介绍说，为了确定时间，世界上有两种时间计量系统：基于地球自转得出的“世界时”和基于原子振荡周期确定的“原子时”。由于两种时间尺度对秒的定义不一样，随着时间的推移，这两个时间系统之间就会出现差异，所以有了“协调世界时”的概念。</p>
+<p>“协调世界时”以原子时秒长为基础，在时刻上尽量接近于世界时。1972年，国际计量大会决定，当“世界时”与“原子时”之间时刻相差超过0.9秒时，就在协调世界时上加上或减去1秒（正闰秒或负闰秒），以尽量接近世界时，这就是“闰秒”。“闰秒”一般安排在年中或年末的最后时刻，即6月30日或12月31日的最后一分钟。</p>
+<p>今年确定在6月30日23：59：59后面增加一秒，记为23：59：60，然后才是第二天的00：00：00。相对于北京时间，也就是7月1日7：59：59后面增加一秒，出现7：59：60的特殊现象，然后才是8：00：00。</p>
+<p>2012年“多”出一秒，你会拿这一秒做什么？“我会对我爸妈多说一遍‘我爱你们’”“我将用这一秒来睡觉，因为是周末。”“那天是我生日，比别人多过一秒，好幸福！”“上班可以晚起一秒了。”这是网络上一些网友“晒”出的五花八门的回答。</p>
+<p>东亚讯（助理记者 郑玉占） 为了让“原子时”与“世界时”协调一致，北京时间7月1日全球将增加1秒，到时将出现7：59：60的特殊现象。</p>
+<p>长春人造卫星观测站天文科普基地负责人李振军介绍，世界上有两种时间计量系统“世界时”和“原子时”。由于两种时间尺度对秒的定义不一样，随着时间的推移，会出现差异，所以有了“协调世界时”的概念。</p>
+<p>1972年，国际计量大会决定，当“世界时”与“原子时”之间时刻相差超过0.9秒时，就在“协调世界时”上加上或减去1秒，以尽量接近“世界时”，这就是“闰秒”。</p>
+<p>今年确定在6月30日23：59：59后面增加1秒，记为23：59：60，然后才是第二天的00：00：00。而北京时间是在7月1日7：59：59后面增加1秒，出现7：59：60的特殊现象，然后才是8：00：00。</p>
+<p>“多出的1秒钟，只对军事、航天等对时间精确到秒的行业有影响。不会对长春市民的日常生活造成任何影响，市民也不会感觉到。”李振军说。</p>
+<p>博主说：其实我不担心这一秒，我担心的是，我们做的那些程序会不会因为这1秒出现问题？当年千年虫的影响实在是太大了。今年真是多事的一年，但是是很有意义的一年，看来世界末日的说法是真的，但并不是人们意义上的毁灭的概念，而是告别。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ojdev.github.io/2012/06/30/july-1-2012-1-seconds/" data-id="cjwst3i2r000xnsmj6phvdjh6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/知识储备/">知识储备</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOps-Azure-DevOps-SonarQube/">DevOps, Azure DevOps, SonarQube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperV-minikube-kubernetes-windows10/">hyperV, minikube, kubernetes, windows10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s-debian9/">k8s,debian9</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DevOps-Azure-DevOps-SonarQube/" style="font-size: 10px;">DevOps, Azure DevOps, SonarQube</a> <a href="/tags/hyperV-minikube-kubernetes-windows10/" style="font-size: 10px;">hyperV, minikube, kubernetes, windows10</a> <a href="/tags/k8s-debian9/" style="font-size: 10px;">k8s,debian9</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">June 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">July 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/04/">April 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">March 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/02/">February 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/12/SonarQube/">在AzureDevops中集成SonarQube</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/03/kubernetes-for-debian/">k8s的环境搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/22/kubernetes/">在windows上创建kubernetes集群</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/07/canpian-11/">canpian-11</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/06/rabbitmq-eventbus-netcore/">RabbitMQ.EventBus.AspNetCore</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 欧俊<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

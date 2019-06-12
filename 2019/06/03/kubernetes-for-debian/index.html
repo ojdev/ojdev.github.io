@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>k8s的环境搭建 | 狐狸的后山</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian12apt updateapt upgrade -y ##开启root的ssh登录 修改/etc/ssh/sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启/etc/init.d/ssh resta">
+<meta name="keywords" content="k8s,debian9">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k8s的环境搭建">
+<meta property="og:url" content="http://ojdev.github.io/2019/06/03/kubernetes-for-debian/index.html">
+<meta property="og:site_name" content="狐狸的后山">
+<meta property="og:description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian12apt updateapt upgrade -y ##开启root的ssh登录 修改/etc/ssh/sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启/etc/init.d/ssh resta">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-12T05:40:48.666Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="k8s的环境搭建">
+<meta name="twitter:description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian12apt updateapt upgrade -y ##开启root的ssh登录 修改/etc/ssh/sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启/etc/init.d/ssh resta">
+  
+    <link rel="alternate" href="/atom.xml" title="狐狸的后山" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狐狸的后山</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ojdev.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-kubernetes-for-debian" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/03/kubernetes-for-debian/" class="article-date">
+  <time datetime="2019-06-03T09:31:00.000Z" itemprop="datePublished">2019-06-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      k8s的环境搭建
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>依然是模拟环境，使用windows10的hyperV。</p>
+<p>在虚拟机中安装debian9，只要核心的那种，开openssh的。</p>
+<p>更新debian<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt upgrade -y</span><br></pre></td></tr></table></figure></p>
+<p>##开启root的ssh登录</p>
+<p>修改<code>/etc/ssh/sshd_config</code>中的 <code>PermitRootLogin</code>为<code>PermitRootLogin yes</code>，保存<br>然后重启<code>/etc/init.d/ssh restart</code><br>非必须</p>
+<p>##关闭交换内存</p>
+<blockquote>
+<p>kubernetes 的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与 CPU 和内存限制固定在一起。 所以如果调度程序发送一个 pod 到一台机器，它不应该使用交换，设计者不想交换，因为它会减慢速度，所以关闭 swap 主要是为了性能考虑。当然为了一些节省资源的场景，比如运行容器数量较多，可添加 kubelet 参数 –fail-swap-on=false 来解决。</p>
+</blockquote>
+<p>##然后安装<a href="https://opsx.alibaba.com/mirror?lang=zh-CN" target="_blank" rel="noopener">k8s的aliyun源</a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install -y apt-transport-https</span><br><span class="line">curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - </span><br><span class="line">cat &lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list</span><br><span class="line">deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main</span><br><span class="line">EOF  </span><br><span class="line">apt-get update</span><br><span class="line">apt-get install -y kubelet kubeadm kubectl</span><br><span class="line">apt-mark hold kubelet kubeadm kubectl</span><br></pre></td></tr></table></figure></p>
+<p>##添加docker源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -</span><br><span class="line"></span><br><span class="line">cat &lt;&lt;EOF&gt;/etc/apt/sources.list.d/docker.list</span><br><span class="line">deb [arch=amd64] https://download.docker.com/linux/debian stretch stable</span><br><span class="line">EOF</span><br><span class="line">apt update</span><br><span class="line">apt install -y docker-ce</span><br></pre></td></tr></table></figure>
+<p>##添加docker的aliyun镜像源<a href="https://kubernetes.io/docs/setup/cri/" target="_blank" rel="noopener">参考</a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF&gt;/etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">  "registry-mirrors": ["https://********.mirror.aliyuncs.com"],</span><br><span class="line">  "exec-opts": ["native.cgroupdriver=systemd"],</span><br><span class="line">  "log-driver": "json-file",</span><br><span class="line">  "log-opts": &#123;</span><br><span class="line">    "max-size": "100m"</span><br><span class="line">  &#125;,</span><br><span class="line">  "storage-driver": "overlay2"</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">mkdir -p /etc/systemd/system/docker.service.d</span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure></p>
+<p>重启系统，让所有配置生效。</p>
+<p>##开始集群初始化<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers</span><br></pre></td></tr></table></figure></p>
+<p><code>--image-repository</code>指定拉取镜像的地址，避免从google无法访问的情况<br>成功后的内容<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Your Kubernetes control-plane has initialized successfully!</span><br><span class="line"></span><br><span class="line">To start using your cluster, you need to run the following as a regular user:</span><br><span class="line"></span><br><span class="line">  mkdir -p $HOME/.kube</span><br><span class="line">  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">  sudo chown $(id -u):$(id -g) $HOME/.kube/config</span><br><span class="line"></span><br><span class="line">You should now deploy a pod network to the cluster.</span><br><span class="line">Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:</span><br><span class="line">  https://kubernetes.io/docs/concepts/cluster-administration/addons/</span><br><span class="line"></span><br><span class="line">Then you can join any number of worker nodes by running the following on each as root:</span><br><span class="line"></span><br><span class="line">kubeadm join 172.17.183.236:6443 --token 4xr9ys.yxaxewry4xarkghy \</span><br><span class="line">    --discovery-token-ca-cert-hash sha256:3a73933bfd0fb5e2fe2e045292a395d55c652e9e8a141111335b1710350f9d37</span><br></pre></td></tr></table></figure></p>
+<p>创建成功后根据提示进行操作，记录最下面的链接语句，以备其他节点接入。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ojdev.github.io/2019/06/03/kubernetes-for-debian/" data-id="cjwst3i2r000ynsmjo270kdf5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s-debian9/">k8s,debian9</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/12/SonarQube/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在AzureDevops中集成SonarQube
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/22/kubernetes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在windows上创建kubernetes集群</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/知识储备/">知识储备</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOps-Azure-DevOps-SonarQube/">DevOps, Azure DevOps, SonarQube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperV-minikube-kubernetes-windows10/">hyperV, minikube, kubernetes, windows10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s-debian9/">k8s,debian9</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DevOps-Azure-DevOps-SonarQube/" style="font-size: 10px;">DevOps, Azure DevOps, SonarQube</a> <a href="/tags/hyperV-minikube-kubernetes-windows10/" style="font-size: 10px;">hyperV, minikube, kubernetes, windows10</a> <a href="/tags/k8s-debian9/" style="font-size: 10px;">k8s,debian9</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">June 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">July 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/04/">April 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">March 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/02/">February 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/12/SonarQube/">在AzureDevops中集成SonarQube</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/03/kubernetes-for-debian/">k8s的环境搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/22/kubernetes/">在windows上创建kubernetes集群</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/07/canpian-11/">canpian-11</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/06/rabbitmq-eventbus-netcore/">RabbitMQ.EventBus.AspNetCore</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 欧俊<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

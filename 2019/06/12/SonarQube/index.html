@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>在AzureDevops中集成SonarQube | 狐狸的后山</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SonarQube是管理代码质量的一个平台，有商业版也可以本地部署。  SonarQube需要Jdk的支持； ElasticSearch是可选的； 数据库使用jdbc；  本内容使用Docker进行部署 ##docker-compose.yaml1234567891011121314151617version: &quot;3&quot;services:  CodeQuality.SonarQube:    ima">
+<meta name="keywords" content="DevOps, Azure DevOps, SonarQube">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在AzureDevops中集成SonarQube">
+<meta property="og:url" content="http://ojdev.github.io/2019/06/12/SonarQube/index.html">
+<meta property="og:site_name" content="狐狸的后山">
+<meta property="og:description" content="SonarQube是管理代码质量的一个平台，有商业版也可以本地部署。  SonarQube需要Jdk的支持； ElasticSearch是可选的； 数据库使用jdbc；  本内容使用Docker进行部署 ##docker-compose.yaml1234567891011121314151617version: &quot;3&quot;services:  CodeQuality.SonarQube:    ima">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-12T05:40:48.650Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在AzureDevops中集成SonarQube">
+<meta name="twitter:description" content="SonarQube是管理代码质量的一个平台，有商业版也可以本地部署。  SonarQube需要Jdk的支持； ElasticSearch是可选的； 数据库使用jdbc；  本内容使用Docker进行部署 ##docker-compose.yaml1234567891011121314151617version: &quot;3&quot;services:  CodeQuality.SonarQube:    ima">
+  
+    <link rel="alternate" href="/atom.xml" title="狐狸的后山" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狐狸的后山</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ojdev.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-SonarQube" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/12/SonarQube/" class="article-date">
+  <time datetime="2019-06-12T02:48:13.000Z" itemprop="datePublished">2019-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在AzureDevops中集成SonarQube
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://www.sonarqube.org" target="_blank" rel="noopener">SonarQube</a>是管理代码质量的一个平台，有商业版也可以本地部署。</p>
+<blockquote>
+<p><a href="http://www.sonarqube.org" target="_blank" rel="noopener">SonarQube</a>需要Jdk的支持；</p>
+<p>ElasticSearch是可选的；</p>
+<p>数据库使用jdbc；</p>
+</blockquote>
+<p>本内容使用Docker进行部署</p>
+<p>##docker-compose.yaml<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="string">CodeQuality.SonarQube:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">sonarqube:lts</span>  <span class="comment">##新版，7.x只能对master分支进行分析，需要商业授权</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">codequality-sonarqube</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">SONARQUBE_JDBC_USERNAME=$&#123;DB_POSTGRESQL_USER&#125;</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">SONARQUBE_JDBC_PASSWORD=$&#123;DB_POSTGRESQL_PASS&#125;</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">SONARQUBE_JDBC_URL=jdbc:postgresql://$&#123;DB_POSTGRESQL_URL_AND_PORT&#125;/sonar</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"2303:9000"</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"2302:9002"</span>    </span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"/etc/timezone:/etc/timezone"</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"/etc/localtime:/etc/localtime"</span>          </span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br></pre></td></tr></table></figure></p>
+<p>这里使用了pgsql。</p>
+<p>部署完成后要进行配置，用admin进行登录，点击右上角头像，选择我的账户-&gt;安全</p>
+<p>在令牌下输入一个令牌名选择”生成”,复制生成的令牌。</p>
+<p>在AzureDevops中安装<a href="https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarqube" target="_blank" rel="noopener">SonarQube</a></p>
+<p>进入azure devops中，进入项目，进入到设置中的服务连接，新建服务连接中找到SonarQube服务连接，输入任意的名称，Server Url输入http://[部署的地址]:2303,Token输入刚刚生成的令牌，保存即可。</p>
+<p>以.net core生成PR审阅的时候顺便做代码质量检测举例，其他的项目有些麻烦。</p>
+<ol>
+<li>在生成定义中添加任务<code>Prepare Analysis Configuration</code></li>
+<li>在<code>SonarQube Server Endpoint</code>中选择我们刚刚创建的服务连接</li>
+<li>ProjectKey中填入一个名字，推荐使用<code>$(Build.Repository.Name)</code>用仓储的名字</li>
+<li>Project Name可以留空</li>
+<li>Project Version写一个版本号，推荐使用<code>PR$(Build.BuildNumber)</code><br>以上推荐做成任务组。</li>
+</ol>
+<p>继续添加.net core生成过程，Restore、Build、Test、项目路径要选择成解决方案文件。</p>
+<p>然后添加任务<code>Run Code Analysis</code></p>
+<p>添加任务<code>Publish Quality Gate Result</code></p>
+<p>这样，在每次PR生成的时候就会自动去做代码质量检测，商业版授权，会将检测中的不合理内容直接更新到PR中，非商业代理则需要登录SonarQube去查看。</p>
+<p>以上是基本的操作，内容待优化。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ojdev.github.io/2019/06/12/SonarQube/" data-id="cjwst3i1w0009nsmjcrk82qi6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DevOps-Azure-DevOps-SonarQube/">DevOps, Azure DevOps, SonarQube</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/03/kubernetes-for-debian/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">k8s的环境搭建</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/知识储备/">知识储备</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOps-Azure-DevOps-SonarQube/">DevOps, Azure DevOps, SonarQube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperV-minikube-kubernetes-windows10/">hyperV, minikube, kubernetes, windows10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s-debian9/">k8s,debian9</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DevOps-Azure-DevOps-SonarQube/" style="font-size: 10px;">DevOps, Azure DevOps, SonarQube</a> <a href="/tags/hyperV-minikube-kubernetes-windows10/" style="font-size: 10px;">hyperV, minikube, kubernetes, windows10</a> <a href="/tags/k8s-debian9/" style="font-size: 10px;">k8s,debian9</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">June 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">July 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/04/">April 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">March 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/02/">February 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/12/SonarQube/">在AzureDevops中集成SonarQube</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/03/kubernetes-for-debian/">k8s的环境搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/22/kubernetes/">在windows上创建kubernetes集群</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/07/canpian-11/">canpian-11</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/06/rabbitmq-eventbus-netcore/">RabbitMQ.EventBus.AspNetCore</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 欧俊<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
