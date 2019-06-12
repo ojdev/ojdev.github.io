@@ -7,10 +7,10 @@ excerpt_link: Read more
 
 menu:
  Home: /
- #Tags: /tags/
- #Archives: /archives/
- #Projects: /project/
- #About: /about/
+ Tags: /tags/
+ Archives: /archives/
+ Projects: /project/
+ About: /about/
 
 # highlight
 highlight:
@@ -48,11 +48,11 @@ about:
   avatar: https://avatars3.githubusercontent.com/u/2107833?s=400&v=4
   description: "The end is always near."
   weibo_username: luacloud
-  #twitter_username: yanm1ng
+  twitter_username: 
   github_username: odev
-  #zhihu_username: yummy1121
-  #douban_username: yanm1ng
-  #linkedin_username:
+  zhihu_username: 
+  douban_username: 
+  linkedin_username:
 
 # MathJax Support
 mathjax:
