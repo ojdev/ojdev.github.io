@@ -13,7 +13,7 @@ timezone: Asia/Harbin
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://ojdev.github.io
+url: https://ojdev.github.io
 root: /
 #permalink: post/:title/
 permalink: :year/:month/:day/:title/
@@ -55,7 +55,7 @@ index_generator:
   order_by: -date
   
 # Category & Tag
-default_category: uncategorized
+#default_category: uncategorized
 category_map:
 tag_map:
 
