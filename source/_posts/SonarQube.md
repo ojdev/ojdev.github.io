@@ -1,7 +1,10 @@
 ---
 title: 在AzureDevops中集成SonarQube
 date: 2019-06-12 10:48:13
-tags: DevOps, Azure DevOps, SonarQube
+tags: 
+  - DevOps
+  - Azure DevOps
+  - SonarQube
 ---
 [SonarQube](http://www.sonarqube.org)是管理代码质量的一个平台，有商业版也可以本地部署。
 
@@ -12,7 +15,7 @@ tags: DevOps, Azure DevOps, SonarQube
 >数据库使用jdbc；
 
 本内容使用Docker进行部署
-##docker-compose.yaml
+## docker-compose.yaml
 ```yaml
 version: "3"
 
