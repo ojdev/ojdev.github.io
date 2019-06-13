@@ -1,7 +1,9 @@
 ---
 title: k8s的环境搭建
 date: 2019-06-03 17:31:00
-tags: k8s,debian9
+tags:
+  - k8s
+  - debian9
 ---
 
 依然是模拟环境，使用windows10的hyperV。

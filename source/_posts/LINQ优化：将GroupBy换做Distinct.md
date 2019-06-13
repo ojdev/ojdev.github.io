@@ -1,7 +1,8 @@
 ---
 title: LINQ优化：将GroupBy换做Distinct
 date: 2011-05-06 18:23:18
-tags:
+tags: 
+   - LINQ
 ---
 
 这样做也是没有办法的，我之前项目中，查询中这样写的分组

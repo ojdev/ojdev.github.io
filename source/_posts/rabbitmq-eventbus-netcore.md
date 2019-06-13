@@ -2,6 +2,11 @@
 title: RabbitMQ.EventBus.AspNetCore
 date: 2019-05-06 13:52:00
 categories: 知识储备
+tags: 
+    - RabbitMQ
+    - .net core
+    - EventBus
+    - Asp.Net Core
 ---
 
 [![NuGet](https://img.shields.io/nuget/v/RabbitMQ.EventBus.AspNetCore.svg?style=popout)](https://www.nuget.org/packages/RabbitMQ.EventBus.AspNetCore)  [![NuGet](https://img.shields.io/nuget/dt/RabbitMQ.EventBus.AspNetCore.svg?style=popout)](https://www.nuget.org/packages/RabbitMQ.EventBus.AspNetCore)
