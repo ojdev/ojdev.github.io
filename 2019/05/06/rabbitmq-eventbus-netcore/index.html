@@ -171,6 +171,27 @@
 <h4 id="4-订阅消息"><a href="#4-订阅消息" class="headerlink" title="4. 订阅消息"></a>4. 订阅消息</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">EventBus(Exchange = <span class="meta-string">"RabbitMQ.EventBus.Simple"</span>, RoutingKey = <span class="meta-string">"rabbitmq.eventbus.test"</span>)</span>]</span><br><span class="line">[<span class="meta">EventBus(Exchange = <span class="meta-string">"RabbitMQ.EventBus.Simple"</span>, RoutingKey = <span class="meta-string">"rabbitmq.eventbus.test1"</span>)</span>]</span><br><span class="line">[<span class="meta">EventBus(Exchange = <span class="meta-string">"RabbitMQ.EventBus.Simple"</span>, RoutingKey = <span class="meta-string">"rabbitmq.eventbus.test2"</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MessageBody</span> : <span class="title">IEvent</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Body &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> DateTimeOffset Time &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class MessageBodyHandle : IEventHandler&lt;MessageBody&gt;, IDisposable</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> ILogger&lt;MessageBodyHandle&gt; _logger;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MessageBodyHandle</span>(<span class="params">ILogger&lt;MessageBodyHandle&gt; logger</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _logger = logger ?? <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(logger));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"释放"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Task <span class="title">Handle</span>(<span class="params">EventHandlerArgs&lt;MessageBody1&gt; args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _logger.Information(args.Original);</span><br><span class="line">        _logger.Information(args.Redelivered);</span><br><span class="line">        _logger.Information(args.Exchange);</span><br><span class="line">        _logger.Information(args.RoutingKey);</span><br><span class="line"></span><br><span class="line">        _logger.Information(args.Event.Body);</span><br><span class="line">        <span class="keyword">return</span> Task.CompletedTask;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></section>
     <!-- Tags START -->
     
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#RabbitMQ">
+    <span class="tag-code">RabbitMQ</span>
+  </a>
+
+  <a href="/tags#.net core">
+    <span class="tag-code">.net core</span>
+  </a>
+
+  <a href="/tags#EventBus">
+    <span class="tag-code">EventBus</span>
+  </a>
+
+  <a href="/tags#Asp.Net Core">
+    <span class="tag-code">Asp.Net Core</span>
+  </a>
+
+      </div>
+    
     <!-- Tags END -->
     <!-- NAV START -->
     
