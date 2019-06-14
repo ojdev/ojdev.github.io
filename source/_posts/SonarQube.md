@@ -6,8 +6,10 @@ tags:
   - Azure DevOps
   - SonarQube
 ---
+
 [SonarQube](http://www.sonarqube.org)是管理代码质量的一个平台，有商业版也可以本地部署。
 
+## 部署SonarQube
 >[SonarQube](http://www.sonarqube.org)需要Jdk的支持；
 >
 >ElasticSearch是可选的；
@@ -41,11 +43,14 @@ services:
 部署完成后要进行配置，用admin进行登录，点击右上角头像，选择我的账户->安全
 
 在令牌下输入一个令牌名选择"生成",复制生成的令牌。
+![](/images/2019/06/12/1.png)
+
+## AzureDevops
 
 在AzureDevops中安装[SonarQube](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarqube)
 
 进入azure devops中，进入项目，进入到设置中的服务连接，新建服务连接中找到SonarQube服务连接，输入任意的名称，Server Url输入http://[部署的地址]:2303,Token输入刚刚生成的令牌，保存即可。
-
+![](/images/2019/06/12/2.png)
 以.net core生成PR审阅的时候顺便做代码质量检测举例，其他的项目有些麻烦。
 
 1. 在生成定义中添加任务`Prepare Analysis Configuration`
@@ -63,6 +68,14 @@ services:
 
 这样，在每次PR生成的时候就会自动去做代码质量检测，商业版授权，会将检测中的不合理内容直接更新到PR中，非商业代理则需要登录SonarQube去查看。
 
-以上是基本的操作，内容待优化。
+一下是实际的应用
 
-Fix
+## 定义任务组
+
+![](/images/2019/06/12/3.png)
+![](/images/2019/06/12/4.png)
+
+## 实际应用
+
+![](/images/2019/06/12/5.png)
+![](/images/2019/06/12/6.png)
