@@ -154,7 +154,7 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><p><a href="http://www.sonarqube.org" target="_blank" rel="noopener">SonarQube</a>是管理代码质量的一个平台，有商业版也可以本地部署。</p>
-<blockquote>
+<h2 id="部署SonarQube"><a href="#部署SonarQube" class="headerlink" title="部署SonarQube"></a>部署SonarQube</h2><blockquote>
 <p><a href="http://www.sonarqube.org" target="_blank" rel="noopener">SonarQube</a>需要Jdk的支持；</p>
 <p>ElasticSearch是可选的；</p>
 <p>数据库使用jdbc；</p>
@@ -164,10 +164,9 @@
 
 <p>这里使用了pgsql。</p>
 <p>部署完成后要进行配置，用admin进行登录，点击右上角头像，选择我的账户-&gt;安全</p>
-<p>在令牌下输入一个令牌名选择”生成”,复制生成的令牌。</p>
-<p>在AzureDevops中安装<a href="https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarqube" target="_blank" rel="noopener">SonarQube</a></p>
-<p>进入azure devops中，进入项目，进入到设置中的服务连接，新建服务连接中找到SonarQube服务连接，输入任意的名称，Server Url输入http://[部署的地址]:2303,Token输入刚刚生成的令牌，保存即可。</p>
-<p>以.net core生成PR审阅的时候顺便做代码质量检测举例，其他的项目有些麻烦。</p>
+<p>在令牌下输入一个令牌名选择”生成”,复制生成的令牌。<br><img src="/images/2019/06/12/1.png" alt></p>
+<h2 id="AzureDevops"><a href="#AzureDevops" class="headerlink" title="AzureDevops"></a>AzureDevops</h2><p>在AzureDevops中安装<a href="https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarqube" target="_blank" rel="noopener">SonarQube</a></p>
+<p>进入azure devops中，进入项目，进入到设置中的服务连接，新建服务连接中找到SonarQube服务连接，输入任意的名称，Server Url输入http://[部署的地址]:2303,Token输入刚刚生成的令牌，保存即可。<br><img src="/images/2019/06/12/2.png" alt><br>以.net core生成PR审阅的时候顺便做代码质量检测举例，其他的项目有些麻烦。</p>
 <ol>
 <li>在生成定义中添加任务<code>Prepare Analysis Configuration</code></li>
 <li>在<code>SonarQube Server Endpoint</code>中选择我们刚刚创建的服务连接</li>
@@ -179,8 +178,9 @@
 <p>然后添加任务<code>Run Code Analysis</code></p>
 <p>添加任务<code>Publish Quality Gate Result</code></p>
 <p>这样，在每次PR生成的时候就会自动去做代码质量检测，商业版授权，会将检测中的不合理内容直接更新到PR中，非商业代理则需要登录SonarQube去查看。</p>
-<p>以上是基本的操作，内容待优化。</p>
-<p>Fix</p>
+<p>一下是实际的应用</p>
+<h2 id="定义任务组"><a href="#定义任务组" class="headerlink" title="定义任务组"></a>定义任务组</h2><p><img src="/images/2019/06/12/3.png" alt><br><img src="/images/2019/06/12/4.png" alt></p>
+<h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><p><img src="/images/2019/06/12/5.png" alt><br><img src="/images/2019/06/12/6.png" alt></p>
 </section>
     <!-- Tags START -->
     
@@ -259,7 +259,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#docker-compose-yaml"><span class="toc-nav-text">docker-compose.yaml</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#部署SonarQube"><span class="toc-nav-text">部署SonarQube</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#docker-compose-yaml"><span class="toc-nav-text">docker-compose.yaml</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#AzureDevops"><span class="toc-nav-text">AzureDevops</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#定义任务组"><span class="toc-nav-text">定义任务组</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#实际应用"><span class="toc-nav-text">实际应用</span></a></li></ol>
     
   </div>
 </aside>
