@@ -16,6 +16,10 @@ windows-terminal发布了，虽然只是预览版，目前还是很简单的部�
 
 wsl终端体验也很好，cmd中使用ssh登录经常会出现乱行的问题，wsl中则没有这个现象，而且，目前的wsl中很多操作可以对windows本身进行修改。缺什么也可以指直接使用linux的方式安装，而写windows的秋季更新中的wsl 2.0docker可以与windows中的互通。
 
+这样一来也免了安装cygwin或者chocolatey了。
+
+新版的vscode好像也只是直接使用wsl来进行控制台操作了，不过目前好像还是预览版中的功能。
+
 ## 配置
 
 因为目前没有配置界面，所有的设置都是一个json文档，所以这里稍微的解释一下配置方法。
@@ -154,90 +158,7 @@ wsl终端体验也很好，cmd中使用ssh登录经常会出现乱行的问题�
             "white" : "#CCCCCC",
             "yellow" : "#C19C00"
         },
-        {
-            "background" : "#282C34",
-            "black" : "#282C34",
-            "blue" : "#61AFEF",
-            "brightBlack" : "#5A6374",
-            "brightBlue" : "#61AFEF",
-            "brightCyan" : "#56B6C2",
-            "brightGreen" : "#98C379",
-            "brightPurple" : "#C678DD",
-            "brightRed" : "#E06C75",
-            "brightWhite" : "#DCDFE4",
-            "brightYellow" : "#E5C07B",
-            "cyan" : "#56B6C2",
-            "foreground" : "#DCDFE4",
-            "green" : "#98C379",
-            "name" : "One Half Dark",
-            "purple" : "#C678DD",
-            "red" : "#E06C75",
-            "white" : "#DCDFE4",
-            "yellow" : "#E5C07B"
-        },
-        {
-            "background" : "#FAFAFA",
-            "black" : "#383A42",
-            "blue" : "#0184BC",
-            "brightBlack" : "#4F525D",
-            "brightBlue" : "#61AFEF",
-            "brightCyan" : "#56B5C1",
-            "brightGreen" : "#98C379",
-            "brightPurple" : "#C577DD",
-            "brightRed" : "#DF6C75",
-            "brightWhite" : "#FFFFFF",
-            "brightYellow" : "#E4C07A",
-            "cyan" : "#0997B3",
-            "foreground" : "#383A42",
-            "green" : "#50A14F",
-            "name" : "One Half Light",
-            "purple" : "#A626A4",
-            "red" : "#E45649",
-            "white" : "#FAFAFA",
-            "yellow" : "#C18301"
-        },
-        {
-            "background" : "#073642",
-            "black" : "#073642",
-            "blue" : "#268BD2",
-            "brightBlack" : "#002B36",
-            "brightBlue" : "#839496",
-            "brightCyan" : "#93A1A1",
-            "brightGreen" : "#586E75",
-            "brightPurple" : "#6C71C4",
-            "brightRed" : "#CB4B16",
-            "brightWhite" : "#FDF6E3",
-            "brightYellow" : "#657B83",
-            "cyan" : "#2AA198",
-            "foreground" : "#FDF6E3",
-            "green" : "#859900",
-            "name" : "Solarized Dark",
-            "purple" : "#D33682",
-            "red" : "#D30102",
-            "white" : "#EEE8D5",
-            "yellow" : "#B58900"
-        },
-        {
-            "background" : "#FDF6E3",
-            "black" : "#073642",
-            "blue" : "#268BD2",
-            "brightBlack" : "#002B36",
-            "brightBlue" : "#839496",
-            "brightCyan" : "#93A1A1",
-            "brightGreen" : "#586E75",
-            "brightPurple" : "#6C71C4",
-            "brightRed" : "#CB4B16",
-            "brightWhite" : "#FDF6E3",
-            "brightYellow" : "#657B83",
-            "cyan" : "#2AA198",
-            "foreground" : "#073642",
-            "green" : "#859900",
-            "name" : "Solarized Light",
-            "purple" : "#D33682",
-            "red" : "#D30102",
-            "white" : "#EEE8D5",
-            "yellow" : "#B58900"
-        }
+        //其他配色方案
     ]
 }
 ```
