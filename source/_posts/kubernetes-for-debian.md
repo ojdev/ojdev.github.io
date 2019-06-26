@@ -25,6 +25,14 @@ apt upgrade -y
 ## 关闭交换内存
 >kubernetes 的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与 CPU 和内存限制固定在一起。 所以如果调度程序发送一个 pod 到一台机器，它不应该使用交换，设计者不想交换，因为它会减慢速度，所以关闭 swap 主要是为了性能考虑。当然为了一些节省资源的场景，比如运行容器数量较多，可添加 kubelet 参数 --fail-swap-on=false 来解决。
 
+```shell
+swapoff -a 
+nano /etc/fstab
+```
+找到swap was on /dev/sda3 during installation
+把下面的/dev开头的注释掉
+
+
 ## 然后安装[k8s的aliyun源](https://opsx.alibaba.com/mirror?lang=zh-CN)
 ```shell
 apt-get update && apt-get install -y apt-transport-https
