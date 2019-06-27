@@ -32,6 +32,7 @@ nano /etc/fstab
 找到swap was on /dev/sda3 during installation
 把下面的/dev开头的注释掉
 
+或者在init的时候使用参数`kubeadm init --ignore-preflight-errors Swap`
 
 ## 然后安装[k8s的aliyun源](https://opsx.alibaba.com/mirror?lang=zh-CN)
 ```shell
@@ -106,3 +107,33 @@ kubeadm join 172.17.183.236:6443 --token 4xr9ys.yxaxewry4xarkghy \
 
 
 创建成功后根据提示进行操作，记录最下面的链接语句，以备其他节点接入。
+
+## 安装Helm
+先去[Helm](https://github.com/helm/helm/releases)的releases页面查看当前最高的版本号，目前最高的是2.14.1
+
+### 下载并安装
+```shell
+curl -O -L https://get.helm.sh/helm-v2.14.1-linux-amd64.tar.gz
+tar -zxvf helm-v2.14.1-linux-amd64.tar.gz
+mv linux-amd64/helm /usr/local/bin/helm
+```
+
+创建tiller的serviceaccount和clusterrolebinding
+```shell
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+helm init --history-max 200  --service-account tiller --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
+```
+## 安装Istio
+
+先去[Istio](https://github.com/istio/istio/releases)的releases页面查看当前最高的版本号，目前最高的是1.2.0
+### 下载并安装
+```shell
+curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.2.0 sh -
+```
+或者下载还未正式提供的版本1.2.1
+```shell
+curl -O -L https://github.com/istio/istio/archive/1.2.1.tar.gz
+tar -zxvf 1.2.1.tar.gz
+cd istio-1.2.1
+```
