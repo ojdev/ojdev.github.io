@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <meta name="description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian 12apt updateapt upgrade -y  开启root的ssh登录修改/etc/ssh/sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启/etc/init.d/ssh restar">
+<meta name="keywords" content="k8s,debian9">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k8s的环境搭建">
+<meta property="og:url" content="https://ojdev.github.io/2019/06/03/kubernetes-for-debian/index.html">
+<meta property="og:site_name" content="狐狸的后山">
+<meta property="og:description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian 12apt updateapt upgrade -y  开启root的ssh登录修改/etc/ssh/sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启/etc/init.d/ssh restar">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-11T09:42:04.985Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="k8s的环境搭建">
+<meta name="twitter:description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian 12apt updateapt upgrade -y  开启root的ssh登录修改/etc/ssh/sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启/etc/init.d/ssh restar">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://ojdev.github.io/2019/06/03/kubernetes-for-debian/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>k8s的环境搭建 | 狐狸的后山</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">狐狸的后山</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Navigationsleiste an/ausschalten">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>Über</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Schlagwörter</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Kategorien</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Zeitplan</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>Sitemap</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/ojdev" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ojdev.github.io/2019/06/03/kubernetes-for-debian/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="欧俊">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="狐狸的后山">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">k8s的环境搭建
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Erstellt: 2019-06-03 17:31:00" itemprop="dateCreated datePublished" datetime="2019-06-03T17:31:00+08:00">2019-06-03</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2019-07-11 17:42:04" itemprop="dateModified" datetime="2019-07-11T17:42:04+08:00">2019-07-11</time>
+              </span>
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>依然是模拟环境，使用windows10的hyperV。</p>
+<p>在虚拟机中安装debian9，只要核心的那种，开openssh的。</p>
+<p>更新debian</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt upgrade -y</span><br></pre></td></tr></table></figure>
+
+<h2 id="开启root的ssh登录"><a href="#开启root的ssh登录" class="headerlink" title="开启root的ssh登录"></a>开启root的ssh登录</h2><p>修改<code>/etc/ssh/sshd_config</code>中的 <code>PermitRootLogin</code>为<code>PermitRootLogin yes</code>，保存<br>然后重启<code>/etc/init.d/ssh restart</code><br>非必须</p>
+<h2 id="关闭交换内存"><a href="#关闭交换内存" class="headerlink" title="关闭交换内存"></a>关闭交换内存</h2><blockquote>
+<p>kubernetes 的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与 CPU 和内存限制固定在一起。 所以如果调度程序发送一个 pod 到一台机器，它不应该使用交换，设计者不想交换，因为它会减慢速度，所以关闭 swap 主要是为了性能考虑。当然为了一些节省资源的场景，比如运行容器数量较多，可添加 kubelet 参数 –fail-swap-on=false 来解决。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a </span><br><span class="line">nano /etc/fstab</span><br></pre></td></tr></table></figure>
+
+<p>找到swap was on /dev/sda3 during installation<br>把下面的/dev开头的注释掉</p>
+<p>或者在init的时候使用参数<code>kubeadm init --ignore-preflight-errors Swap</code></p>
+<h2 id="然后安装k8s的aliyun源"><a href="#然后安装k8s的aliyun源" class="headerlink" title="然后安装k8s的aliyun源"></a>然后安装<a href="https://opsx.alibaba.com/mirror?lang=zh-CN" target="_blank" rel="noopener">k8s的aliyun源</a></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install -y apt-transport-https</span><br><span class="line">curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - </span><br><span class="line">cat &lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list</span><br><span class="line">deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main</span><br><span class="line">EOF  </span><br><span class="line">apt-get update</span><br><span class="line">apt-get install -y kubelet kubeadm kubectl</span><br><span class="line">apt-mark hold kubelet kubeadm kubectl</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加docker源"><a href="#添加docker源" class="headerlink" title="添加docker源"></a>添加docker源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -</span><br><span class="line"></span><br><span class="line">cat &lt;&lt;EOF&gt;/etc/apt/sources.list.d/docker.list</span><br><span class="line">deb [arch=amd64] https://download.docker.com/linux/debian stretch stable</span><br><span class="line">EOF</span><br><span class="line">apt update</span><br><span class="line">apt install -y docker-ce</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加docker的aliyun镜像源参考"><a href="#添加docker的aliyun镜像源参考" class="headerlink" title="添加docker的aliyun镜像源参考"></a>添加docker的aliyun镜像源<a href="https://kubernetes.io/docs/setup/cri/" target="_blank" rel="noopener">参考</a></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF&gt;/etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">  "registry-mirrors": ["https://********.mirror.aliyuncs.com"],</span><br><span class="line">  "exec-opts": ["native.cgroupdriver=systemd"],</span><br><span class="line">  "log-driver": "json-file",</span><br><span class="line">  "log-opts": &#123;</span><br><span class="line">    "max-size": "100m"</span><br><span class="line">  &#125;,</span><br><span class="line">  "storage-driver": "overlay2"</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">mkdir -p /etc/systemd/system/docker.service.d</span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+
+<p>重启系统，让所有配置生效。</p>
+<h2 id="开始集群初始化"><a href="#开始集群初始化" class="headerlink" title="开始集群初始化"></a>开始集群初始化</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers</span><br></pre></td></tr></table></figure>
+
+<p><code>--image-repository</code>指定拉取镜像的地址，避免从google无法访问的情况<br>成功后的内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Your Kubernetes control-plane has initialized successfully!</span><br><span class="line"></span><br><span class="line">To start using your cluster, you need to run the following as a regular user:</span><br><span class="line"></span><br><span class="line">  mkdir -p $HOME/.kube</span><br><span class="line">  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">  sudo chown $(id -u):$(id -g) $HOME/.kube/config</span><br><span class="line"></span><br><span class="line">You should now deploy a pod network to the cluster.</span><br><span class="line">Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:</span><br><span class="line">  https://kubernetes.io/docs/concepts/cluster-administration/addons/</span><br><span class="line"></span><br><span class="line">Then you can join any number of worker nodes by running the following on each as root:</span><br><span class="line"></span><br><span class="line">kubeadm join 172.17.183.236:6443 --token 4xr9ys.yxaxewry4xarkghy \</span><br><span class="line">    --discovery-token-ca-cert-hash sha256:3a73933bfd0fb5e2fe2e045292a395d55c652e9e8a141111335b1710350f9d37</span><br></pre></td></tr></table></figure>
+
+<p>创建成功后根据提示进行操作，记录最下面的链接语句，以备其他节点接入。</p>
+<h2 id="安装Helm"><a href="#安装Helm" class="headerlink" title="安装Helm"></a>安装Helm</h2><p>先去<a href="https://github.com/helm/helm/releases" target="_blank" rel="noopener">Helm</a>的releases页面查看当前最高的版本号，目前最高的是2.14.1</p>
+<h3 id="下载并安装"><a href="#下载并安装" class="headerlink" title="下载并安装"></a>下载并安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -O -L https://get.helm.sh/helm-v2.14.1-linux-amd64.tar.gz</span><br><span class="line">tar -zxvf helm-v2.14.1-linux-amd64.tar.gz</span><br><span class="line">mv linux-amd64/helm /usr/local/bin/helm</span><br></pre></td></tr></table></figure>
+
+<p>创建tiller的serviceaccount和clusterrolebinding</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl create serviceaccount --namespace kube-system tiller</span><br><span class="line">kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller</span><br><span class="line">helm init --history-max 200  --service-account tiller --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装Istio"><a href="#安装Istio" class="headerlink" title="安装Istio"></a>安装Istio</h2><p>先去<a href="https://github.com/istio/istio/releases" target="_blank" rel="noopener">Istio</a>的releases页面查看当前最高的版本号，目前最高的是1.2.0</p>
+<h3 id="下载并安装-1"><a href="#下载并安装-1" class="headerlink" title="下载并安装"></a>下载并安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.2.0 sh -</span><br></pre></td></tr></table></figure>
+
+<p>或者下载还未正式提供的版本1.2.1</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -O -L https://github.com/istio/istio/archive/1.2.1.tar.gz</span><br><span class="line">tar -zxvf 1.2.1.tar.gz</span><br><span class="line">cd istio-1.2.1</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/k8s/" rel="tag"># k8s</a>
+          
+            <a href="/tags/debian9/" rel="tag"># debian9</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/22/kubernetes-for-minikube/" rel="next" title="在windows上创建kubernetes集群">
+                <i class="fa fa-chevron-left"></i> 在windows上创建kubernetes集群
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/12/SonarQube/" rel="prev" title="在AzureDevops中集成SonarQube">
+                在AzureDevops中集成SonarQube <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">欧俊</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">Kategorien</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">schlagwörter</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ojdev" title="GitHub &rarr; https://github.com/ojdev" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:me@oujun.work" title="E-Mail &rarr; mailto:me@oujun.work" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开启root的ssh登录"><span class="nav-number">1.</span> <span class="nav-text">开启root的ssh登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭交换内存"><span class="nav-number">2.</span> <span class="nav-text">关闭交换内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#然后安装k8s的aliyun源"><span class="nav-number">3.</span> <span class="nav-text">然后安装k8s的aliyun源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加docker源"><span class="nav-number">4.</span> <span class="nav-text">添加docker源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加docker的aliyun镜像源参考"><span class="nav-number">5.</span> <span class="nav-text">添加docker的aliyun镜像源参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始集群初始化"><span class="nav-number">6.</span> <span class="nav-text">开始集群初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Helm"><span class="nav-number">7.</span> <span class="nav-text">安装Helm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载并安装"><span class="nav-number">7.1.</span> <span class="nav-text">下载并安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Istio"><span class="nav-number">8.</span> <span class="nav-text">安装Istio</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载并安装-1"><span class="nav-number">8.1.</span> <span class="nav-text">下载并安装</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">欧俊</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'dca53eef8ae37c6bcbb2',
+    clientSecret: '6999e3a7ae92f2f5146bda78d29f3ae6c0af7c38',
+    repo: 'ojdev.github.io',
+    owner: 'ojdev',
+    admin: ['ojdev'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
