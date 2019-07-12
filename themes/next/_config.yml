@@ -9,15 +9,6 @@
 # Useful if you want to comment some options from NexT `_config.yml` by `next.yml` without editing default config.
 override: false
 
-# language: default #默认是英文
-language: zh-CN
-# language: fr-FR
-# language: zh-HK
-# language: zh-TW
-# language: en
-# language: ru
-# language: de
-
 # Allow to cache content generation. Introduced in NexT v6.0.0.
 cache:
   enable: true
