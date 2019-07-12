@@ -75,7 +75,7 @@
     back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
-    lazyload: false,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -98,17 +98,10 @@
 <meta property="og:site_name" content="狐狸的后山">
 <meta property="og:description" content="SonarQube是管理代码质量的一个平台，有商业版也可以本地部署。 部署SonarQube SonarQube需要Jdk的支持； ElasticSearch是可选的； 数据库使用jdbc；  本内容使用Docker进行部署 docker-compose.yaml1234567891011121314151617version: &quot;3&quot;services:  CodeQuality.SonarQub">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ojdev.github.io/images/2019/06/12/1.png">
-<meta property="og:image" content="https://ojdev.github.io/images/2019/06/12/2.png">
-<meta property="og:image" content="https://ojdev.github.io/images/2019/06/12/3.png">
-<meta property="og:image" content="https://ojdev.github.io/images/2019/06/12/4.png">
-<meta property="og:image" content="https://ojdev.github.io/images/2019/06/12/5.png">
-<meta property="og:image" content="https://ojdev.github.io/images/2019/06/12/6.png">
-<meta property="og:updated_time" content="2019-07-11T09:42:04.985Z">
+<meta property="og:updated_time" content="2019-07-12T08:31:31.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在AzureDevops中集成SonarQube">
 <meta name="twitter:description" content="SonarQube是管理代码质量的一个平台，有商业版也可以本地部署。 部署SonarQube SonarQube需要Jdk的支持； ElasticSearch是可选的； 数据库使用jdbc；  本内容使用Docker进行部署 docker-compose.yaml1234567891011121314151617version: &quot;3&quot;services:  CodeQuality.SonarQub">
-<meta name="twitter:image" content="https://ojdev.github.io/images/2019/06/12/1.png">
 
 
 
@@ -194,7 +187,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Navigationsleiste an/ausschalten">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -221,7 +214,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
         
@@ -237,7 +230,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>Über</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
 
   </li>
         
@@ -253,7 +246,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Schlagwörter</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
         
@@ -269,7 +262,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Kategorien</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
 
   </li>
         
@@ -285,7 +278,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
         
@@ -301,7 +294,7 @@
 
     
 
-    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Zeitplan</a>
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
 
   </li>
         
@@ -408,14 +401,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-06-12 10:48:13" itemprop="dateCreated datePublished" datetime="2019-06-12T10:48:13+08:00">2019-06-12</time>
+              <time title="Created: 2019-06-12 10:48:13" itemprop="dateCreated datePublished" datetime="2019-06-12T10:48:13+08:00">2019-06-12</time>
             </span>
           
 
@@ -428,9 +421,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-07-11 17:42:04" itemprop="dateModified" datetime="2019-07-11T17:42:04+08:00">2019-07-11</time>
+                <time title="Modified: 2019-07-12 16:31:31" itemprop="dateModified" datetime="2019-07-12T16:31:31+08:00">2019-07-12</time>
               </span>
             
           
@@ -480,9 +473,9 @@
 
 <p>这里使用了pgsql。</p>
 <p>部署完成后要进行配置，用admin进行登录，点击右上角头像，选择我的账户-&gt;安全</p>
-<p>在令牌下输入一个令牌名选择”生成”,复制生成的令牌。<br><img src="/images/2019/06/12/1.png" alt></p>
+<p>在令牌下输入一个令牌名选择”生成”,复制生成的令牌。<br><img alt data-src="/images/2019/06/12/1.png"></p>
 <h2 id="AzureDevops"><a href="#AzureDevops" class="headerlink" title="AzureDevops"></a>AzureDevops</h2><p>在AzureDevops中安装<a href="https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarqube" target="_blank" rel="noopener">SonarQube</a></p>
-<p>进入azure devops中，进入项目，进入到设置中的服务连接，新建服务连接中找到SonarQube服务连接，输入任意的名称，Server Url输入http://[部署的地址]:2303,Token输入刚刚生成的令牌，保存即可。<br><img src="/images/2019/06/12/2.png" alt><br>以.net core生成PR审阅的时候顺便做代码质量检测举例，其他的项目有些麻烦。</p>
+<p>进入azure devops中，进入项目，进入到设置中的服务连接，新建服务连接中找到SonarQube服务连接，输入任意的名称，Server Url输入http://[部署的地址]:2303,Token输入刚刚生成的令牌，保存即可。<br><img alt data-src="/images/2019/06/12/2.png"><br>以.net core生成PR审阅的时候顺便做代码质量检测举例，其他的项目有些麻烦。</p>
 <ol>
 <li>在生成定义中添加任务<code>Prepare Analysis Configuration</code></li>
 <li>在<code>SonarQube Server Endpoint</code>中选择我们刚刚创建的服务连接</li>
@@ -495,8 +488,8 @@
 <p>添加任务<code>Publish Quality Gate Result</code></p>
 <p>这样，在每次PR生成的时候就会自动去做代码质量检测，商业版授权，会将检测中的不合理内容直接更新到PR中，非商业代理则需要登录SonarQube去查看。</p>
 <p>一下是实际的应用</p>
-<h2 id="定义任务组"><a href="#定义任务组" class="headerlink" title="定义任务组"></a>定义任务组</h2><p><img src="/images/2019/06/12/3.png" alt><br><img src="/images/2019/06/12/4.png" alt></p>
-<h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><p><img src="/images/2019/06/12/5.png" alt><br><img src="/images/2019/06/12/6.png" alt></p>
+<h2 id="定义任务组"><a href="#定义任务组" class="headerlink" title="定义任务组"></a>定义任务组</h2><p><img alt data-src="/images/2019/06/12/3.png"><br><img alt data-src="/images/2019/06/12/4.png"></p>
+<h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><p><img alt data-src="/images/2019/06/12/5.png"><br><img alt data-src="/images/2019/06/12/6.png"></p>
 
       
     </div>
@@ -606,10 +599,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -630,7 +623,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">39</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -645,7 +638,7 @@
                       
                     
                     <span class="site-state-item-count">1</span>
-                    <span class="site-state-item-name">Kategorien</span>
+                    <span class="site-state-item-name">categories</span>
                   
                 </div>
               
@@ -706,7 +699,7 @@
                       
                     
                     <span class="site-state-item-count">24</span>
-                    <span class="site-state-item-name">schlagwörter</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -798,7 +791,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
 
 
 
@@ -806,7 +799,7 @@
 
 
 
-  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
 
 
 
@@ -853,6 +846,8 @@
 
 
 
+  
+
 
 
   
@@ -872,6 +867,9 @@
 
   
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
 
   
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
