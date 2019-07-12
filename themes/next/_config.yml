@@ -9,6 +9,15 @@
 # Useful if you want to comment some options from NexT `_config.yml` by `next.yml` without editing default config.
 override: false
 
+# language: default #默认是英文
+language: zh-CN
+# language: fr-FR
+# language: zh-HK
+# language: zh-TW
+# language: en
+# language: ru
+# language: de
+
 # Allow to cache content generation. Introduced in NexT v6.0.0.
 cache:
   enable: true
@@ -88,7 +97,7 @@ creative_commons:
   license: by-nc-sa
   sidebar: false
   post: false
-  language:
+  language: zh-CN
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
@@ -952,7 +961,7 @@ fastclick: false
 
 # Vanilla JavaScript plugin for lazyloading images.
 # Dependencies: https://github.com/theme-next/theme-next-lazyload
-lazyload: false
+lazyload: true
 
 # Progress bar in the top during page loading.
 # Dependencies: https://github.com/theme-next/theme-next-pace
