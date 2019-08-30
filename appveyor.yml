@@ -4,7 +4,7 @@ environment:
     access_token:
         secure: uEaQddJ6uifleoQx+78Q2BTJeBv8FLIQ6OKeVIaAxMVoGaX6UgC5vNcAXtAXUL5u
 install:
-    - ps: Install-Product node 12.9.1
+    - ps: Install-Product node 12.9
     - node --version
     - npm --version
     - npm install
