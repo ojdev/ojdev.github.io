@@ -1,6 +1,9 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - dev
 
 jobs:
   build:
@@ -8,5 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: GitHub Action for hexo
-      uses: heowc/action-hexo@1.0.2
+    - name: Clean
+      uses: heowc/action-hexo@master
+      with:
+          args: clean
+    - name: Generate
+      uses: heowc/action-hexo@master
+      with:
+          args: generate
+    - name: Deploy
+      uses: heowc/action-hexo@master
+      env:
+        EMAIL: luacloud@gmail.com
+        NAME: OuJun
+      with:
+          args: deploy
