@@ -28,6 +28,8 @@ jobs:
         run: ./node_modules/.bin/hexo clean
       - name: Generate
         run: ./node_modules/.bin/hexo generate
+      - name: Cat1
+        run: echo $GITHUB_TOKEN
       - name: Cat
         run: cat ./_config.yml
       - name: Deploy
