@@ -11,18 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Clean
-      uses: heowc/action-hexo@master
-      with:
-          args: clean
-    - name: Generate
-      uses: heowc/action-hexo@master
-      with:
-          args: generate
-    - name: Deploy
-      uses: heowc/action-hexo@master
-      env:
-        EMAIL: luacloud@gmail.com
-        NAME: OuJun
-      with:
-          args: deploy
+      - uses: actions/checkout@v1
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{runner.OS}}-${{hashFiles('**/package-lock.json')}}
+      - uses: yrpang/github-actions-hexo@master
+        with:
+          deploykey: ${{secrets.DEPLOY_KEY}}
+          username: OuJun
+          email: luacloud@gmail.com
