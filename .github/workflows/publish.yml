@@ -12,6 +12,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - run: npm install
+      - run: npm install hexo-deployer-git
+      - run: hexo clean 
+      - run: hexo genarate
+      - run: hexo deploy
+
       - name: Cache node modules
         uses: actions/cache@v1
         with:

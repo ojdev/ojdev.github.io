@@ -78,7 +78,8 @@ theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
+## repo: git@github.com:ojdev/ojdev.github.io.git
 deploy:
   type: git
-  repo: git@github.com:ojdev/ojdev.github.io.git
+  repo: https://x-access-token:$(GTOKEN)@github.com/ojdev/ojdev.github.io.git
   branch: master
