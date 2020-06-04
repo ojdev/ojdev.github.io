@@ -81,5 +81,5 @@ theme: next
 ## repo: git@github.com:ojdev/ojdev.github.io.git
 deploy:
   type: git
-  repo: https://x-access-token:${GITHUB_TOKEN}@github.com/ojdev/ojdev.github.io.git
+  repo: https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
   branch: master
