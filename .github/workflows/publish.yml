@@ -20,6 +20,10 @@ jobs:
         run: npm install
       - name: hexo-deployer-git
         run: npm install hexo-deployer-git
+      - name: Email
+        run: git config --global user.email "me@oujun.work"
+      - name: User
+        run: git config --global user.name "OuJun"
       - name: Clean
         run: ./node_modules/.bin/hexo clean
       - name: Generate
