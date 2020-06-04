@@ -18,6 +18,7 @@ jobs:
           node-version: '12.x'
       - name: NPM
         run: npm install
+      - name: hexo-deployer-git
         run: npm install hexo-deployer-git
       - name: Clean
         run: ./node_modules/.bin/hexo clean
