@@ -18,3 +18,4 @@ jobs:
         PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PUBLISH_REPOSITORY: ojdev/ojdev.github.io # The repository the action should deploy to.
         BRANCH: master  # The branch the action should deploy to.
+        PUBLISH_DIR: ./ # The folder the action should deploy.
