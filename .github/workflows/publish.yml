@@ -10,30 +10,9 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Node 
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: NPM
-        run: npm install
-      - name: hexo-deployer-git
-        run: npm install hexo-deployer-git
-      - name: Email
-        run: git config --global user.email "me@oujun.work"
-      - name: User
-        run: git config --global user.name "OuJun"
-      - name: Clean
-        run: ./node_modules/.bin/hexo clean
-      - name: Generate
-        run: ./node_modules/.bin/hexo generate
-      - name: Cat1
-        run: echo $GITHUB_TOKEN
-      - name: Cat
-        run: cat ./_config.yml
-      - name: Deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: ./node_modules/.bin/hexo deploy
+      - name: GITHUB_RUN_ID
+        run: echo $GITHUB_RUN_ID
+      - name: GITHUB_RUN_NUMBER
+        run: echo $GITHUB_RUN_NUMBER
+      - name: GITHUB_ACTION
+        run: echo $GITHUB_ACTION
