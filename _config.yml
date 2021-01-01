@@ -104,4 +104,5 @@ theme: landscape
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  repo: https://github.com/ojdev/ojdev.github.io.git
+  repo: https://x-access-token:${GITHUB_TOKEN}@github.com/ojdev/ojdev.github.io.git
+  branch: master
