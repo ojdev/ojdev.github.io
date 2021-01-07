@@ -29,7 +29,10 @@ jobs:
     - run: npm --version
     - run: npm install hexo-cli -g
     - run: npm install hexo-deployer-git --save
+    - run: hexo clean
+    - run: hexo g
+    - run: hexo d
     - run: echo '==========================================================='
     - run: ls ./
     - run: echo '==========================================================='
-    - run: ls /
+    - run: ls ./public
