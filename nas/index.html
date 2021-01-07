@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>nas | 狐狸的后山</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1 一个NAS都应该能做什么1.1 播放器 Jellyfin Emby Plex elfilm   1.2 下载 qBittorrent aria2 百度云   1.3 Home Assistant 1.4 旁路网关 Clash V2ray   1.5 文件共享 SMB   1.6 可扩展性1.6.1 Docker1.6.1.1 Home Assistant家庭物联网 1.6.1.2 qBitto">
+<meta property="og:type" content="website">
+<meta property="og:title" content="nas">
+<meta property="og:url" content="https://ojdev.github.io/nas/index.html">
+<meta property="og:site_name" content="狐狸的后山">
+<meta property="og:description" content="1 一个NAS都应该能做什么1.1 播放器 Jellyfin Emby Plex elfilm   1.2 下载 qBittorrent aria2 百度云   1.3 Home Assistant 1.4 旁路网关 Clash V2ray   1.5 文件共享 SMB   1.6 可扩展性1.6.1 Docker1.6.1.1 Home Assistant家庭物联网 1.6.1.2 qBitto">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-07T04:28:09.000Z">
+<meta property="article:modified_time" content="2021-01-07T04:29:24.978Z">
+<meta property="article:author" content="欧俊">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="狐狸的后山" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狐狸的后山</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ojdev.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/nas/index.html" class="article-date">
+  <time class="dt-published" datetime="2021-01-07T04:28:09.000Z" itemprop="datePublished">2021-01-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      nas
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-一个NAS都应该能做什么"><a href="#1-一个NAS都应该能做什么" class="headerlink" title="1 一个NAS都应该能做什么"></a>1 一个NAS都应该能做什么</h1><h2 id="1-1-播放器"><a href="#1-1-播放器" class="headerlink" title="1.1 播放器"></a>1.1 播放器</h2><ul>
+<li>Jellyfin</li>
+<li>Emby</li>
+<li>Plex</li>
+<li>elfilm</li>
+</ul>
+<hr>
+<h2 id="1-2-下载"><a href="#1-2-下载" class="headerlink" title="1.2 下载"></a>1.2 下载</h2><ul>
+<li>qBittorrent</li>
+<li>aria2</li>
+<li>百度云</li>
+</ul>
+<hr>
+<h2 id="1-3-Home-Assistant"><a href="#1-3-Home-Assistant" class="headerlink" title="1.3 Home Assistant"></a>1.3 Home Assistant</h2><hr>
+<h2 id="1-4-旁路网关"><a href="#1-4-旁路网关" class="headerlink" title="1.4 旁路网关"></a>1.4 旁路网关</h2><ul>
+<li>Clash</li>
+<li>V2ray</li>
+</ul>
+<hr>
+<h2 id="1-5-文件共享"><a href="#1-5-文件共享" class="headerlink" title="1.5 文件共享"></a>1.5 文件共享</h2><ul>
+<li>SMB</li>
+</ul>
+<hr>
+<h2 id="1-6-可扩展性"><a href="#1-6-可扩展性" class="headerlink" title="1.6 可扩展性"></a>1.6 可扩展性</h2><h3 id="1-6-1-Docker"><a href="#1-6-1-Docker" class="headerlink" title="1.6.1 Docker"></a>1.6.1 Docker</h3><h4 id="1-6-1-1-Home-Assistant"><a href="#1-6-1-1-Home-Assistant" class="headerlink" title="1.6.1.1 Home Assistant"></a>1.6.1.1 Home Assistant</h4><p>家庭物联网</p>
+<h4 id="1-6-1-2-qBittorrent"><a href="#1-6-1-2-qBittorrent" class="headerlink" title="1.6.1.2 qBittorrent"></a>1.6.1.2 qBittorrent</h4><p>既满足bt又能满足pt</p>
+<h4 id="1-6-1-3-Jellyfin"><a href="#1-6-1-3-Jellyfin" class="headerlink" title="1.6.1.3 Jellyfin"></a>1.6.1.3 Jellyfin</h4><p>多端免费的媒体管理，自动刮削，硬解。</p>
+<h4 id="1-6-1-4-签到"><a href="#1-6-1-4-签到" class="headerlink" title="1.6.1.4 签到"></a>1.6.1.4 签到</h4><p>免去了每天手动签到的麻烦过程</p>
+<h4 id="1-6-1-5-百度云"><a href="#1-6-1-5-百度云" class="headerlink" title="1.6.1.5 百度云"></a>1.6.1.5 百度云</h4><h3 id="1-6-2-虚拟机"><a href="#1-6-2-虚拟机" class="headerlink" title="1.6.2 虚拟机"></a>1.6.2 虚拟机</h3><h4 id="1-6-2-1-windows"><a href="#1-6-2-1-windows" class="headerlink" title="1.6.2.1 windows"></a>1.6.2.1 windows</h4><p>挂游戏</p>
+<h4 id="1-6-2-2-linux"><a href="#1-6-2-2-linux" class="headerlink" title="1.6.2.2 linux"></a>1.6.2.2 linux</h4><p>我用来ssh，远程管理k8s。</p>
+<hr>
+<h2 id="1-7-云"><a href="#1-7-云" class="headerlink" title="1.7 云"></a>1.7 云</h2><ul>
+<li>Nextcloud</li>
+</ul>
+<hr>
+<h2 id="1-8-ZeroTier"><a href="#1-8-ZeroTier" class="headerlink" title="1.8 ZeroTier"></a>1.8 ZeroTier</h2><ul>
+<li>异地访问</li>
+<li>VPN直连</li>
+</ul>
+<hr>
+<h2 id="1-9-选用什么系统？"><a href="#1-9-选用什么系统？" class="headerlink" title="1.9 选用什么系统？"></a>1.9 选用什么系统？</h2><h3 id="1-9-1-群晖"><a href="#1-9-1-群晖" class="headerlink" title="1.9.1 群晖"></a>1.9.1 群晖</h3><h4 id="1-9-1-1-黑群晖"><a href="#1-9-1-1-黑群晖" class="headerlink" title="1.9.1.1 黑群晖"></a>1.9.1.1 黑群晖</h4><p>内网穿透、稳定的应用（也不一定）、同步、备份。<br>虽然免费，但是升级什么的比较麻烦。</p>
+<h4 id="1-9-1-2-白群晖"><a href="#1-9-1-2-白群晖" class="headerlink" title="1.9.1.2 白群晖"></a>1.9.1.2 白群晖</h4><p>内网穿透、稳定的应用（也不一定）、同步、备份、稳定、可升级、贵。</p>
+<p>我觉得性价比不高。</p>
+<h3 id="1-9-2-ProxmoxVE（推荐★★★★★）"><a href="#1-9-2-ProxmoxVE（推荐★★★★★）" class="headerlink" title="1.9.2 ProxmoxVE（推荐★★★★★）"></a>1.9.2 ProxmoxVE（推荐★★★★★）</h3><p>其本质上是一个Debian系统，用起来熟悉。</p>
+<h4 id="1-9-2-1-zfs存储"><a href="#1-9-2-1-zfs存储" class="headerlink" title="1.9.2.1 zfs存储"></a>1.9.2.1 zfs存储</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ls -l /dev/disk/by-id/</span><br><span class="line">total 0</span><br><span class="line">lrwxrwxrwx 1 root root  9 Dec 30 10:29 ata-SCWW_SSD_16G_0000000000000 -&gt; ../../sda</span><br><span class="line">lrwxrwxrwx 1 root root 10 Dec 30 10:29 ata-SCWW_SSD_16G_0000000000000-part1 -&gt; ../../sda1</span><br><span class="line">lrwxrwxrwx 1 root root 10 Dec 30 10:29 ata-SCWW_SSD_16G_0000000000000-part2 -&gt; ../../sda2</span><br><span class="line">lrwxrwxrwx 1 root root 10 Dec 30 10:29 ata-SCWW_SSD_16G_0000000000000-part3 -&gt; ../../sda3</span><br><span class="line">lrwxrwxrwx 1 root root  9 Dec 30 10:29 ata-ST99999999-******-****** -&gt; ../../sdc</span><br><span class="line">lrwxrwxrwx 1 root root  9 Dec 30 10:29 ata-TOSHIBA_******_****** -&gt; ../../sdb</span><br><span class="line"></span><br><span class="line"><span class="comment">#raid-0</span></span><br><span class="line">zpool create -f -o ashift=12 nas /dev/disk/by-id/ata-ST99999999-******-****** /dev/disk/by-id/ata-TOSHIBA_******_******</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加新硬盘</span></span><br><span class="line">zpool attach nas /dev/disk/by-id/ata-ST88888888-******-******</span><br></pre></td></tr></table></figure>
+<p>上面完成后会在根目录下生成一个nas文件夹，就是存储池的空间了。</p>
+<p>软raid<br>创建存储池<br>做为目录</p>
+<h4 id="1-9-2-2-软路由"><a href="#1-9-2-2-软路由" class="headerlink" title="1.9.2.2 软路由"></a>1.9.2.2 软路由</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qm importdisk 100 /nas/20201229-Ipv4P-Mini-x86-64-generic-squashfs-combined-efi.img nas-local</span><br></pre></td></tr></table></figure>
+<h4 id="1-9-2-3-lxc"><a href="#1-9-2-3-lxc" class="headerlink" title="1.9.2.3 lxc"></a>1.9.2.3 lxc</h4><p>做软路由<br>虚拟机</p>
+<h3 id="1-9-3-FreeNAS（推荐★★★）"><a href="#1-9-3-FreeNAS（推荐★★★）" class="headerlink" title="1.9.3 FreeNAS（推荐★★★）"></a>1.9.3 FreeNAS（推荐★★★）</h3><ul>
+<li>免费<h3 id="1-9-4-OMV（OpenMediaVault）"><a href="#1-9-4-OMV（OpenMediaVault）" class="headerlink" title="1.9.4 OMV（OpenMediaVault）"></a>1.9.4 OMV（OpenMediaVault）</h3></li>
+<li>免费、功能过于基础。<h3 id="1-9-5-Windows-Server（推荐★★★★）"><a href="#1-9-5-Windows-Server（推荐★★★★）" class="headerlink" title="1.9.5 Windows Server（推荐★★★★）"></a>1.9.5 Windows Server（推荐★★★★）</h3></li>
+</ul>
+<p>免费，这点可能很多人不知道，Windows Server Core是有免费版本的。只是没有桌面环境，但是已经Windows Server了，桌面环境除了浪费空间和资源外，真的就没什么用了。</p>
+<p>HyperV可以直接使用<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/windows-server/windows-admin-center">Windows Admin Center</a>可以直接进行管理，也可以使用Windows10 的hyper-V远程管理。</p>
+<p>硬件直通对硬件本身要求较高，但是一般也够用了。</p>
+<p>用起来操作很熟悉。</p>
+<h3 id="1-9-6-Ubuntu-Server"><a href="#1-9-6-Ubuntu-Server" class="headerlink" title="1.9.6 Ubuntu Server"></a>1.9.6 Ubuntu Server</h3><h3 id="1-9-7-UNRAID"><a href="#1-9-7-UNRAID" class="headerlink" title="1.9.7 UNRAID"></a>1.9.7 UNRAID</h3><p>据说硬件直通性能非常好，但是收费，虽然有破解版。</p>
+<h3 id="1-9-8-ESXI"><a href="#1-9-8-ESXI" class="headerlink" title="1.9.8 ESXI"></a>1.9.8 ESXI</h3><h2 id="老牌。"><a href="#老牌。" class="headerlink" title="老牌。"></a>老牌。</h2><h2 id="1-10-硬件上最好有什么？"><a href="#1-10-硬件上最好有什么？" class="headerlink" title="1.10 硬件上最好有什么？"></a>1.10 硬件上最好有什么？</h2><h3 id="1-10-1-网卡"><a href="#1-10-1-网卡" class="headerlink" title="1.10.1 网卡"></a>1.10.1 网卡</h3><ul>
+<li>千兆</li>
+<li>万兆<h3 id="1-10-2-Raid卡"><a href="#1-10-2-Raid卡" class="headerlink" title="1.10.2 Raid卡"></a>1.10.2 Raid卡</h3></li>
+<li>多硬盘，也可以用软raid<h3 id="1-10-3-热插拔"><a href="#1-10-3-热插拔" class="headerlink" title="1.10.3 热插拔"></a>1.10.3 热插拔</h3></li>
+<li>多盘位<h3 id="1-10-4-USB3"><a href="#1-10-4-USB3" class="headerlink" title="1.10.4 USB3"></a>1.10.4 USB3</h3></li>
+<li>打印机<h3 id="1-10-5-DC电源"><a href="#1-10-5-DC电源" class="headerlink" title="1.10.5 DC电源"></a>1.10.5 DC电源</h3></li>
+<li>静音<h3 id="1-10-6-1-N块硬盘"><a href="#1-10-6-1-N块硬盘" class="headerlink" title="1.10.6 1+N块硬盘"></a>1.10.6 1+N块硬盘</h3></li>
+<li>组RAID</li>
+</ul>
+<h1 id="2-NAS服务管理"><a href="#2-NAS服务管理" class="headerlink" title="2 NAS服务管理"></a>2 NAS服务管理</h1><h2 id="2-1-Jellyfin"><a href="#2-1-Jellyfin" class="headerlink" title="2.1 Jellyfin"></a>2.1 Jellyfin</h2><h3 id="2-1-1-电影多版本管理"><a href="#2-1-1-电影多版本管理" class="headerlink" title="2.1.1 电影多版本管理"></a>2.1.1 电影多版本管理</h3><p>以<code>Wonder Woman 1984</code>这部电影为例，我的电影都是放在<code>/nas/movies</code>里的,所以目录结构是这样的:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">movies/</span><br><span class="line">└── Wonder.Woman.1984.2020</span><br><span class="line">    ├── Wonder.Woman.1984.2020 - 1080P.mkv</span><br><span class="line">    ├── Wonder.Woman.1984.2020 - 1080P.china.srt</span><br><span class="line">    └── Wonder.Woman.1984.2020 - 2160p.mp4</span><br><span class="line">    └── Wonder.Woman.1984.2020 - 8k.mp4</span><br><span class="line">    └── Wonder.Woman.1984.2020 - 不是导演剪辑版.mp4</span><br><span class="line">    └── Wonder.Woman.1984.2020 - 山寨版.mp4</span><br></pre></td></tr></table></figure>
+<p>根据<code>jellyfin</code>文档显示，当多个不同格式的版本合并起来的时候，需要让文件名与文件夹名保持一直然后再后面加<code>&#123;空格&#125;&#123;连字符&#125;&#123;空格&#125;&#123;版本标签&#125;</code>的形式，这样jellyfin就可以进行识别，在电影的界面中就可以进行版本的切换选择，在这一点上不如plex方便了。 其中标签是可以自定义的，连字符不支持<code>.</code>和空格。</p>
+<p>** 官方的文档中推荐的文件夹名是<code>Wonder.Woman.1984 (2020)</code> ，但是实际使用中我发现<code>Wonder.Woman.1984.2020</code>也是可以的，在文件管理上，名字中带有空格对我来讲会不大习惯，所以可以根据自己习惯选择对名称的管理。</p>
+<blockquote>
+<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://jellyfin.org/docs/general/server/media/movies.html">https://jellyfin.org/docs/general/server/media/movies.html</a></li>
+</ul>
+</blockquote>
+<h3 id="2-1-2-字幕中的方块"><a href="#2-1-2-字幕中的方块" class="headerlink" title="2.1.2 字幕中的方块"></a>2.1.2 字幕中的方块</h3><p>一般的解决方式都是在字幕中进行设置，这种方式是使用转码烧录的形式，对cpu和内存都会进行消耗，对于性能比较低的nas来说，压力很大，比如我的j1900矿渣。目前有一个简单的解决办法，升级到<code>&gt;Jellyfin 10.7.0</code>的版本，目前还是<code>rc</code>版，这个版本支持加载自定义的字体了<code>控制台&gt;播放&gt;备用字体文件路径</code>，就解决了。</p>
+<h2 id="2-2-docker-compose"><a href="#2-2-docker-compose" class="headerlink" title="2.2 docker-compose"></a>2.2 docker-compose</h2><h3 id="2-2-1-安装docker"><a href="#2-2-1-安装docker" class="headerlink" title="2.2 1 安装docker"></a>2.2 1 安装docker</h3><blockquote>
+<h4 id="参考链接-1"><a href="#参考链接-1" class="headerlink" title="参考链接"></a>参考链接</h4></blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install apt-transport-https</span><br><span class="line">apt upgrade -y</span><br><span class="line">curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/debian <span class="subst">$(lsb_release -cs)</span> stable&quot;</span> &gt; /etc/apt/sources.list.d/docker.list</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/debian/">https://docs.docker.com/engine/install/debian/</a></li>
+</ul>
+</blockquote>
+<h3 id="2-2-2-安装docker-compose"><a href="#2-2-2-安装docker-compose" class="headerlink" title="2.2 2 安装docker-compose"></a>2.2 2 安装docker-compose</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install docker-ce docker-compose</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-3-前期准备"><a href="#2-2-3-前期准备" class="headerlink" title="2.2 3 前期准备"></a>2.2 3 前期准备</h3><p>创建子网隔离，非必须。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create --subnet 10.10.10.0/24 pve-subnet</span><br></pre></td></tr></table></figure>
+<p>该处的<code>pve-subnet</code>对应下面<code>docker-compose.yml</code>文件中<code>networks</code>节点下的<code>name</code>,可以忽略，<code>docker-compose</code>会自动建立。</p>
+<h3 id="2-2-4-为什么使用docker-compose"><a href="#2-2-4-为什么使用docker-compose" class="headerlink" title="2.2 4 为什么使用docker-compose"></a>2.2 4 为什么使用docker-compose</h3><p>docker虽然部署与管理变的容易，但是当遇到版本升级的时候就需要重新使用命令行进行一次部署，然而很多时候我都懒得进行本分，目前工作中使用的是k8s，在家用nas上我觉得实在是没必要，于是比较传统的<code>docker-compose</code>就是一个很好的解决方案。<br>每当有版本升级的时候只要修改<code>docker-compose.yml</code>文件中对应的镜像标签，然后重新docker-compose up -d就自动进行拉取部署升级，不会影响其他未修改配置的镜像，就方便很多了。</p>
+<h2 id="2-3-Home-Assistant"><a href="#2-3-Home-Assistant" class="headerlink" title="2.3 Home Assistant"></a>2.3 Home Assistant</h2><h3 id="2-3-1-调用本地图片"><a href="#2-3-1-调用本地图片" class="headerlink" title="2.3.1 调用本地图片"></a>2.3.1 调用本地图片</h3><p>在<code>configuration.yaml</code>文件的位置建立一个<code>www</code>文件夹，将要引用的文件放进去，在配置文件中使用<code>/local</code>对应的就是<code>www</code>文件夹中的文件，例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> blueprints</span><br><span class="line">│   └── automation</span><br><span class="line">│       └── homeassistant</span><br><span class="line">│           ├── motion_light.yaml</span><br><span class="line">│           └── notify_leaving_zone.yaml</span><br><span class="line">├── configuration.yaml</span><br><span class="line">├── deps</span><br><span class="line">├── groups.yaml</span><br><span class="line">├── home-assistant.log</span><br><span class="line">├── home-assistant_v2.db</span><br><span class="line">├── scenes.yaml</span><br><span class="line">├── scripts.yaml</span><br><span class="line">├── secrets.yaml</span><br><span class="line">├── tts</span><br><span class="line">└── www</span><br><span class="line">    └── floorplan.png</span><br></pre></td></tr></table></figure>
+<p>如果要在配置中调用<code>www/floorplan.png</code>则对应的配置文件为:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">type:</span> <span class="string">picture-elements</span></span><br><span class="line"><span class="attr">image:</span> <span class="string">/local/floorplan.png</span></span><br><span class="line"><span class="attr">elements:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">state-badge</span></span><br><span class="line">    <span class="attr">entity:</span> <span class="string">binary_sensor.updater</span></span><br><span class="line">    <span class="attr">style:</span></span><br><span class="line">      <span class="attr">top:</span> <span class="number">65</span><span class="string">%</span></span><br><span class="line">      <span class="attr">left:</span> <span class="number">38</span><span class="string">%</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-3-2-水位流量采集"><a href="#2-3-2-水位流量采集" class="headerlink" title="2.3.2 水位流量采集"></a>2.3.2 水位流量采集</h3><p>我在天气好的时候会出去钓鱼，但是松花江如果在汛期的时候涨水，有些地方就去不了了，为了不耽误时间，我发现松辽水利网每天8点会发布一次当前的水位流量，所以我进行了采集，这样出门前看一下水位和流速来判断可以去哪个地方钓鱼，避免白跑一趟。</p>
+<p>在<code>configuration.yaml</code>下面加入下面的内容，就可以在面板中加载进来了。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sensor:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">platform:</span> <span class="string">scrape</span></span><br><span class="line">    <span class="attr">resource:</span> <span class="string">http://www.slwr.gov.cn/swjgzfw/sssq.asp</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">slwr</span> <span class="string">liuliang</span></span><br><span class="line">    <span class="attr">select:</span> <span class="string">&#x27;script&#x27;</span></span><br><span class="line">    <span class="attr">index:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">scan_interval:</span> <span class="number">3600</span></span><br><span class="line">    <span class="attr">value_template:</span> <span class="string">&gt;-</span></span><br><span class="line">      &#123;&#123; <span class="string">(value</span> <span class="string">|</span> <span class="string">replace</span> <span class="string">(&quot;cvt(&quot;</span>,<span class="string">&quot;&quot;</span><span class="string">)</span> <span class="string">|</span> <span class="string">replace</span> <span class="string">(&quot;);&quot;</span>,<span class="string">&quot;&quot;</span><span class="string">)</span> <span class="string">|</span> <span class="string">replace</span> <span class="string">(&quot;&#x27;&quot;</span>,<span class="string">&quot;&quot;</span><span class="string">)</span> <span class="string">)</span> &#125;&#125;</span><br><span class="line">  <span class="bullet">-</span> <span class="attr">platform:</span> <span class="string">scrape</span></span><br><span class="line">    <span class="attr">resource:</span> <span class="string">http://www.slwr.gov.cn/swjgzfw/sssq.asp</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">slwr</span> <span class="string">shuiwei</span></span><br><span class="line">    <span class="attr">select:</span> <span class="string">&#x27;font&#x27;</span></span><br><span class="line">    <span class="attr">index:</span> <span class="number">8</span></span><br><span class="line">    <span class="attr">scan_interval:</span> <span class="number">3600</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-3-3-小米扫地机器人"><a href="#2-3-3-小米扫地机器人" class="headerlink" title="2.3.3 小米扫地机器人"></a>2.3.3 小米扫地机器人</h3><p>第一二代的小米扫地机，使用的是<code>Token</code>的方式加入的，目前有一个简单的工具<a target="_blank" rel="noopener" href="https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor">https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor</a> 运行后输入账号密码就可以获取到局域网中的<code>IP</code>和<code>Token</code>、<code>设备Id</code>，我们这里使用<code>IP</code>和<code>Token</code>就够了。<br>获取到信息后，在<code>configuration.yaml</code>下面加入下面的内容，就可以在面板中加载进来了。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">vacuum:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">platform:</span> <span class="string">xiaomi_miio</span></span><br><span class="line">    <span class="attr">host:</span> <span class="number">192.168</span><span class="number">.0</span><span class="number">.69</span></span><br><span class="line">    <span class="attr">token:</span> <span class="string">**********************************</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-3-4-格力宁韵空调"><a href="#2-3-4-格力宁韵空调" class="headerlink" title="2.3.4 格力宁韵空调"></a>2.3.4 格力宁韵空调</h3><p><a target="_blank" rel="noopener" href="https://github.com/RobHofmann/HomeAssistant-GreeClimateComponent">https://github.com/RobHofmann/HomeAssistant-GreeClimateComponent</a><br>下载最新版本解压后如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">|   climate.yaml</span><br><span class="line">|   configuration.yaml</span><br><span class="line">|   info.md</span><br><span class="line">|   LICENSE</span><br><span class="line">|   README.md</span><br><span class="line">|</span><br><span class="line">+---.github</span><br><span class="line">|   \---ISSUE_TEMPLATE</span><br><span class="line">|           bug_report.md</span><br><span class="line">|           feature_request.md</span><br><span class="line">|</span><br><span class="line">\---custom_components</span><br><span class="line">    \---gree</span><br><span class="line">            climate.py</span><br><span class="line">            manifest.json</span><br><span class="line">            __init__.py</span><br></pre></td></tr></table></figure>
+<p>如果<code>configuration.yaml</code>同级目录下没有<code>custom_components</code>则直接复制进去，如果已经存在，则复制下面的<code>gree</code>到<code>custom_components</code>下，然后在复制<code>climate.yaml</code>到<code>configuration.yaml</code>同级目录,之后编辑``configuration.yaml<code>同级目录加入一行</code>climate: !include climate.yaml`。</p>
+<p>使用<code>格力+</code>接入空调，这样就能在路由器中看到空调的<code>IP</code>和<code>MAC</code>，下面会用到，虽然我是在苏宁购买的，但是苏宁的app实在是不好用，于是下载了<code>格力+</code>，在添加设备的时候直接选择<code>宁韵</code>，然后重置空调的<code>wifi</code>，就可以连接了，如果连不上，那么修改<code>wifi</code>里的<code>2.4G</code>的<code>无线模式</code>为<code>11gb</code>开头的模式。</p>
+<p>之后编辑<code>climate.yaml</code>中的内容：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">platform:</span> <span class="string">gree</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">起一个名字，例如ningyun_ac</span></span><br><span class="line">  <span class="attr">host:</span> <span class="string">空调的IP地址</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">7000</span></span><br><span class="line">  <span class="attr">mac:</span> <span class="string">&#x27;空调的MAC地址，可以是-分隔，也可以是:分隔&#x27;</span></span><br><span class="line">  <span class="attr">target_temp_step:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">lights:</span> <span class="string">input_boolean.first_ac_lights</span></span><br><span class="line">  <span class="attr">health:</span> <span class="string">input_boolean.first_ac_health</span></span><br><span class="line">  <span class="attr">sleep:</span> <span class="string">input_boolean.first_ac_sleep</span></span><br><span class="line">  <span class="attr">powersave:</span> <span class="string">input_boolean.first_ac_powersave</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-3-x-lovelace"><a href="#2-3-x-lovelace" class="headerlink" title="2.3.x lovelace"></a>2.3.x lovelace</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">保利·上城</span></span><br><span class="line"><span class="attr">views:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">panel:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">Home</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">&#x27;hass:home-assistant&#x27;</span></span><br><span class="line">    <span class="attr">badges:</span> []</span><br><span class="line">    <span class="attr">cards:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">vertical-stack</span></span><br><span class="line">        <span class="attr">cards:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">weather-forecast</span></span><br><span class="line">            <span class="attr">entity:</span> <span class="string">weather.bao_li_shang_cheng</span></span><br><span class="line">            <span class="attr">secondary_info_attribute:</span> <span class="string">wind_speed</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">horizontal-stack</span></span><br><span class="line">            <span class="attr">cards:</span></span><br><span class="line">              <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">entity</span></span><br><span class="line">                <span class="attr">entity:</span> <span class="string">sensor.slwr_liuliang</span></span><br><span class="line">                <span class="attr">name:</span> <span class="string">水位</span></span><br><span class="line">                <span class="attr">unit:</span> <span class="string">米</span></span><br><span class="line">              <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">entity</span></span><br><span class="line">                <span class="attr">entity:</span> <span class="string">sensor.slwr_shuiwei</span></span><br><span class="line">                <span class="attr">name:</span> <span class="string">流量</span></span><br><span class="line">                <span class="attr">unit:</span> <span class="string">立方米</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">picture-elements</span></span><br><span class="line">        <span class="attr">elements:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">state-icon</span></span><br><span class="line">            <span class="attr">entity:</span> <span class="string">vacuum.xiaomi_vacuum_cleaner</span></span><br><span class="line">            <span class="attr">style:</span></span><br><span class="line">              <span class="attr">top:</span> <span class="number">65</span><span class="string">%</span></span><br><span class="line">              <span class="attr">left:</span> <span class="number">35</span><span class="string">%</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">state-icon</span></span><br><span class="line">            <span class="attr">entity:</span> <span class="string">climate.ningyun_ac</span></span><br><span class="line">            <span class="attr">style:</span></span><br><span class="line">              <span class="attr">top:</span> <span class="number">8</span><span class="string">%</span></span><br><span class="line">              <span class="attr">left:</span> <span class="number">35</span><span class="string">%</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">/local/floorplan.png</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">vertical-stack</span></span><br><span class="line">        <span class="attr">cards:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">thermostat</span></span><br><span class="line">            <span class="attr">entity:</span> <span class="string">climate.ningyun_ac</span></span><br><span class="line">            <span class="attr">name:</span> <span class="string">格力宁韵</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">picture-glance</span></span><br><span class="line">            <span class="attr">image:</span> <span class="string">/local/img/vacuum.png</span></span><br><span class="line">            <span class="attr">entities:</span></span><br><span class="line">              <span class="bullet">-</span> <span class="attr">entity:</span> <span class="string">vacuum.xiaomi_vacuum_cleaner</span></span><br><span class="line">            <span class="attr">tap_action:</span></span><br><span class="line">              <span class="attr">action:</span> <span class="string">more-info</span></span><br><span class="line">            <span class="attr">hold_action:</span></span><br><span class="line">              <span class="attr">action:</span> <span class="string">none</span></span><br><span class="line">            <span class="attr">title:</span> <span class="string">小米</span></span><br><span class="line">            <span class="attr">entity:</span> <span class="string">vacuum.xiaomi_vacuum_cleaner</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-4-syncthing"><a href="#2-4-syncthing" class="headerlink" title="2.4 syncthing"></a>2.4 syncthing</h2><p>资源占用小，内网发现，全球发现，内网穿透。</p>
+<p>要注意的是从其他设备同步过来的文件夹，默认情况下会出现在<code>/config</code>下，</p>
+<h3 id="附录-docker-compose-yml"><a href="#附录-docker-compose-yml" class="headerlink" title="附录 docker-compose.yml"></a>附录 docker-compose.yml</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.3&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">qbittorrent:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">ghcr.io/linuxserver/qbittorrent:amd64-latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">qbittorrent</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PUID=1000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PGID=1000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">TZ=Asia/Shanghai</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">UMASK_SET=022</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">WEBUI_PORT=8008</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/nas/opt/qbittorrent/config:/config</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/nas:/downloads</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">6969</span><span class="string">:6969</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">6969</span><span class="string">:6969/udp</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8008</span><span class="string">:8008</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">deploy:</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">limits:</span></span><br><span class="line">          <span class="attr">cpus:</span> <span class="string">&#x27;0.5&#x27;</span></span><br><span class="line">          <span class="attr">memory:</span> <span class="string">200M</span></span><br><span class="line">  <span class="attr">home-assistant:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">homeassistant/home-assistant:2020.12.1</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">home-assistant</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PUID=1000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PGID=1000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">TZ=Asia/Shanghai</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/localtime:/etc/localtime:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/nas/opt/home-assistant/config:/config</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">network_mode:</span> <span class="string">&#x27;host&#x27;</span></span><br><span class="line">    <span class="attr">deploy:</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">limits:</span></span><br><span class="line">          <span class="attr">cpus:</span> <span class="string">&#x27;0.5&#x27;</span></span><br><span class="line">          <span class="attr">memory:</span> <span class="string">200M</span></span><br><span class="line">  <span class="attr">syncthing:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">ghcr.io/linuxserver/syncthing</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">syncthing</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">syncthing</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PUID=1000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PGID=1000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">TZ=Asia/Shanghai</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/nas/syncthing:/config</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8384</span><span class="string">:8384</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">22000</span><span class="string">:22000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">21027</span><span class="string">:21027/udp</span></span><br><span class="line">    <span class="attr">deploy:</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">limits:</span></span><br><span class="line">          <span class="attr">cpus:</span> <span class="string">&#x27;0.5&#x27;</span></span><br><span class="line">          <span class="attr">memory:</span> <span class="string">256M</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">default:</span></span><br><span class="line">    <span class="attr">external:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">pve-subnet</span></span><br></pre></td></tr></table></figure>
+<p>启动<code>start.sh</code>文件里，直接使用<code>bash start.sh</code>启动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --compatibility -f docker-compose.yml up -d</span><br></pre></td></tr></table></figure>
+<p>停止了<code>stop.sh</code>文件里，直接使用<code>bash stop.sh</code>停止。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --compatibility down</span><br></pre></td></tr></table></figure>
+<p>增加<code>--compatibility</code>参数是因为docker不是swam的模式的情况下，<code>deploy</code>节点下对资源的限制是不起作用的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ojdev.github.io/nas/index.html" data-id="ckjmcpyro00000xof5o315kca" data-title="nas" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/">知识储备</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/net-core/" rel="tag">.net core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asp-Net-Core/" rel="tag">Asp.Net Core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure-DevOps/" rel="tag">Azure DevOps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOps/" rel="tag">DevOps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventBus/" rel="tag">EventBus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINQ/" rel="tag">LINQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SonarQube/" rel="tag">SonarQube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/asp-net/" rel="tag">asp.net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debian9/" rel="tag">debian9</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperV/" rel="tag">hyperV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/" rel="tag">kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/minikube/" rel="tag">minikube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows-terminal/" rel="tag">windows-terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows10/" rel="tag">windows10</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wsl/" rel="tag">wsl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B0%94%E6%BB%A8/" rel="tag">哈尔滨</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9C%B0%E9%9C%87/" rel="tag">地震</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%B6%E6%9E%84/" rel="tag">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AE%8B%E7%AF%87/" rel="tag">残篇</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%97%E6%A2%A6/" rel="tag">盗梦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8A%B1%E8%AF%AD/" rel="tag">花语</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%9C%E6%A1%88/" rel="tag">谜案</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/net-core/" style="font-size: 10px;">.net core</a> <a href="/tags/Asp-Net-Core/" style="font-size: 10px;">Asp.Net Core</a> <a href="/tags/Azure-DevOps/" style="font-size: 10px;">Azure DevOps</a> <a href="/tags/C/" style="font-size: 15px;">C#</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/LINQ/" style="font-size: 10px;">LINQ</a> <a href="/tags/RabbitMQ/" style="font-size: 10px;">RabbitMQ</a> <a href="/tags/SonarQube/" style="font-size: 10px;">SonarQube</a> <a href="/tags/asp-net/" style="font-size: 10px;">asp.net</a> <a href="/tags/debian9/" style="font-size: 10px;">debian9</a> <a href="/tags/hyperV/" style="font-size: 10px;">hyperV</a> <a href="/tags/k8s/" style="font-size: 12.5px;">k8s</a> <a href="/tags/kubernetes/" style="font-size: 10px;">kubernetes</a> <a href="/tags/minikube/" style="font-size: 10px;">minikube</a> <a href="/tags/windows-terminal/" style="font-size: 10px;">windows-terminal</a> <a href="/tags/windows10/" style="font-size: 10px;">windows10</a> <a href="/tags/wsl/" style="font-size: 10px;">wsl</a> <a href="/tags/%E5%93%88%E5%B0%94%E6%BB%A8/" style="font-size: 10px;">哈尔滨</a> <a href="/tags/%E5%9C%B0%E9%9C%87/" style="font-size: 10px;">地震</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">架构</a> <a href="/tags/%E6%AE%8B%E7%AF%87/" style="font-size: 20px;">残篇</a> <a href="/tags/%E7%9B%97%E6%A2%A6/" style="font-size: 10px;">盗梦</a> <a href="/tags/%E8%8A%B1%E8%AF%AD/" style="font-size: 17.5px;">花语</a> <a href="/tags/%E8%B0%9C%E6%A1%88/" style="font-size: 10px;">谜案</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">六月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">五月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">四月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">三月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">十月 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">八月 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">七月 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">四月 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">十一月 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">七月 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/04/">四月 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/02/">二月 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/26/%E4%BD%BF%E7%94%A8github%E7%9A%84actions/">使用github的actions</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/16/Architecture/">架构蓝皮书(基础版)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/25/windows-terminal/">windows-terminal</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/12/SonarQube/">在AzureDevops中集成SonarQube</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 欧俊<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
