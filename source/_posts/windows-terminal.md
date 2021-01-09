@@ -1,6 +1,8 @@
 ---
 title: windows-terminal
 date: 2019-06-25 14:04:35
+categories:
+- 收集
 tags:
     - windows-terminal
     - wsl

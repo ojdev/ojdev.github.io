@@ -1,6 +1,18 @@
 ---
 title: nas
 date: 2021-01-07 12:28:09
+tags:
+- NAS
+- Jellyfin
+- Proxmox VE
+- PVE
+- docker
+- docker-compose
+- homeassistan
+- 小米
+- 格力
+- qBittorrent
+- 松花江
 ---
 
 # 1 一个NAS都应该能做什么
@@ -315,7 +327,7 @@ vacuum:
 ### 2.3.x lovelace
 
 ``` yaml
-title: 保利·上城
+title: 我的家
 views:
   - panel: false
     title: Home

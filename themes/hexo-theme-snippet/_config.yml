@@ -8,14 +8,20 @@ menu:
 - page: home
   url: /
   icon:
-- page: 前端
-  url: /categories/前端/
+- page: 知识储备
+  url: /categories/知识储备/
   icon:
-- page: 后端
-  url: /categories/后端/
+- page: DevOps
+  url: /categories/DevOps/
   icon:
-- page: 工具
-  url: /categories/工具/
+- page: 家庭服务
+  url: /nas
+  icon:
+- page: 狐说八道
+  url: /categories/狐说八道/
+  icon:
+- page: 收集
+  url: /categories/收集/
   icon:
 - page: 时间轴
   url: /archives/
@@ -59,19 +65,17 @@ jsonContent:
 ## 网站公告设置
 notification: |-
             <p>
-                主题下载：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a> <br/>
-                主题使用：<a href="https://github.com/shenliyang/hexo-theme-snippet/blob/master/README.md#常见问题" title="" target="_blank">常见使用问题</a> <br/>
-                支持主题：<a href="https://github.com/shenliyang/hexo-theme-snippet/stargazers">Star一下</a>
+               我还活着。
             </p>
 
 ## 社交设置
 social:
  - name: Github
    icon: git
-   href: //github.com/shenliyang
+   href: //github.com/ojdev
  - name: 邮箱
    icon: envelope-o
-   href: mailto:snippet@91h5.cc
+   href: mailto:luacloud@gmail.com
  - name: 联系QQ
    icon: qq
    href: /
@@ -155,7 +159,7 @@ declaration:
   enable: true
   title: '转载声明'
   tip: |-
-      商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+      商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">狐狸的后山</a>
 
 ## 文章打赏
 reward:

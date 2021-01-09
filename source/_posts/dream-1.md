@@ -1,6 +1,8 @@
 ---
 title: 梦！
 date: 2012-06-22 16:15:27
+categories:
+- 狐说八道
 tags:
 ---
 

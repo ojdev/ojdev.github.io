@@ -1,6 +1,8 @@
 ---
 title: k8s的环境搭建
 date: 2019-06-03 17:31:00
+categories:
+- DevOps
 tags:
   - k8s
   - debian9

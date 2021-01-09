@@ -1,6 +1,8 @@
 ---
 title: MBTI
 date: 2011-08-29 18:18:16
+categories:
+- 狐说八道
 tags:
 ---
 Psytopic分析：您的性格类型是“ISTP”(内向+实感+思维+知觉)

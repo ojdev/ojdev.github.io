@@ -1,6 +1,8 @@
 ---
 title: 在AzureDevops中集成SonarQube
 date: 2019-06-12 10:48:13
+categories:
+- DevOps
 tags: 
   - DevOps
   - Azure DevOps

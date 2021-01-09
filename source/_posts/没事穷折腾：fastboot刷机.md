@@ -1,6 +1,8 @@
 ---
 title: 没事穷折腾：fastboot刷机
 date: 2012-05-28 16:04:56
+categories:
+- 收集
 tags:
 ---
 
