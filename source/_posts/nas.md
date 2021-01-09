@@ -140,7 +140,6 @@ HyperV可以直接使用[Windows Admin Center](https://www.microsoft.com/zh-cn/w
 据说硬件直通性能非常好，但是收费，虽然有破解版。
 ### 1.9.8 ESXI
 老牌。
----
 ## 1.10 硬件上最好有什么？
 ### 1.10.1 网卡
 - 千兆
@@ -176,8 +175,9 @@ movies/
 
 ** 官方的文档中推荐的文件夹名是`Wonder.Woman.1984 (2020)` ，但是实际使用中我发现`Wonder.Woman.1984.2020`也是可以的，在文件管理上，名字中带有空格对我来讲会不大习惯，所以可以根据自己习惯选择对名称的管理。
 
-> #### 参考链接
->* [https://jellyfin.org/docs/general/server/media/movies.html](https://jellyfin.org/docs/general/server/media/movies.html)
+#### 参考链接
+
++ [https://jellyfin.org/docs/general/server/media/movies.html](https://jellyfin.org/docs/general/server/media/movies.html)
 
 ### 2.1.2 字幕中的方块
 
@@ -186,7 +186,6 @@ movies/
 ## 2.2 docker-compose
 ### 2.2 1 安装docker
 
-> #### 参考链接
 ``` bash
 apt update
 apt install apt-transport-https
@@ -194,7 +193,9 @@ apt upgrade -y
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
 ```
->* [https://docs.docker.com/engine/install/debian/](https://docs.docker.com/engine/install/debian/)
+#### 参考链接
+
++ [https://docs.docker.com/engine/install/debian/](https://docs.docker.com/engine/install/debian/)
 ### 2.2 2 安装docker-compose
 
 ``` bash
