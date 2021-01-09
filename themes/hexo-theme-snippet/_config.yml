@@ -35,8 +35,8 @@ rss: /atom.xml
 
 ## Carousel
 carousel:
-#  img: ''
-#  url: 'https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=xs0pypd2'
+  img: './img/head-img.jpg'
+  url: 'https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=xs0pypd2'
 
 # 各个小工具的设置
 
@@ -48,7 +48,7 @@ widgets:
   - category
   - archive
   - tagcloud
-#  - friends
+  - friends
 
 
 ## 搜索
