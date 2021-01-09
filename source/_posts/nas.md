@@ -392,7 +392,11 @@ views:
 
 要注意的是从其他设备同步过来的文件夹，默认情况下会出现在`/config`下，
 
-### 附录 docker-compose.yml
+## 附录
+
+### linux下rename命令进行批量重命名
+
+### docker-compose.yml
 
 ``` yaml
 version: "3.3"
