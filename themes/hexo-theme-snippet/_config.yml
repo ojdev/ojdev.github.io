@@ -35,7 +35,7 @@ rss: /atom.xml
 
 ## Carousel
 carousel:
-  img: './img/head-img.jpg'
+  img: 'https://avatars2.githubusercontent.com/u/2107833?s=240&v=4'
   url: 'https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=xs0pypd2'
 
 # 各个小工具的设置
@@ -172,8 +172,8 @@ reward:
 ## Valine评论
 valine:
    enable: true
-   appId: xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz
-   appKey: erIpQac4azoCmgfBB7Dl9maa
+   appId: txckaEfD4ck2wSccpplvRI0k-gzGzoHsz
+   appKey: 2rlxDiSufbMnfiBjtfaiYSl7
    placeholder: 说点什么吧
    notify: false
    verify: true
