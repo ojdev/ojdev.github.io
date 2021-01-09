@@ -248,11 +248,9 @@ aria2
 <p>软raid<br>创建存储池<br>做为目录</p>
 <h4 id="1-9-2-2-软路由"><a href="#1-9-2-2-软路由" class="headerlink" title="1.9.2.2 软路由"></a>1.9.2.2 软路由</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qm importdisk 100 /nas/20201229-Ipv4P-Mini-x86-64-generic-squashfs-combined-efi.img nas-local</span><br></pre></td></tr></table></figure>
 <h4 id="1-9-2-3-lxc"><a href="#1-9-2-3-lxc" class="headerlink" title="1.9.2.3 lxc"></a>1.9.2.3 lxc</h4><p>做软路由<br>虚拟机</p>
-<h3 id="1-9-3-FreeNAS（推荐★★★）"><a href="#1-9-3-FreeNAS（推荐★★★）" class="headerlink" title="1.9.3 FreeNAS（推荐★★★）"></a>1.9.3 FreeNAS（推荐★★★）</h3><ul>
-<li>免费<h3 id="1-9-4-OMV（OpenMediaVault）"><a href="#1-9-4-OMV（OpenMediaVault）" class="headerlink" title="1.9.4 OMV（OpenMediaVault）"></a>1.9.4 OMV（OpenMediaVault）</h3></li>
-<li>免费、功能过于基础。<h3 id="1-9-5-Windows-Server（推荐★★★★）"><a href="#1-9-5-Windows-Server（推荐★★★★）" class="headerlink" title="1.9.5 Windows Server（推荐★★★★）"></a>1.9.5 Windows Server（推荐★★★★）</h3></li>
-</ul>
-<p>免费，这点可能很多人不知道，Windows Server Core是有免费版本的。只是没有桌面环境，但是已经Windows Server了，桌面环境除了浪费空间和资源外，真的就没什么用了。</p>
+<h3 id="1-9-3-FreeNAS（推荐★★★）"><a href="#1-9-3-FreeNAS（推荐★★★）" class="headerlink" title="1.9.3 FreeNAS（推荐★★★）"></a>1.9.3 FreeNAS（推荐★★★）</h3><p>免费</p>
+<h3 id="1-9-4-OMV（OpenMediaVault）"><a href="#1-9-4-OMV（OpenMediaVault）" class="headerlink" title="1.9.4 OMV（OpenMediaVault）"></a>1.9.4 OMV（OpenMediaVault）</h3><p>免费、功能过于基础。</p>
+<h3 id="1-9-5-Windows-Server（推荐★★★★）"><a href="#1-9-5-Windows-Server（推荐★★★★）" class="headerlink" title="1.9.5 Windows Server（推荐★★★★）"></a>1.9.5 Windows Server（推荐★★★★）</h3><p>免费，这点可能很多人不知道，Windows Server Core是有免费版本的。只是没有桌面环境，但是已经Windows Server了，桌面环境除了浪费空间和资源外，真的就没什么用了。</p>
 <p>HyperV可以直接使用<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/windows-server/windows-admin-center">Windows Admin Center</a>可以直接进行管理，也可以使用Windows10 的hyper-V远程管理。</p>
 <p>硬件直通对硬件本身要求较高，但是一般也够用了。</p>
 <p>用起来操作很熟悉。</p>
@@ -390,6 +388,30 @@ aria2
     </div>
 </div>
 
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9.js"></script>
+
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
 
 
 
