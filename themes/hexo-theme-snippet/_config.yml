@@ -194,12 +194,12 @@ livere:
 
 ## Gitalk评论
 gitalk:
-   enable: true
-   clientID: c071a56146b3149bf45b
-   clientSecret: 587727a658179533b082d473134480d8b4a8a423
-   repo: https://github.com/ojdev/ojdev.github.io
-   owner: ojdev
-   admin: [ojdev]
+   enable: false
+   clientID: 
+   clientSecret: 
+   repo: 
+   owner: 
+   admin: 
    perPage:
    distractionFreeMode: true
 
