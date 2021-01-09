@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="狐狸的后山">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://ojdev.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="k8s,debian9" />
+
+
+<meta name="description" content="依然是模拟环境，使用windows10的hyperV。
+在虚拟机中安装debian9，只要核心的那种，开openssh的。
+更新debian
+12apt updateapt upgrade -y..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    k8s的环境搭建 |
+    
+    狐狸的后山
+</title>
+
+<link rel="alternate" href="/atom.xml" title="狐狸的后山" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='欧俊'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://ojdev.github.io">
+                        狐狸的后山</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识储备/"><i class="fa "></i>
+                                知识储备</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/DevOps/"><i class="fa "></i>
+                                DevOps</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/家庭服务/"><i class="fa "></i>
+                                家庭服务</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/狐说八道/"><i class="fa "></i>
+                                狐说八道</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/收集/"><i class="fa "></i>
+                                收集</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="k8s的环境搭建">
+            
+            k8s的环境搭建
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/DevOps/">DevOps</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/debian9/" rel="tag">debian9</a> <a class="tag-none-link" href="/tags/k8s/" rel="tag">k8s</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/06/03</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                585</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>依然是模拟环境，使用windows10的hyperV。</p>
+<p>在虚拟机中安装debian9，只要核心的那种，开openssh的。</p>
+<p>更新debian</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt upgrade -y</span><br></pre></td></tr></table></figure>
+<h2 id="开启root的ssh登录"><a href="#开启root的ssh登录" class="headerlink" title="开启root的ssh登录"></a>开启root的ssh登录</h2><p>修改<code>/etc/ssh/sshd_config</code>中的 <code>PermitRootLogin</code>为<code>PermitRootLogin yes</code>，保存<br>然后重启<code>/etc/init.d/ssh restart</code><br>非必须</p>
+<h2 id="关闭交换内存"><a href="#关闭交换内存" class="headerlink" title="关闭交换内存"></a>关闭交换内存</h2><blockquote>
+<p>kubernetes 的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与 CPU 和内存限制固定在一起。 所以如果调度程序发送一个 pod 到一台机器，它不应该使用交换，设计者不想交换，因为它会减慢速度，所以关闭 swap 主要是为了性能考虑。当然为了一些节省资源的场景，比如运行容器数量较多，可添加 kubelet 参数 –fail-swap-on=false 来解决。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a </span><br><span class="line">nano /etc/fstab</span><br></pre></td></tr></table></figure>
+<p>找到swap was on /dev/sda3 during installation<br>把下面的/dev开头的注释掉</p>
+<p>或者在init的时候使用参数<code>kubeadm init --ignore-preflight-errors Swap</code></p>
+<h2 id="然后安装k8s的aliyun源"><a href="#然后安装k8s的aliyun源" class="headerlink" title="然后安装k8s的aliyun源"></a>然后安装<a target="_blank" rel="noopener" href="https://opsx.alibaba.com/mirror?lang=zh-CN">k8s的aliyun源</a></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install -y apt-transport-https</span><br><span class="line">curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - </span><br><span class="line">cat &lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list</span><br><span class="line">deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main</span><br><span class="line">EOF  </span><br><span class="line">apt-get update</span><br><span class="line">apt-get install -y kubelet kubeadm kubectl</span><br><span class="line">apt-mark hold kubelet kubeadm kubectl</span><br></pre></td></tr></table></figure>
+<h2 id="添加docker源"><a href="#添加docker源" class="headerlink" title="添加docker源"></a>添加docker源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -</span><br><span class="line"></span><br><span class="line">cat &lt;&lt;EOF&gt;/etc/apt/sources.list.d/docker.list</span><br><span class="line">deb [arch=amd64] https://download.docker.com/linux/debian stretch stable</span><br><span class="line">EOF</span><br><span class="line">apt update</span><br><span class="line">apt install -y docker-ce</span><br></pre></td></tr></table></figure>
+<h2 id="添加docker的aliyun镜像源参考"><a href="#添加docker的aliyun镜像源参考" class="headerlink" title="添加docker的aliyun镜像源参考"></a>添加docker的aliyun镜像源<a target="_blank" rel="noopener" href="https://kubernetes.io/docs/setup/cri/">参考</a></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF&gt;/etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://********.mirror.aliyuncs.com&quot;],</span><br><span class="line">  &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],</span><br><span class="line">  &quot;log-driver&quot;: &quot;json-file&quot;,</span><br><span class="line">  &quot;log-opts&quot;: &#123;</span><br><span class="line">    &quot;max-size&quot;: &quot;100m&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;storage-driver&quot;: &quot;overlay2&quot;</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">mkdir -p /etc/systemd/system/docker.service.d</span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+<p>重启系统，让所有配置生效。</p>
+<h2 id="开始集群初始化"><a href="#开始集群初始化" class="headerlink" title="开始集群初始化"></a>开始集群初始化</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers</span><br></pre></td></tr></table></figure>
+<p><code>--image-repository</code>指定拉取镜像的地址，避免从google无法访问的情况<br>成功后的内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Your Kubernetes control-plane has initialized successfully!</span><br><span class="line"></span><br><span class="line">To start using your cluster, you need to run the following as a regular user:</span><br><span class="line"></span><br><span class="line">  mkdir -p $HOME/.kube</span><br><span class="line">  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">  sudo chown $(id -u):$(id -g) $HOME/.kube/config</span><br><span class="line"></span><br><span class="line">You should now deploy a pod network to the cluster.</span><br><span class="line">Run &quot;kubectl apply -f [podnetwork].yaml&quot; with one of the options listed at:</span><br><span class="line">  https://kubernetes.io/docs/concepts/cluster-administration/addons/</span><br><span class="line"></span><br><span class="line">Then you can join any number of worker nodes by running the following on each as root:</span><br><span class="line"></span><br><span class="line">kubeadm join 172.17.183.236:6443 --token 4xr9ys.yxaxewry4xarkghy \</span><br><span class="line">    --discovery-token-ca-cert-hash sha256:3a73933bfd0fb5e2fe2e045292a395d55c652e9e8a141111335b1710350f9d37</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>创建成功后根据提示进行操作，记录最下面的链接语句，以备其他节点接入。</p>
+<h2 id="安装Helm"><a href="#安装Helm" class="headerlink" title="安装Helm"></a>安装Helm</h2><p>先去<a target="_blank" rel="noopener" href="https://github.com/helm/helm/releases">Helm</a>的releases页面查看当前最高的版本号，目前最高的是2.14.1</p>
+<h3 id="下载并安装"><a href="#下载并安装" class="headerlink" title="下载并安装"></a>下载并安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -O -L https://get.helm.sh/helm-v2.14.1-linux-amd64.tar.gz</span><br><span class="line">tar -zxvf helm-v2.14.1-linux-amd64.tar.gz</span><br><span class="line">mv linux-amd64/helm /usr/local/bin/helm</span><br></pre></td></tr></table></figure>
+<p>创建tiller的serviceaccount和clusterrolebinding</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl create serviceaccount --namespace kube-system tiller</span><br><span class="line">kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller</span><br><span class="line">helm init --history-max 200  --service-account tiller --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts</span><br></pre></td></tr></table></figure>
+<h2 id="安装Istio"><a href="#安装Istio" class="headerlink" title="安装Istio"></a>安装Istio</h2><p>先去<a target="_blank" rel="noopener" href="https://github.com/istio/istio/releases">Istio</a>的releases页面查看当前最高的版本号，目前最高的是1.2.0</p>
+<h3 id="下载并安装-1"><a href="#下载并安装-1" class="headerlink" title="下载并安装"></a>下载并安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.2.0 sh -</span><br></pre></td></tr></table></figure>
+<p>或者下载还未正式提供的版本1.2.1</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -O -L https://github.com/istio/istio/archive/1.2.1.tar.gz</span><br><span class="line">tar -zxvf 1.2.1.tar.gz</span><br><span class="line">cd istio-1.2.1</span><br></pre></td></tr></table></figure>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">狐狸的后山</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/06/12/SonarQube/" class="pre-post btn btn-default" title='在AzureDevops中集成SonarQube'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            在AzureDevops中集成SonarQube</span>
+    </a>
+    
+    
+    <a href="/2019/05/22/kubernetes-for-minikube/" class="next-post btn btn-default" title='在windows上创建kubernetes集群'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            在windows上创建kubernetes集群</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+<p>评论系统未开启，无法评论！</p>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%90%AFroot%E7%9A%84ssh%E7%99%BB%E5%BD%95"><span class="toc-text">开启root的ssh登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E4%BA%A4%E6%8D%A2%E5%86%85%E5%AD%98"><span class="toc-text">关闭交换内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%84%B6%E5%90%8E%E5%AE%89%E8%A3%85k8s%E7%9A%84aliyun%E6%BA%90"><span class="toc-text">然后安装k8s的aliyun源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0docker%E6%BA%90"><span class="toc-text">添加docker源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0docker%E7%9A%84aliyun%E9%95%9C%E5%83%8F%E6%BA%90%E5%8F%82%E8%80%83"><span class="toc-text">添加docker的aliyun镜像源参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E9%9B%86%E7%BE%A4%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">开始集群初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Helm"><span class="toc-text">安装Helm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%B9%B6%E5%AE%89%E8%A3%85"><span class="toc-text">下载并安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Istio"><span class="toc-text">安装Istio</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%B9%B6%E5%AE%89%E8%A3%85-1"><span class="toc-text">下载并安装</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9.js"></script>
+
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
