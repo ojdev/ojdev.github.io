@@ -117,7 +117,6 @@ tagcloud:
 links:
   - Hexo官网: https://hexo.io/zh-cn/
 
-
 # 主题自定义个性化配置
 
 ## 网站宣传语
@@ -247,10 +246,10 @@ tencent_analytics:
 baidu_site_verification:
 
 ### 百度自动推送
-baidu_push: false
+baidu_push: true
 
 #网站主题配置
-since: 2017
+since: 2021
 beian: 
 robot: 'all' ### 控制搜索引擎的抓取和索引编制行为，默认为all
 version: 1.2.3
