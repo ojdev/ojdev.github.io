@@ -47,6 +47,6 @@
     "ejs": "^2.6.1",
     "hexo-abbrlink": "^2.0.4",
     "hexo-generator-feed": "^1.2.0",
-    "hexo-generator-sitemap": "^1.2.0",
+    "hexo-generator-sitemap": "^1.2.0"
   }
 }
