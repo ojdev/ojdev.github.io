@@ -35,8 +35,8 @@ rss: /atom.xml
 
 ## Carousel
 carousel:
-  img: 'https://avatars2.githubusercontent.com/u/2107833?s=240&v=4'
-  url: 'https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=xs0pypd2'
+#  img: ''
+#  url: 'https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=xs0pypd2'
 
 # 各个小工具的设置
 
@@ -48,7 +48,7 @@ widgets:
   - category
   - archive
   - tagcloud
-  - friends
+#  - friends
 
 
 ## 搜索
@@ -171,7 +171,7 @@ reward:
 
 ## Valine评论
 valine:
-   enable: true
+   enable: false
    appId: txckaEfD4ck2wSccpplvRI0k-gzGzoHsz
    appKey: 2rlxDiSufbMnfiBjtfaiYSl7
    placeholder: 说点什么吧
@@ -194,12 +194,12 @@ livere:
 
 ## Gitalk评论
 gitalk:
-   enable: false
-   clientID:
-   clientSecret:
-   repo:
-   owner:
-   admin:
+   enable: true
+   clientID: c071a56146b3149bf45b
+   clientSecret: 587727a658179533b082d473134480d8b4a8a423
+   repo: https://github.com/ojdev/ojdev.github.io
+   owner: ojdev
+   admin: [ojdev]
    perPage:
    distractionFreeMode: true
 
