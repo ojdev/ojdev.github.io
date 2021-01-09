@@ -122,9 +122,13 @@ qm importdisk 100 /nas/20201229-Ipv4P-Mini-x86-64-generic-squashfs-combined-efi.
 虚拟机
 
 ### 1.9.3 FreeNAS（推荐★★★）
-- 免费
+
+免费
+
 ### 1.9.4 OMV（OpenMediaVault）
-- 免费、功能过于基础。
+
+免费、功能过于基础。
+
 ### 1.9.5 Windows Server（推荐★★★★）
 
 免费，这点可能很多人不知道，Windows Server Core是有免费版本的。只是没有桌面环境，但是已经Windows Server了，桌面环境除了浪费空间和资源外，真的就没什么用了。
