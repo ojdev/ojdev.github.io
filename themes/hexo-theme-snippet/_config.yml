@@ -35,8 +35,8 @@ rss: /atom.xml
 
 ## Carousel
 carousel:
-#  img: './img/head-img.jpg'
-#  url: 'https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=xs0pypd2'
+  img: './img/head-img.jpg'
+  url: 'https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=xs0pypd2'
 
 # 各个小工具的设置
 
@@ -54,13 +54,13 @@ widgets:
 ## 搜索
 jsonContent:
   searchLocal: true
-  searchGoogle: false
+  searchGoogle: true
   posts:
     title: true
     text: true
     content: true
-    categories: false
-    tags: false
+    categories: true
+    tags: true
 
 ## 网站公告设置
 notification: |-
