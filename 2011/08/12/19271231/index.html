@@ -293,7 +293,29 @@ StackOverflow是一个程序员向的问答网站，广大程序员们在上面�
 
 <div id="comments">
     
-<p>评论系统未开启，无法评论！</p>
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'txckaEfD4ck2wSccpplvRI0k-gzGzoHsz',
+    appKey: '2rlxDiSufbMnfiBjtfaiYSl7',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
 
 </div>
 

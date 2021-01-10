@@ -203,7 +203,7 @@ RabbitMQ.EventBus.AspNetCore是一个基于官方RabbitMQ.Client的二次封装�
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                614</strong>
+                615</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
@@ -256,7 +256,29 @@ RabbitMQ.EventBus.AspNetCore是一个基于官方RabbitMQ.Client的二次封装�
 
 <div id="comments">
     
-<p>评论系统未开启，无法评论！</p>
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'txckaEfD4ck2wSccpplvRI0k-gzGzoHsz',
+    appKey: '2rlxDiSufbMnfiBjtfaiYSl7',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
 
 </div>
 
