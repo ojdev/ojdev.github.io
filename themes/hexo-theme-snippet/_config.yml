@@ -170,7 +170,7 @@ reward:
 
 ## Valine评论
 valine:
-   enable: false
+   enable: true
    appId: txckaEfD4ck2wSccpplvRI0k-gzGzoHsz
    appKey: 2rlxDiSufbMnfiBjtfaiYSl7
    placeholder: 说点什么吧
