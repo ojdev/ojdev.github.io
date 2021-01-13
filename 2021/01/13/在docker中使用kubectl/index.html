@@ -1,0 +1,361 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="狐狸的后山">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://ojdev.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Docker,kubectl,远程管理" />
+
+
+<meta name="description" content="不知道为什么我的Windows 10安装了wsl2后，会莫名其妙的失踪，各种检查都没问题，我怀疑可能处在软raid的问题上，但是不的又不影响。但是这又影响到了我日常的工作，所以我就想，在nas上..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    关于在Windows中使用Terminal连接SSH登录远程机器中的docker容器中使用kubectl管理集群的那些事 |
+    
+    狐狸的后山
+</title>
+
+<link rel="alternate" href="/atom.xml" title="狐狸的后山" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    
+    <script data-ad-client="ca-pub-1462206097231302" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='欧俊'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://ojdev.github.io">
+                        狐狸的后山</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/知识储备/"><i class="fa "></i>
+                                知识储备</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/DevOps/"><i class="fa "></i>
+                                DevOps</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/家庭服务/"><i class="fa "></i>
+                                家庭服务</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/狐说八道/"><i class="fa "></i>
+                                狐说八道</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/收集/"><i class="fa "></i>
+                                收集</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="关于在Windows中使用Terminal连接SSH登录远程机器中的docker容器中使用kubectl管理集群的那些事">
+            
+            关于在Windows中使用Terminal连接SSH登录远程机器中的docker容器中使用kubectl管理集群的那些事
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/DevOps/">DevOps</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/Docker/" rel="tag">Docker</a> <a class="tag-none-link" href="/tags/kubectl/" rel="tag">kubectl</a> <a class="tag-none-link" href="/tags/%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/" rel="tag">远程管理</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/01/13</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>不知道为什么我的<code>Windows 10</code>安装了<code>wsl2</code>后，会莫名其妙的失踪，各种检查都没问题，我怀疑可能处在<code>软raid</code>的问题上，但是不的又不影响。但是这又影响到了我日常的工作，所以我就想，在<code>nas</code>上用<code>docker</code>部署一个<code>kubectl</code>，然后通过远程访问，这样不用在本地安装任何东西了。</p>
+<p>经过将近一天的实验，终于搞定了，用W<code>indows Terminal</code>作为终端，远程通过<code>ssh</code>连接到<code>nas</code>运行<code>docker exec</code>进入容器的终端，中间经历了如何安装<code>bash-completion</code>的过程，最后几乎完美。</p>
+<p>镜像选用<a target="_blank" rel="noopener" href="https://hub.docker.com/_/bash">https://hub.docker.com/_/bash</a>,13.6MB十分小巧。</p>
+<p><code>kubectl</code>直接<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/tasks/tools/install-kubectl/">https://kubernetes.io/zh/docs/tasks/tools/install-kubectl/</a>下载到<code>nas</code>的一个路径中例如我放在了<code>/nas/opt/kubectl/</code>下面。</p>
+<h1 id="docker-compose-yaml的内容"><a href="#docker-compose-yaml的内容" class="headerlink" title="docker-compose.yaml的内容"></a>docker-compose.yaml的内容</h1><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.3&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">kubectltest:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">bash:5.1.4</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">kubectltest</span></span><br><span class="line">    <span class="attr">user:</span> <span class="number">0</span><span class="string">:0</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">KUBECONFIG=/.kube/config</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;bash&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;apk add bash-completion &amp;&amp; echo &#x27;source /usr/share/bash-completion/bash_completion&#x27;&gt; ~/.bashrc &amp;&amp; mkdir /etc/bash_completion.d &amp;&amp; kubectl completion bash &gt;/etc/bash_completion.d/kubectl &amp;&amp; tail -f /dev/null&quot;</span>]</span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/nas/opt/kubectl/config/test:/.kube</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/nas/opt/kubectl/kubectl:/usr/local/bin/kubectl</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">deploy:</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">limits:</span></span><br><span class="line">          <span class="attr">cpus:</span> <span class="string">&#x27;0.3&#x27;</span></span><br><span class="line">          <span class="attr">memory:</span> <span class="string">128M</span></span><br><span class="line">  <span class="attr">kubectlpre:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">bash:5.1.4</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">kubectlpre</span></span><br><span class="line">    <span class="attr">user:</span> <span class="number">0</span><span class="string">:0</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">KUBECONFIG=/.kube/config</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;bash&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;apk add bash-completion &amp;&amp; echo &#x27;source /usr/share/bash-completion/bash_completion&#x27;&gt; ~/.bashrc &amp;&amp; mkdir /etc/bash_completion.d &amp;&amp; kubectl completion bash &gt;/etc/bash_completion.d/kubectl &amp;&amp; tail -f /dev/null&quot;</span>]</span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/nas/opt/kubectl/config/pre:/.kube</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/nas/opt/kubectl/kubectl:/usr/local/bin/kubectl</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">deploy:</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">limits:</span></span><br><span class="line">          <span class="attr">cpus:</span> <span class="string">&#x27;0.3&#x27;</span></span><br><span class="line">          <span class="attr">memory:</span> <span class="string">128M</span></span><br></pre></td></tr></table></figure>
+<p><code>bash</code>的镜像里竟然直接带了<code>apk</code>的包管理器这是我没想到的，真的小巧灵活好用，上面command里:</p>
+<ol>
+<li>装bash-completion</li>
+<li>把source /usr/share/bash-completion/bash_completion写入到 ~/.bashrc，每次登陆后就可以直接使用kubectl自动提示</li>
+<li>创建目录 mkdir /etc/bash_completion.d 用来存放自动提示文件</li>
+<li>kubectl completion bash &gt;/etc/bash_completion.d/kubectl 写入自动提示</li>
+<li>tail -f /dev/null 保持容器运行</li>
+</ol>
+<p><code>/nas/opt/kubectl/config/pre</code>存放的是<code>config</code>文件,我平时要管理多个集群，所以我这里又多个目录。</p>
+<h1 id="Windows-Terminal-配置"><a href="#Windows-Terminal-配置" class="headerlink" title="Windows Terminal 配置"></a>Windows Terminal 配置</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;guid&quot;</span>: <span class="string">&quot;&#123;58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2534&#125;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;hidden&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;测试环境&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;commandline&quot;</span>: <span class="string">&quot;ssh -t root@192.168.0.250 \&quot;/bin/docker exec -it kubectltest bash\&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;icon&quot;</span>: <span class="string">&quot;ms-appx:///ProfileIcons/&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;.png&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;colorScheme&quot;</span>: <span class="string">&quot;Vintage&quot;</span></span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;guid&quot;</span>: <span class="string">&quot;&#123;58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2535&#125;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;hidden&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;预发布环境&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;commandline&quot;</span>: <span class="string">&quot;ssh -t root@192.168.0.250 \&quot;/bin/docker exec -it kubectlpre bash\&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;icon&quot;</span>: <span class="string">&quot;ms-appx:///ProfileIcons/&#123;61c54bbd-c2c6-5271-96e7-009a87ff44bf&#125;.png&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;colorScheme&quot;</span>: <span class="string">&quot;One Half Light&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>重点在哪个<code>ssh -t</code>，不然会进不去，这样就完成了一个在本地打开终端直接进入到<code>nas</code>里的<code>docker</code>容器中进行<code>kubectl</code>管理集群的套娃操作。</p>
+<h1 id="最后总结"><a href="#最后总结" class="headerlink" title="最后总结"></a>最后总结</h1><ol>
+<li>远程连接的时候<code>ssh</code>的<code>-t</code>参数是<code>tty</code>的意思，不加这个参数后面的<code>docker exec -it</code>会报<code>the input device is not a TTY</code>错，进不去的。</li>
+<li><code>docker-compose.yml</code>中的<code>command</code>节点中多条命令用<code>&amp;&amp;</code>分隔，如果是<code>&amp;</code>分隔，或造成命令并行执行，前一个还没结束，后一个就执行完了。</li>
+</ol>
+<h1 id="遗憾"><a href="#遗憾" class="headerlink" title="遗憾"></a>遗憾</h1><p>如果能用<code>webshell</code>直接使用<code>docker exec</code>就更好了，即节省了本地空间，又可以给组内的人一起使用。找到了一个<code>docker-exec-web-control</code>项目，是3年前的了，跑起来后并不能用。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">狐狸的后山</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2021/01/07/nas/" class="next-post btn btn-default" title='家庭服务管理：NAS'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            家庭服务管理：NAS</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'txckaEfD4ck2wSccpplvRI0k-gzGzoHsz',
+    appKey: '2rlxDiSufbMnfiBjtfaiYSl7',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker-compose-yaml%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">docker-compose.yaml的内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Windows-Terminal-%E9%85%8D%E7%BD%AE"><span class="toc-text">Windows Terminal 配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E6%80%BB%E7%BB%93"><span class="toc-text">最后总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%81%97%E6%86%BE"><span class="toc-text">遗憾</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9.js"></script>
+
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
