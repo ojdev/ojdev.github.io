@@ -36,8 +36,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.3'
-          memory: 128M
+          cpus: '0.1'
+          memory: 32M
   kubectlpre:
     image: bash:5.1.4
     container_name: kubectlpre
@@ -52,8 +52,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.3'
-          memory: 128M
+          cpus: '0.1'
+          memory: 32M
 ```
 
 `bash`的镜像里竟然直接带了`apk`的包管理器这是我没想到的，真的小巧灵活好用，上面command里:
