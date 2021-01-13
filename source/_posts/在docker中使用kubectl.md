@@ -94,3 +94,7 @@ services:
 
 1. 远程连接的时候`ssh`的`-t`参数是`tty`的意思，不加这个参数后面的`docker exec -it`会报`the input device is not a TTY`错，进不去的。
 1. `docker-compose.yml`中的`command`节点中多条命令用`&&`分隔，如果是`&`分隔，或造成命令并行执行，前一个还没结束，后一个就执行完了。
+
+# 遗憾
+
+如果能用`webshell`直接使用`docker exec`就更好了，即节省了本地空间，又可以给组内的人一起使用。找到了一个`docker-exec-web-control`项目，是3年前的了，跑起来后并不能用。
