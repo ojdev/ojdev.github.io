@@ -303,7 +303,7 @@ elements:
 sensor:
   - platform: scrape
     resource: http://www.slwr.gov.cn/swjgzfw/sssq.asp
-    name: slwr liuliang
+    name: slwr shuiwei
     select: 'script'
     index: 1
     scan_interval: 3600
@@ -311,7 +311,7 @@ sensor:
       {{ (value | replace ("cvt(","") | replace (");","") | replace ("'","") ) }}
   - platform: scrape
     resource: http://www.slwr.gov.cn/swjgzfw/sssq.asp
-    name: slwr shuiwei
+    name: slwr liuliang
     select: 'font'
     index: 8
     scan_interval: 3600
@@ -374,7 +374,7 @@ vacuum:
 ### 2.3.x lovelace
 
 ``` yaml
-title: 我的家
+title: 保利·上城
 views:
   - panel: false
     title: Home
@@ -383,17 +383,17 @@ views:
     cards:
       - type: vertical-stack
         cards:
-          - type: weather-forecast
+          - type: 'custom:weather-card'
             entity: weather.bao_li_shang_cheng
-            secondary_info_attribute: wind_speed
+            number_of_forecasts: '5'
           - type: horizontal-stack
             cards:
               - type: entity
-                entity: sensor.slwr_liuliang
+                entity: sensor.slwr_shuiwei
                 name: 水位
                 unit: 米
               - type: entity
-                entity: sensor.slwr_shuiwei
+                entity: sensor.slwr_liuliang
                 name: 流量
                 unit: 立方米
       - type: picture-elements
@@ -435,6 +435,16 @@ views:
 ## 附录
 
 ### linux下rename命令进行批量重命名
+
+```bash
+rename 's///g' *.mp4
+例如
+rename 's/cowboy\.bebop\.//g' *.mkv
+将cowboy.bebop替换为空，也就是删掉
+```
+其中`s`为开始，第一个`/`后面写要查找的字符串,第二个`/`进行分隔，第三个`/`前面写替换的字符串，然后`g`结尾
+
+特殊字符用`\`进行转义，包括`空格`和`[]{}().\`~!@#$%^&*_+-=;:'"<>,?`之类的，总之就是会影响正则的都要进行转义
 
 ### docker-compose.yml
 
