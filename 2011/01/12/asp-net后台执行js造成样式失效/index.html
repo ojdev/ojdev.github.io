@@ -80,7 +80,7 @@
 
     
     <script data-ad-client="ca-pub-1462206097231302" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -203,7 +203,7 @@
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                3660</strong>
+                3719</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
@@ -212,6 +212,7 @@
     <div class="post-body post-content">
         <p>在asp.net中后台执行js时，比如使用Response.Write弹出一个alert</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Response.Write(<span class="string">&quot;&lt;script&gt;alert(&#x27;确定。&#x27;)&lt;/script&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
 <p>这样做有时候会造成页面的css样式表错位或者失效</p>
 <p>为了避免这样的情况，使用下面的方法</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ClientScript.RegisterStartupScript(<span class="keyword">this</span>.GetType(), <span class="string">&quot;alter&quot;</span>, <span class="string">&quot;alert(&#x27;确定。&#x27;);&quot;</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>

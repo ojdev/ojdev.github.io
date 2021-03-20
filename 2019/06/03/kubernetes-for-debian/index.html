@@ -82,7 +82,7 @@
 
     
     <script data-ad-client="ca-pub-1462206097231302" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -205,7 +205,7 @@
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                596</strong>
+                655</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
@@ -216,6 +216,7 @@
 <p>在虚拟机中安装debian9，只要核心的那种，开openssh的。</p>
 <p>更新debian</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt upgrade -y</span><br></pre></td></tr></table></figure>
+
 <h2 id="开启root的ssh登录"><a href="#开启root的ssh登录" class="headerlink" title="开启root的ssh登录"></a>开启root的ssh登录</h2><p>修改<code>/etc/ssh/sshd_config</code>中的 <code>PermitRootLogin</code>为<code>PermitRootLogin yes</code>，保存<br>然后重启<code>/etc/init.d/ssh restart</code><br>非必须</p>
 <h2 id="关闭交换内存"><a href="#关闭交换内存" class="headerlink" title="关闭交换内存"></a>关闭交换内存</h2><blockquote>
 <p>kubernetes 的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与 CPU 和内存限制固定在一起。 所以如果调度程序发送一个 pod 到一台机器，它不应该使用交换，设计者不想交换，因为它会减慢速度，所以关闭 swap 主要是为了性能考虑。当然为了一些节省资源的场景，比如运行容器数量较多，可添加 kubelet 参数 –fail-swap-on=false 来解决。</p>
@@ -224,16 +225,21 @@
 <p>找到swap was on /dev/sda3 during installation<br>把下面的/dev开头的注释掉</p>
 <p>或者在init的时候使用参数<code>kubeadm init --ignore-preflight-errors Swap</code></p>
 <h2 id="然后安装k8s的aliyun源"><a href="#然后安装k8s的aliyun源" class="headerlink" title="然后安装k8s的aliyun源"></a>然后安装<a target="_blank" rel="noopener" href="https://opsx.alibaba.com/mirror?lang=zh-CN">k8s的aliyun源</a></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install -y apt-transport-https</span><br><span class="line">curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - </span><br><span class="line">cat &lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list</span><br><span class="line">deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main</span><br><span class="line">EOF  </span><br><span class="line">apt-get update</span><br><span class="line">apt-get install -y kubelet kubeadm kubectl</span><br><span class="line">apt-mark hold kubelet kubeadm kubectl</span><br></pre></td></tr></table></figure>
+
 <h2 id="添加docker源"><a href="#添加docker源" class="headerlink" title="添加docker源"></a>添加docker源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -</span><br><span class="line"></span><br><span class="line">cat &lt;&lt;EOF&gt;/etc/apt/sources.list.d/docker.list</span><br><span class="line">deb [arch=amd64] https://download.docker.com/linux/debian stretch stable</span><br><span class="line">EOF</span><br><span class="line">apt update</span><br><span class="line">apt install -y docker-ce</span><br></pre></td></tr></table></figure>
+
 <h2 id="添加docker的aliyun镜像源参考"><a href="#添加docker的aliyun镜像源参考" class="headerlink" title="添加docker的aliyun镜像源参考"></a>添加docker的aliyun镜像源<a target="_blank" rel="noopener" href="https://kubernetes.io/docs/setup/cri/">参考</a></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF&gt;/etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://********.mirror.aliyuncs.com&quot;],</span><br><span class="line">  &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],</span><br><span class="line">  &quot;log-driver&quot;: &quot;json-file&quot;,</span><br><span class="line">  &quot;log-opts&quot;: &#123;</span><br><span class="line">    &quot;max-size&quot;: &quot;100m&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;storage-driver&quot;: &quot;overlay2&quot;</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">mkdir -p /etc/systemd/system/docker.service.d</span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+
 <p>重启系统，让所有配置生效。</p>
 <h2 id="开始集群初始化"><a href="#开始集群初始化" class="headerlink" title="开始集群初始化"></a>开始集群初始化</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers</span><br></pre></td></tr></table></figure>
 <p><code>--image-repository</code>指定拉取镜像的地址，避免从google无法访问的情况<br>成功后的内容</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Your Kubernetes control-plane has initialized successfully!</span><br><span class="line"></span><br><span class="line">To start using your cluster, you need to run the following as a regular user:</span><br><span class="line"></span><br><span class="line">  mkdir -p $HOME/.kube</span><br><span class="line">  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">  sudo chown $(id -u):$(id -g) $HOME/.kube/config</span><br><span class="line"></span><br><span class="line">You should now deploy a pod network to the cluster.</span><br><span class="line">Run &quot;kubectl apply -f [podnetwork].yaml&quot; with one of the options listed at:</span><br><span class="line">  https://kubernetes.io/docs/concepts/cluster-administration/addons/</span><br><span class="line"></span><br><span class="line">Then you can join any number of worker nodes by running the following on each as root:</span><br><span class="line"></span><br><span class="line">kubeadm join 172.17.183.236:6443 --token 4xr9ys.yxaxewry4xarkghy \</span><br><span class="line">    --discovery-token-ca-cert-hash sha256:3a73933bfd0fb5e2fe2e045292a395d55c652e9e8a141111335b1710350f9d37</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+
 <p>创建成功后根据提示进行操作，记录最下面的链接语句，以备其他节点接入。</p>
 <h2 id="安装Helm"><a href="#安装Helm" class="headerlink" title="安装Helm"></a>安装Helm</h2><p>先去<a target="_blank" rel="noopener" href="https://github.com/helm/helm/releases">Helm</a>的releases页面查看当前最高的版本号，目前最高的是2.14.1</p>
 <h3 id="下载并安装"><a href="#下载并安装" class="headerlink" title="下载并安装"></a>下载并安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -O -L https://get.helm.sh/helm-v2.14.1-linux-amd64.tar.gz</span><br><span class="line">tar -zxvf helm-v2.14.1-linux-amd64.tar.gz</span><br><span class="line">mv linux-amd64/helm /usr/local/bin/helm</span><br></pre></td></tr></table></figure>
+
 <p>创建tiller的serviceaccount和clusterrolebinding</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl create serviceaccount --namespace kube-system tiller</span><br><span class="line">kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller</span><br><span class="line">helm init --history-max 200  --service-account tiller --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts</span><br></pre></td></tr></table></figure>
 <h2 id="安装Istio"><a href="#安装Istio" class="headerlink" title="安装Istio"></a>安装Istio</h2><p>先去<a target="_blank" rel="noopener" href="https://github.com/istio/istio/releases">Istio</a>的releases页面查看当前最高的版本号，目前最高的是1.2.0</p>

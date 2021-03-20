@@ -81,7 +81,7 @@ StackOverflow是一个程序员向的问答网站，广大程序员们在上面�
 
     
     <script data-ad-client="ca-pub-1462206097231302" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -204,7 +204,7 @@ StackOverflow是一个程序员向的问答网站，广大程序员们在上面�
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                3448</strong>
+                3507</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
@@ -241,9 +241,11 @@ StackOverflow是一个程序员向的问答网站，广大程序员们在上面�
 <hr>
 <p>ps：我刚刚用C#做了一下，一下是我的测试代码：</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">double</span> t1 = (DateTime.Parse(<span class="string">&quot;1927/12/31 23:54:07&quot;</span>) - Convert.ToDateTime(<span class="string">&quot;1970/01/01 00:00:00&quot;</span>)).TotalMilliseconds / <span class="number">1000</span>;<span class="comment">// -8 * 3600;</span></span><br><span class="line"><span class="built_in">double</span> t2 = (DateTime.Parse(<span class="string">&quot;1927/12/31 23:54:08&quot;</span>) - Convert.ToDateTime(<span class="string">&quot;1970/01/01 00:00:00&quot;</span>)).TotalMilliseconds / <span class="number">1000</span>;<span class="comment">// -8 * 3600;</span></span><br><span class="line">MessageBox.Show(<span class="built_in">string</span>.Format(<span class="string">&quot;[&#123;0&#125;]  [&#123;1&#125;] : &#123;2&#125;&quot;</span>, t1, t2, t2 - t1));</span><br></pre></td></tr></table></figure>
+
 <p>我并没有遇到上面的问题，无论是235408-235407或者235409-235408，我的结果都是1。因为C#没有从1970年1月1日开始获取时间的方法。</p>
 <p>所以我换了js，如下代码：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">d.setFullYear(<span class="number">1927</span>,<span class="number">12</span>,<span class="number">31</span>);</span><br><span class="line">d.setHours(<span class="number">23</span>);</span><br><span class="line">d.setMinutes(<span class="number">54</span>);</span><br><span class="line">d.setSeconds(<span class="number">7</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">a.setFullYear(<span class="number">1927</span>,<span class="number">12</span>,<span class="number">31</span>);</span><br><span class="line">a.setHours(<span class="number">23</span>);</span><br><span class="line">a.setMinutes(<span class="number">54</span>);</span><br><span class="line">a.setSeconds(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">var</span> t1=d.getTime()/<span class="number">1000</span>;</span><br><span class="line"><span class="keyword">var</span> t2=a.getTime()/<span class="number">1000</span>;</span><br><span class="line">alert(t1);</span><br><span class="line">alert(t2);</span><br><span class="line">alert(t2-t1);</span><br></pre></td></tr></table></figure>
+
 <p>答案依旧，都是1的结果，那么，是不是我的测试代码不正确呢？还是这个问题已经解决了？活着。。是不是只有java有这样的问题？</p>
 <p>我依然没有得到答案。</p>
 <p>201108130035:上面提到一个东西，叫做地方平时，我在网上搜到一个对地方平时的解释：</p>

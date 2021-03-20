@@ -82,7 +82,7 @@ Windows 10 Pro 1903Minikube代理环境（127.0.0.1:1080）
 
     
     <script data-ad-client="ca-pub-1462206097231302" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -205,7 +205,7 @@ Windows 10 Pro 1903Minikube代理环境（127.0.0.1:1080）
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                608</strong>
+                667</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
@@ -229,11 +229,14 @@ Windows 10 Pro 1903Minikube代理环境（127.0.0.1:1080）
 <p> 有空格需要用双引号包起来</p>
 <h2 id="创建集群"><a href="#创建集群" class="headerlink" title="创建集群"></a>创建集群</h2><p>开始创建集群</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube start --profile k8s-master --image-mirror-country cn --memory 1024 --cpus 2 --registry-mirror https://*******.mirror.aliyuncs.com</span><br></pre></td></tr></table></figure>
+
 <p> 带参数–image-mirror-country cn，设置成cn就贴心的将镜像拉取送google改到了杭州aliyun<br> –registry-mirror的镜像地址则会直接给docker</p>
 <p> 可能会失败好几遍，每次失败就<code>minikube delete</code>然后重新创建就可以了</p>
 <p> 最后成功内容如下</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> * minikube v1.1.0 on windows (amd64)</span><br><span class="line">* checking main repository and mirrors <span class="keyword">for</span> images</span><br><span class="line">* using image repository registry.cn-hangzhou.aliyuncs.com/google_containers</span><br><span class="line">* Creating hyperv VM (CPUs=2, Memory=2048MB, Disk=20000MB) ...</span><br><span class="line">* Configuring environment <span class="keyword">for</span> Kubernetes v1.14.2 on Docker 18.09.6</span><br><span class="line">* Pulling images ...</span><br><span class="line">* Launching Kubernetes ...</span><br><span class="line">* Verifying: apiserver proxy etcd scheduler controller dns</span><br><span class="line">* Done! kubectl is now configured to use <span class="string">&quot;minikube&quot;</span></span><br></pre></td></tr></table></figure>
+
 <h1 id="控制台"><a href="#控制台" class="headerlink" title="控制台"></a>控制台</h1> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube dashboard</span><br></pre></td></tr></table></figure>
+
     </div>
     
     <div class="post-footer">

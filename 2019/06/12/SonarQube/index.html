@@ -85,7 +85,7 @@ ElasticSearch是可选的；
 
     
     <script data-ad-client="ca-pub-1462206097231302" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -208,7 +208,7 @@ ElasticSearch是可选的；
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                588</strong>
+                647</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
@@ -223,6 +223,7 @@ ElasticSearch是可选的；
 </blockquote>
 <p>本内容使用Docker进行部署</p>
 <h2 id="docker-compose-yaml"><a href="#docker-compose-yaml" class="headerlink" title="docker-compose.yaml"></a>docker-compose.yaml</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">CodeQuality.SonarQube:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">sonarqube:lts</span>  <span class="comment">##新版，7.x只能对master分支进行分析，需要商业授权</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">codequality-sonarqube</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">SONARQUBE_JDBC_USERNAME=$&#123;DB_POSTGRESQL_USER&#125;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">SONARQUBE_JDBC_PASSWORD=$&#123;DB_POSTGRESQL_PASS&#125;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">SONARQUBE_JDBC_URL=jdbc:postgresql://$&#123;DB_POSTGRESQL_URL_AND_PORT&#125;/sonar</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;2303:9000&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;2302:9002&quot;</span>    </span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;/etc/timezone:/etc/timezone&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;/etc/localtime:/etc/localtime&quot;</span>          </span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br></pre></td></tr></table></figure>
+
 <p>这里使用了pgsql。</p>
 <p>部署完成后要进行配置，用admin进行登录，点击右上角头像，选择我的账户-&gt;安全</p>
 <p>在令牌下输入一个令牌名选择”生成”,复制生成的令牌。<br><img src="/images/2019/06/12/1.png"></p>
