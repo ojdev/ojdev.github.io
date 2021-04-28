@@ -434,6 +434,132 @@ views:
 
 要注意的是从其他设备同步过来的文件夹，默认情况下会出现在`/config`下，
 
+## 2.5 frp
+
+如今我遭遇了无法在家的问题，但是手机里的资料还是要同步回家里的NAS，尝试了ngrok、autossh等方案之后，最后还是选定了老牌的frp，之前也用过，但是不知道是版本的问题还是配置的问题，会导致我的网络卡死，这次重新尝试后发现，很稳定，资源的消耗也变小了，在vps上使用nginx绑定泛域名到frps，然后再用frps绑定泛域名，之后直接使用子域名访问各个服务。
+
+### 2.5.1 服务端nginx配置`/etc/nginx/conf.d/nas.conf`
+```ini
+server {
+    listen 80;
+    server_name *.phub.ml;
+    return 301 https://$host$request_uri;
+}
+
+server {
+#    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl http2; # managed by Certbot
+    server_name *.nas.com;
+
+    ssl_certificate /etc/letsencrypt/live/nas.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/nas.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+
+    client_max_body_size 500m;
+    client_body_buffer_size 256k;
+    client_header_timeout 3m;
+    client_body_timeout 3m;
+    send_timeout 3m;
+    proxy_connect_timeout 300s;
+    proxy_read_timeout 300s;
+    proxy_send_timeout 300s;
+    proxy_buffer_size 64k;
+    proxy_buffers 4 32k;
+    proxy_busy_buffers_size 64k;
+    proxy_temp_file_write_size 64k;
+    proxy_ignore_client_abort on;
+    gzip on;
+    gzip_min_length 1k;
+    gzip_buffers 4 16k;
+    #gzip_http_version 1.0;
+    gzip_comp_level 5;
+    gzip_types text/plain application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+    gzip_vary off;
+    gzip_disable "MSIE [1-6]\.";
+    location /api/websocket {
+       proxy_pass http://127.0.0.1:27001/api/websocket;
+        proxy_read_timeout 60s;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real_IP $remote_addr;
+        proxy_set_header X-Forwarded-for $remote_addr;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'Upgrade';
+    }
+    location / {
+        proxy_pass http://127.0.0.1:27001;
+        proxy_set_header Host $host;
+        proxy_redirect off;
+        proxy_buffering off;
+        proxy_http_version 1.1;
+        proxy_ssl_server_name on;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
+```
+
+### 2.5.2 服务端的frps配置`/etc/frp/frps.ini`
+```ini
+[common]
+bind_addr = 0.0.0.0
+bind_port = 7557
+bind_udp_port = 5775
+token = ***************************
+vhost_http_port = 27001
+vhost_https_port = 5443
+tcp_mux = true
+```
+### 2.5.3 客户端的frpc配置`frpc.ini`
+
+```ini
+[common]
+server_addr = 000.000.000.000
+server_port = 7557
+tcp_mux     = true
+token       = *******************
+
+[ssh]
+type = tcp
+local_port = 22
+remote_port = 20002
+
+[qBittorent]
+type = http
+local_port = 8008
+custom_domains = bt.nas.com
+
+[syncthing]
+type = http
+local_port = 8384
+custom_domains = sync.nas.com
+
+[images]
+type = http
+local_port = 8698
+custom_domains = images.nas.com
+
+[openwrt]
+type = http
+local_ip = 192.168.0.253
+local_port = 80
+custom_domains = gw.nas.com
+
+[movies]
+type = http
+local_port = 8096
+custom_domains = movies.nas.com
+```
+
+### 2.5.4 重点内容
+
+- nginx中的`proxy_pass http://127.0.0.1:27001`对应到frps.ini中的`vhost_https_port = 5443`
+- frps.ini中的`bind_port = 7557`对应到客户端中的`server_port = 7557`
+- frpc中会出现`[E] [control.go:158] [c4426f709c4d9725] work connection closed before response StartWorkConn message: EOF`的错误信息，目前没找到解决办法，但是还没发现耽误使用的情况
+
 ## 附录
 
 ### linux下rename命令进行批量重命名
