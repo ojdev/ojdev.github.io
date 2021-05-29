@@ -59,10 +59,10 @@ Set-PoshPrompt Paradox
     "source": "Windows.Terminal.PowershellCore"
 }
 ```
-## 缺憾
+# 缺憾
 
 每次打开，还是有点慢。
 
-## 参考
+# 参考
 - [ohmyposh](https://ohmyposh.dev/docs/)
 - [fonts](https://ohmyposh.dev/docs/fonts)
