@@ -216,10 +216,14 @@
 
 <p>查看所有配色方式的命令是<code>Get-PoshThemes</code></p>
 <p>很多教程上将<code>Set-PoshPrompt Paradox</code>写成了<code>Set-Theme Paradox</code>，是因为老版本的是这么设置的，很多时候报错也是在这里。</p>
+<p>如果不需要自动检查更新可以只写一样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-PoshPrompt Paradox</span><br></pre></td></tr></table></figure>
+
+<p>这样，每次打开的时候会检查更新，就不会卡。</p>
 <h1 id="设置字体"><a href="#设置字体" class="headerlink" title="设置字体"></a>设置字体</h1><p>上面的步骤就美化完成了，只不过看起来还是很难看，所以需要安装字体,根据<a target="_blank" rel="noopener" href="https://ohmyposh.dev/docs/fonts">fonts</a>页面上的两种字体，自己选择一下就可以了，默认推荐的<code>MesloLGM NF</code>效果也不错，然后安装完字体后，默认的设置比较麻烦，所以我都是使用<code>terminal</code>的设置里找到<code>powershell</code>，然后外观中直接选字体。</p>
 <p>在<code>terminal</code>的配置中，应该是这样的</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;fontFace&quot;</span>: <span class="string">&quot;MesloLGM NF&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;guid&quot;</span>: <span class="string">&quot;&#123;574e775e-4f2a-5b96-ac1e-a2962a402336&#125;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;hidden&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;PowerShell&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;source&quot;</span>: <span class="string">&quot;Windows.Terminal.PowershellCore&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="缺憾"><a href="#缺憾" class="headerlink" title="缺憾"></a>缺憾</h1><p>每次打开，还是有点慢。</p>
+
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://ohmyposh.dev/docs/">ohmyposh</a></li>
 <li><a target="_blank" rel="noopener" href="https://ohmyposh.dev/docs/fonts">fonts</a></li>
@@ -287,7 +291,7 @@ new Valine({
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Powershell-7"><span class="toc-text">安装Powershell 7</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E7%BE%8E%E5%8C%96"><span class="toc-text">开始美化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%AD%97%E4%BD%93"><span class="toc-text">设置字体</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%BA%E6%86%BE"><span class="toc-text">缺憾</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Powershell-7"><span class="toc-text">安装Powershell 7</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E7%BE%8E%E5%8C%96"><span class="toc-text">开始美化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%AD%97%E4%BD%93"><span class="toc-text">设置字体</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
         
     </div>
 </aside>
