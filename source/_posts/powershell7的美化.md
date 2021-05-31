@@ -45,6 +45,13 @@ Set-PoshPrompt Paradox
 
 很多教程上将`Set-PoshPrompt Paradox`写成了`Set-Theme Paradox`，是因为老版本的是这么设置的，很多时候报错也是在这里。
 
+如果不需要自动检查更新可以只写一样
+```notepad
+Set-PoshPrompt Paradox
+```
+
+这样，每次打开的时候会检查更新，就不会卡。
+
 # 设置字体
 
 上面的步骤就美化完成了，只不过看起来还是很难看，所以需要安装字体,根据[fonts](https://ohmyposh.dev/docs/fonts)页面上的两种字体，自己选择一下就可以了，默认推荐的`MesloLGM NF`效果也不错，然后安装完字体后，默认的设置比较麻烦，所以我都是使用`terminal`的设置里找到`powershell`，然后外观中直接选字体。
@@ -59,9 +66,6 @@ Set-PoshPrompt Paradox
     "source": "Windows.Terminal.PowershellCore"
 }
 ```
-# 缺憾
-
-每次打开，还是有点慢。
 
 # 参考
 - [ohmyposh](https://ohmyposh.dev/docs/)
