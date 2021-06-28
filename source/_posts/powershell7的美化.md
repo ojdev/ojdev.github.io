@@ -23,7 +23,7 @@ tags:
 ```powershell
 set-executionpolicy remotesigned
 Install-Module posh-git -Scope CurrentUser
-Install-Module oh-my-posh -Scope CurrentUse
+Install-Module oh-my-posh -Scope CurrentUser
 Install-Module -Name PSReadLine -Scope CurrentUser -Force -SkipPublisherCheck # 这个是自动提示的，看个人选择，一般用不上，因为自动提示后面总是会带上.exe扩展名，并且会在后面自动加一个空格，总是，我觉得不好用
 ```
 
