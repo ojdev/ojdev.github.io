@@ -311,8 +311,8 @@ navbar:
         key: "about", 
         icon: "iconfont icon-user-fill",
         submenu: [
-          { key: "我", link: "/about/",icon: "iconfont icon-user-fill"},          
-          { key: "相册", link: "/about/",icon: "iconfont icon-images"}
+          { key: "我", link: "/about/",icon: "iconfont icon-addrcard"},          
+          { key: "相册", link: "/gallery/",icon: "iconfont icon-images"}
         ]
       }
     #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
