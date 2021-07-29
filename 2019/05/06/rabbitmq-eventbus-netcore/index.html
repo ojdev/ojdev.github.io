@@ -1,364 +1,455 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
 
 <head>
-    <!--Setting-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="后山">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no,adress=no">
-    <meta name="browsermode" content="application">
-    <meta name="screen-orientation" content="portrait">
-    <meta name="theme-version" content="1.2.3">
-    <meta name="root" content="/">
-    <link rel="dns-prefetch" href="https://ojdev.github.io">
-    <!--SEO-->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="欧俊">
+  <meta name="keywords" content="">
+  
+  <title>RabbitMQ.EventBus.AspNetCore - 后山</title>
 
-<meta name="keywords" content="RabbitMQ,.net core,EventBus,Asp.Net Core" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
 
-<meta name="description" content="  
-RabbitMQ.EventBus.AspNetCore是一个基于官方RabbitMQ.Client的二次封装包，专门针对Net Core项目进行开发，在微服务中进行消息的传递使用起来比较..." />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-
-<meta name="robots" content="all" />
-<meta name="google" content="all" />
-<meta name="googlebot" content="all" />
-<meta name="verify" content="all" />
-    <!--Title-->
-
-<title>
+  
     
-    RabbitMQ.EventBus.AspNetCore |
     
-    后山
-</title>
-
-<link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
-
-
-<link rel="icon" href="/favicon.ico">
-
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
     
+  
 
-
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
-
-    
-<div class="hide">
-    <script type="text/javascript">
-    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-</div>
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
+<!-- 主题依赖的图标库，不要自行修改 -->
 
-    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
-<script>
-(function() {
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    } else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 
-    
-    <script data-ad-client="ca-pub-1462206097231302" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ojdev.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
-<!--[if lte IE 8]>
-<style>
-    html{ font-size: 1em }
-</style>
-<![endif]-->
-<!--[if lte IE 9]>
-<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
-<![endif]-->
+
+
 <body>
-    <header class="main-header"  style="background-image:url(
-    http://snippet.shenliyang.com/img/banner.jpg)"
-     >
-    <div class="main-header-box">
-        <a class="header-avatar" href="/" title='欧俊'>
-            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
-        </a>
-        <div class="branding">
-            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
-            
-            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
-            
-        </div>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
-</header>
-    <nav class="main-navigation">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
-                        <span class="sr-only"></span>
-                        <i class="fa fa-bars"></i>
-                    </span>
-                    <a class="navbar-brand" href="https://ojdev.github.io">
-                        后山</a>
-                </div>
-                <div class="collapse navbar-collapse" id="main-menu">
-                    <ul class="menu">
-                        
-                        <li role="presentation" class="text-center">
-                            <a href="/"><i class="fa "></i>
-                                首页</a>
-                        </li>
-                        
-                        <li role="presentation" class="text-center">
-                            <a href="/categories/知识储备/"><i class="fa "></i>
-                                知识储备</a>
-                        </li>
-                        
-                        <li role="presentation" class="text-center">
-                            <a href="/categories/DevOps/"><i class="fa "></i>
-                                DevOps</a>
-                        </li>
-                        
-                        <li role="presentation" class="text-center">
-                            <a href="/categories/家庭服务/"><i class="fa "></i>
-                                家庭服务</a>
-                        </li>
-                        
-                        <li role="presentation" class="text-center">
-                            <a href="/categories/狐说八道/"><i class="fa "></i>
-                                狐说八道</a>
-                        </li>
-                        
-                        <li role="presentation" class="text-center">
-                            <a href="/categories/收集/"><i class="fa "></i>
-                                收集</a>
-                        </li>
-                        
-                        <li role="presentation" class="text-center">
-                            <a href="/archives/"><i class="fa "></i>
-                                时间轴</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </nav>
-    <section class="content-wrap">
-        <div class="container">
-            <div class="row">
-                <main class="col-md-8 main-content m-post">
-                    <p id="process"></p>
-<article class="post">
-    <div class="post-head">
-        <h1 id="RabbitMQ.EventBus.AspNetCore">
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="RabbitMQ.EventBus.AspNetCore">
+              
+            </span>
+
             
-            RabbitMQ.EventBus.AspNetCore
-            
-        </h1>
-        <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/">知识储备</a>
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-05-06 13:52" pubdate>
+        2019年5月6日 下午
+      </time>
     </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-none-link" href="/tags/net-core/" rel="tag">.net core</a> <a class="tag-none-link" href="/tags/Asp-Net-Core/" rel="tag">Asp.Net Core</a> <a class="tag-none-link" href="/tags/EventBus/" rel="tag">EventBus</a> <a class="tag-none-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a>
-            
-        </span>
-    </span>
-    
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta">
-            2019/05/06</span>
-    </span>
-    
-    
+  
 </div>
-        
-        
-        <p class="fa fa-exclamation-triangle warning">
-            本文于<strong>
-                807</strong>
-            天之前发表，文中内容可能已经过时。
-        </p>
-        
-    </div>
+
+<div class="mt-1">
+  
     
-    <div class="post-body post-content">
-        <p><a target="_blank" rel="noopener" href="https://www.nuget.org/packages/RabbitMQ.EventBus.AspNetCore"><img src="https://img.shields.io/nuget/v/RabbitMQ.EventBus.AspNetCore.svg?style=popout" alt="NuGet"></a>  <a target="_blank" rel="noopener" href="https://www.nuget.org/packages/RabbitMQ.EventBus.AspNetCore"><img src="https://img.shields.io/nuget/dt/RabbitMQ.EventBus.AspNetCore.svg?style=popout" alt="NuGet"></a></p>
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      437 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">RabbitMQ.EventBus.AspNetCore</h1>
+            
+            <div class="markdown-body">
+              <p><a target="_blank" rel="noopener" href="https://www.nuget.org/packages/RabbitMQ.EventBus.AspNetCore"><img src="https://img.shields.io/nuget/v/RabbitMQ.EventBus.AspNetCore.svg?style=popout" srcset="/img/loading.gif" lazyload alt="NuGet"></a>  <a target="_blank" rel="noopener" href="https://www.nuget.org/packages/RabbitMQ.EventBus.AspNetCore"><img src="https://img.shields.io/nuget/dt/RabbitMQ.EventBus.AspNetCore.svg?style=popout" srcset="/img/loading.gif" lazyload alt="NuGet"></a></p>
 <p><code>RabbitMQ.EventBus.AspNetCore</code>是一个基于官方<code>RabbitMQ.Client</code>的二次封装包，专门针对<code>Net Core</code>项目进行开发，在<code>微服务</code>中进行消息的传递使用起来比较方便。</p>
 <h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ol>
 <li>断线重连机制</li>
 <li>可扩展</li>
 <li>消费失败自动打回</li>
 </ol>
-<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><h4 id="1-注册"><a href="#1-注册" class="headerlink" title="1. 注册"></a>1. 注册</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ConfigureServices</span>(<span class="params">IServiceCollection services</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">string</span> assemblyName = <span class="keyword">typeof</span>(Startup).GetTypeInfo().Assembly.GetName().Name;</span><br><span class="line">    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);</span><br><span class="line">    services.AddRabbitMQEventBus(()=&gt;<span class="string">&quot;amqp://guest:guest@192.168.0.252:5672/&quot;</span>, eventBusOptionAction: eventBusOption =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        eventBusOption.ClientProvidedAssembly(assemblyName);</span><br><span class="line">        eventBusOption.EnableRetryOnFailure(<span class="literal">true</span>, <span class="number">5000</span>, TimeSpan.FromSeconds(<span class="number">30</span>));</span><br><span class="line">        eventBusOption.RetryOnFailure(TimeSpan.FromMilliseconds(<span class="number">100</span>));</span><br><span class="line">        eventBusOption.AddLogging(LogLevel.Warning);</span><br><span class="line">    &#125;);</span><br><span class="line">    services.AddButterfly(butterfly =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        butterfly.CollectorUrl = <span class="string">&quot;http://192.168.0.252:6401&quot;</span>;</span><br><span class="line">        butterfly.Service = <span class="string">&quot;RabbitMQEventBusTest&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="2-订阅消息"><a href="#2-订阅消息" class="headerlink" title="2. 订阅消息"></a>2. 订阅消息</h4><h5 id="2-1-自动订阅消息"><a href="#2-1-自动订阅消息" class="headerlink" title="2.1 自动订阅消息"></a>2.1 自动订阅消息</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configure</span>(<span class="params">IApplicationBuilder app, IHostingEnvironment env, IServiceTracer tracer</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (env.IsDevelopment())</span><br><span class="line">    &#123;</span><br><span class="line">        app.UseDeveloperExceptionPage();</span><br><span class="line">    &#125;</span><br><span class="line">    app.RabbitMQEventBusAutoSubscribe();</span><br><span class="line">    app.UseMvc();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="2-2-手动订阅消息"><a href="#2-2-手动订阅消息" class="headerlink" title="2.2 手动订阅消息"></a>2.2 手动订阅消息</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configure</span>(<span class="params">IApplicationBuilder app, IHostingEnvironment env, IRabbitMQEventBus eventBus</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (env.IsDevelopment())</span><br><span class="line">    &#123;</span><br><span class="line">        app.UseDeveloperExceptionPage();</span><br><span class="line">    &#125;</span><br><span class="line">    eventBus.Serialize&lt;EventMessage, EventMessageHandler&gt;();</span><br><span class="line">    app.UseMvc();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="3-发消息"><a href="#3-发消息" class="headerlink" title="3. 发消息"></a>3. 发消息</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Route(<span class="meta-string">&quot;api/[controller]&quot;</span>)</span>]</span><br><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EventBusController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> IRabbitMQEventBus _eventBus;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">EventBusController</span>(<span class="params">IRabbitMQEventBus eventBus</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        _eventBus = eventBus ?? <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(eventBus));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// GET api/values</span></span><br><span class="line">    [<span class="meta">HttpGet</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> IActionResult <span class="title">Send</span>(<span class="params"></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        _eventBus.Publish(<span class="keyword">new</span></span><br><span class="line">        &#123;</span><br><span class="line">            Body = <span class="string">&quot;发送消息&quot;</span>,</span><br><span class="line">            Time = DateTimeOffset.Now</span><br><span class="line">        &#125;, exchange: <span class="string">&quot;RabbitMQ.EventBus.Simple&quot;</span>, routingKey: <span class="string">&quot;rabbitmq.eventbus.test&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> Ok();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="4-订阅消息"><a href="#4-订阅消息" class="headerlink" title="4. 订阅消息"></a>4. 订阅消息</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">EventBus(Exchange = <span class="meta-string">&quot;RabbitMQ.EventBus.Simple&quot;</span>, RoutingKey = <span class="meta-string">&quot;rabbitmq.eventbus.test&quot;</span>)</span>]</span><br><span class="line">[<span class="meta">EventBus(Exchange = <span class="meta-string">&quot;RabbitMQ.EventBus.Simple&quot;</span>, RoutingKey = <span class="meta-string">&quot;rabbitmq.eventbus.test1&quot;</span>)</span>]</span><br><span class="line">[<span class="meta">EventBus(Exchange = <span class="meta-string">&quot;RabbitMQ.EventBus.Simple&quot;</span>, RoutingKey = <span class="meta-string">&quot;rabbitmq.eventbus.test2&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MessageBody</span> : <span class="title">IEvent</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Body &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> DateTimeOffset Time &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MessageBodyHandle</span> : <span class="title">IEventHandler</span>&lt;<span class="title">MessageBody</span>&gt;, <span class="title">IDisposable</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> ILogger&lt;MessageBodyHandle&gt; _logger;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MessageBodyHandle</span>(<span class="params">ILogger&lt;MessageBodyHandle&gt; logger</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        _logger = logger ?? <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(logger));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="params"></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;释放&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Task <span class="title">Handle</span>(<span class="params">EventHandlerArgs&lt;MessageBody1&gt; args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        _logger.Information(args.Original);</span><br><span class="line">        _logger.Information(args.Redelivered);</span><br><span class="line">        _logger.Information(args.Exchange);</span><br><span class="line">        _logger.Information(args.RoutingKey);</span><br><span class="line"></span><br><span class="line">        _logger.Information(args.Event.Body);</span><br><span class="line">        <span class="keyword">return</span> Task.CompletedTask;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    </div>
-    
-    <div class="post-footer">
-        <div>
-            
-            转载声明：
-            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">狐狸的后山</a>
-            
-            
-        </div>
-        <div>
-            
-        </div>
-    </div>
-</article>
-<div class="article-nav prev-next-wrap clearfix">
-    
-    <a href="/2019/05/22/kubernetes-for-minikube/" class="pre-post btn btn-default" title='在windows上创建kubernetes集群'>
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            在windows上创建kubernetes集群</span>
-    </a>
-    
-    
-    <a href="/2019/05/05/develop-tools-and-faq/" class="next-post btn btn-default" title='开发过程中需要用到的工具以及相关知识目录'>
-        <span class="hidden-lg">下一篇</span>
-        <span class="hidden-xs">
-            开发过程中需要用到的工具以及相关知识目录</span><i class="fa fa-angle-right fa-fw"></i>
-    </a>
-    
-</div>
-
-<div id="comments">
-    
-
-<div id="vcomments" class="valine"></div>
-
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="/assets/valine.min.js"></script>
-
-<script>
-new Valine({
-    av: AV,
-    el: '#vcomments',
-    appId: 'txckaEfD4ck2wSccpplvRI0k-gzGzoHsz',
-    appKey: '2rlxDiSufbMnfiBjtfaiYSl7',
-    placeholder: '说点什么吧',
-    notify: false,
-    verify: true,
-    avatar: 'mm',
-    meta: 'nick,mail'.split(','),
-    pageSize: '10',
-    path: window.location.pathname,
-    lang: 'zh-CN'.toLowerCase()
-})
-</script>
-
-
-</div>
-
-                </main>
-                
-                    <aside id="article-toc" role="navigation" class="col-md-4">
-    <div class="widget">
-        <h3 class="title">
-            文章目录
-        </h3>
-        
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-text">特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="toc-text">使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%B3%A8%E5%86%8C"><span class="toc-text">1. 注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%A2%E9%98%85%E6%B6%88%E6%81%AF"><span class="toc-text">2. 订阅消息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E8%87%AA%E5%8A%A8%E8%AE%A2%E9%98%85%E6%B6%88%E6%81%AF"><span class="toc-text">2.1 自动订阅消息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E6%89%8B%E5%8A%A8%E8%AE%A2%E9%98%85%E6%B6%88%E6%81%AF"><span class="toc-text">2.2 手动订阅消息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%8F%91%E6%B6%88%E6%81%AF"><span class="toc-text">3. 发消息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%AE%A2%E9%98%85%E6%B6%88%E6%81%AF"><span class="toc-text">4. 订阅消息</span></a></li></ol></li></ol></li></ol>
-        
-    </div>
-</aside>
-                
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><h4 id="1-注册"><a href="#1-注册" class="headerlink" title="1. 注册"></a>1. 注册</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ConfigureServices</span>(<span class="hljs-params">IServiceCollection services</span>)</span><br>&#123;<br>    <span class="hljs-built_in">string</span> assemblyName = <span class="hljs-keyword">typeof</span>(Startup).GetTypeInfo().Assembly.GetName().Name;<br>    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);<br>    services.AddRabbitMQEventBus(()=&gt;<span class="hljs-string">&quot;amqp://guest:guest@192.168.0.252:5672/&quot;</span>, eventBusOptionAction: eventBusOption =&gt;<br>    &#123;<br>        eventBusOption.ClientProvidedAssembly(assemblyName);<br>        eventBusOption.EnableRetryOnFailure(<span class="hljs-literal">true</span>, <span class="hljs-number">5000</span>, TimeSpan.FromSeconds(<span class="hljs-number">30</span>));<br>        eventBusOption.RetryOnFailure(TimeSpan.FromMilliseconds(<span class="hljs-number">100</span>));<br>        eventBusOption.AddLogging(LogLevel.Warning);<br>    &#125;);<br>    services.AddButterfly(butterfly =&gt;<br>    &#123;<br>        butterfly.CollectorUrl = <span class="hljs-string">&quot;http://192.168.0.252:6401&quot;</span>;<br>        butterfly.Service = <span class="hljs-string">&quot;RabbitMQEventBusTest&quot;</span>;<br>    &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="2-订阅消息"><a href="#2-订阅消息" class="headerlink" title="2. 订阅消息"></a>2. 订阅消息</h4><h5 id="2-1-自动订阅消息"><a href="#2-1-自动订阅消息" class="headerlink" title="2.1 自动订阅消息"></a>2.1 自动订阅消息</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Configure</span>(<span class="hljs-params">IApplicationBuilder app, IHostingEnvironment env, IServiceTracer tracer</span>)</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (env.IsDevelopment())<br>    &#123;<br>        app.UseDeveloperExceptionPage();<br>    &#125;<br>    app.RabbitMQEventBusAutoSubscribe();<br>    app.UseMvc();<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="2-2-手动订阅消息"><a href="#2-2-手动订阅消息" class="headerlink" title="2.2 手动订阅消息"></a>2.2 手动订阅消息</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Configure</span>(<span class="hljs-params">IApplicationBuilder app, IHostingEnvironment env, IRabbitMQEventBus eventBus</span>)</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (env.IsDevelopment())<br>    &#123;<br>        app.UseDeveloperExceptionPage();<br>    &#125;<br>    eventBus.Serialize&lt;EventMessage, EventMessageHandler&gt;();<br>    app.UseMvc();<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="3-发消息"><a href="#3-发消息" class="headerlink" title="3. 发消息"></a>3. 发消息</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs csharp">[<span class="hljs-meta">Route(<span class="hljs-meta-string">&quot;api/[controller]&quot;</span>)</span>]<br>[<span class="hljs-meta">ApiController</span>]<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">EventBusController</span> : <span class="hljs-title">ControllerBase</span><br>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> IRabbitMQEventBus _eventBus;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EventBusController</span>(<span class="hljs-params">IRabbitMQEventBus eventBus</span>)</span><br>    &#123;<br>        _eventBus = eventBus ?? <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ArgumentNullException(<span class="hljs-keyword">nameof</span>(eventBus));<br>    &#125;<br><br>    <span class="hljs-comment">// GET api/values</span><br>    [<span class="hljs-meta">HttpGet</span>]<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> IActionResult <span class="hljs-title">Send</span>(<span class="hljs-params"></span>)</span><br>    &#123;<br>        _eventBus.Publish(<span class="hljs-keyword">new</span><br>        &#123;<br>            Body = <span class="hljs-string">&quot;发送消息&quot;</span>,<br>            Time = DateTimeOffset.Now<br>        &#125;, exchange: <span class="hljs-string">&quot;RabbitMQ.EventBus.Simple&quot;</span>, routingKey: <span class="hljs-string">&quot;rabbitmq.eventbus.test&quot;</span>);<br>        <span class="hljs-keyword">return</span> Ok();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="4-订阅消息"><a href="#4-订阅消息" class="headerlink" title="4. 订阅消息"></a>4. 订阅消息</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs csharp">[<span class="hljs-meta">EventBus(Exchange = <span class="hljs-meta-string">&quot;RabbitMQ.EventBus.Simple&quot;</span>, RoutingKey = <span class="hljs-meta-string">&quot;rabbitmq.eventbus.test&quot;</span>)</span>]<br>[<span class="hljs-meta">EventBus(Exchange = <span class="hljs-meta-string">&quot;RabbitMQ.EventBus.Simple&quot;</span>, RoutingKey = <span class="hljs-meta-string">&quot;rabbitmq.eventbus.test1&quot;</span>)</span>]<br>[<span class="hljs-meta">EventBus(Exchange = <span class="hljs-meta-string">&quot;RabbitMQ.EventBus.Simple&quot;</span>, RoutingKey = <span class="hljs-meta-string">&quot;rabbitmq.eventbus.test2&quot;</span>)</span>]<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MessageBody</span> : <span class="hljs-title">IEvent</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> Body &#123; <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; &#125;<br>    <span class="hljs-keyword">public</span> DateTimeOffset Time &#123; <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MessageBodyHandle</span> : <span class="hljs-title">IEventHandler</span>&lt;<span class="hljs-title">MessageBody</span>&gt;, <span class="hljs-title">IDisposable</span><br>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> ILogger&lt;MessageBodyHandle&gt; _logger;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MessageBodyHandle</span>(<span class="hljs-params">ILogger&lt;MessageBodyHandle&gt; logger</span>)</span><br>    &#123;<br>        _logger = logger ?? <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ArgumentNullException(<span class="hljs-keyword">nameof</span>(logger));<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Dispose</span>(<span class="hljs-params"></span>)</span><br>    &#123;<br>        Console.WriteLine(<span class="hljs-string">&quot;释放&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Task <span class="hljs-title">Handle</span>(<span class="hljs-params">EventHandlerArgs&lt;MessageBody1&gt; args</span>)</span><br>    &#123;<br>        _logger.Information(args.Original);<br>        _logger.Information(args.Redelivered);<br>        _logger.Information(args.Exchange);<br>        _logger.Information(args.RoutingKey);<br><br>        _logger.Information(args.Event.Body);<br>        <span class="hljs-keyword">return</span> Task.CompletedTask;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
             </div>
-        </div>
-    </section>
-    <footer class="main-footer">
-    <div class="container">
-        <div class="row">
-        </div>
-    </div>
-</footer>
-<a id="back-to-top" class="icon-btn hide">
-    <i class="fa fa-chevron-up"></i>
-</a>
-    <div class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="busuanzi">
-    
-</div>
-            </div>
-            <div class="col-sm-12">
-                <span>Copyright &copy;
-                    2021
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
-                </span> |
-                <span>
-                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
-                </span> |
-                <span>
-                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
-                </span>
+                      <a class="hover-with-bg" href="/categories/%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/">知识储备</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/RabbitMQ/">RabbitMQ</a>
+                    
+                      <a class="hover-with-bg" href="/tags/net-core/">.net core</a>
+                    
+                      <a class="hover-with-bg" href="/tags/EventBus/">EventBus</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Asp-Net-Core/">Asp.Net Core</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/05/22/kubernetes-for-minikube/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">在windows上创建kubernetes集群</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/05/05/develop-tools-and-faq/">
+                        <span class="hidden-mobile">开发过程中需要用到的工具以及相关知识目录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
             </div>
+
+            
+          </article>
         </div>
+      </div>
     </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
 
 
-<script src="/assets/tagcanvas.min.js?rev=2.9.js"></script>
+    
 
-<script>
-var tagOption = {
-    textColour: '#444', // 字体颜色
-    outlineMethod: 'block', // 选中模式
-    outlineColour: '#FFDAB9', // 选中模式的颜色
-    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
-    textHeight: 13,
-    outlineRadius: 3,
-    freezeActive: true || '', // 选中的标签是否继续滚动
-    frontSelect: true || '', // 不选标签云后部的标签
-    initial: [0.1, -0.1],
-    depth: 0.5,
-    decel: 0.95,
-    maxSpeed: 0.03,
-    reverse: true || '', // 是否反向触发
-    fadeIn: 500, // 进入动画时间
-    wheelZoom: false || '' // 是否启用鼠标滚轮
-}
-TagCanvas.Start('tag-cloud-3d', '', tagOption);
-</script>
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
-<script src="/js/app.js?rev=@@hash.js"></script>
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
 
 </body>
 </html>
