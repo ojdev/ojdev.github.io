@@ -3,7 +3,7 @@ title: 哈尔滨
 date: 2021-07-29 15:52:59
 ---
 
-{% gi 140 %}
+{% gi %}
 
 ![![](harbin/IMG_20200614_115201.jpg)](harbin/thumbnails/thumb_IMG_20200614_115201.jpg)         
 ![![](harbin/IMG_20200623_165025.jpg)](harbin/thumbnails/thumb_IMG_20200623_165025.jpg)
