@@ -272,7 +272,7 @@
 
 <p>这里使用了pgsql。</p>
 <p>部署完成后要进行配置，用admin进行登录，点击右上角头像，选择我的账户-&gt;安全</p>
-<p>在令牌下输入一个令牌名选择”生成”,复制生成的令牌。<br><img src="/images/2019/06/12/1.png?200x200" srcset="/img/loading.gif" lazyload></p>
+<p>在令牌下输入一个令牌名选择”生成”,复制生成的令牌。<br><img src="/images/2019/06/12/1.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="AzureDevops"><a href="#AzureDevops" class="headerlink" title="AzureDevops"></a>AzureDevops</h2><p>在AzureDevops中安装<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarqube">SonarQube</a></p>
 <p>进入azure devops中，进入项目，进入到设置中的服务连接，新建服务连接中找到SonarQube服务连接，输入任意的名称，Server Url输入http://[部署的地址]:2303,Token输入刚刚生成的令牌，保存即可。<br><img src="/images/2019/06/12/2.png" srcset="/img/loading.gif" lazyload><br>以.net core生成PR审阅的时候顺便做代码质量检测举例，其他的项目有些麻烦。</p>
 <ol>
