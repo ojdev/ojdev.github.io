@@ -6,7 +6,6 @@ date: 2021-07-29 15:52:59
 |-----|-----|-----|
 |![![](harbin/IMG_20200614_115201.jpg)](harbin/thumbnails/thumb_IMG_20200614_115201.jpg)|![![](harbin/IMG_20200623_165025.jpg)](harbin/thumbnails/thumb_IMG_20200623_165025.jpg)|![![](harbin/IMG_20200623_165030.jpg)](harbin/thumbnails/thumb_IMG_20200623_165030.jpg)|
 
-{% gi %}
 
 ![![](harbin/IMG_20200614_115201.jpg)](harbin/thumbnails/thumb_IMG_20200614_115201.jpg)         
 ![![](harbin/IMG_20200623_165025.jpg)](harbin/thumbnails/thumb_IMG_20200623_165025.jpg)
@@ -147,5 +146,4 @@ date: 2021-07-29 15:52:59
 ![![](harbin/IMG_20201119_162031.jpg)](harbin/thumbnails/thumb_IMG_20201119_162031.jpg) 
 ![![](harbin/IMG_20201119_162242.jpg)](harbin/thumbnails/thumb_IMG_20201119_162242.jpg) 
 ![![](harbin/IMG_20210204_122006.jpg)](harbin/thumbnails/thumb_IMG_20210204_122006.jpg) 
-![![](harbin/IMG_20210204_122012.jpg)](harbin/thumbnails/thumb_IMG_20210204_122012.jpg) 
-{% endgi %}
+![![](harbin/IMG_20210204_122012.jpg)](harbin/thumbnails/thumb_IMG_20210204_122012.jpg)
