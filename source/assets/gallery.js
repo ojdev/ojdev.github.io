@@ -8,8 +8,7 @@
                     el.innerHTML += d.type + '&nbsp;&nbsp;' + d.name + '<br />';
                     if (d.contents !== undefined && d.contents.length > 0) {
                         d.contents.forEach(sd => {
-                            el.innerHTML += sd.type + '&nbsp;&nbsp;' + sd.name + '<br />';
-                            '<img style="padding: 0; border: none; width: 128px; height:128px;" src="' +  sd.name + '">'
+                            el.innerHTML += '<img style="padding: 0; border: none; width: 128px; height:128px;" src="' +  sd.name + '">'
                         });
                     }
                 });
