@@ -1,5 +1,5 @@
 hexo.extend.injector.register('body_end', 
 `
-  <script src="/js/custom.js"></script>
+  <script src="/assets/gallery.js"></script>
 `,
 'gallery')
