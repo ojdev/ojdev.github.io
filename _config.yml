@@ -116,3 +116,8 @@ image_minifier:
   progressive: false
   silent: false
   exclude: gif svg
+
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
