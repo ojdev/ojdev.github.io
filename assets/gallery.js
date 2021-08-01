@@ -8,7 +8,7 @@
                     el.innerHTML += node.type + '&nbsp;&nbsp;' + node.name + '<br />';
                     if (node.contents !== undefined && node.contents.length > 0) {
                         node.contents.forEach(sd => {
-                            el.innerHTML += '<img style="padding: 0; border: none; width: 128px; height:128px;" src="' + d.name + '/thumbnails/thumb_' + sd.name + '">'
+                            el.innerHTML += '<img style="padding: 0; border: none; width: 128px; height:128px;" src="' + node.name + '/thumbnails/thumb_' + sd.name + '">'
                         });
                         //renderGallery(el, node);
                     }
