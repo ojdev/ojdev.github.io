@@ -1,5 +1,5 @@
 (function () {
-    el = document.querySelector("article.page-content");
+    el = document.querySelector("div.markdown-body");
     if (el !== undefined) {
         fetch('data.json')
             .then(response => response.json())
@@ -11,11 +11,12 @@
                             //el.innerHTML += '<img style="padding: 0; border: none; width: 128px; height:128px;" src="' + node.name + '/thumbnails/thumb_' + sd.name + '">'
                             imgUrl = node.name + '/' + sd.name;
                             imgThumbUrl = node.name + '/thumbnails/thumb_' + sd.name;
-                            el.innerHTML += `
-                                <a class="fancybox fancybox.image" href="`+ imgUrl + `" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="default" rel="default">
-                                    <img src="`+ imgThumbUrl + `">
-                                </a>
-                            `;
+                            el.innerHTML += '<img src="' + imgUrl + '"></img>'
+                            // el.innerHTML += `
+                            //     <a class="fancybox fancybox.image" href="`+ imgUrl + `" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="default" rel="default">
+                            //         <img src="`+ imgThumbUrl + `">
+                            //     </a>
+                            // `;
                         });
                         //renderGallery(el, node);
                     }
