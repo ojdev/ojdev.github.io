@@ -1,6 +1,9 @@
 (function () {
     el = document.querySelector("article.page-content");
     if (el !== undefined) {
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => console.log(data));
         el.innerText = '测试注入';
     }
     //   posts[0].innerHTML = '<div class="note note-warning" style="font-size:0.9rem"><p>' +
