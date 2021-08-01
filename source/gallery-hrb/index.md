@@ -3,7 +3,7 @@ title: 哈尔滨
 date: 2021-07-29 15:52:59
 ---
 
-{% gi %}
+{% gi 3-3 %}
 
 [![哈尔滨的四季](harbin/thumbnails/thumb_IMG_20200614_115201.jpg "家")](harbin/IMG_20200614_115201.jpg)         
 [![哈尔滨的四季](harbin/thumbnails/thumb_IMG_20200623_165025.jpg "家")](harbin/IMG_20200623_165025.jpg)
@@ -23,6 +23,11 @@ date: 2021-07-29 15:52:59
 [![哈尔滨的四季](harbin/thumbnails/thumb_IMG_20200630_175019.jpg "家")](harbin/IMG_20200630_175019.jpg)
 [![哈尔滨的四季](harbin/thumbnails/thumb_IMG_20200704_160719.jpg "家")](harbin/IMG_20200704_160719.jpg)
 [![哈尔滨的四季](harbin/thumbnails/thumb_IMG_20200704_172334.jpg "家")](harbin/IMG_20200704_172334.jpg)
+
+{% endgi %}
+
+{% gi %}
+
 [![哈尔滨的四季](harbin/thumbnails/thumb_IMG_20200705_141609.jpg "家")](harbin/IMG_20200705_141609.jpg)
 [![哈尔滨的四季](harbin/thumbnails/thumb_IMG_20200705_141627.jpg "家")](harbin/IMG_20200705_141627.jpg)
 [![哈尔滨的四季](harbin/thumbnails/thumb_IMG_20200723_163124.jpg "家")](harbin/IMG_20200723_163124.jpg)
