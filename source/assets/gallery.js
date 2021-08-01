@@ -3,7 +3,16 @@
     if (el !== undefined) {
         fetch('data.json')
             .then(response => response.json())
-            .then(data => console.log(data));
+            .then(data => {
+                data.forEach(d => {
+                    el.innerText += d.type+'&nbsp;&nbsp;'+d.name+'<br />';
+                    if(d.contents!==undefined&&d.contents.length>0){
+                        d.contents.forEach(sd=>{
+                            el.innerText += d.type+'&nbsp;&nbsp;'+d.name+'<br />';
+                        });
+                    }
+                });
+            });
         el.innerText = '测试注入';
     }
     //   posts[0].innerHTML = '<div class="note note-warning" style="font-size:0.9rem"><p>' +
