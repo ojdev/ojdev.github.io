@@ -1,4 +1,4 @@
-hexo.extend.injector.register('body_end', 
+hexo.extend.injector.register('body_begin', 
 `
   <script src="/assets/gallery.js"></script>
 `,
