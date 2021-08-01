@@ -4,17 +4,16 @@
         fetch('data.json')
             .then(response => response.json())
             .then(data => {
-                data.forEach(d => {
-                    el.innerHTML += d.type + '&nbsp;&nbsp;' + d.name + '<br />';
-                    if (d.contents !== undefined && d.contents.length > 0) {
-                        d.contents.forEach(sd => {
+                function renderGallery(node) {
+                    el.innerHTML += node.type + '&nbsp;&nbsp;' + node.name + '<br />';
+                    if (node.contents !== undefined && node.contents.length > 0) {
+                        node.contents.forEach(sd => {
                             el.innerHTML += '<img style="padding: 0; border: none; width: 128px; height:128px;" src="' + d.name + '/thumbnails/thumb_' + sd.name + '">'
                         });
+                        //renderGallery(el, node);
                     }
-                });
+                }
+                data.forEach(d => renderGallery(d));
             });
     }
-    //   posts[0].innerHTML = '<div class="note note-warning" style="font-size:0.9rem"><p>' +
-    //     '<div class="h6">文章时效性提示</div><p>这是一篇发布于 ' + days + ' 天前的文章，部分信息可能已发生改变，请注意甄别。' +
-    //     '</p></p></div>' + posts[0].innerHTML;
 })();
