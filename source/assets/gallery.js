@@ -14,7 +14,7 @@
                             imgUrl = node.name + '/' + sd.name;
                             imgThumbUrl = node.name + '/thumbnails/thumb_' + sd.name;
                             galleryContent.innerHTML += `
-                                <a  href="`+ imgUrl + `">
+                                <a  href="`+ imgUrl + `" data-fancybox="images">
                                     <img src="`+ imgThumbUrl + `">
                                 </a>
                             `;
