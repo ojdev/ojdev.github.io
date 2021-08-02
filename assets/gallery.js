@@ -6,7 +6,6 @@
             .then(response => response.json())
             .then(data => {
                 galleryContent = document.createElement("div");
-                galleryContent.id = "gallery-content";
                 galleryContent.class = "justified-gallery";
                 function renderGallery(node) {
                     if (node.contents !== undefined && node.contents.length > 0) {
@@ -25,7 +24,7 @@
                     renderGallery(d);
                 });
                 el.append(galleryContent);
-                $('#gallery-content').justifiedGallery({ rowHeight: 150, margins: 5 });
+                galleryContent.justifiedGallery({ rowHeight: 150, margins: 5 });
             });
     }
 })();
