@@ -21,7 +21,7 @@
                 }
                 data.forEach(d => renderGallery(d));
                 el.innerHTML += '</div>';
-                $('#gallery-content').justifiedGallery({ rowHeight: 70, lastRow: 'nojustify', margins: 3 });
+                document.querySelector('#gallery-content').justifiedGallery({ rowHeight: 70, lastRow: 'nojustify', margins: 3 });
             });
     }
 })();
