@@ -5,7 +5,6 @@
         fetch('data.json')
             .then(response => response.json())
             .then(data => {
-                el.innerHTML = '<div id="gallery-content" class="justified-gallery">'
                 function renderGallery(node) {
                     if (node.contents !== undefined && node.contents.length > 0) {
                         node.contents.forEach(sd => {
@@ -19,8 +18,11 @@
                         });
                     }
                 }
-                data.forEach(d => renderGallery(d));
-                el.innerHTML += '</div>';
+                data.forEach(d => {
+                    el.innerHTML += '<div id="gallery-content" class="justified-gallery">'
+                    renderGallery(d);
+                    el.innerHTML += '</div>';
+                });
                 document.querySelector('#gallery-content').justifiedGallery({ rowHeight: 70, lastRow: 'nojustify', margins: 3 });
             });
     }
