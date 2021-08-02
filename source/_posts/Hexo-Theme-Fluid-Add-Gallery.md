@@ -62,6 +62,7 @@ layout: gallery
             .then(response => response.json())
             .then(data => {
                 galleryContent = document.createElement("div");
+                galleryContent.id = "gallery-content";
                 galleryContent.class = "justified-gallery";
                 function renderGallery(node) {
                     if (node.contents !== undefined && node.contents.length > 0) {
@@ -76,12 +77,13 @@ layout: gallery
                         });
                     }
                 }
-                data.forEach(d => renderGallery(d));
+                data.forEach(d => renderGallery(d) );
                 el.append(galleryContent);
-                galleryContent.justifiedGallery({ rowHeight: 150, margins: 5 });
+                $('#gallery-content').justifiedGallery({ rowHeight: 150, margins: 5 });
             });
     }
 })();
+
 
 ```
 
