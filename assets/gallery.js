@@ -21,12 +21,11 @@
                         });
                     }
                 }
-
                 data.forEach(d => {
                     renderGallery(d);
                 });
                 el.append(galleryContent);
-                $('#gallery-content').justifiedGallery({ rowHeight: 70, lastRow: 'nojustify', margins: 3 });
+                $('#gallery-content').justifiedGallery({ rowHeight: 150, margins: 5 });
             });
     }
 })();
