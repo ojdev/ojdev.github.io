@@ -13,7 +13,7 @@ timezone: 'Asia/Harbin'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: https://ojdev.github.io
+url: https://oujun.work
 root: /
 permalink: :year/:month/:day/:title.html
 permalink_defaults:
