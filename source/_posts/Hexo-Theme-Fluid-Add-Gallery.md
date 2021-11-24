@@ -122,7 +122,7 @@ done
 我想到了`tree`正好新版本的有`tree -J` 可以直接生成`data.json`,在`gallery`文件夹下执行
 
 ```shell
-tree -J > data.json
+tree 图片文件夹/ -I '*.sh' -J > data.json
 ```
 
 我们得到了data.json文件，还需要稍微编辑一下，其实也可以直接用的，作为那种分类相册，我这里就直接编辑成单个相册的，所以去掉外层的没用信息，去掉非图片的内容，想下面这样的结构：
