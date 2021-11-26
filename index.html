@@ -129,11 +129,31 @@
           
           
           
-            <li class="nav-item">
-              <a class="nav-link" href="/gallery-hrb/">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-images"></i>
                 相册
               </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery-hrb/">
+                    <i class="iconfont gallery"></i>
+                    哈尔滨
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery-sh/">
+                    <i class="iconfont gallery"></i>
+                    上海
+                  </a>
+                
+              </div>
             </li>
           
         
@@ -184,6 +204,55 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/16/DevelopmentDaily.html" target="_self">
+          开发日常
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/10/16/DevelopmentDaily.html" target="_self">
+          
+          
+            
+          
+          业务方，产品，开发的互相认知总是不一样的。
+0月15日 周一开发：有需求可以提前说，这样能提前准备开发这边的排期。产品：好的0月19日 周五产品：这个需求业务方已经提了两个月了，今天来催了，问怎么还没上线。开发：开需求会了吗？产品：今天下午开，这周要上线的。……需求评审中……预计工时40个小时，开发只有一个人可供排期
+0月22日 周一产品X：业务方需求提了两个月了，怎么还没上线，你们开发为什么没有
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-16 09:28" pubdate>
+              2021-10-16
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91/">开发</a>
+            
+              <a href="/tags/%E6%97%A5%E5%B8%B8/">日常</a>
+            
+              <a href="/tags/%E4%BA%A7%E5%93%81/">产品</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -482,8 +551,13 @@
           
             
           
-          工欲善其事，必先利其器云首先，当一个团队开始的时候需要有装备，硬件装备是桌椅板凳电脑网络，开发过程中需要测试环境，代码管理工具等。此时，一个局域网内的私有云就够了。但是考虑到外出和在家办公的场景，那么Aliyun、Google云等这类的线上云是一个更好的选择，而且，再做CI/CD的时候会更方便一些。然而弊端就是需要额外的支出。
-代码管理工具，一般是GitHub，GitLab，Azure DevOp
+          组织架构
+DevOps
+K8S
+Docker
+Git
+工欲善其事，必先利其器云首先，当一个团队开始的时候需要有装备，硬件装备是桌椅板凳电脑网络，开发过程中需要测试环境，代码管理工具等。此时，一个局域网内的私有云就够了。但是考虑到外出和在家办公的场景，那么Aliyun、Google云等这类的线上云是一个更好的选择，而且，再做CI/CD的时候会更方便一些。然而弊端就是需要额外的支出。
+代码管理工具，一
         </a>
       </p>
 
@@ -680,69 +754,6 @@ docker-compose.yaml1234567891011121314151617version: &quot;3&quot;services:  Cod
               <a href="/tags/k8s/">k8s</a>
             
               <a href="/tags/debian9/">debian9</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/05/22/kubernetes-for-minikube.html" target="_self">
-          在windows上创建kubernetes集群
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/05/22/kubernetes-for-minikube.html" target="_self">
-          
-          
-            
-          
-          环境
-Windows 10 Pro 1903Minikube代理环境（127.0.0.1:1080）
-
-准备工作下载minikubeRelease下载最新的版本，保存到F:\k8s文件夹中，并重命名为mikikube
-在小娜哪里搜索env，选择编辑系统环境变量,在path节点中增加F:\k8s；增加新的环境变量MINIKUBE_HOME值为F:\\k8s(注意是双斜杠)
-打开命令提示行，推荐ter
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-05-22 16:59" pubdate>
-              2019-05-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/DevOps/">DevOps</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/k8s/">k8s</a>
-            
-              <a href="/tags/hyperV/">hyperV</a>
-            
-              <a href="/tags/minikube/">minikube</a>
-            
-              <a href="/tags/kubernetes/">kubernetes</a>
-            
-              <a href="/tags/windows10/">windows10</a>
             
           </div>
         

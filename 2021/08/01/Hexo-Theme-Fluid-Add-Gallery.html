@@ -145,11 +145,31 @@
           
           
           
-            <li class="nav-item">
-              <a class="nav-link" href="/gallery-hrb/">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-images"></i>
                 相册
               </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery-hrb/">
+                    <i class="iconfont gallery"></i>
+                    哈尔滨
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/gallery-sh/">
+                    <i class="iconfont gallery"></i>
+                    上海
+                  </a>
+                
+              </div>
             </li>
           
         
@@ -263,7 +283,7 @@
 
 <p>每当harbin中新增图片的时候就执行一下它，就自动在<code>thumbnails</code>下创建了<code>thumb_</code>开头的缩略图了。</p>
 <h2 id="生成data-json"><a href="#生成data-json" class="headerlink" title="生成data.json"></a>生成data.json</h2><p>我想到了<code>tree</code>正好新版本的有<code>tree -J</code> 可以直接生成<code>data.json</code>,在<code>gallery</code>文件夹下执行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tree -J &gt; data.json<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tree 图片文件夹/ -I &#x27;*.sh&#x27; -J &gt; data.json<br></code></pre></td></tr></table></figure>
 
 <p>我们得到了data.json文件，还需要稍微编辑一下，其实也可以直接用的，作为那种分类相册，我这里就直接编辑成单个相册的，所以去掉外层的没用信息，去掉非图片的内容，想下面这样的结构：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json">[<br>  &#123;<br>    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;directory&quot;</span>,<br>    <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;harbin&quot;</span>,<br>    <span class="hljs-attr">&quot;contents&quot;</span>: [<br>      ...<br>    ]<br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
@@ -300,6 +320,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/10/16/DevelopmentDaily.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">开发日常</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
