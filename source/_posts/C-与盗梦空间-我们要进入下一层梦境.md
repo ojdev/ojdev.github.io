@@ -12,16 +12,16 @@ tags:
 
 题目是：完成如下代码，使其输出“Hello World!”
 
-~~~ java
+``` java
 if(补全这里) printf("Hello");
 else printf(" World!");
-~~~
+```
 
 不过是C++的。
 
 问到是用C#如何实现：
 
-~~~csharp
+``` csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +40,7 @@ namespace HelloWorld
         }
     }
 }
-~~~
+```
 
 下面的回答千奇百怪。
 
@@ -48,7 +48,7 @@ namespace HelloWorld
 
 但是！下面的回帖中出现了两个让我眼前一亮的内容，一个是27楼的：
 
-~~~ csharp
+``` csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,11 +67,11 @@ namespace HelloWorld
         }
     }
 }
-~~~
+```
 
 另一个就是42楼的：
 
-~~~csharp
+```csharp
 static void Main(string[] args)
 {
     if ((args == null||Main(null) is object))
@@ -79,7 +79,7 @@ static void Main(string[] args)
     else
         Console.Write(" World!");
 }
-~~~
+```
 
 27楼的就是代码注入，42楼的很有意思。
 
