@@ -87,6 +87,8 @@ tags:
 
 [微软开源的Web测试和自动化](https://playwright.dev/dotnet/docs/intro)
 
+[k6.io 压力测试](https://github.com/grafana/k6)
+
 # Visual Code 插件
 
 ## Markmap
@@ -94,6 +96,8 @@ tags:
 [Markmap](https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode)
 
 [markmap-vscode](https://github.com/gera2ld/markmap-vscode) 是一个将Markdown转换为思维导图的工具。
+
+[Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid) 在MD文件中支持[Mermaid](https://mermaid-js.github.io/mermaid/#/)，Mermaid是一个精美的图表工具
 
 # 设计工具
 
@@ -106,6 +110,13 @@ tags:
 [https://github.com/mingrammer/diagrams](https://github.com/mingrammer/diagrams)
 
 在Python代码中绘制云系统架构图。用来对新的系统架构设计进行原型设计或者描述现有的系统体系结构。
+
+## Mermaid
+[Mermaid](https://mermaid-js.github.io/mermaid/#/)
+
+Mermaid 允许您使用文本和代码创建图表和可视化效果。
+
+它是一个基于Javascript的图表工具，可以呈现Markdown启发的文本定义，以动态创建和修改图表。
 
 # 机器学习
 
