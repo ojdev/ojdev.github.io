@@ -13,10 +13,10 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
   <meta name="author" content="欧俊">
   <meta name="keywords" content="">
-  <meta name="description" content="前言Fluid主题中与图集功能，但是直接用来做相册效果并不大好，不知道是不是我的用法的问题，使用了图集的相册页面fancybox会失效，但是hexo也没有相册插件，很多都是直接的相册主题，当然，主打轻盈的hexo用来做相册，也许违背了它的初衷。随后在Fluid的文档中发现了hexo 5的新功能，注入器 注入器Hexo 注入器是 Hexo 5 版本加入的一项新功能，注入器可以将静态代码片段注入生成的">
+  
+    <meta name="description" content="前言Fluid主题中与图集功能，但是直接用来做相册效果并不大好，不知道是不是我的用法的问题，使用了图集的相册页面fancybox会失效，但是hexo也没有相册插件，很多都是直接的相册主题，当然，主打轻盈的hexo用来做相册，也许违背了它的初衷。随后在Fluid的文档中发现了hexo 5的新功能，注入器 注入器Hexo 注入器是 Hexo 5 版本加入的一项新功能，注入器可以将静态代码片段注入生成的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="给Hexo Theme Fluid 主题增加相册功能">
 <meta property="og:url" content="https://oujun.work/2021/08/01/Hexo-Theme-Fluid-Add-Gallery.html">
@@ -24,12 +24,13 @@
 <meta property="og:description" content="前言Fluid主题中与图集功能，但是直接用来做相册效果并不大好，不知道是不是我的用法的问题，使用了图集的相册页面fancybox会失效，但是hexo也没有相册插件，很多都是直接的相册主题，当然，主打轻盈的hexo用来做相册，也许违背了它的初衷。随后在Fluid的文档中发现了hexo 5的新功能，注入器 注入器Hexo 注入器是 Hexo 5 版本加入的一项新功能，注入器可以将静态代码片段注入生成的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-01T11:17:26.000Z">
-<meta property="article:modified_time" content="2022-01-18T14:51:10.411Z">
+<meta property="article:modified_time" content="2022-01-21T06:32:03.352Z">
 <meta property="article:author" content="欧俊">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="主题">
 <meta property="article:tag" content="相册">
 <meta name="twitter:card" content="summary_large_image">
+  
   
   <title>给Hexo Theme Fluid 主题增加相册功能 - 后山</title>
 
@@ -68,11 +69,11 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"oujun.work","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"55c14b477cdc5099dd1f8c96c6547bdf","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"oujun.work","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"55c14b477cdc5099dd1f8c96c6547bdf","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
 </head>
 
 
@@ -240,7 +241,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11 分钟
+      29 分钟
     </span>
   
 
@@ -276,7 +277,7 @@
 <h1 id="注入器"><a href="#注入器" class="headerlink" title="注入器"></a>注入器</h1><p>Hexo 注入器是 Hexo 5 版本加入的一项新功能，注入器可以将静态代码片段注入生成的HTML 的 <head> 和 <body> 中。这部分不做过多的介绍了。</p>
 <p>有了这个功能，便可以在不破坏原主题的情况下增加功能，而且以后即使更换主题也不受影响。</p>
 <h2 id="scripts"><a href="#scripts" class="headerlink" title="scripts"></a>scripts</h2><p>在根目录下创建一个<code>scripts</code>文件夹，该文件夹与<code>source</code>和<code>themes</code>处于同一层级，然后在<code>scripts</code>目录下创建一个<code>injector.js</code>文件，其中编辑其内容为:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript">hexo.extend.injector.register(<span class="hljs-string">&#x27;head_end&#x27;</span>, <br><span class="hljs-string">`</span><br><span class="hljs-string">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css&quot;&gt;</span><br><span class="hljs-string">&lt;link rel=&quot;stylesheet&quot; href=&quot;/assets/justifiedGallery.min.css&quot; /&gt;</span><br><span class="hljs-string">`</span>,<br><span class="hljs-string">&#x27;gallery&#x27;</span>)<br>hexo.extend.injector.register(<span class="hljs-string">&#x27;body_end&#x27;</span>, <br><span class="hljs-string">`</span><br><span class="hljs-string">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="hljs-string">  &lt;script src=&quot;/assets/jquery.justifiedGallery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="hljs-string">  &lt;script src=&quot;/assets/gallery.js&quot;&gt;&lt;/script&gt;</span><br><span class="hljs-string">`</span>,<br><span class="hljs-string">&#x27;gallery&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><pre><code class="hljs javascript">hexo.extend.injector.register(<span class="hljs-string">&#x27;head_end&#x27;</span>, <br><span class="hljs-string">`</span><br><span class="hljs-string">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css&quot;&gt;</span><br><span class="hljs-string">&lt;link rel=&quot;stylesheet&quot; href=&quot;/assets/justifiedGallery.min.css&quot; /&gt;</span><br><span class="hljs-string">`</span>,<br><span class="hljs-string">&#x27;gallery&#x27;</span>)<br>hexo.extend.injector.register(<span class="hljs-string">&#x27;body_end&#x27;</span>, <br><span class="hljs-string">`</span><br><span class="hljs-string">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="hljs-string">  &lt;script src=&quot;/assets/jquery.justifiedGallery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="hljs-string">  &lt;script src=&quot;/assets/gallery.js&quot;&gt;&lt;/script&gt;</span><br><span class="hljs-string">`</span>,<br><span class="hljs-string">&#x27;gallery&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
 <p>这里的<code>/assets/</code>路径是我在<code>source</code>文件夹下创建的，里面用来放一些css文件和js文件。</p>
 <p>最后一个参数<code>&#39;gallery&#39;</code>表示的是用在那个布局下，可以任意写，这个布局体现在<code>index.md</code>中的<code>layout:</code>,例如:</p>
@@ -509,7 +510,7 @@
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+        typing(title);
       
     })(window, document);
   </script>

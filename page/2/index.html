@@ -13,16 +13,17 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
   <meta name="author" content="欧俊">
   <meta name="keywords" content="">
-  <meta property="og:type" content="website">
+  
+    <meta property="og:type" content="website">
 <meta property="og:title" content="后山">
 <meta property="og:url" content="https://oujun.work/page/2/index.html">
 <meta property="og:site_name" content="后山">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="欧俊">
 <meta name="twitter:card" content="summary_large_image">
+  
   
   <title>后山</title>
 
@@ -46,11 +47,11 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"oujun.work","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"55c14b477cdc5099dd1f8c96c6547bdf","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"oujun.work","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"55c14b477cdc5099dd1f8c96c6547bdf","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
 </head>
 
 
@@ -227,15 +228,7 @@
       <p class="index-excerpt">
         <a href="/2019/06/03/kubernetes-for-debian.html" target="_self">
           
-          
-            
-          
-          依然是模拟环境，使用windows10的hyperV。
-在虚拟机中安装debian9，只要核心的那种，开openssh的。
-更新debian
-12apt updateapt upgrade -y
-
-开启root的ssh登录修改/etc/ssh/sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启/etc/init.d/ssh restar
+          依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian 12apt updateapt upgrade -y  开启root的ssh登录修改&#x2F;etc&#x2F;ssh&#x2F;sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启&#x2F;etc&#x2F;init.d&#x2F;ssh restar
         </a>
       </p>
 
@@ -284,15 +277,7 @@
       <p class="index-excerpt">
         <a href="/2019/05/22/kubernetes-for-minikube.html" target="_self">
           
-          
-            
-          
-          环境
-Windows 10 Pro 1903Minikube代理环境（127.0.0.1:1080）
-
-准备工作下载minikubeRelease下载最新的版本，保存到F:\k8s文件夹中，并重命名为mikikube
-在小娜哪里搜索env，选择编辑系统环境变量,在path节点中增加F:\k8s；增加新的环境变量MINIKUBE_HOME值为F:\\k8s(注意是双斜杠)
-打开命令提示行，推荐ter
+          环境 Windows 10 Pro 1903Minikube代理环境（127.0.0.1:1080）  准备工作下载minikubeRelease下载最新的版本，保存到F:\k8s文件夹中，并重命名为mikikube 在小娜哪里搜索env，选择编辑系统环境变量,在path节点中增加F:\k8s；增加新的环境变量MINIKUBE_HOME值为F:\\k8s(注意是双斜杠) 打开命令提示行，推荐ter
         </a>
       </p>
 
@@ -347,17 +332,7 @@ Windows 10 Pro 1903Minikube代理环境（127.0.0.1:1080）
       <p class="index-excerpt">
         <a href="/2019/05/06/rabbitmq-eventbus-netcore.html" target="_self">
           
-          
-            
-          
-            
-RabbitMQ.EventBus.AspNetCore是一个基于官方RabbitMQ.Client的二次封装包，专门针对Net Core项目进行开发，在微服务中进行消息的传递使用起来比较方便。
-特性
-断线重连机制
-可扩展
-消费失败自动打回
-
-使用说明1. 注册1234567891011121314151617public void ConfigureServices(IServiceCol
+          RabbitMQ.EventBus.AspNetCore是一个基于官方RabbitMQ.Client的二次封装包，专门针对Net Core项目进行开发，在微服务中进行消息的传递使用起来比较方便。 特性 断线重连机制 可扩展 消费失败自动打回  使用说明1. 注册1234567891011121314151617public void ConfigureServices(IServiceCol
         </a>
       </p>
 
@@ -410,48 +385,7 @@ RabbitMQ.EventBus.AspNetCore是一个基于官方RabbitMQ.Client的二次封装�
       <p class="index-excerpt">
         <a href="/2019/05/05/develop-tools-and-faq.html" target="_self">
           
-          
-            
-          
-          
-框架类
-
-ElasticSearch SQL
-
-
-
-
-文档
-
-
-
-
-
-Elastic Charts 
-
-
-
-
-演示
-
-
-
-
-知识类
-
-适用于Dot Net Core的WebApi接口限流框架
-
-
-
-使用 HTTP 缓存：Etag, Last-Modified 与 Cache-Control
-
-
-
-分布式缓存在 ASP.NET Core 中
-
-
-
-启用 ASP.NET Core 中的跨域请求 (C
+          框架类  ElasticSearch SQL     文档      Elastic Charts      演示     知识类  适用于Dot Net Core的WebApi接口限流框架    使用 HTTP 缓存：Etag, Last-Modified 与 Cache-Control    分布式缓存在 ASP.NET Core 中    启用 ASP.NET Core 中的跨域请求 (C
         </a>
       </p>
 
@@ -491,16 +425,7 @@ Elastic Charts
       <p class="index-excerpt">
         <a href="/2012/08/14/jinyong.html" target="_self">
           
-          
-            
-          
-          公元前476年 西施送入吴国；范蠡遇到阿青，阿青传越国剑士剑法。
-公元前473年 越国灭掉吴国；范蠡与西施隐居，阿青离去。
-526年 南北朝时期，印度高僧菩提达摩来到中国，在嵩山少林寺面壁九年，创立中国禅宗。 隋朝末年，李靖将《易筋经》中的武学奥秘，尽数领悟。
-694年 明教传至中土。 唐朝末叶，嘉兴剑术名家改良越女剑法。
-877年 丐帮建立。
-936年—946年 少林寺法慧禅师练成了一指禅。
-1
+          公元前476年 西施送入吴国；范蠡遇到阿青，阿青传越国剑士剑法。 公元前473年 越国灭掉吴国；范蠡与西施隐居，阿青离去。 526年 南北朝时期，印度高僧菩提达摩来到中国，在嵩山少林寺面壁九年，创立中国禅宗。 隋朝末年，李靖将《易筋经》中的武学奥秘，尽数领悟。 694年 明教传至中土。 唐朝末叶，嘉兴剑术名家改良越女剑法。 877年 丐帮建立。 936年—946年 少林寺法慧禅师练成了一指禅。 1
         </a>
       </p>
 
@@ -540,11 +465,7 @@ Elastic Charts
       <p class="index-excerpt">
         <a href="/2012/08/13/recollect-1.html" target="_self">
           
-          
-            
-          
-          不知不觉的就来了。上个月热的要命，办公室不大，6个电脑开5个，空调等于没有用，那制冷的能力根本抵消不了这5个电脑的散热能力，还有四个活人身上散发的热量。天天的先开窗然后关窗开空调，可是依然热的要死的。天天中午最热的那阵子都要去外面的仓买（注：小卖店、小超市、买东西的地方）去买冰棒来凉快一下。
-这几年每年都会注意一下天气的变化，总结出来就是，冬天越来越短了，夏天越来越热了，冬天越来越暖了，夏天雨越来
+          不知不觉的就来了。上个月热的要命，办公室不大，6个电脑开5个，空调等于没有用，那制冷的能力根本抵消不了这5个电脑的散热能力，还有四个活人身上散发的热量。天天的先开窗然后关窗开空调，可是依然热的要死的。天天中午最热的那阵子都要去外面的仓买（注：小卖店、小超市、买东西的地方）去买冰棒来凉快一下。 这几年每年都会注意一下天气的变化，总结出来就是，冬天越来越短了，夏天越来越热了，冬天越来越暖了，夏天雨越来
         </a>
       </p>
 
@@ -584,21 +505,7 @@ Elastic Charts
       <p class="index-excerpt">
         <a href="/2012/08/03/yeshiwen-h2o.html" target="_self">
           
-          
-            
-          
-          叶诗文的教练终于承认了！曾给叶诗文服用一种叫做一氧化二氢的液体！
-一氧化二氢是有危害的，是危险品，下面来列举一下一氧化二氢都有什么样的危害：
-
-又叫做“氢氧基酸”，是酸雨的主要成分；
-对泥土流失有促进作用；
-对温室效应有推动作用；
-它是腐蚀的成因；
-过多的摄取可能导致各种不适；
-皮肤与其固体形式长时间的接触会导致严重的组织损伤；
-被吸入肺部可以致命；
-处在气体状态时，它能引起严重灼伤；
-在不可救治
+          叶诗文的教练终于承认了！曾给叶诗文服用一种叫做一氧化二氢的液体！ 一氧化二氢是有危害的，是危险品，下面来列举一下一氧化二氢都有什么样的危害：  又叫做“氢氧基酸”，是酸雨的主要成分； 对泥土流失有促进作用； 对温室效应有推动作用； 它是腐蚀的成因； 过多的摄取可能导致各种不适； 皮肤与其固体形式长时间的接触会导致严重的组织损伤； 被吸入肺部可以致命； 处在气体状态时，它能引起严重灼伤； 在不可救治
         </a>
       </p>
 
@@ -638,15 +545,7 @@ Elastic Charts
       <p class="index-excerpt">
         <a href="/2012/06/30/july-1-2012-1-seconds.html" target="_self">
           
-          
-            
-          
-          
-7月1日将出现7：59：60闰秒调整对市民没影响
-
-据新华社电 （记者帅安宁、周润健）为了让“原子时”与“世界时”协调一致，北京时间7月1日全球将增加一秒，届时，将出现7：59：60的特殊现象。天文专家表示，感兴趣的中国公众可试着在当日7时59分59秒时将自己的电子表或是手机上的时间“拨”慢一秒。
-“世界时”“原子时”要协调
-我国天文教育专家、天津市天文学会理事赵之珩介绍说，为了确定时间，世界上
+          7月1日将出现7：59：60闰秒调整对市民没影响  据新华社电 （记者帅安宁、周润健）为了让“原子时”与“世界时”协调一致，北京时间7月1日全球将增加一秒，届时，将出现7：59：60的特殊现象。天文专家表示，感兴趣的中国公众可试着在当日7时59分59秒时将自己的电子表或是手机上的时间“拨”慢一秒。 “世界时”“原子时”要协调 我国天文教育专家、天津市天文学会理事赵之珩介绍说，为了确定时间，世界上
         </a>
       </p>
 
@@ -686,14 +585,7 @@ Elastic Charts
       <p class="index-excerpt">
         <a href="/2012/06/22/dream-1.html" target="_self">
           
-          
-            
-          
-          夢的日语发音是：有妹。我记得是这样的。在这里写这个日语发音是很喜欢《xxxxHolic》中那个女人慵懒的躺着时候嘴角上扬的说出“夢”的发音。
-这阵子身体发虚，虚到不行了，我也知道怎么弄的，可是却不能说出来。
-昨晚本打算好好睡一下，可是半夜的时候又被弄起来。
-所以上午起的很晚，11点多才起来。上午的时候做了一个梦，梦里面回到了以前梦中出现的一个场景。当时在梦里我是清醒的，但是我却没醒过来。
-那个地方
+          夢的日语发音是：有妹。我记得是这样的。在这里写这个日语发音是很喜欢《xxxxHolic》中那个女人慵懒的躺着时候嘴角上扬的说出“夢”的发音。 这阵子身体发虚，虚到不行了，我也知道怎么弄的，可是却不能说出来。 昨晚本打算好好睡一下，可是半夜的时候又被弄起来。 所以上午起的很晚，11点多才起来。上午的时候做了一个梦，梦里面回到了以前梦中出现的一个场景。当时在梦里我是清醒的，但是我却没醒过来。 那个地方
         </a>
       </p>
 
@@ -733,14 +625,7 @@ Elastic Charts
       <p class="index-excerpt">
         <a href="/2012/05/28/%E6%B2%A1%E4%BA%8B%E7%A9%B7%E6%8A%98%E8%85%BE%EF%BC%9Afastboot%E5%88%B7%E6%9C%BA.html" target="_self">
           
-          
-            
-          
-          我有个HTC G7，没事我就穷折腾，各种刷机，刷过各种第三方，刷过RUU，刷过自己用厨房定制的各种ROM，现在一直在使用CM9。
-所以想用fastboot来刷机，看看怎么刷。首先启动到bootloader界面，然后输入如下命令
-123fastboot +w      清除userdata和cachefastboot erase systemfastboot erase boot
-
-然后使用reco
+          我有个HTC G7，没事我就穷折腾，各种刷机，刷过各种第三方，刷过RUU，刷过自己用厨房定制的各种ROM，现在一直在使用CM9。 所以想用fastboot来刷机，看看怎么刷。首先启动到bootloader界面，然后输入如下命令 123fastboot +w      清除userdata和cachefastboot erase systemfastboot erase boot  然后使用reco
         </a>
       </p>
 
@@ -875,7 +760,7 @@ Elastic Charts
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+        typing(title);
       
     })(window, document);
   </script>

@@ -13,10 +13,10 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
   <meta name="author" content="欧俊">
   <meta name="keywords" content="">
-  <meta name="description" content="在asp.net中后台执行js时，比如使用Response.Write弹出一个alert 1Response.Write(&quot;&lt;script&gt;alert(&amp;#x27;确定。&amp;#x27;)&lt;&#x2F;script&gt;&quot;);  这样做有时候会造成页面的css样式表错位或者失效 为了避免这样的情况，使用下面的方法 1this.ClientScript.RegisterSt">
+  
+    <meta name="description" content="在asp.net中后台执行js时，比如使用Response.Write弹出一个alert 1Response.Write(&quot;&lt;script&gt;alert(&amp;#x27;确定。&amp;#x27;)&lt;&#x2F;script&gt;&quot;);  这样做有时候会造成页面的css样式表错位或者失效 为了避免这样的情况，使用下面的方法 1this.ClientScript.RegisterSt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="asp.net后台执行js造成样式失效">
 <meta property="og:url" content="https://oujun.work/2011/01/12/asp-net%E5%90%8E%E5%8F%B0%E6%89%A7%E8%A1%8Cjs%E9%80%A0%E6%88%90%E6%A0%B7%E5%BC%8F%E5%A4%B1%E6%95%88.html">
@@ -24,10 +24,11 @@
 <meta property="og:description" content="在asp.net中后台执行js时，比如使用Response.Write弹出一个alert 1Response.Write(&quot;&lt;script&gt;alert(&amp;#x27;确定。&amp;#x27;)&lt;&#x2F;script&gt;&quot;);  这样做有时候会造成页面的css样式表错位或者失效 为了避免这样的情况，使用下面的方法 1this.ClientScript.RegisterSt">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2011-01-12T09:49:00.000Z">
-<meta property="article:modified_time" content="2022-01-18T14:51:10.411Z">
+<meta property="article:modified_time" content="2022-01-21T06:32:03.352Z">
 <meta property="article:author" content="欧俊">
 <meta property="article:tag" content="asp.net">
 <meta name="twitter:card" content="summary_large_image">
+  
   
   <title>asp.net后台执行js造成样式失效 - 后山</title>
 
@@ -66,11 +67,11 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"oujun.work","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"55c14b477cdc5099dd1f8c96c6547bdf","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"oujun.work","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"55c14b477cdc5099dd1f8c96c6547bdf","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
 </head>
 
 
@@ -238,7 +239,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      3 分钟
     </span>
   
 
@@ -271,7 +272,7 @@
             
             <div class="markdown-body">
               <p>在asp.net中后台执行js时，比如使用Response.Write弹出一个alert</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">Response.Write(<span class="hljs-string">&quot;&lt;script&gt;alert(&#x27;确定。&#x27;)&lt;/script&gt;&quot;</span>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs csharp">Response.Write(<span class="hljs-string">&quot;&lt;script&gt;alert(&#x27;确定。&#x27;)&lt;/script&gt;&quot;</span>);<br></code></pre></td></tr></table></figure>
 
 <p>这样做有时候会造成页面的css样式表错位或者失效</p>
 <p>为了避免这样的情况，使用下面的方法</p>
@@ -479,7 +480,7 @@
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+        typing(title);
       
     })(window, document);
   </script>

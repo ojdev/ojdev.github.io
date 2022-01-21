@@ -13,10 +13,10 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
   <meta name="author" content="欧俊">
   <meta name="keywords" content="">
-  <meta name="description" content="不知道标题恰不恰当，只不过我的需求是这个样子的： 例如一个方法A，返回值是bool类型的，但是方法执行过程中，需要另一个方法B执行结束，但是还不能直接调用B方法，可是B是等待外部信号才执行。所以需要延迟一下，等B方法执行了才返回结果。 找了些资料，找到了AutoResetEvent，可以达到我的目的，但是否是最适合的，就不知道了，由于我的项目中所谓的B方法是RS232端口读数据的，然后解析出来的返">
+  
+    <meta name="description" content="不知道标题恰不恰当，只不过我的需求是这个样子的： 例如一个方法A，返回值是bool类型的，但是方法执行过程中，需要另一个方法B执行结束，但是还不能直接调用B方法，可是B是等待外部信号才执行。所以需要延迟一下，等B方法执行了才返回结果。 找了些资料，找到了AutoResetEvent，可以达到我的目的，但是否是最适合的，就不知道了，由于我的项目中所谓的B方法是RS232端口读数据的，然后解析出来的返">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#方法延迟返回结果">
 <meta property="og:url" content="https://oujun.work/2012/04/13/C-%E6%96%B9%E6%B3%95%E5%BB%B6%E8%BF%9F%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C.html">
@@ -24,10 +24,11 @@
 <meta property="og:description" content="不知道标题恰不恰当，只不过我的需求是这个样子的： 例如一个方法A，返回值是bool类型的，但是方法执行过程中，需要另一个方法B执行结束，但是还不能直接调用B方法，可是B是等待外部信号才执行。所以需要延迟一下，等B方法执行了才返回结果。 找了些资料，找到了AutoResetEvent，可以达到我的目的，但是否是最适合的，就不知道了，由于我的项目中所谓的B方法是RS232端口读数据的，然后解析出来的返">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2012-04-13T07:52:12.000Z">
-<meta property="article:modified_time" content="2022-01-18T14:51:10.411Z">
+<meta property="article:modified_time" content="2022-01-21T06:32:03.352Z">
 <meta property="article:author" content="欧俊">
 <meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary_large_image">
+  
   
   <title>C#方法延迟返回结果 - 后山</title>
 
@@ -66,11 +67,11 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"oujun.work","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"55c14b477cdc5099dd1f8c96c6547bdf","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"oujun.work","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"55c14b477cdc5099dd1f8c96c6547bdf","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
 </head>
 
 
@@ -238,7 +239,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2 分钟
+      7 分钟
     </span>
   
 
@@ -273,7 +274,7 @@
               <p>不知道标题恰不恰当，只不过我的需求是这个样子的：</p>
 <p>例如一个方法A，返回值是bool类型的，但是方法执行过程中，需要另一个方法B执行结束，但是还不能直接调用B方法，可是B是等待外部信号才执行。所以需要延迟一下，等B方法执行了才返回结果。</p>
 <p>找了些资料，找到了AutoResetEvent，可以达到我的目的，但是否是最适合的，就不知道了，由于我的项目中所谓的B方法是RS232端口读数据的，然后解析出来的返回值。并不是时时的，可能有点时间差，于是我采用了下面的方式。</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;summary&gt;</span></span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> 标志位，用来等待返回</span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;/summary&gt;</span></span><br>AutoResetEvent are = <span class="hljs-keyword">new</span> AutoResetEvent(<span class="hljs-literal">false</span>);<br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;summary&gt;</span></span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> 返回结果，可以是任意需要的类型</span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;/summary&gt;</span></span><br><span class="hljs-built_in">object</span> result;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">object</span> <span class="hljs-title">A</span>(<span class="hljs-params"></span>)</span><br>&#123;<br>    <span class="hljs-comment">/****Begin**/</span><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        * 数据的拼装</span><br><span class="hljs-comment">        * 数据的发送</span><br><span class="hljs-comment">        **/</span><br>    Send(<span class="hljs-string">&quot;要传输的数据&quot;</span>);<br>    <span class="hljs-comment">/****End****/</span><br><br>    <span class="hljs-comment">//等待信号，-1代表无限等待，可以更改为其他值，单位是毫秒，等待时间过后为超时</span><br>    are.WaitOne(<span class="hljs-number">-1</span>, <span class="hljs-literal">false</span>);<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">B</span>(<span class="hljs-params"></span>)</span><br>&#123;<br>    <span class="hljs-built_in">byte</span>[] bytes = Read();<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        * 此处解析bytes中的数据</span><br><span class="hljs-comment">        * 根据解析出来的数据</span><br><span class="hljs-comment">        * 得到想要的结果</span><br><span class="hljs-comment">        * */</span><br><br>    <span class="hljs-comment">//得到需要的结果</span><br>    result = Encoding.UTF8.GetString(bytes);<br>    <span class="hljs-comment">//给信号</span><br>    are.Set();<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></div></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;summary&gt;</span></span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> 标志位，用来等待返回</span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;/summary&gt;</span></span><br>AutoResetEvent are = <span class="hljs-keyword">new</span> AutoResetEvent(<span class="hljs-literal">false</span>);<br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;summary&gt;</span></span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> 返回结果，可以是任意需要的类型</span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;/summary&gt;</span></span><br><span class="hljs-built_in">object</span> result;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">object</span> <span class="hljs-title">A</span>(<span class="hljs-params"></span>)</span><br>&#123;<br>    <span class="hljs-comment">/****Begin**/</span><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        * 数据的拼装</span><br><span class="hljs-comment">        * 数据的发送</span><br><span class="hljs-comment">        **/</span><br>    Send(<span class="hljs-string">&quot;要传输的数据&quot;</span>);<br>    <span class="hljs-comment">/****End****/</span><br><br>    <span class="hljs-comment">//等待信号，-1代表无限等待，可以更改为其他值，单位是毫秒，等待时间过后为超时</span><br>    are.WaitOne(<span class="hljs-number">-1</span>, <span class="hljs-literal">false</span>);<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">B</span>(<span class="hljs-params"></span>)</span><br>&#123;<br>    <span class="hljs-built_in">byte</span>[] bytes = Read();<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        * 此处解析bytes中的数据</span><br><span class="hljs-comment">        * 根据解析出来的数据</span><br><span class="hljs-comment">        * 得到想要的结果</span><br><span class="hljs-comment">        * */</span><br><br>    <span class="hljs-comment">//得到需要的结果</span><br>    result = Encoding.UTF8.GetString(bytes);<br>    <span class="hljs-comment">//给信号</span><br>    are.Set();<br>&#125;<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -484,7 +485,7 @@
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+        typing(title);
       
     })(window, document);
   </script>
