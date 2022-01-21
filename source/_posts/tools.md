@@ -1,6 +1,7 @@
 ---
 title: 我常用的工具
 date: 2021-12-30 15:35:02
+mermaid: true
 tags:
 ---
 
@@ -118,6 +119,22 @@ Mermaid 允许您使用文本和代码创建图表和可视化效果。
 
 它是一个基于Javascript的图表工具，可以呈现Markdown启发的文本定义，以动态创建和修改图表。
 
+```mermaid
+classDiagram
+    Class01 <|-- AveryLongClass : Cool
+    Class03 *-- Class04
+    Class05 o-- Class06
+    Class07 .. Class08
+    Class09 --> C2 : Where am i?
+    Class09 --* C3
+    Class09 --|> Class07
+    Class07 : equals()
+    Class07 : Object[] elementData
+    Class01 : size()
+    Class01 : int chimp
+    Class01 : int gorilla
+    Class08 <--> C2: Cool label
+```
 # 机器学习
 
 [Microsoft ML.NET 教程](https://docs.microsoft.com/zh-cn/dotnet/machine-learning/tutorials/)
