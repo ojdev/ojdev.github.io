@@ -1,5 +1,5 @@
 ---
-title: github-to-nuget
+title: Github中的代码自动部署发布到nuget的流程
 date: 2022-02-07 13:26:41
 mermaid: true
 tags:
@@ -9,6 +9,7 @@ tags:
     - .net
 ---
 
+时序图
 
 ```mermaid
 sequenceDiagram
@@ -27,10 +28,10 @@ sequenceDiagram
   Github Actions ->> Github Actions : dotnet pack  -p:PackageVersion=${{steps.tag.outputs.tag}} -o
   Github Actions ->> Github Actions : dotnet nuget push --api-key ${{secrets.NUGET_API_KEY}}
 
-
 ```
 
 `.github\workflows`中加入`dotnet.yml`
+
 ```yml
 name: .NET
 
