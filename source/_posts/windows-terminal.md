@@ -27,140 +27,107 @@ wsl终端体验也很好，cmd中使用ssh登录经常会出现乱行的问题�
 因为目前没有配置界面，所有的设置都是一个json文档，所以这里稍微的解释一下配置方法。
 
 ```json
+
 {
-    "globals" : 
-    {
-        "alwaysShowTabs" : true,
-        "defaultProfile" : "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}", //profiles节点中的guid，表示默认打开那个命令行
-        "initialCols" : 120,
-        "initialRows" : 30,
-        "keybindings" : 
-        [
-            //这部分是快捷键
-        ],
-        "requestedTheme" : "system",
-        "showTabsInTitlebar" : true,
-        "showTerminalTitleInTitlebar" : true
-    },
-    "profiles" : 
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": 
     [
         {
-            "acrylicOpacity" : 0.5, //毛玻璃效果的透明度，推荐0.75
-            "background" : "#012456",
-            "closeOnExit" : true,
-            "colorScheme" : "Campbell", //对应schemes节点中的配色方案，默认这个算是好看的，其他的还是难看了点
-            "commandline" : "powershell.exe",
-            "cursorColor" : "#FFFFFF",
-            "cursorShape" : "bar",
-            "fontFace" : "Consolas",
-            "fontSize" : 10,
-            "guid" : "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}", //id用来做标识
-            "historySize" : 9001,
-            "icon" : "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png", //图标这中间的id不需要与guid对应。
-            "name" : "Windows PowerShell", //显示的名字
-            "padding" : "0, 0, 0, 0",
-            "snapOnInput" : true,
-            "startingDirectory" : "%USERPROFILE%",  //默认打开命令行窗口定位到的路径
-            "useAcrylic" : true  //是否打开毛玻璃效果
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+c"
         },
         {
-            "acrylicOpacity" : 0.75,
-            "closeOnExit" : true,
-            "colorScheme" : "Campbell",
-            "commandline" : "cmd.exe",
-            "cursorColor" : "#FFFFFF",
-            "cursorShape" : "bar",
-            "fontFace" : "Consolas",
-            "fontSize" : 10,
-            "guid" : "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-            "historySize" : 9001,
-            "icon" : "ms-appx:///ProfileIcons/{0caa0dad-35be-5f56-a8ff-afceeeaa6101}.png",
-            "name" : "cmd",
-            "padding" : "0, 0, 0, 0",
-            "snapOnInput" : true,
-            "startingDirectory" : "%USERPROFILE%",
-            "useAcrylic" : true
+            "command": "find",
+            "keys": "ctrl+shift+f"
         },
         {
-            "acrylicOpacity" : 0.75,
-            "closeOnExit" : true,
-            "colorScheme" : "One Half Dark",
-            "commandline" : "wsl.exe -d Debian",
-            "cursorColor" : "#FFFFFF",
-            "cursorShape" : "bar",
-            "fontFace" : "Consolas",
-            "fontSize" : 10,
-            "guid" : "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
-            "historySize" : 9001,
-            "icon" : "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
-            "name" : "Debian",
-            "padding" : "0, 0, 0, 0",
-            "snapOnInput" : true,
-            "startingDirectory" : "%USERPROFILE%",
-            "useAcrylic" : true
+            "command": "paste",
+            "keys": "ctrl+v"
         },
         {
-            "acrylicOpacity" : 0.75,
-            "closeOnExit" : true,
-            "colorScheme" : "Campbell",
-            "commandline" : "wsl.exe -d Debian -u root",  //用root用户的形式启动wsl
-            "cursorColor" : "#FFFFFF",
-            "cursorShape" : "bar",
-            "fontFace" : "Consolas",
-            "fontSize" : 10,
-            "guid" : "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e41}",
-            "historySize" : 9001,
-            "icon" : "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
-            "name" : "Debian(root)",
-            "padding" : "0, 0, 0, 0",
-            "snapOnInput" : true,
-            "startingDirectory" : "%USERPROFILE%",
-            "useAcrylic" : true
-        },
-        {
-            //这个条目是我自己添加的
-            "acrylicOpacity" : 0.75,
-            "closeOnExit" : true,
-            "colorScheme" : "Campbell",
-            "commandline" : "wsl.exe -d Debian -u root -e ssh root@***.***.***.***",  //启动一个ssh，如果在wsl中已经做了免密登录，则会直接进入ssh中
-            "cursorColor" : "#FFFFFF",
-            "cursorShape" : "bar",
-            "fontFace" : "Consolas",
-            "fontSize" : 10,
-            "guid" : "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e42}",//id修改一下，随便改一下就可以，只要满足guid规则。
-            "historySize" : 9001,
-            "icon" : "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
-            "name" : "ssh(root)",
-            "padding" : "0, 0, 0, 0",
-            "snapOnInput" : true,
-            "startingDirectory" : "%USERPROFILE%",
-            "useAcrylic" : true
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+d"
         }
     ],
-    "schemes" : 
-    [
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "launchMode": "default",
+    "profiles": 
+    {
+        "defaults": 
         {
-            "background" : "#0C0C0C",
-            "black" : "#0C0C0C",
-            "blue" : "#0037DA",
-            "brightBlack" : "#767676",
-            "brightBlue" : "#3B78FF",
-            "brightCyan" : "#61D6D6",
-            "brightGreen" : "#16C60C",
-            "brightPurple" : "#B4009E",
-            "brightRed" : "#E74856",
-            "brightWhite" : "#F2F2F2",
-            "brightYellow" : "#F9F1A5",
-            "cyan" : "#3A96DD",
-            "foreground" : "#F2F2F2",
-            "green" : "#13A10E",
-            "name" : "Campbell",
-            "purple" : "#881798",
-            "red" : "#C50F1F",
-            "white" : "#CCCCCC",
-            "yellow" : "#C19C00"
+            "acrylicOpacity": 0.43209999999999998,
+            "font": 
+            {
+                "face": "Cascadia Code PL"
+            },
+            "suppressApplicationTitle": true,
+            "useAcrylic": true
         },
-        //其他配色方案
-    ]
+        "list": 
+        [
+            {
+                "commandline": "powershell.exe",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": true,
+                "name": "Windows PowerShell"
+            },
+            {
+                "commandline": "cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": true,
+                "name": "\u547d\u4ee4\u63d0\u793a\u7b26"
+            },
+            {
+                "font": 
+                {
+                    "face": "MesloLGM NF"
+                },
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": true,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "commandline": "ssh root@192.168.0.250",
+                "name": "pve-local",
+                "font": 
+                {
+                    "face": "Cascadia Code PL"
+                },
+            },
+            {
+                "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
+                "hidden": false,
+                "name": "Debian",
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "colorScheme": "Vintage",
+                "commandline": "wsl.exe -d Debian -u root",
+                "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
+                "name": "Debian (root)",
+                "startingDirectory": "%USERPROFILE%"
+            }
+        ]
+    },
+    "theme": "dark",
+    "useAcrylicInTabRow": true
 }
 ```
