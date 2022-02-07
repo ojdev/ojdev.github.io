@@ -24,7 +24,7 @@
 <meta property="og:description" content="依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian 12apt updateapt upgrade -y  开启root的ssh登录修改&#x2F;etc&#x2F;ssh&#x2F;sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启&#x2F;etc&#x2F;init.d&#x2F;ssh restar">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-06-03T09:31:00.000Z">
-<meta property="article:modified_time" content="2022-02-07T06:04:05.954Z">
+<meta property="article:modified_time" content="2022-02-07T07:14:30.039Z">
 <meta property="article:author" content="欧俊">
 <meta property="article:tag" content="k8s">
 <meta property="article:tag" content="debian9">
@@ -285,10 +285,10 @@
 
 <h2 id="开启root的ssh登录"><a href="#开启root的ssh登录" class="headerlink" title="开启root的ssh登录"></a>开启root的ssh登录</h2><p>修改<code>/etc/ssh/sshd_config</code>中的 <code>PermitRootLogin</code>为<code>PermitRootLogin yes</code>，保存<br>然后重启<code>/etc/init.d/ssh restart</code><br>非必须</p>
 <h2 id="关闭交换内存"><a href="#关闭交换内存" class="headerlink" title="关闭交换内存"></a>关闭交换内存</h2><blockquote>
-<p>kubernetes 的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与 CPU 和内存限制固定在一起。 所以如果调度程序发送一个 pod 到一台机器，它不应该使用交换，设计者不想交换，因为它会减慢速度，所以关闭 swap 主要是为了性能考虑。当然为了一些节省资源的场景，比如运行容器数量较多，可添加 kubelet 参数 –fail-swap-on=false 来解决。</p>
+<p>kubernetes 的想法是将实例紧密包装到尽可能接近100％。 所有的部署应该与 CPU 和内存限制固定在一起。 所以如果调度程序发送一个 pod 到一台机器，它不应该使用交换，设计者不想交换，因为它会减慢速度，所以关闭 swap 主要是为了性能考虑。当然为了一些节省资源的场景，比如运行容器数量较多，可添加 kubelet 参数 –fail-swap-on&#x3D;false 来解决。</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">swapoff -a <br>nano /etc/fstab<br></code></pre></td></tr></table></figure>
-<p>找到swap was on /dev/sda3 during installation<br>把下面的/dev开头的注释掉</p>
+<p>找到swap was on &#x2F;dev&#x2F;sda3 during installation<br>把下面的&#x2F;dev开头的注释掉</p>
 <p>或者在init的时候使用参数<code>kubeadm init --ignore-preflight-errors Swap</code></p>
 <h2 id="然后安装k8s的aliyun源"><a href="#然后安装k8s的aliyun源" class="headerlink" title="然后安装k8s的aliyun源"></a>然后安装<a target="_blank" rel="noopener" href="https://opsx.alibaba.com/mirror?lang=zh-CN">k8s的aliyun源</a></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">apt-get update &amp;&amp; apt-get install -y apt-transport-https<br>curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - <br>cat &lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list<br>deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main<br>EOF  <br>apt-get update<br>apt-get install -y kubelet kubeadm kubectl<br>apt-mark hold kubelet kubeadm kubectl<br></code></pre></td></tr></table></figure>
 

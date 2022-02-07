@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://oujun.work/images/2019/06/12/5.png">
 <meta property="og:image" content="https://oujun.work/images/2019/06/12/6.png">
 <meta property="article:published_time" content="2019-06-12T02:48:13.000Z">
-<meta property="article:modified_time" content="2022-02-07T06:04:05.954Z">
+<meta property="article:modified_time" content="2022-02-07T07:14:30.039Z">
 <meta property="article:author" content="欧俊">
 <meta property="article:tag" content="DevOps">
 <meta property="article:tag" content="Azure DevOps">
@@ -299,7 +299,7 @@
 <p>部署完成后要进行配置，用admin进行登录，点击右上角头像，选择我的账户-&gt;安全</p>
 <p>在令牌下输入一个令牌名选择”生成”,复制生成的令牌。<br><img src="/images/2019/06/12/1.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="AzureDevops"><a href="#AzureDevops" class="headerlink" title="AzureDevops"></a>AzureDevops</h2><p>在AzureDevops中安装<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarqube">SonarQube</a></p>
-<p>进入azure devops中，进入项目，进入到设置中的服务连接，新建服务连接中找到SonarQube服务连接，输入任意的名称，Server Url输入http://[部署的地址]:2303,Token输入刚刚生成的令牌，保存即可。<br><img src="/images/2019/06/12/2.png" srcset="/img/loading.gif" lazyload><br>以.net core生成PR审阅的时候顺便做代码质量检测举例，其他的项目有些麻烦。</p>
+<p>进入azure devops中，进入项目，进入到设置中的服务连接，新建服务连接中找到SonarQube服务连接，输入任意的名称，Server Url输入http:&#x2F;&#x2F;[部署的地址]:2303,Token输入刚刚生成的令牌，保存即可。<br><img src="/images/2019/06/12/2.png" srcset="/img/loading.gif" lazyload><br>以.net core生成PR审阅的时候顺便做代码质量检测举例，其他的项目有些麻烦。</p>
 <ol>
 <li>在生成定义中添加任务<code>Prepare Analysis Configuration</code></li>
 <li>在<code>SonarQube Server Endpoint</code>中选择我们刚刚创建的服务连接</li>

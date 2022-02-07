@@ -24,7 +24,7 @@
 <meta property="og:description" content="这真是一个特殊的日子啊。 1927年12月31日。 StackOverflow是一个程序员向的问答网站，广大程序员们在上面交流经验、提问答疑，三天前，一位名叫Freewind的用户发布了一个问题1927年12月31日，一秒谜案  我在用Java编写一段比较两个字符串时间间隔的程序，然而当我比较“1927-12-31 23:54:07”和“1927-12-31 23:54:08”这两个时间时，输出结">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2011-08-12T10:10:14.000Z">
-<meta property="article:modified_time" content="2022-02-07T06:04:05.954Z">
+<meta property="article:modified_time" content="2022-02-07T07:14:30.039Z">
 <meta property="article:author" content="欧俊">
 <meta property="article:tag" content="谜案">
 <meta name="twitter:card" content="summary_large_image">
@@ -230,7 +230,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.2k 字
+      2.3k 字
     </span>
   
 
@@ -284,14 +284,14 @@
 <p>我在用Java编写一段比较两个字符串时间间隔的程序，然而当我比较“1927-12-31 23:54:07”和“1927-12-31 23:54:08”这两个时间时，输出结果却不是1……而是353。</p>
 <p>当我把两个时间分别往后调整1秒，变成“1927-12-31 23:54:08”和“1927-12-31 23:54:09”，结果就又是1了！—-可为什么那两个时间的结果，却是353呢？</p>
 </blockquote>
-<p>面对这一诡异的问题，网友们很快追问，“你的区域（Locale）设置是什么？这可能是个区域问题/和当地夏令时之类的东西有关。”</p>
+<p>面对这一诡异的问题，网友们很快追问，“你的区域（Locale）设置是什么？这可能是个区域问题&#x2F;和当地夏令时之类的东西有关。”</p>
 <p>楼主很快附上了Java版本号和区域设置：</p>
 <blockquote>
-<p>sun.util.calendar.ZoneInfo[id=”Asia/Shanghai”,</p>
-<p>offset=28800000,dstSavings=0,</p>
-<p>useDaylight=false,</p>
-<p>transitions=19,</p>
-<p>lastRule=null]</p>
+<p>sun.util.calendar.ZoneInfo[id&#x3D;”Asia&#x2F;Shanghai”,</p>
+<p>offset&#x3D;28800000,dstSavings&#x3D;0,</p>
+<p>useDaylight&#x3D;false,</p>
+<p>transitions&#x3D;19,</p>
+<p>lastRule&#x3D;null]</p>
 </blockquote>
 <p>（……没错，Freewind君，似乎是一位魔都死程。不知道这里有没有人认识这位老兄？）</p>
 <p>在这份追加信息出现仅仅两分钟之后，StackOverflow站上的问答狂人Jon Skeet给出了如下答复</p>
@@ -299,7 +299,7 @@
 <p>这是因为上海的时区在12月31日发生了变化。</p>
 <p>请看<a target="_blank" rel="noopener" href="https://www.timeanddate.com/time/change/china/shanghai?year=1927">这里</a></p>
 <p>为什么时间往回拨了5分52秒？</p>
-<p>（1928年1月1日0点0分，当地时间由地方平时（Local Mean Time） 改为北京时间/中国标准时间）</p>
+<p>（1928年1月1日0点0分，当地时间由地方平时（Local Mean Time） 改为北京时间&#x2F;中国标准时间）</p>
 <p>简单地说，在1927年末的最后那一个午夜，时钟被往回拨了5分52秒。所以“1927-12-31 23:54:08”这一秒，事实上，发生了两次，而看起来在计算当地时间时，Java将其视为了后面那一个时间点，于是就产生了这一差别。</p>
 <p>这正是时区世界的奇妙与不可思议啊。</p>
 </blockquote>
