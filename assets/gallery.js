@@ -1,31 +1,5 @@
-(function () {
-    el = $("article.page-content");
-    if (el !== undefined) {
-        el.innerHTML = '';
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                galleryContent = document.createElement("div");
-                galleryContent.id = "gallery-content";
-                galleryContent.class = "justified-gallery";
-                function renderGallery(node) {
-                    if (node.contents !== undefined && node.contents.length > 0) {
-                        node.contents.forEach(sd => {
-                            imgUrl = node.name + '/' + sd.name;
-                            imgThumbUrl = node.name + '/thumbnails/thumb_' + sd.name;
-                            galleryContent.innerHTML += `
-                                <a  href="`+ imgUrl + `" data-fancybox="images">
-                                    <img src="`+ imgThumbUrl + `">
+void 0!==(el=$("article.page-content"))&&(el.innerHTML="",fetch("data.json").then(e=>e.json()).then(e=>{(galleryContent=document.createElement("div")).id="gallery-content",galleryContent.class="justified-gallery",e.forEach(e=>{var n;void 0!==(n=e).contents&&0<n.contents.length&&n.contents.forEach(e=>{imgUrl=n.name+"/"+e.name,imgThumbUrl=n.name+"/thumbnails/thumb_"+e.name,galleryContent.innerHTML+=`
+                                <a  href="`+imgUrl+`" data-fancybox="images">
+                                    <img src="`+imgThumbUrl+`">
                                 </a>
-                            `;
-                        });
-                    }
-                }
-                data.forEach(d => {
-                    renderGallery(d);
-                });
-                el.append(galleryContent);
-                $('#gallery-content').justifiedGallery({ rowHeight: 150, margins: 5 });
-            });
-    }
-})();
+                            `})}),el.append(galleryContent),$("#gallery-content").justifiedGallery({rowHeight:150,margins:5})}));
