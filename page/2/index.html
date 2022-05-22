@@ -25,15 +25,19 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+  
   <title>后山</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
@@ -42,22 +46,41 @@
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"oujun.work","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"55c14b477cdc5099dd1f8c96c6547bdf","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"oujun.work","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"55c14b477cdc5099dd1f8c96c6547bdf","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
+
+  
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
 </head>
 
 
 <body>
-  <header style="height: 50vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
       <strong>后山</strong>
@@ -171,6 +194,7 @@
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
@@ -183,29 +207,35 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/assets/banner.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="你在等待什么？">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/assets/banner.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="你在等待什么？"></span>
           
         </div>
+
+        
       </div>
+
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
+        <div id="board"
           >
           
           <div class="container">
@@ -225,12 +255,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/07/16/Architecture.html" target="_self">
+      <a class="index-excerpt" href="/2019/07/16/Architecture.html" target="_self">
+        <div>
           
           组织架构 DevOps K8S Docker Git 工欲善其事，必先利其器云首先，当一个团队开始的时候需要有装备，硬件装备是桌椅板凳电脑网络，开发过程中需要测试环境，代码管理工具等。此时，一个局域网内的私有云就够了。但是考虑到外出和在家办公的场景，那么Aliyun、Google云等这类的线上云是一个更好的选择，而且，再做CI&#x2F;CD的时候会更方便一些。然而弊端就是需要额外的支出。 代码管
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -242,18 +272,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/DevOps/">DevOps</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/DevOps/" class="category-chain-item">DevOps</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%9E%B6%E6%9E%84/">架构</a>
+              <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
             
           </div>
         
@@ -272,12 +316,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/06/25/windows-terminal.html" target="_self">
+      <a class="index-excerpt" href="/2019/06/25/windows-terminal.html" target="_self">
+        <div>
           
           windows-terminalwindows-terminal发布了，虽然只是预览版，目前还是很简单的部分功能，从windows商店中直接搜windows-terminal就能安装，前提是windows10已经升级1903. 1903 中的 wsl经过一个下午的摸索，大致了解了一些简单的用法，推荐安装wsl版的debian或者ubuntu，开启linux子系统后在windows商店中搜索ubun
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -289,20 +333,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%94%B6%E9%9B%86/">收集</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%94%B6%E9%9B%86/" class="category-chain-item">收集</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/windows-terminal/">windows-terminal</a>
+              <a href="/tags/windows-terminal/">#windows-terminal</a>
             
-              <a href="/tags/wsl/">wsl</a>
+              <a href="/tags/wsl/">#wsl</a>
             
           </div>
         
@@ -321,12 +379,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/06/12/SonarQube.html" target="_self">
+      <a class="index-excerpt" href="/2019/06/12/SonarQube.html" target="_self">
+        <div>
           
           SonarQube是管理代码质量的一个平台，有商业版也可以本地部署。 部署SonarQube SonarQube需要Jdk的支持； ElasticSearch是可选的； 数据库使用jdbc；  本内容使用Docker进行部署 docker-compose.yaml1234567891011121314151617version: &quot;3&quot;services:  CodeQualit
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -338,22 +396,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/DevOps/">DevOps</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/DevOps/" class="category-chain-item">DevOps</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/DevOps/">DevOps</a>
+              <a href="/tags/DevOps/">#DevOps</a>
             
-              <a href="/tags/Azure-DevOps/">Azure DevOps</a>
+              <a href="/tags/Azure-DevOps/">#Azure DevOps</a>
             
-              <a href="/tags/SonarQube/">SonarQube</a>
+              <a href="/tags/SonarQube/">#SonarQube</a>
             
           </div>
         
@@ -372,12 +444,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/06/03/kubernetes-for-debian.html" target="_self">
+      <a class="index-excerpt" href="/2019/06/03/kubernetes-for-debian.html" target="_self">
+        <div>
           
           依然是模拟环境，使用windows10的hyperV。 在虚拟机中安装debian9，只要核心的那种，开openssh的。 更新debian 12apt updateapt upgrade -y  开启root的ssh登录修改&#x2F;etc&#x2F;ssh&#x2F;sshd_config中的 PermitRootLogin为PermitRootLogin yes，保存然后重启&#x2F;etc&#x2F;init.d&#x2F;ssh restar
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -389,20 +461,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/DevOps/">DevOps</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/DevOps/" class="category-chain-item">DevOps</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/k8s/">k8s</a>
+              <a href="/tags/k8s/">#k8s</a>
             
-              <a href="/tags/debian9/">debian9</a>
+              <a href="/tags/debian9/">#debian9</a>
             
           </div>
         
@@ -421,12 +507,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/05/22/kubernetes-for-minikube.html" target="_self">
+      <a class="index-excerpt" href="/2019/05/22/kubernetes-for-minikube.html" target="_self">
+        <div>
           
           环境 Windows 10 Pro 1903Minikube代理环境（127.0.0.1:1080）  准备工作下载minikubeRelease下载最新的版本，保存到F:\k8s文件夹中，并重命名为mikikube 在小娜哪里搜索env，选择编辑系统环境变量,在path节点中增加F:\k8s；增加新的环境变量MINIKUBE_HOME值为F:\\k8s(注意是双斜杠) 打开命令提示行，推荐ter
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -438,26 +524,40 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/DevOps/">DevOps</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/DevOps/" class="category-chain-item">DevOps</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/k8s/">k8s</a>
+              <a href="/tags/k8s/">#k8s</a>
             
-              <a href="/tags/hyperV/">hyperV</a>
+              <a href="/tags/hyperV/">#hyperV</a>
             
-              <a href="/tags/minikube/">minikube</a>
+              <a href="/tags/minikube/">#minikube</a>
             
-              <a href="/tags/kubernetes/">kubernetes</a>
+              <a href="/tags/kubernetes/">#kubernetes</a>
             
-              <a href="/tags/windows10/">windows10</a>
+              <a href="/tags/windows10/">#windows10</a>
             
           </div>
         
@@ -476,12 +576,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/05/06/rabbitmq-eventbus-netcore.html" target="_self">
+      <a class="index-excerpt" href="/2019/05/06/rabbitmq-eventbus-netcore.html" target="_self">
+        <div>
           
           RabbitMQ.EventBus.AspNetCore是一个基于官方RabbitMQ.Client的二次封装包，专门针对Net Core项目进行开发，在微服务中进行消息的传递使用起来比较方便。 特性 断线重连机制 可扩展 消费失败自动打回  使用说明1. 注册1234567891011121314151617public void ConfigureServices(IServiceCol
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -493,24 +593,38 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/">知识储备</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/" class="category-chain-item">知识储备</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/RabbitMQ/">RabbitMQ</a>
+              <a href="/tags/RabbitMQ/">#RabbitMQ</a>
             
-              <a href="/tags/net-core/">.net core</a>
+              <a href="/tags/net-core/">#.net core</a>
             
-              <a href="/tags/EventBus/">EventBus</a>
+              <a href="/tags/EventBus/">#EventBus</a>
             
-              <a href="/tags/Asp-Net-Core/">Asp.Net Core</a>
+              <a href="/tags/Asp-Net-Core/">#Asp.Net Core</a>
             
           </div>
         
@@ -529,12 +643,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2019/05/05/develop-tools-and-faq.html" target="_self">
+      <a class="index-excerpt" href="/2019/05/05/develop-tools-and-faq.html" target="_self">
+        <div>
           
           框架类  ElasticSearch SQL     文档      Elastic Charts     演示     知识类  适用于Dot Net Core的WebApi接口限流框架    使用 HTTP 缓存：Etag, Last-Modified 与 Cache-Control    分布式缓存在 ASP.NET Core 中    启用 ASP.NET Core 中的跨域请求 (CO
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -546,11 +660,25 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/">知识储备</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/" class="category-chain-item">知识储备</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
@@ -569,12 +697,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2012/08/14/jinyong.html" target="_self">
+      <a class="index-excerpt" href="/2012/08/14/jinyong.html" target="_self">
+        <div>
           
           公元前476年 西施送入吴国；范蠡遇到阿青，阿青传越国剑士剑法。 公元前473年 越国灭掉吴国；范蠡与西施隐居，阿青离去。 526年 南北朝时期，印度高僧菩提达摩来到中国，在嵩山少林寺面壁九年，创立中国禅宗。 隋朝末年，李靖将《易筋经》中的武学奥秘，尽数领悟。 694年 明教传至中土。 唐朝末叶，嘉兴剑术名家改良越女剑法。 877年 丐帮建立。 936年—946年 少林寺法慧禅师练成了一指禅。 1
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -586,11 +714,25 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%94%B6%E9%9B%86/">收集</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%94%B6%E9%9B%86/" class="category-chain-item">收集</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
@@ -609,12 +751,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2012/08/13/recollect-1.html" target="_self">
+      <a class="index-excerpt" href="/2012/08/13/recollect-1.html" target="_self">
+        <div>
           
           不知不觉的就来了。上个月热的要命，办公室不大，6个电脑开5个，空调等于没有用，那制冷的能力根本抵消不了这5个电脑的散热能力，还有四个活人身上散发的热量。天天的先开窗然后关窗开空调，可是依然热的要死的。天天中午最热的那阵子都要去外面的仓买（注：小卖店、小超市、买东西的地方）去买冰棒来凉快一下。 这几年每年都会注意一下天气的变化，总结出来就是，冬天越来越短了，夏天越来越热了，冬天越来越暖了，夏天雨越来
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -626,11 +768,25 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E7%8B%90%E8%AF%B4%E5%85%AB%E9%81%93/">狐说八道</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%8B%90%E8%AF%B4%E5%85%AB%E9%81%93/" class="category-chain-item">狐说八道</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
@@ -649,12 +805,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2012/08/03/yeshiwen-h2o.html" target="_self">
+      <a class="index-excerpt" href="/2012/08/03/yeshiwen-h2o.html" target="_self">
+        <div>
           
           叶诗文的教练终于承认了！曾给叶诗文服用一种叫做一氧化二氢的液体！ 一氧化二氢是有危害的，是危险品，下面来列举一下一氧化二氢都有什么样的危害：  又叫做“氢氧基酸”，是酸雨的主要成分； 对泥土流失有促进作用； 对温室效应有推动作用； 它是腐蚀的成因； 过多的摄取可能导致各种不适； 皮肤与其固体形式长时间的接触会导致严重的组织损伤； 被吸入肺部可以致命； 处在气体状态时，它能引起严重灼伤； 在不可救治
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -666,11 +822,25 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E7%8B%90%E8%AF%B4%E5%85%AB%E9%81%93/">狐说八道</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%8B%90%E8%AF%B4%E5%85%AB%E9%81%93/" class="category-chain-item">狐说八道</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
@@ -715,32 +885,34 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-
   
-</footer>
+  
+  
+</div>
 
+  </footer>
 
-  <!-- SCRIPTS -->
+  <!-- Scripts -->
   
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
@@ -759,35 +931,18 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-
-
-
 
   <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
   <script>
     (function (window, document) {
       var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-        typing(title);
+        typing(text);
       
     })(window, document);
   </script>
@@ -795,24 +950,18 @@
 
 
 
-
-
-
-
-
-
-
-
   
     <!-- Baidu Analytics -->
     <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?55c14b477cdc5099dd1f8c96c6547bdf";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?55c14b477cdc5099dd1f8c96c6547bdf";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
     </script>
   
 
@@ -826,13 +975,33 @@
 
   
 
+  
 
 
 
 
-<!-- 主题的启动项 保持在最底部 -->
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

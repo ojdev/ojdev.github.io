@@ -25,15 +25,19 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+  
   <title>归档 - 后山</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
@@ -42,22 +46,41 @@
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"oujun.work","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"55c14b477cdc5099dd1f8c96c6547bdf","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"oujun.work","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"55c14b477cdc5099dd1f8c96c6547bdf","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
+
+  
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="后山" type="application/atom+xml">
 </head>
 
 
 <body>
-  <header style="height: 60vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
       <strong>后山</strong>
@@ -171,6 +194,7 @@
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
@@ -183,29 +207,35 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/assets/banner.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/assets/banner.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="归档"></span>
           
         </div>
+
+        
       </div>
+
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
+        <div id="board"
           >
           
           <div class="container">
@@ -223,20 +253,20 @@
       <p class="h5">2022</p>
     
     <a href="/2022/02/07/github-to-nuget.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Github中的代码自动部署发布到nuget的流程</span>
-      <time style="float: right;">02-07</time>
+      <time>02-07</time>
+      <div class="list-group-item-title">Github中的代码自动部署发布到nuget的流程</div>
     </a>
   
     
     <a href="/2022/02/07/some-code-excerpts.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">常用的代码剪辑</span>
-      <time style="float: right;">02-07</time>
+      <time>02-07</time>
+      <div class="list-group-item-title">常用的代码剪辑</div>
     </a>
   
     
     <a href="/2022/02/02/travel-design.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">出行设计</span>
-      <time style="float: right;">02-02</time>
+      <time>02-02</time>
+      <div class="list-group-item-title">出行设计</div>
     </a>
   
     
@@ -244,44 +274,44 @@
       <p class="h5">2021</p>
     
     <a href="/2021/12/30/tools.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">我常用的工具</span>
-      <time style="float: right;">12-30</time>
+      <time>12-30</time>
+      <div class="list-group-item-title">我常用的工具</div>
     </a>
   
     
     <a href="/2021/10/16/DevelopmentDaily.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">开发日常</span>
-      <time style="float: right;">10-16</time>
+      <time>10-16</time>
+      <div class="list-group-item-title">开发日常</div>
     </a>
   
     
     <a href="/2021/08/01/Hexo-Theme-Fluid-Add-Gallery.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">给Hexo Theme Fluid 主题增加相册功能</span>
-      <time style="float: right;">08-01</time>
+      <time>08-01</time>
+      <div class="list-group-item-title">给Hexo Theme Fluid 主题增加相册功能</div>
     </a>
   
     
     <a href="/2021/05/28/powershell7%E7%9A%84%E7%BE%8E%E5%8C%96.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">powershell7的美化</span>
-      <time style="float: right;">05-28</time>
+      <time>05-28</time>
+      <div class="list-group-item-title">powershell7的美化</div>
     </a>
   
     
     <a href="/2021/05/26/%E6%B2%88%E9%98%B3%E7%9A%84%E7%94%9F%E6%B4%BB%E5%BC%80%E5%A7%8B%E4%BA%86.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">沈阳的生活开始了</span>
-      <time style="float: right;">05-26</time>
+      <time>05-26</time>
+      <div class="list-group-item-title">沈阳的生活开始了</div>
     </a>
   
     
     <a href="/2021/01/13/%E5%9C%A8docker%E4%B8%AD%E4%BD%BF%E7%94%A8kubectl.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">关于在Windows中使用Terminal连接SSH登录远程机器中的docker容器中使用kubectl管理集群的那些事</span>
-      <time style="float: right;">01-13</time>
+      <time>01-13</time>
+      <div class="list-group-item-title">关于在Windows中使用Terminal连接SSH登录远程机器中的docker容器中使用kubectl管理集群的那些事</div>
     </a>
   
     
     <a href="/2021/01/07/nas.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">家庭服务管理：NAS</span>
-      <time style="float: right;">01-07</time>
+      <time>01-07</time>
+      <div class="list-group-item-title">家庭服务管理：NAS</div>
     </a>
   
     
@@ -289,44 +319,44 @@
       <p class="h5">2019</p>
     
     <a href="/2019/07/16/Architecture.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">架构蓝皮书(基础版)</span>
-      <time style="float: right;">07-16</time>
+      <time>07-16</time>
+      <div class="list-group-item-title">架构蓝皮书(基础版)</div>
     </a>
   
     
     <a href="/2019/06/25/windows-terminal.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">windows-terminal</span>
-      <time style="float: right;">06-25</time>
+      <time>06-25</time>
+      <div class="list-group-item-title">windows-terminal</div>
     </a>
   
     
     <a href="/2019/06/12/SonarQube.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">在AzureDevops中集成SonarQube</span>
-      <time style="float: right;">06-12</time>
+      <time>06-12</time>
+      <div class="list-group-item-title">在AzureDevops中集成SonarQube</div>
     </a>
   
     
     <a href="/2019/06/03/kubernetes-for-debian.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">k8s的环境搭建</span>
-      <time style="float: right;">06-03</time>
+      <time>06-03</time>
+      <div class="list-group-item-title">k8s的环境搭建</div>
     </a>
   
     
     <a href="/2019/05/22/kubernetes-for-minikube.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">在windows上创建kubernetes集群</span>
-      <time style="float: right;">05-22</time>
+      <time>05-22</time>
+      <div class="list-group-item-title">在windows上创建kubernetes集群</div>
     </a>
   
     
     <a href="/2019/05/06/rabbitmq-eventbus-netcore.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">RabbitMQ.EventBus.AspNetCore</span>
-      <time style="float: right;">05-06</time>
+      <time>05-06</time>
+      <div class="list-group-item-title">RabbitMQ.EventBus.AspNetCore</div>
     </a>
   
     
     <a href="/2019/05/05/develop-tools-and-faq.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">开发过程中需要用到的工具以及相关知识目录</span>
-      <time style="float: right;">05-05</time>
+      <time>05-05</time>
+      <div class="list-group-item-title">开发过程中需要用到的工具以及相关知识目录</div>
     </a>
   
     
@@ -334,26 +364,26 @@
       <p class="h5">2012</p>
     
     <a href="/2012/08/14/jinyong.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">金庸武侠编年史</span>
-      <time style="float: right;">08-14</time>
+      <time>08-14</time>
+      <div class="list-group-item-title">金庸武侠编年史</div>
     </a>
   
     
     <a href="/2012/08/13/recollect-1.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">回忆遐想，秋</span>
-      <time style="float: right;">08-13</time>
+      <time>08-13</time>
+      <div class="list-group-item-title">回忆遐想，秋</div>
     </a>
   
     
     <a href="/2012/08/03/yeshiwen-h2o.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">教练终于承认，曾给叶诗文服用一种叫做一氧化二氢的液体</span>
-      <time style="float: right;">08-03</time>
+      <time>08-03</time>
+      <div class="list-group-item-title">教练终于承认，曾给叶诗文服用一种叫做一氧化二氢的液体</div>
     </a>
   
     
     <a href="/2012/06/30/july-1-2012-1-seconds.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">7月1日全球增加1秒，出现7:59:60不影响日常生活</span>
-      <time style="float: right;">06-30</time>
+      <time>06-30</time>
+      <div class="list-group-item-title">7月1日全球增加1秒，出现7:59:60不影响日常生活</div>
     </a>
   
 </div>
@@ -395,32 +425,34 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-
   
-</footer>
+  
+  
+</div>
 
+  </footer>
 
-  <!-- SCRIPTS -->
+  <!-- Scripts -->
   
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
@@ -439,35 +471,18 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-
-
-
 
   <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
   <script>
     (function (window, document) {
       var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-        typing(title);
+        typing(text);
       
     })(window, document);
   </script>
@@ -475,24 +490,18 @@
 
 
 
-
-
-
-
-
-
-
-
   
     <!-- Baidu Analytics -->
     <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?55c14b477cdc5099dd1f8c96c6547bdf";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?55c14b477cdc5099dd1f8c96c6547bdf";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
     </script>
   
 
@@ -506,13 +515,33 @@
 
   
 
+  
 
 
 
 
-<!-- 主题的启动项 保持在最底部 -->
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
