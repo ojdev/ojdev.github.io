@@ -115,15 +115,6 @@ image_minifier:
   pngquant: false
   progressive: false
   silent: false
-  exclude: gif svg
-js_minifier:
-  enable: false
-  mangle: true
-  silent: false
-  output:
-  compress:
-  exclude: 
-    - '*.min.js'
 sitemap:
   path: sitemap.xml
 baidusitemap:
