@@ -4,7 +4,7 @@ date: 2022-02-02 22:24:07
 tags:
   - 思维导图
 ---
-{% markmap 768px %}
+ markmap 768px %}
 # 选购
 ## 要求
 ### 通勤
@@ -59,4 +59,4 @@ tags:
 - 需要考驾照
   - 手动挡驾照
   - 自动挡驾照
-{%endmarkmap%}
+endmarkmap%}
