@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>遗传算法学习</title>
+    <link href="/2022/05/31/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0.html"/>
+    <url>/2022/05/31/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="什么是遗传算法"><a href="#什么是遗传算法" class="headerlink" title="什么是遗传算法"></a>什么是遗传算法</h1><p>遗传算法一般的解释就是模拟达尔文生物进化论和遗传学对生物的进化过程的模拟，用迭代进化的方式得到最优解的方法，其实我了解这个东西有段时间了，但是一直也没有完整的去学习过。</p><p>遗传算法的执行过程一般是先有一个<code>种群</code>，不论什么东西进化都是从一个种群进化到另一个种群，优胜劣汰，<code>种群</code>中的每一个个体都有一组<code>基因</code>，也有把这个叫做<code>染色体</code>的。</p><p>生物都有染色体，他们繁殖出的后代都是从父母双亲的染色体中各取一部分生成一个新的个体。</p><p>中间略过……</p><p>编码-&gt;初始化种群</p><p>评估种群中个体适应度-&gt;选择-&gt;交叉-&gt;变异-&gt;回到评估</p><pre><code class=" mermaid">graph TD  编码 --&gt; 初始化种群  初始化种群 --&gt; 评估适应度  评估适应度 --&gt; 选择  选择 --&gt; 交叉  交叉 --&gt; 变异  变异 --&gt; 评估适应度</code></pre><p>我个人感觉，其中难度最大的是适应度这个地方，</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>.Net</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>C#</tag>
+      
+      <tag>.Net</tag>
+      
+      <tag>遗传算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用IHostedService时间简单的定时任务功能</title>
     <link href="/2022/05/30/%E4%BD%BF%E7%94%A8IHostedService%E6%97%B6%E9%97%B4%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%8A%9F%E8%83%BD.html"/>
     <url>/2022/05/30/%E4%BD%BF%E7%94%A8IHostedService%E6%97%B6%E9%97%B4%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%8A%9F%E8%83%BD.html</url>
