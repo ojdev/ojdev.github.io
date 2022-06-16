@@ -113,4 +113,4 @@ pct create 100 \
 # 附加价值1
 
 配置`SSR-Plus`，直接生效，N5095油管8k效果很稳定。
-![](/img/xray-ytb-statistics.png)
+![](/assets/xray-ytb-statistics.png)
