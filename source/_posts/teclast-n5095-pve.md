@@ -115,3 +115,72 @@ pct create 100 \
 
 配置`SSR-Plus`，直接生效，N5095油管8k效果很稳定。
 ![](/assets/xray-ytb-statistics.png)
+
+# 附加价值2：docker
+
+```shell
+apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/debian/gpg | sudo apt-key add -
+curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/debian/gpg | apt-key add -
+lsb_release -cs
+add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/debian $(lsb_release -cs) stable"
+apt update
+apt upgrade -y
+apt install docker-ce
+apt install docker-compose
+```
+
+## docker-compose
+
+- [x] frpc
+- [x] jellyfin
+- [x] qbittorrent
+
+```yml
+version: "2.1"
+services:
+  frpc:
+    image: snowdreamtech/frpc:latest
+    container_name: frpc
+    network_mode: 'host'
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /docker-config/frpc/frpc.ini:/etc/frp/frpc.ini
+    restart: always
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shangehai
+    volumes:
+      - /docker-config/jellyfin/library:/config
+      - /docker-config/tvseries:/data/tvshows
+      - /docker-config/movies:/data/movies
+    devices:
+      - /dev/dri:/dev/dri
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    restart: unless-stopped
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shangehai
+      - WEBUI_PORT=8080
+    volumes:
+      - /docker-config/qbittorrent/config:/config
+      - /docker-config:/downloads
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+```
