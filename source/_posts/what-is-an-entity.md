@@ -1,6 +1,7 @@
 ---
 title: 什么是实体
 date: 2022-10-26 11:00:00
+mermaid: true
 categories:
 - .Net
 tags:
