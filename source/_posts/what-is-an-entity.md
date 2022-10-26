@@ -44,8 +44,7 @@ tags:
 
 ```mermaid
 classDiagram
-Mouse <|-- MouseManager 
-Mouse : LeftButtonDown()
-Mouse : LeftButtonDown()
-MouseManager : LeftDoubleClick()
+    class Mouse
+    Mouse : +LeftButtonDown()
+    Mouse : +LeftButtonDown()
 ```
