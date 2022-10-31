@@ -59,6 +59,8 @@ tags:
 
 [使用 ConcurrentBag 创建目标池](https://docs.microsoft.com/zh-cn/dotnet/standard/collections/thread-safe/how-to-create-an-object-pool)
 
+[RulesEngine,微软的规则引擎](https://github.com/microsoft/RulesEngine)
+
 ## 部署
 
 [链路追踪](https://help.aliyun.com/document_detail/99880.html)
