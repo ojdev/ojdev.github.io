@@ -41,7 +41,7 @@ tags:
 ## .net core 开发
 [hangfire](https://docs.hangfire.io/en/latest/index.html)
 
-[identityserver4](https://identityserver4.readthedocs.io/en/latest/)
+[identityserver4](https://identityserver4docs.readthedocs.io/zh_CN/latest/index.html)
 
 [MediatR](https://github.com/jbogard/MediatR/wiki)
 
