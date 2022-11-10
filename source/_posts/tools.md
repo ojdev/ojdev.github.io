@@ -61,6 +61,8 @@ tags:
 
 [RulesEngine,微软的规则引擎](https://github.com/microsoft/RulesEngine)
 
+[约定式提交(一种用于给提交信息增加人机可读含义的规范)](https://www.conventionalcommits.org/zh-hans/v1.0.0/)
+
 ## 部署
 
 [链路追踪](https://help.aliyun.com/document_detail/99880.html)
