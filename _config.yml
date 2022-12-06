@@ -9,7 +9,7 @@ description: ''
 keywords:
 author: 欧俊
 language: zh-CN
-timezone: 'Asia/Harbin'
+timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
