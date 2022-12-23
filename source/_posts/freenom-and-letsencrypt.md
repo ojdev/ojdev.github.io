@@ -121,7 +121,7 @@ mkdir -p ./letsencrypt/etc/live/git.域名
 然后再申请证书
 
 ```
-docker exec acme.sh --issue -d git.域名 --webroot /www --key-file /letsencrypt/git.域名/privkey.pem --fullchain-file /letsencrypt/git.域名/fullchain.pem
+docker exec acme.sh --issue -d git.域名 --webroot /www --key-file /letsencrypt/git.域名/privkey.pem --fullchain-file /letsencrypt/git.域名/fullchain.pem --keylength 4096
 ```
 
 # 第五步：再次修改网站的conf文件
