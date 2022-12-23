@@ -14,7 +14,7 @@ tags:
 
 
 freenow申请的域名，直接使用进行`cloudflare`解析是可以的，但是申请证书的时候却无法直接使用`certbot/dns-cloudflare`选择dns的方式直接通过api申请和续期。
-```
+```log
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 
 How would you like to authenticate with the ACME CA?
@@ -105,7 +105,7 @@ server {
 
 # 第三步：启动容器
 
-```
+```shell
 docker-compose up -d
 docker exec acme.sh --set-default-ca --server letsencrypt
 ```
@@ -114,13 +114,13 @@ docker exec acme.sh --set-default-ca --server letsencrypt
 
 由于acme.sh不会自动创建路径，所以我们在申请证书前需要手动创建路径
 
-```
+```shell
 mkdir -p ./letsencrypt/etc/live/git.域名
 ```
 
 然后再申请证书
 
-```
+```shell
 docker exec acme.sh --issue -d git.域名 --webroot /www --key-file /letsencrypt/git.域名/privkey.pem --fullchain-file /letsencrypt/git.域名/fullchain.pem --keylength 4096
 ```
 
@@ -144,16 +144,16 @@ server {
 
 然后重启nginx
 
-```
+```shell
 docker restart nginx
 ```
 
 # 第六步：设置自动更新证书
 
-`crontab -e```
+`crontab -e`
 添加如下内容
 
-```
+```cron
 44 0 * * * docker exec acme.sh --cron
 ```
 
