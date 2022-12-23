@@ -1,7 +1,7 @@
 ---
 title: Freenow申请的域名申请letsencrypt证书的方法
 date: 2022-12-23 14:24:02
-updated:  2022-12-23 14:24:02
+updated:  2022-12-23 15:11:00
 mermaid: true
 categories:
 - 知识储备
@@ -37,37 +37,126 @@ Ask for help or search for solutions at https://community.letsencrypt.org. See t
 
 由于不喜欢在服务器上安装东西，所以还是采用docker的方式。
 
-# 第一步：拉取镜像
+# 第一步：编写docker-compose.yml
+
+```yml
+version: "3"
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    environment:
+      - TZ=Asia/Shanghai
+      - NGINX_PORT=80
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./config/nginx/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./config/nginx/nginx/conf.d:/etc/nginx/conf.d
+      - ./config/nginx/www/html:/usr/share/nginx/html
+      - ./letsencrypt/etc/:/etc/letsencrypt/
+      - /dev/shm/:/dev/shm/
+  acme.sh:
+    image: neilpang/acme.sh:latest
+    container_name: acme.sh
+    command: daemon
+    volumes:
+      - ./acmeout:/acme.sh
+      - ./config/nginx/www/html:/www
+      - ./letsencrypt/etc/live:/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock
+```
+
+`nginx`容器挂载的解释：
+
+- `./config/nginx/nginx/nginx.conf:/etc/nginx/nginx.conf:ro` 是默认的`nginx.conf`文件的映射
+- `./config/nginx/nginx/conf.d:/etc/nginx/conf.d` 是网站配置文件的路径，也就是nginx.conf 中include部分的路径
+- `./config/nginx/www/html:/usr/share/nginx/html` 默认的网页文件存放路径
+- `./letsencrypt/etc/:/etc/letsencrypt/` 证书存放路径
+
+` acme.sh`容器挂载的解释：
+
+- `./acmeout:/acme.sh` acme.sh 执行文件的路径
+- `./config/nginx/www/html:/www` nginx中网页文件的路径，申请证书时使用`--webroot`方便
+- `- ./letsencrypt/etc/live:/letsencrypt` 证书路径，方便存放
+
+
+# 第二步：编写网站的conf文件
+
+我们以github的反代为例，在本地的`./config/nginx/nginx/conf.d`下编写一个文件
+
+```conf
+server {
+    server_name git.域名;
+    listen 80;
+#    listen 443 ssl http2;
+#    ssl_certificate /etc/letsencrypt/live/git.域名/fullchain.pem; 
+#    ssl_certificate_key /etc/letsencrypt/live/git.域名/privkey.pem;
+    location / {
+        root /usr/share/nginx/html;
+        index index.html index.htm;
+#        proxy_pass https://github.com;
+#        proxy_redirect https://github.com https://git.域名;
+    }
+}
+```
+
+# 第三步：启动容器
 
 ```
-docker pull neilpang/acme.sh:latest
-```
-
-# 第二步：后台启动
-
-```
-docker run --rm -itd -v "$(pwd)/out":/acme.sh --net=host --name=acme.sh neilpang/acme.sh daemon
-```
-
-# 第三步：设置默认服务
-```
+docker-compose up -d
 docker exec acme.sh --set-default-ca --server letsencrypt
 ```
 
-# 第四步：根据提示到cloudflare添加TXT解析
+# 第四步：申请证书
+
+由于acme.sh不会自动创建路径，所以我们在申请证书前需要手动创建路径
 
 ```
-docker exec acme.sh --issue --dns -d 域名1 -d 域名2 -d 域名n --yes-I-know-dns-manual-mode-enough-go-ahead-please
+mkdir -p ./letsencrypt/etc/live/git.域名
 ```
 
-# 第五步：申请证书
-
-这里要注意，下面是--renew参数，不是--issue，且后面的域名是第四步中添加了TXT解析的域名
+然后再申请证书
 
 ```
-docker exec acme.sh --renew -d 域名1 -d 域名2 -d 域名n --yes-I-know-dns-manual-mode-enough-go-ahead-please --key-file /acme.sh/letsencrypt/域名.key --fullchain-file /acme.sh/letsencrypt/域名.pem
+docker exec acme.sh --issue -d git.域名 --webroot /www --key-file /letsencrypt/git.域名/privkey.pem --fullchain-file /letsencrypt/git.域名/fullchain.pem
 ```
 
-# 其他
+# 第五步：再次修改网站的conf文件
+
+```conf
+server {
+    server_name git.域名;
+#    listen 80;
+    listen 443 ssl http2;
+    ssl_certificate /etc/letsencrypt/live/git.域名/fullchain.pem; 
+    ssl_certificate_key /etc/letsencrypt/live/git.域名/privkey.pem;
+    location / {
+#        root /usr/share/nginx/html;
+#        index index.html index.htm;
+        proxy_pass https://github.com;
+        proxy_redirect https://github.com https://git.域名;
+    }
+}
+```
+
+然后重启nginx
+
+```
+docker restart nginx
+```
+
+# 第六步：设置自动更新证书
+
+`crontab -e```
+添加如下内容
+
+```
+44 0 * * * docker exec acme.sh --cron
+```
+
+# 注意
 
 不能申请泛域名证书
