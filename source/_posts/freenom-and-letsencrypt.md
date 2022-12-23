@@ -91,14 +91,9 @@ services:
 server {
     server_name git.域名;
     listen 80;
-#    listen 443 ssl http2;
-#    ssl_certificate /etc/letsencrypt/live/git.域名/fullchain.pem; 
-#    ssl_certificate_key /etc/letsencrypt/live/git.域名/privkey.pem;
     location / {
         root /usr/share/nginx/html;
-        index index.html index.htm;
-#        proxy_pass https://github.com;
-#        proxy_redirect https://github.com https://git.域名;
+        index index.html;
     }
 }
 ```
@@ -129,15 +124,20 @@ docker exec acme.sh --issue -d git.域名 --webroot /www --key-file /letsencrypt
 ```conf
 server {
     server_name git.域名;
-#    listen 80;
-    listen 443 ssl http2;
-    ssl_certificate /etc/letsencrypt/live/git.域名/fullchain.pem; 
-    ssl_certificate_key /etc/letsencrypt/live/git.域名/privkey.pem;
+    listen 80;
     location / {
-#        root /usr/share/nginx/html;
-#        index index.html index.htm;
+        root /usr/share/nginx/html;
+        index index.html;
+    }
+}
+server {
+    server_name git.域名;
+    listen 443 ssl http2;
+    ssl_certificate /etc/letsencrypt/live/git.qunb.ml/fullchain.pem; 
+    ssl_certificate_key /etc/letsencrypt/live/git.qunb.ml/privkey.pem; 
+    location / {
         proxy_pass https://github.com;
-        proxy_redirect https://github.com https://git.域名;
+        proxy_redirect https://github.com https://git.qunb.ml;
     }
 }
 ```
