@@ -1,7 +1,7 @@
 ---
 title: Freenow申请的域名申请letsencrypt证书的方法
 date: 2022-12-23 14:24:02
-updated:  2022-12-29 10:50:00
+updated:  2022-12-29 11:07:00
 mermaid: true
 categories:
 - 知识储备
@@ -47,10 +47,8 @@ services:
     container_name: nginx
     environment:
       - TZ=Asia/Shanghai
-      - NGINX_PORT=80
     restart: always
     ports:
-      - "80:80"
       - "443:443"
     volumes:
       - ./config/nginx/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
@@ -116,18 +114,17 @@ mkdir -p ./letsencrypt/etc/live/git.域名
 然后再申请证书
 
 ```shell
-docker exec acme.sh --issue -d git.域名 --webroot /www --key-file /letsencrypt/git.域名/privkey.pem --fullchain-file /letsencrypt/git.域名/fullchain.pem --keylength 4096
+docker exec acme.sh --issue -d git.域名 --standalone /www --key-file /letsencrypt/git.域名/privkey.pem --fullchain-file /letsencrypt/git.域名/fullchain.pem --keylength 4096
 ```
 
 为了方便申请，我们写一个脚本来执行上面的两个步骤
 ```shell
 mkdir -p ./letsencrypt/etc/live/$1
-docker exec acme.sh --issue -d $1 --webroot /www --key-file /letsencrypt/$1/privkey.pem --fullchain-file /letsencrypt/git.域名/fullchain.pem --keylength 4096
+docker exec acme.sh --issue -d $1 --standalone /www --key-file /letsencrypt/$1/privkey.pem --fullchain-file /letsencrypt/git.域名/fullchain.pem --keylength 4096
 ```
 
-保存为`regssl.sh`
-
-我们再使用的时候就可以`bash regssl.sh a.b.com`的方式使用了。
+保存为`regssl.sh`,我们再使用的时候就可以`bash regssl.sh a.b.com`的方式使用了。
+[update] 这里申请方式用webroot修改为standalone，我把nginx的80端口映射去掉了，我的nginx只开放443端口，从而把80端口留给acme来专门申请证书使用。
 
 # 第五步：再次修改网站的conf文件
 
