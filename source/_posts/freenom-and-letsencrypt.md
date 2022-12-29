@@ -119,6 +119,16 @@ mkdir -p ./letsencrypt/etc/live/git.域名
 docker exec acme.sh --issue -d git.域名 --webroot /www --key-file /letsencrypt/git.域名/privkey.pem --fullchain-file /letsencrypt/git.域名/fullchain.pem --keylength 4096
 ```
 
+为了方便申请，我们写一个脚本来执行上面的两个步骤
+```shell
+mkdir -p ./letsencrypt/etc/live/$1
+docker exec acme.sh --issue -d $1 --webroot /www --key-file /letsencrypt/$1/privkey.pem --fullchain-file /letsencrypt/git.域名/fullchain.pem --keylength 4096
+```
+
+保存为`regssl.sh`
+
+我们再使用的时候就可以`bash regssl.sh a.b.com`的方式使用了。
+
 # 第五步：再次修改网站的conf文件
 
 ```conf
