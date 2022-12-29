@@ -1,7 +1,7 @@
 ---
 title: Freenow申请的域名申请letsencrypt证书的方法
 date: 2022-12-23 14:24:02
-updated:  2022-12-23 15:11:00
+updated:  2022-12-29 10:50:00
 mermaid: true
 categories:
 - 知识储备
