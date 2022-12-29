@@ -80,71 +80,47 @@ services:
 - `./config/nginx/www/html:/www` nginx中网页文件的路径，申请证书时使用`--webroot`方便
 - `- ./letsencrypt/etc/live:/letsencrypt` 证书路径，方便存放
 
-
-# 第二步：编写网站的conf文件
-
-我们以github的反代为例，在本地的`./config/nginx/nginx/conf.d`下编写一个文件
-
-```conf
-server {
-    server_name git.域名;
-    listen 80;
-    location / {
-        root /usr/share/nginx/html;
-        index index.html;
-    }
-}
-```
-
-# 第三步：启动容器
+# 第二步：启动容器
 
 ```shell
 docker-compose up -d
 docker exec acme.sh --set-default-ca --server letsencrypt
 ```
 
-# 第四步：申请证书
+# 第三步：申请证书
 
 由于acme.sh不会自动创建路径，所以我们在申请证书前需要手动创建路径
 
 ```shell
-mkdir -p ./letsencrypt/etc/live/git.域名
+mkdir -p ./letsencrypt/etc/live/google.域名
 ```
 
 然后再申请证书
 
 ```shell
-docker exec acme.sh --issue -d git.域名 --standalone /www --key-file /letsencrypt/git.域名/privkey.pem --fullchain-file /letsencrypt/git.域名/fullchain.pem --keylength 4096
+docker exec acme.sh --issue -d google.域名 --standalone /www --key-file /letsencrypt/google.域名/privkey.pem --fullchain-file /letsencrypt/google.域名/fullchain.pem --keylength 4096
 ```
 
 为了方便申请，我们写一个脚本来执行上面的两个步骤
 ```shell
 mkdir -p ./letsencrypt/etc/live/$1
-docker exec acme.sh --issue -d $1 --standalone /www --key-file /letsencrypt/$1/privkey.pem --fullchain-file /letsencrypt/git.域名/fullchain.pem --keylength 4096
+docker exec acme.sh --issue -d $1 --standalone /www --key-file /letsencrypt/$1/privkey.pem --fullchain-file /letsencrypt/$1/fullchain.pem --keylength 4096
 ```
 
-保存为`regssl.sh`,我们再使用的时候就可以`bash regssl.sh a.b.com`的方式使用了。
+保存为`regssl.sh`,我们再使用的时候就可以`bash regssl.sh google.域名`的方式使用了。
 [update] 这里申请方式用webroot修改为standalone，我把nginx的80端口映射去掉了，我的nginx只开放443端口，从而把80端口留给acme来专门申请证书使用。
 
-# 第五步：再次修改网站的conf文件
+# 第四步：编写网站的conf文件
 
 ```conf
 server {
-    server_name git.域名;
-    listen 80;
-    location / {
-        root /usr/share/nginx/html;
-        index index.html;
-    }
-}
-server {
-    server_name git.域名;
+    server_name google.域名;
     listen 443 ssl http2;
-    ssl_certificate /etc/letsencrypt/live/git.qunb.ml/fullchain.pem; 
-    ssl_certificate_key /etc/letsencrypt/live/git.qunb.ml/privkey.pem; 
+    ssl_certificate /etc/letsencrypt/live/google.域名/fullchain.pem; 
+    ssl_certificate_key /etc/letsencrypt/live/google.域名/privkey.pem; 
     location / {
-        proxy_pass https://github.com;
-        proxy_redirect https://github.com https://git.qunb.ml;
+        proxy_pass https://www.google.com;
+        proxy_redirect https://www.google.com https://google.域名;
     }
 }
 ```
@@ -155,7 +131,7 @@ server {
 docker restart nginx
 ```
 
-# 第六步：设置自动更新证书
+# 第五步：设置自动更新证书
 
 `crontab -e`
 添加如下内容
