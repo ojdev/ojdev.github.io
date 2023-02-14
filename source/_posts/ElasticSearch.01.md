@@ -172,3 +172,93 @@ GET trans_performance_day_snapshot/_search
 }
 
 ```
+
+上面内容的aggs与之对应的C#部分的代码如下
+
+```csharp
+        private async Task<AggregationDictionary> GenerateAggregationDictionary(string groupByName, Field field, int skip, int take)
+        {
+            var aggs = new AggregationDictionary();
+            await _elastic.IndexPutAsync<StringResponse>(IndexTypeName.PerformanceDaySnapshot, "_settings", PostData.String("{\"index.max_result_window\":99999,\"index.max_inner_result_window\":99999}"));
+            await _elastic.IndexPutAsync<StringResponse>("/_cluster", "_settings", PostData.String("{ \"persistent\": { \"search.max_buckets\": 99999 }}"));
+            var c_group = new AggregationDictionary
+            {
+                {
+                    "brokerInfo",
+                        new TopHitsAggregation("brokerInfo")
+                        {
+                            Size = 1,
+                            Sort = new List<ISort>
+                            {
+                                new SortField { Field = Infer.Field<PerformanceDaySnapshot>(p => p.Date), Order = SortOrder.Descending }
+                            },
+                            Source = new SourceFilter
+                            {
+                                Includes = new[] {
+                                    "userOrganization.brokerName",
+                                    "userOrganization.storeId",
+                                    "userOrganization.storeName",
+                                    "userOrganization.storeLeaderName",
+                                    "userOrganization.regionId",
+                                    "userOrganization.regionName",
+                                    "userOrganization.regionLeaderName",
+                                    "userOrganization.bigRegionId",
+                                    "userOrganization.bigRegionName",
+                                    "userOrganization.bigRegionLeaderName"
+                                }
+                            }
+                        }
+                },
+                {
+                    "trade",
+                        new TermsAggregation("trade")
+                        {
+                            Field = new Field("exportData.交易类型.keyword"),
+                            Aggregations = new TermsAggregation("performanceType")
+                            {
+                                Field = new Field("exportData.业绩类型.keyword"),
+                                Aggregations =
+                                    new SumAggregation("performance", new Field("exportData.分边业绩")) { Missing = 0 }
+                                    && new CardinalityAggregation("totalCount", Infer.Field<PerformanceDaySnapshot>(f=>f.JYCode))
+                                    && new TermsAggregation("listingCommission")
+                                    {
+                                        Field = Infer.Field<PerformanceDaySnapshot>(f=>f.JYCode),
+                                        Aggregations = new TermsAggregation("group_by_date")
+                                        {
+                                            Field = Infer.Field<PerformanceDaySnapshot>(f=>f.Date),
+                                            Order = new TermsOrder[]
+                                            {
+                                                new TermsOrder { Key = "max_date", Order = SortOrder.Descending }
+                                            },
+                                            Aggregations = new MaxAggregation("max_date", Infer.Field<PerformanceDaySnapshot>(f=>f.Date))
+                                                           && new SumAggregation("sum_order_receivable", new Field("exportData.订单总应收"))
+                                                           && new SumAggregation("sum_transaction_price", new Field("exportData.成交价格"))
+                                        }
+                                        && new SumBucketAggregation("sum_order_receivable", new SingleBucketsPath("group_by_date>sum_order_receivable"))
+                                        && new SumBucketAggregation("sum_transaction_price", new SingleBucketsPath("group_by_date>sum_transaction_price"))
+                                    }
+                                    && new SumBucketAggregation("commission", new SingleBucketsPath("listingCommission>sum_order_receivable"))
+                                    && new SumBucketAggregation("transactionPrice", new SingleBucketsPath("listingCommission>sum_transaction_price"))
+                            }
+                        }
+                },
+                {
+                    "c_bucket_sort",
+                    new BucketSortAggregation("c_bucket_sort")
+                    {
+                        From = skip, //分页skip
+                        Size = take  //分页take
+                    }
+                }
+            };
+
+            aggs.Add("item_count", new CardinalityAggregation("item_count", new Field(groupByName))); //group by 中的totalCount
+            aggs.Add(groupByName, new TermsAggregation(groupByName)
+            {
+                Field = field,//group by 的列
+                Size = 10000,
+                Aggregations = c_group
+            });
+            return aggs;
+        }
+```
