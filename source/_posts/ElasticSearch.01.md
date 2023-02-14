@@ -32,7 +32,7 @@ GET trans_performance_day_snapshot/_search
         {
           "term": {
             "companyId": {
-              "value": "2236056e-11a6-45e3-828c-59872be81530"
+              "value": ""
             }
           }
         },
