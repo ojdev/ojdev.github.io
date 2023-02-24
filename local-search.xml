@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>PostgreSQL导出数据库文档</title>
+    <link href="/2023/02/24/PostgreSQL%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E6%A1%A3.html"/>
+    <url>/2023/02/24/PostgreSQL%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E6%A1%A3.html</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs sql">DO $$ <span class="hljs-keyword">DECLARE</span><br>tab RECORD;<br>rec RECORD;<br><span class="hljs-keyword">BEGIN</span><br><br><span class="hljs-keyword">FOR</span>  tab <span class="hljs-keyword">IN</span> <span class="hljs-keyword">SELECT</span> schemaname<span class="hljs-operator">||</span><span class="hljs-string">&#x27;.&#x27;</span><span class="hljs-operator">||</span><span class="hljs-string">&#x27;&quot;&#x27;</span><span class="hljs-operator">||</span>tablename<span class="hljs-operator">||</span><span class="hljs-string">&#x27;&quot;&#x27;</span> <span class="hljs-keyword">AS</span> &quot;TBName&quot;,t.tablename,obj_description(c.oid) <span class="hljs-keyword">AS</span> &quot;Description&quot; <span class="hljs-keyword">FROM</span> pg_tables t <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> pg_class c <span class="hljs-keyword">ON</span> t.tablename <span class="hljs-operator">=</span> c.relname <span class="hljs-keyword">WHERE</span> t.schemaname<span class="hljs-operator">=</span><span class="hljs-string">&#x27;public&#x27;</span> <span class="hljs-keyword">AND</span> t.tablename<span class="hljs-operator">!=</span><span class="hljs-string">&#x27;__EFMigrationsHistory&#x27;</span> LOOP<br>  RAISE NOTICE <span class="hljs-string">&#x27;表名：%&#x27;</span>,tab.&quot;TBName&quot;;<br>RAISE NOTICE <span class="hljs-string">&#x27;&#x27;</span>;<br>RAISE NOTICE <span class="hljs-string">&#x27;&gt; %&#x27;</span>,tab.&quot;Description&quot;;<br>RAISE NOTICE <span class="hljs-string">&#x27;&#x27;</span>;<br>RAISE notice <span class="hljs-string">&#x27;| 序号 | 字段名称 | 类型及长度 | 是否可空 | 注释 |&#x27;</span>;<br>    RAISE notice <span class="hljs-string">&#x27;|----|----|----|----|----|&#x27;</span>;<br><span class="hljs-keyword">FOR</span> rec <span class="hljs-keyword">IN</span> <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">ROW_NUMBER</span> ( ) <span class="hljs-keyword">OVER</span> ( ) <span class="hljs-keyword">AS</span> 序号, A.attname <span class="hljs-keyword">AS</span> 字段名称, format_type ( A.atttypid, A.atttypmod ) <span class="hljs-keyword">AS</span> 类型及长度, A.attnotnull <span class="hljs-keyword">AS</span> 是否可空, col_description ( A.attrelid, A.attnum ) <span class="hljs-keyword">AS</span> 注释 <span class="hljs-keyword">FROM</span> pg_class <span class="hljs-keyword">AS</span> C, pg_attribute <span class="hljs-keyword">AS</span> A <span class="hljs-keyword">WHERE</span> C.relname <span class="hljs-operator">=</span> tab.&quot;tablename&quot; <span class="hljs-keyword">AND</span> A.attrelid <span class="hljs-operator">=</span> C.oid <span class="hljs-keyword">AND</span> A.attnum <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span><br>LOOP<br>RAISE notice <span class="hljs-string">&#x27;| % | % | % | % | % |&#x27;</span>, rec.&quot;序号&quot;, rec.&quot;字段名称&quot;, rec.&quot;类型及长度&quot;, rec.&quot;是否可空&quot;, rec.&quot;注释&quot;;<br><span class="hljs-keyword">END</span> LOOP;<br>RAISE NOTICE <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">END</span> LOOP;<br><span class="hljs-keyword">END</span>;<br>$$ <span class="hljs-keyword">LANGUAGE</span> plpgsql;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>知识储备</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>PostgreSQL</tag>
+      
+      <tag>数据库文档</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ElasticSearch查询group by maxdate的一个写法</title>
     <link href="/2023/02/14/ElasticSearch.01.html"/>
     <url>/2023/02/14/ElasticSearch.01.html</url>
