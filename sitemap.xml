@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://oujun.work/2022/06/11/devops-build-agent-pool.html</loc>
+    <loc>https://oujun.work/2022/05/31/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0.html</loc>
     
     <lastmod>2023-03-01</lastmod>
     
@@ -11,7 +11,16 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2012/06/22/dream-1.html</loc>
+    <loc>https://oujun.work/baidu_verify_code-CV5VGCMHxP.html</loc>
+    
+    <lastmod>2023-03-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/about/index.html</loc>
     
     <lastmod>2023-03-01</lastmod>
     
@@ -210,33 +219,6 @@
   
   <url>
     <loc>https://oujun.work/2010/07/20/%E8%A2%AB%E9%81%97%E5%BF%98%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6.html</loc>
-    
-    <lastmod>2023-03-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2022/05/31/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0.html</loc>
-    
-    <lastmod>2023-03-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/baidu_verify_code-CV5VGCMHxP.html</loc>
-    
-    <lastmod>2023-03-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/about/index.html</loc>
     
     <lastmod>2023-03-01</lastmod>
     
@@ -489,6 +471,24 @@
   
   <url>
     <loc>https://oujun.work/2019/05/05/develop-tools-and-faq.html</loc>
+    
+    <lastmod>2023-03-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2022/06/11/devops-build-agent-pool.html</loc>
+    
+    <lastmod>2023-03-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2012/06/22/dream-1.html</loc>
     
     <lastmod>2023-03-01</lastmod>
     
