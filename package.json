@@ -20,6 +20,7 @@
     "hexo-generator-index": "^3.0.0",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^2.0.0",
+    "lodash.get": "^4.4.2",
     "markmap-lib": "^0.14.4",
     "hexo-markmap": "^1.2.1",
     "hexo-renderer-ejs": "^2.0.0",
