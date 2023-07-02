@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>将微信文件夹下的dat转回图片</title>
+    <link href="/2023/07/02/%E5%B0%86%E5%BE%AE%E4%BF%A1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84dat%E8%BD%AC%E5%9B%9E%E5%9B%BE%E7%89%87.html"/>
+    <url>/2023/07/02/%E5%B0%86%E5%BE%AE%E4%BF%A1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84dat%E8%BD%AC%E5%9B%9E%E5%9B%BE%E7%89%87.html</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br>into_path = <span class="hljs-string">r&#x27;E:\Documents\WeChat Files\luacloud\FileStorage\Image\\&#x27;</span>[:-<span class="hljs-number">1</span>]  <span class="hljs-comment">#请将想导入的dat文件的路径复制到引号里面，修改此处代码</span><br>out_path = <span class="hljs-string">r&quot;D:\WeixinImages\\&quot;</span>[:-<span class="hljs-number">1</span>]  <span class="hljs-comment">#运行代码前记得修改导出路径</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">imageDecode</span>(<span class="hljs-params">f, fn</span>):<br>    dat_read = <span class="hljs-built_in">open</span>(f, <span class="hljs-string">&quot;rb&quot;</span>)  <br>    xo = Format(f)  <br>    out = out_path + fn + <span class="hljs-string">&quot;.jpg&quot;</span>  <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;导出文件的路径&#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>(out), end=<span class="hljs-string">&#x27;\n\n&#x27;</span>)<br>    png_write = <span class="hljs-built_in">open</span>(out, <span class="hljs-string">&quot;wb&quot;</span>)  <br>    dat_read.seek(<span class="hljs-number">0</span>)  <br><br>    <span class="hljs-keyword">for</span> now <span class="hljs-keyword">in</span> dat_read:  <br>        <span class="hljs-keyword">for</span> nowByte <span class="hljs-keyword">in</span> now:<br>            newByte = nowByte ^ xo  <br>            png_write.write(<span class="hljs-built_in">bytes</span>([newByte])) <br><br>    dat_read.close()<br>    png_write.close()<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">findFile</span>(<span class="hljs-params">f</span>):<br>    fsdir = os.listdir(f)  <br>    <span class="hljs-comment"># print(fsdir)</span><br>    <span class="hljs-keyword">for</span> finfo <span class="hljs-keyword">in</span> fsdir:  <br>        <span class="hljs-built_in">print</span>(into_path + finfo)<br>        fsinfo = os.listdir(into_path + finfo) <br>        <span class="hljs-keyword">for</span> fn <span class="hljs-keyword">in</span> fsinfo:  <br>            temp_path = os.path.join(into_path + finfo, fn)  <br>            <span class="hljs-keyword">if</span> os.path.isfile(temp_path):  <br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;导入的文件路径是&#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(temp_path))<br>                fn = fn[:-<span class="hljs-number">4</span>]  <br>                imageDecode(temp_path, fn)  <br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">pass</span> <br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Format</span>(<span class="hljs-params">f</span>):<br>    dat_r = <span class="hljs-built_in">open</span>(f, <span class="hljs-string">&quot;rb&quot;</span>)<br>    <span class="hljs-keyword">try</span>:<br>        a = [(<span class="hljs-number">0x89</span>, <span class="hljs-number">0x50</span>, <span class="hljs-number">0x4e</span>), (<span class="hljs-number">0x47</span>, <span class="hljs-number">0x49</span>, <span class="hljs-number">0x46</span>), (<span class="hljs-number">0xff</span>, <span class="hljs-number">0xd8</span>, <span class="hljs-number">0xff</span>)]<br>        <span class="hljs-keyword">for</span> now <span class="hljs-keyword">in</span> dat_r:<br>            <span class="hljs-keyword">for</span> xor <span class="hljs-keyword">in</span> a:<br>                i = <span class="hljs-number">0</span><br>                res = []<br>                nowg = now[:<span class="hljs-number">3</span>]<br>                <span class="hljs-keyword">for</span> nowByte <span class="hljs-keyword">in</span> nowg:<br>                    res.append(nowByte ^ xor[i])<br>                    i += <span class="hljs-number">1</span><br>                <span class="hljs-keyword">if</span> res[<span class="hljs-number">0</span>] == res[<span class="hljs-number">1</span>] == res[<span class="hljs-number">2</span>]:<br>                    <span class="hljs-keyword">return</span> res[<span class="hljs-number">0</span>]<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">pass</span><br>    <span class="hljs-keyword">finally</span>:<br>        dat_r.close()<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    findFile(into_path)<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>知识储备</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+      <tag>微信</tag>
+      
+      <tag>图片</tag>
+      
+      <tag>解密</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Linux中开启samba</title>
     <link href="/2023/06/30/Linux%E4%B8%AD%E5%BC%80%E5%90%AFsamba.html"/>
     <url>/2023/06/30/Linux%E4%B8%AD%E5%BC%80%E5%90%AFsamba.html</url>
