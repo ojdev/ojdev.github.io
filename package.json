@@ -9,10 +9,10 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "6.3.0"
+    "version": "7.1.0"
   },
   "dependencies": {
-    "hexo": "^6.3.0",
+    "hexo": "^7.1.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-baidu-sitemap": "^0.1.9",
     "hexo-generator-category": "^2.0.0",
@@ -21,13 +21,13 @@
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^2.0.0",
     "lodash.get": "^4.4.2",
-    "markmap-lib": "^0.14.4",
-    "hexo-markmap": "^1.2.1",
+    "markmap-lib": "^0.15.8",
+    "hexo-markmap": "^1.2.5",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^6.0.0",
-    "hexo-renderer-stylus": "^2.1.0",
+    "hexo-renderer-marked": "^6.2.0",
+    "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
     "hexo-all-minifier":"^0.5.7",
-    "hexo-theme-fluid": "^1.9.4"
+    "hexo-theme-fluid": "^1.9.7"
   }
 }
