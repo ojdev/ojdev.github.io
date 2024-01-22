@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://oujun.work/2022/06/16/teclast-n5095-pve.html</loc>
+    
+    <lastmod>2024-01-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2021/12/30/tools.html</loc>
+    
+    <lastmod>2024-01-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://oujun.work/2022/02/02/travel-design.html</loc>
     
     <lastmod>2024-01-22</lastmod>
@@ -29,6 +47,15 @@
   </url>
   
   <url>
+    <loc>https://oujun.work/2022/05/30/%E4%BD%BF%E7%94%A8IHostedService%E6%97%B6%E9%97%B4%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%8A%9F%E8%83%BD.html</loc>
+    
+    <lastmod>2024-01-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://oujun.work/2011/04/06/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AE%B9%E9%87%8F.html</loc>
     
     <lastmod>2024-01-22</lastmod>
@@ -39,15 +66,6 @@
   
   <url>
     <loc>https://oujun.work/2021/01/13/%E5%9C%A8docker%E4%B8%AD%E4%BD%BF%E7%94%A8kubectl.html</loc>
-    
-    <lastmod>2024-01-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2022/05/30/%E4%BD%BF%E7%94%A8IHostedService%E6%97%B6%E9%97%B4%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%8A%9F%E8%83%BD.html</loc>
     
     <lastmod>2024-01-22</lastmod>
     
@@ -335,7 +353,7 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2010/02/05/cloves-dingxiang.html</loc>
+    <loc>https://oujun.work/2010/11/13/cloves-changpu.html</loc>
     
     <lastmod>2024-01-22</lastmod>
     
@@ -344,7 +362,7 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2010/11/13/cloves-changpu.html</loc>
+    <loc>https://oujun.work/2010/02/05/cloves-dingxiang.html</loc>
     
     <lastmod>2024-01-22</lastmod>
     
@@ -480,24 +498,6 @@
   
   <url>
     <loc>https://oujun.work/2022/02/07/some-code-excerpts.html</loc>
-    
-    <lastmod>2024-01-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2022/06/16/teclast-n5095-pve.html</loc>
-    
-    <lastmod>2024-01-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2021/12/30/tools.html</loc>
     
     <lastmod>2024-01-22</lastmod>
     
@@ -694,13 +694,6 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/tags/LINQ/</loc>
-    <lastmod>2024-01-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://oujun.work/tags/NAS/</loc>
     <lastmod>2024-01-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -723,6 +716,13 @@
   
   <url>
     <loc>https://oujun.work/tags/PVE/</loc>
+    <lastmod>2024-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/tags/LINQ/</loc>
     <lastmod>2024-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -764,6 +764,13 @@
   </url>
   
   <url>
+    <loc>https://oujun.work/tags/asp-net/</loc>
+    <lastmod>2024-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://oujun.work/tags/net/</loc>
     <lastmod>2024-01-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -786,13 +793,6 @@
   
   <url>
     <loc>https://oujun.work/tags/%E5%AF%86%E7%A0%81%E5%8C%B9%E9%85%8D/</loc>
-    <lastmod>2024-01-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/tags/asp-net/</loc>
     <lastmod>2024-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1093,20 +1093,6 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/tags/kubectl/</loc>
-    <lastmod>2024-01-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/tags/%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2024-01-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://oujun.work/tags/Net-Core/</loc>
     <lastmod>2024-01-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -1115,6 +1101,20 @@
   
   <url>
     <loc>https://oujun.work/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</loc>
+    <lastmod>2024-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/tags/kubectl/</loc>
+    <lastmod>2024-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/tags/%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2024-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
