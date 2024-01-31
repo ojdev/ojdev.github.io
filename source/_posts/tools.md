@@ -2,6 +2,8 @@
 title: 我常用的工具
 date: 2021-12-30 15:35:02
 mermaid: true
+categories:
+- [软件开发, 架构]
 tags:
 ---
 # 项目管理
