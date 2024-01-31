@@ -3,8 +3,9 @@ title: 关于在Windows中使用Terminal连接SSH登录远程机器中的docker�
 date: 2021-01-13 18:23:08
 updated: 2021-01-13 18:23:08
 categories:
-- DevOps
+- [软件开发, 运维]
 tags:
+    - DevOps
     - Docker
     - kubectl
     - 远程管理
