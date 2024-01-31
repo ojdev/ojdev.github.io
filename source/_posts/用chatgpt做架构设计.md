@@ -4,7 +4,7 @@ date: 2023-03-01 23:00:00
 updated:  2023-03-01 23:01:00
 mermaid: true
 categories:
-- 知识储备
+- [软件开发, 架构]
 tags:
  - chatgpt
  - 架构设计
