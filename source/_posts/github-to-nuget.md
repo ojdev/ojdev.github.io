@@ -2,6 +2,8 @@
 title: Github中的代码自动部署发布到nuget的流程
 date: 2022-02-07 13:26:41
 mermaid: true
+categories:
+- [软件开发, 运维]
 tags:
     - github
     - actions
