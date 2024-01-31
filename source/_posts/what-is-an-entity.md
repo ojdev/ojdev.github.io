@@ -4,7 +4,7 @@ date: 2022-10-26 11:00:00
 updated: 2022-10-26 11:00:00
 mermaid: true
 categories:
-- .Net
+- [软件开发, 架构]
 tags:
 - 微服务
 - 软件开发
