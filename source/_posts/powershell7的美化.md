@@ -2,7 +2,7 @@
 title: powershell7的美化
 date: 2021-05-28 16:58:00
 categories:
-- 知识储备
+- [软件开发, 架构]
 tags:
 - pwsh
 - powershell
