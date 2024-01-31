@@ -1290,6 +1290,16 @@
     <content type="html"><![CDATA[<p>在asp.net中后台执行js时，比如使用Response.Write弹出一个alert</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">Response.Write(<span class="hljs-string">&quot;&lt;script&gt;alert(&#x27;确定。&#x27;)&lt;/script&gt;&quot;</span>);<br></code></pre></td></tr></table></figure><p>这样做有时候会造成页面的css样式表错位或者失效</p><p>为了避免这样的情况，使用下面的方法</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">this</span>.ClientScript.RegisterStartupScript(<span class="hljs-keyword">this</span>.GetType(), <span class="hljs-string">&quot;alter&quot;</span>, <span class="hljs-string">&quot;alert(&#x27;确定。&#x27;);&quot;</span>, <span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>软件开发</category>
+      
+      <category>.Net</category>
+      
+      <category>小技巧</category>
+      
+    </categories>
+    
     
     <tags>
       
