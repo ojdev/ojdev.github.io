@@ -4,7 +4,7 @@ date: 2023-02-14 10:19:02
 updated:  2023-02-14 10:19:00
 mermaid: true
 categories:
-- 知识储备
+- [软件开发, .Net, 小技巧]
 tags:
  - ElasticSearch
  - 聚合桶
