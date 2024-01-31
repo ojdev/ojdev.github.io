@@ -2,7 +2,7 @@
 title: LINQ优化：将GroupBy换做Distinct
 date: 2011-05-06 18:23:18
 categories:
-- 收集
+- [软件开发, .Net, 小技巧]
 tags: 
    - LINQ
 ---
