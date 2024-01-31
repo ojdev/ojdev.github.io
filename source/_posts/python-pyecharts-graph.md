@@ -2,7 +2,7 @@
 title: 使用Python的pyecharts包画关系图
 date: 2022-07-13 21:16:00
 categories:
-- 知识储备
+- [软件开发, python, 小技巧]
 tags:
 - Python
 - pyecharts
