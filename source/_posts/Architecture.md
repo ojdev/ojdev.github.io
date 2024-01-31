@@ -2,7 +2,7 @@
 title: 架构蓝皮书(基础版)
 date: 2019-07-16 13:00:00
 categories:
-- DevOps
+- [软件开发, 架构]
 tags:
     - 架构
 ---
