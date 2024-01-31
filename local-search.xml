@@ -456,6 +456,16 @@
     <content type="html"><![CDATA[<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><h2 id="System-Text-Json-Serialization"><a href="#System-Text-Json-Serialization" class="headerlink" title="System.Text.Json.Serialization"></a>System.Text.Json.Serialization</h2><h3 id="JsonExtensionData-处理溢出-JSON"><a href="#JsonExtensionData-处理溢出-JSON" class="headerlink" title="JsonExtensionData 处理溢出 JSON"></a>JsonExtensionData 处理溢出 JSON</h3><p>反序列化时，可能会在 JSON 中收到不是由目标类型的属性表示的数据。可以将这些无法由目标类型的属性表示的数据储存在一个Dictionary&lt;string, JsonElement&gt;字典里面。</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;summary&gt;</span></span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> 储存反序列化时候的溢出数据</span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;/summary&gt;</span></span><br>[<span class="hljs-meta">JsonExtensionData</span>]<br><span class="hljs-keyword">public</span> Dictionary&lt;<span class="hljs-built_in">string</span>, JsonElement&gt; ExtensionData &#123; <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; &#125;<br></code></pre></td></tr></table></figure><h3 id="JsonInclude-包含特定public字段和非公共属性访问器"><a href="#JsonInclude-包含特定public字段和非公共属性访问器" class="headerlink" title="JsonInclude 包含特定public字段和非公共属性访问器"></a>JsonInclude 包含特定public字段和非公共属性访问器</h3><p>在序列化或反序列化时，使用 JsonSerializerOptions.IncludeFields 全局设置或 <code>[JsonInclude]</code> 特性来包含字段（必须是public），当应用于某个属性时，指示非公共的 getter 和 setter 可用于序列化和反序列化。 不支持非公共属性。</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;summary&gt;</span></span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> </span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;/summary&gt;</span></span><br>[<span class="hljs-meta">JsonInclude</span>]<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">long</span> age = <span class="hljs-number">1000</span>;<br><br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;summary&gt;</span></span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> </span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;/summary&gt;</span></span><br>[<span class="hljs-meta">JsonInclude</span>]<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> Name &#123; <span class="hljs-keyword">private</span> <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; &#125; <br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>软件开发</category>
+      
+      <category>.Net</category>
+      
+      <category>小技巧</category>
+      
+    </categories>
+    
     
     <tags>
       
@@ -822,13 +832,13 @@
     
     <tags>
       
+      <tag>k8s</tag>
+      
       <tag>hyperV</tag>
       
       <tag>minikube</tag>
       
       <tag>kubernetes</tag>
-      
-      <tag>k8s</tag>
       
       <tag>windows10</tag>
       
