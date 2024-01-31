@@ -1,6 +1,7 @@
 ---
 title: 关于在Windows中使用Terminal连接SSH登录远程机器中的docker容器中使用kubectl管理集群的那些事
 date: 2021-01-13 18:23:08
+updated: 2021-01-13 18:23:08
 categories:
 - DevOps
 tags:
