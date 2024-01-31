@@ -2,7 +2,7 @@
 title: windows-terminal
 date: 2019-06-25 14:04:35
 categories:
-- 收集
+- [软件开发, 运维]
 tags:
     - windows-terminal
     - wsl
