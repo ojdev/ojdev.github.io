@@ -831,12 +831,16 @@
     
     <categories>
       
-      <category>DevOps</category>
+      <category>软件开发</category>
+      
+      <category>架构</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>DevOps</tag>
       
       <tag>k8s</tag>
       
