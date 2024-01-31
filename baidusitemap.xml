@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://oujun.work/2022/02/07/github-to-nuget.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://oujun.work/2012/08/14/jinyong.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://oujun.work/2012/06/30/july-1-2012-1-seconds.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://oujun.work/2019/06/03/kubernetes-for-debian.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://oujun.work/2019/05/22/kubernetes-for-minikube.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://oujun.work/2021/05/28/powershell7%E7%9A%84%E7%BE%8E%E5%8C%96.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://oujun.work/2022/07/13/python-pyecharts-graph.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://oujun.work/2019/05/06/rabbitmq-eventbus-netcore.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://oujun.work/2012/08/13/recollect-1.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://oujun.work/2022/02/07/some-code-excerpts.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://oujun.work/2022/06/16/teclast-n5095-pve.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://oujun.work/2021/12/30/tools.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://oujun.work/2022/02/02/travel-design.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
     <loc>https://oujun.work/2019/06/25/windows-terminal.html</loc>
     <lastmod>2024-01-31</lastmod>
   </url>
@@ -101,15 +153,15 @@
     <lastmod>2024-01-31</lastmod>
   </url>
   <url>
+    <loc>https://oujun.work/2010/03/30/canpian-2.html</loc>
+    <lastmod>2024-01-31</lastmod>
+  </url>
+  <url>
     <loc>https://oujun.work/2010/03/30/canpian-3.html</loc>
     <lastmod>2024-01-31</lastmod>
   </url>
   <url>
     <loc>https://oujun.work/2010/03/30/canpian-4.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2010/03/30/canpian-2.html</loc>
     <lastmod>2024-01-31</lastmod>
   </url>
   <url>
@@ -158,58 +210,6 @@
   </url>
   <url>
     <loc>https://oujun.work/2012/06/22/dream-1.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2022/02/07/github-to-nuget.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2012/08/14/jinyong.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2012/06/30/july-1-2012-1-seconds.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2019/06/03/kubernetes-for-debian.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2019/05/22/kubernetes-for-minikube.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2021/05/28/powershell7%E7%9A%84%E7%BE%8E%E5%8C%96.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2022/07/13/python-pyecharts-graph.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2019/05/06/rabbitmq-eventbus-netcore.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2022/02/07/some-code-excerpts.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2012/08/13/recollect-1.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2022/06/16/teclast-n5095-pve.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2021/12/30/tools.html</loc>
-    <lastmod>2024-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://oujun.work/2022/02/02/travel-design.html</loc>
     <lastmod>2024-01-31</lastmod>
   </url>
   <url>
