@@ -1,6 +1,8 @@
 ---
 title: asp.net后台执行js造成样式失效
 date: 2011-01-12 17:49:00
+categories:
+- [软件开发, .Net, 小技巧]
 tags:
     - asp.net
 ---
