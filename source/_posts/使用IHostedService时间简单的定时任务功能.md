@@ -2,7 +2,7 @@
 title: 使用IHostedService时间简单的定时任务功能
 date: 2022-05-30 11:29:10
 categories:
-- .Net
+- [软件开发, .Net, 小技巧]
 tags:
     - C#
     - .Net Core
