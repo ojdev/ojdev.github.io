@@ -3,7 +3,7 @@ title: PostgreSQL导出数据库文档
 date: 2023-02-24 20:16:00
 updated:  2023-02-24 20:16:00
 categories:
-- 知识储备
+- [软件开发, 运维]
 tags:
 - PostgreSQL
 - 数据库文档
