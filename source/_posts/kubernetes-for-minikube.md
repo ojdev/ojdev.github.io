@@ -2,13 +2,14 @@
 title: 在windows上创建kubernetes集群
 date: 2019-05-22 16:59:56
 categories:
-- DevOps
+- [软件开发, 架构]
 tags: 
     - hyperV
     - minikube
     - kubernetes
     - k8s
     - windows10
+    - DevOps
 ---
 # 环境
 > Windows 10 Pro 1903
