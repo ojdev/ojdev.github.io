@@ -1,6 +1,8 @@
 ---
 title: 常用的代码剪辑
 date: 2022-02-07 09:52:51
+categories:
+- [软件开发, .Net, 小技巧]
 tags:
     - C#
     - CSharp
