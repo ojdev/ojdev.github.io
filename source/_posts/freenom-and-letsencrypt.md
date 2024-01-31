@@ -4,7 +4,7 @@ date: 2022-12-23 14:24:02
 updated:  2022-12-29 11:07:00
 mermaid: true
 categories:
-- 知识储备
+- [软件开发, 运维]
 tags:
  - Freenom
  - SSL证书
