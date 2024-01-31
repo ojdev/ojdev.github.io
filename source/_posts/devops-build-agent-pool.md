@@ -2,7 +2,7 @@
 title: 【Devops】 - Azure Devops的代理池：封装一个自己的代理池镜像
 date: 2022-06-11 21:08:08
 categories:
-- DevOps
+- [软件开发, 运维]
 tags:
     - Docker
     - Azure Devops
