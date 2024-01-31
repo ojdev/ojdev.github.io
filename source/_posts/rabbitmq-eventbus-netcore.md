@@ -1,7 +1,8 @@
 ---
 title: RabbitMQ.EventBus.AspNetCore
 date: 2019-05-06 13:52:00
-categories: 知识储备
+categories:
+- [软件开发, .Net, 小技巧]
 tags: 
     - RabbitMQ
     - .net core
