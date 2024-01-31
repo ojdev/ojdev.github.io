@@ -2,8 +2,7 @@
 title: 台电玲珑S小主机做旁路由
 date: 2022-06-16 21:38:00
 categories:
-- 家庭服务
-- 知识储备
+- [家庭服务]
 tags:
     - Openwrt
     - ProxmoxVE
