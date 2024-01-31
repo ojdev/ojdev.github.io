@@ -365,7 +365,11 @@
     
     <categories>
       
+      <category>软件开发</category>
+      
       <category>.Net</category>
+      
+      <category>算法</category>
       
     </categories>
     
@@ -790,13 +794,13 @@
     
     <tags>
       
+      <tag>k8s</tag>
+      
       <tag>hyperV</tag>
       
       <tag>minikube</tag>
       
       <tag>kubernetes</tag>
-      
-      <tag>k8s</tag>
       
       <tag>windows10</tag>
       
