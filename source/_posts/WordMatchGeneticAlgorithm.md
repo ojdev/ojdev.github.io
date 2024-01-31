@@ -4,7 +4,7 @@ date: 2022-12-06 14:06:02
 updated:  2022-12-06 14:52:45
 mermaid: true
 categories:
-- .Net
+- [软件开发, .Net, 算法]
 tags:
  - .net
  - C#
