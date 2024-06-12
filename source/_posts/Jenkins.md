@@ -1,7 +1,7 @@
 ---
 title: Jenkins
 date: 2024-06-11 10:16:00
-updated:  2024-06-11 10:16:00
+updated:  2024-06-12 17:39:00
 categories:
 - [软件开发, 运维]
 tags:
@@ -15,9 +15,9 @@ tags:
 ```yaml
 services:
   jenkins:
-    image: jenkinsci/blueocean:latest
+    image: jenkins/jenkins:lts-jdk21
     user: root
-    container_name: jenkins-blueocean
+    container_name: jenkins
     environment:
       - TZ=Asia/Shanghai
       - DOCKER_TLS_CERTDIR=/certs
