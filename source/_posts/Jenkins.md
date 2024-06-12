@@ -67,18 +67,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 `docker exec -it jenkins-blueocean bash`
 `cat /var/jenkins_home/secrets/initialAdminPassword`
 
-# Jenkins 初始化
-
-随后使用浏览器访问`ip:8080` 填入管理员密码，点击`继续`，选择`安装推荐的插件`等待安装完成。
-
-
-# 修改更新的镜像地址
-
-## 插件更新地址
-
-进入 `Manage Jenkins` -> `Manage Plugin` -> `Advanced` 最下面有 `Update Site`，设置为：`https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json`
-
-## Jenkins 更新地址
+# Jenkins 更新地址镜像修改
 
 进入到容器内部，修改 `/var/jenkins_home/updates/default.json` ,将其中的`updates.jenkins-ci.org/download` 替换为 `mirrors.tuna.tsinghua.edu.cn/jenkins`
 
@@ -95,6 +84,14 @@ sed -i 's/https:\/\/updates.jenkins-ci.org\/download/http:\/\/mirrors.aliyun.com
 ```
 
 然后重启服务。
+
+# Jenkins 初始化
+
+随后使用浏览器访问`ip:8080` 填入管理员密码，点击`继续`，选择`安装推荐的插件`等待安装完成。
+
+# 插件更新地址镜像修改
+
+进入 `Manage Jenkins` -> `Manage Plugin` -> `Advanced` 最下面有 `Update Site`，设置为：`https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json`
 
 
 
