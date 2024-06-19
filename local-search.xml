@@ -51,9 +51,9 @@
     
     <tags>
       
-      <tag>DDD</tag>
-      
       <tag>概念</tag>
+      
+      <tag>DDD</tag>
       
     </tags>
     
@@ -198,9 +198,9 @@
     
     <tags>
       
-      <tag>chatgpt</tag>
-      
       <tag>架构设计</tag>
+      
+      <tag>chatgpt</tag>
       
     </tags>
     
@@ -453,6 +453,37 @@
       <tag>Docker</tag>
       
       <tag>Azure Devops</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>IT 名词解释</title>
+    <link href="/2022/06/11/IT-term-explanation.html"/>
+    <url>/2022/06/11/IT-term-explanation.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="Net"><a href="#Net" class="headerlink" title=".Net"></a>.Net</h1><h1 id="Net-Core"><a href="#Net-Core" class="headerlink" title=".Net Core"></a>.Net Core</h1><h1 id="DDD"><a href="#DDD" class="headerlink" title="DDD"></a>DDD</h1><h1 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h1><h1 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h1><h1 id="OOP"><a href="#OOP" class="headerlink" title="OOP"></a>OOP</h1><h1 id="OOM"><a href="#OOM" class="headerlink" title="OOM"></a>OOM</h1><h1 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h1><h1 id="分布式缓存"><a href="#分布式缓存" class="headerlink" title="分布式缓存"></a>分布式缓存</h1><h1 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h1><h1 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h1><h1 id="EF"><a href="#EF" class="headerlink" title="EF"></a>EF</h1><h1 id="EF-Core"><a href="#EF-Core" class="headerlink" title="EF Core"></a>EF Core</h1><h1 id="ABP"><a href="#ABP" class="headerlink" title="ABP"></a>ABP</h1><h1 id="ABP-vNext"><a href="#ABP-vNext" class="headerlink" title="ABP vNext"></a>ABP vNext</h1><h1 id="Hangfire"><a href="#Hangfire" class="headerlink" title="Hangfire"></a>Hangfire</h1><h1 id="MES"><a href="#MES" class="headerlink" title="MES"></a>MES</h1><h1 id="VUE"><a href="#VUE" class="headerlink" title="VUE"></a>VUE</h1><h1 id="Angular"><a href="#Angular" class="headerlink" title="Angular"></a>Angular</h1><h1 id="React"><a href="#React" class="headerlink" title="React"></a>React</h1><h1 id="GIT"><a href="#GIT" class="headerlink" title="GIT"></a>GIT</h1><h1 id="SVN"><a href="#SVN" class="headerlink" title="SVN"></a>SVN</h1><h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h1 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h1><h1 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h1><h1 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h1><h1 id="WPF"><a href="#WPF" class="headerlink" title="WPF"></a>WPF</h1><h1 id="Winform"><a href="#Winform" class="headerlink" title="Winform"></a>Winform</h1><h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h1 id="MSSQL"><a href="#MSSQL" class="headerlink" title="MSSQL"></a>MSSQL</h1><h1 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h1><h1 id="HAL"><a href="#HAL" class="headerlink" title="HAL"></a>HAL</h1><h1 id="C"><a href="#C" class="headerlink" title="C#"></a>C#</h1><h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h1 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h1><h1 id="CRM"><a href="#CRM" class="headerlink" title="CRM"></a>CRM</h1><h1 id="OA"><a href="#OA" class="headerlink" title="OA"></a>OA</h1><h1 id="ERP"><a href="#ERP" class="headerlink" title="ERP"></a>ERP</h1><h1 id="SAAS"><a href="#SAAS" class="headerlink" title="SAAS"></a>SAAS</h1><h1 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h1><h1 id="Web3"><a href="#Web3" class="headerlink" title="Web3"></a>Web3</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>软件开发</category>
+      
+      <category>架构</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>架构</tag>
+      
+      <tag>概念</tag>
+      
+      <tag>架构设计</tag>
       
     </tags>
     
