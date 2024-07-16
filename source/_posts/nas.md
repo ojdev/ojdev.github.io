@@ -240,16 +240,34 @@ apt upgrade -y
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
 ```
+
+### 2.2 2 修改镜像源
+
+在`/etc/docker`目录中添加一个文件`daemon.json`,文件内容如下
+
+```json
+{
+  "registry-mirrors": ["https://oohnp2oa.mirror.aliyuncs.com"]
+}
+```
+
+然后执行
+
+```bash
+systemctl daemon-reload
+systemctl restart docker.service
+```
+
 #### 参考链接
 
 + [https://docs.docker.com/engine/install/debian/](https://docs.docker.com/engine/install/debian/)
-### 2.2 2 安装docker-compose
+### 2.2 3 安装docker-compose
 
 ``` bash
 apt install docker-ce docker-compose
 ```
 
-### 2.2 3 前期准备
+### 2.2 4 前期准备
 
 创建子网隔离，非必须。
 ``` bash
@@ -257,7 +275,7 @@ docker network create --subnet 10.10.10.0/24 pve-subnet
 ```
 该处的`pve-subnet`对应下面`docker-compose.yml`文件中`networks`节点下的`name`,可以忽略，`docker-compose`会自动建立。
 
-### 2.2 4 为什么使用docker-compose
+### 2.2 5 为什么使用docker-compose
 
 docker虽然部署与管理变的容易，但是当遇到版本升级的时候就需要重新使用命令行进行一次部署，然而很多时候我都懒得进行本分，目前工作中使用的是k8s，在家用nas上我觉得实在是没必要，于是比较传统的`docker-compose`就是一个很好的解决方案。
 每当有版本升级的时候只要修改`docker-compose.yml`文件中对应的镜像标签，然后重新docker-compose up -d就自动进行拉取部署升级，不会影响其他未修改配置的镜像，就方便很多了。
