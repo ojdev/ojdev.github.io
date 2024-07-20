@@ -1,6 +1,8 @@
 ---
 title: about
 date: 2021-07-29 13:57:45
+updated: 2024-07-20 15:55:00
+mermaid: true
 layout: about
 ---
 
