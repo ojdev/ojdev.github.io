@@ -5,13 +5,11 @@ categories:
 - [软件开发, 架构]
 tags:
   - 思维导图
----
-
-{% markmap %}
----
 markmap:
   colorFreezeLevel: 2
 ---
+
+{% markmap %}
 # 选购
 ## 要求
 ### 通勤
