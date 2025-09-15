@@ -9,25 +9,25 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "7.1.0"
+    "version": "7.3.0"
   },
   "dependencies": {
-    "hexo": "^7.1.0",
+    "hexo": "^7.3.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-baidu-sitemap": "^0.1.9",
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-feed": "^3.0.0",
-    "hexo-generator-index": "^3.0.0",
+    "hexo-generator-index": "^4.0.0",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^2.0.0",
     "lodash.get": "^4.4.2",
-    "markmap-lib": "^0.15.8",
-    "hexo-markmap": "^1.2.5",
+    "markmap-lib": "^0.18.12",
+    "hexo-markmap": "^2.0.8",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^6.2.0",
+    "hexo-renderer-marked": "^7.0.1",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
     "hexo-all-minifier":"^0.5.7",
-    "hexo-theme-fluid": "^1.9.7"
+    "hexo-theme-fluid": "^1.9.8"
   }
 }
