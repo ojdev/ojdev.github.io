@@ -11,6 +11,60 @@
   </url>
   
   <url>
+    <loc>https://oujun.work/2019/06/25/windows-terminal.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2012/08/03/yeshiwen-h2o.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2022/05/30/%E4%BD%BF%E7%94%A8IHostedService%E6%97%B6%E9%97%B4%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%8A%9F%E8%83%BD.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2011/04/06/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AE%B9%E9%87%8F.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2012/03/29/%E6%AF%81%E7%81%AD%E7%AB%A5%E5%B9%B4%EF%BC%81%E8%BF%98%E5%8E%9F%E7%AB%A5%E8%AF%9D%E6%95%85%E4%BA%8B%E6%81%90%E6%80%96%E9%9D%A2%E7%9B%AE.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2021/05/26/%E6%B2%88%E9%98%B3%E7%9A%84%E7%94%9F%E6%B4%BB%E5%BC%80%E5%A7%8B%E4%BA%86.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://oujun.work/2012/05/28/%E6%B2%A1%E4%BA%8B%E7%A9%B7%E6%8A%98%E8%85%BE%EF%BC%9Afastboot%E5%88%B7%E6%9C%BA.html</loc>
     
     <lastmod>2025-10-20</lastmod>
@@ -48,6 +102,69 @@
   
   <url>
     <loc>https://oujun.work/2022/05/31/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2022/06/11/devops-build-agent-pool.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2012/06/22/dream-1.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2022/02/07/github-to-nuget.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2012/08/14/jinyong.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2012/06/30/july-1-2012-1-seconds.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2019/06/03/kubernetes-for-debian.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2019/05/22/kubernetes-for-minikube.html</loc>
     
     <lastmod>2025-10-20</lastmod>
     
@@ -128,204 +245,6 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2019/06/25/windows-terminal.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2012/08/03/yeshiwen-h2o.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2022/05/30/%E4%BD%BF%E7%94%A8IHostedService%E6%97%B6%E9%97%B4%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%8A%9F%E8%83%BD.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2011/04/06/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AE%B9%E9%87%8F.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2012/03/29/%E6%AF%81%E7%81%AD%E7%AB%A5%E5%B9%B4%EF%BC%81%E8%BF%98%E5%8E%9F%E7%AB%A5%E8%AF%9D%E6%95%85%E4%BA%8B%E6%81%90%E6%80%96%E9%9D%A2%E7%9B%AE.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2021/05/26/%E6%B2%88%E9%98%B3%E7%9A%84%E7%94%9F%E6%B4%BB%E5%BC%80%E5%A7%8B%E4%BA%86.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2010/03/31/canpian-6.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2010/04/02/canpian-7.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2010/04/02/canpian-8.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2010/04/08/canpian-9.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2010/11/13/cloves-changpu.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2010/02/05/cloves-dingxiang.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2010/04/26/cloves-gouweiba.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2010/03/28/cloves-hongdou.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2019/05/05/develop-tools-and-faq.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2022/06/11/devops-build-agent-pool.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2012/06/22/dream-1.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2022/02/07/github-to-nuget.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2012/08/14/jinyong.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2012/06/30/july-1-2012-1-seconds.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2019/06/03/kubernetes-for-debian.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2019/05/22/kubernetes-for-minikube.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://oujun.work/2011/08/12/19271231.html</loc>
     
     <lastmod>2025-10-20</lastmod>
@@ -336,6 +255,15 @@
   
   <url>
     <loc>https://oujun.work/2019/07/16/Architecture.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2011/10/14/2011%E5%B9%B410%E6%9C%8814%E6%97%A5%E4%B8%8B%E5%8D%8814%E7%82%B9%E5%93%88%E5%B0%94%E6%BB%A8%E5%9C%B0%E9%9C%87.html</loc>
     
     <lastmod>2025-10-20</lastmod>
     
@@ -381,15 +309,6 @@
   
   <url>
     <loc>https://oujun.work/2021/10/16/DevelopmentDaily.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2011/10/14/2011%E5%B9%B410%E6%9C%8814%E6%97%A5%E4%B8%8B%E5%8D%8814%E7%82%B9%E5%93%88%E5%B0%94%E6%BB%A8%E5%9C%B0%E9%9C%87.html</loc>
     
     <lastmod>2025-10-20</lastmod>
     
@@ -488,6 +407,24 @@
   </url>
   
   <url>
+    <loc>https://oujun.work/2010/03/31/canpian-5.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2010/03/31/canpian-6.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://oujun.work/2010/03/30/canpian-4.html</loc>
     
     <lastmod>2025-10-20</lastmod>
@@ -497,7 +434,70 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2010/03/31/canpian-5.html</loc>
+    <loc>https://oujun.work/2010/04/02/canpian-7.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2010/04/08/canpian-9.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2010/04/02/canpian-8.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2010/11/13/cloves-changpu.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2010/02/05/cloves-dingxiang.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2010/04/26/cloves-gouweiba.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2010/03/28/cloves-hongdou.html</loc>
+    
+    <lastmod>2025-10-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2019/05/05/develop-tools-and-faq.html</loc>
     
     <lastmod>2025-10-20</lastmod>
     
@@ -682,6 +682,20 @@
   </url>
   
   <url>
+    <loc>https://oujun.work/tags/%E5%9C%B0%E9%9C%87/</loc>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/tags/%E5%93%88%E5%B0%94%E6%BB%A8/</loc>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://oujun.work/tags/C/</loc>
     <lastmod>2025-10-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -732,20 +746,6 @@
   
   <url>
     <loc>https://oujun.work/tags/GO%E8%AF%AD%E8%A8%80/</loc>
-    <lastmod>2025-10-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/tags/%E5%9C%B0%E9%9C%87/</loc>
-    <lastmod>2025-10-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/tags/%E5%93%88%E5%B0%94%E6%BB%A8/</loc>
     <lastmod>2025-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1342,13 +1342,6 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2025-10-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://oujun.work/categories/%E7%8B%90%E8%AF%B4%E5%85%AB%E9%81%93/</loc>
     <lastmod>2025-10-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -1357,6 +1350,13 @@
   
   <url>
     <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Net/</loc>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2025-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1377,13 +1377,6 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/categories/%E5%AE%B6%E5%BA%AD%E6%9C%8D%E5%8A%A1/</loc>
-    <lastmod>2025-10-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Net/%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2025-10-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -1391,7 +1384,7 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Net/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    <loc>https://oujun.work/categories/%E5%AE%B6%E5%BA%AD%E6%9C%8D%E5%8A%A1/</loc>
     <lastmod>2025-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1399,6 +1392,13 @@
   
   <url>
     <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Net/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Net/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2025-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
