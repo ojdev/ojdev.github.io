@@ -1,22 +1,17 @@
 ---
 title: about
 date: 2021-07-29 13:57:45+08:00
-updated: 2024-07-20 15:55:00+08:00
+updated: 2025-10-20 20:57:00+08:00
 mermaid: true
 layout: about
 ---
 
+# 使用mklink转移目录增加C盘空间
 
-```mermaid
-timeline
-    Start
-    2009 : 黑龙江<br>省应用电子<br>有限责任公司<br>全栈工程师
-    2014 : 黑龙江<br>龙电电气<br>有限公司<br>全栈工程师
-    2015 : 哈尔滨<br>全程亿品<br>网络科技有限公司<br>全栈工程师
-         : 哈尔滨<br>百氏佳居<br>网络科技有限公司<br>全栈工程师
-    2019 : 上海<br>鹿径信息科技<br>有限公司<br>技术经理
-         : 上海<br>全拓房地产经纪<br>有限公司<br>架构师
-         : 同策房产咨询股份<br>有限公司<br>架构师
-    2023 : 休息
-    2024 : 药明康德<br>外包
+`mklink`是类似linux中的创建链接，文件夹转换后会在原有位置创建一个文件夹链接，保证正常使用，例如将`C:\Program Files\dotnet`的文件夹直接移动到`D:\Program Files\dotnet`，使用管理员打开cmd执行如下命令
+
+```shell
+C:\Windows\System32>mklink /J "C:\Program Files\dotnet" "D:\Program Files\dotnet"
+为 C:\Program Files\dotnet <<===>> D:\Program Files\dotnet 创建的联接
 ```
+`C:\Program Files\`目录下会出现一个带箭头的dotnet。
