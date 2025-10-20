@@ -15,3 +15,22 @@ C:\Windows\System32>mklink /J "C:\Program Files\dotnet" "D:\Program Files\dotnet
 为 C:\Program Files\dotnet <<===>> D:\Program Files\dotnet 创建的联接
 ```
 `C:\Program Files\`目录下会出现一个带箭头的dotnet。
+
+## 常用内容
+
+```shell
+mklink /J "C:\Program Files\dotnet" "D:\Program Files\dotnet"
+```
+
+# 使用本地代理代理git
+
+```shell
+git config --global http.proxy 127.0.0.1:10808
+```
+
+# comfy cli启动时传入参数
+
+```shell
+comfy launch -- --lowvram --bf16-unet --bf16-vae --bf16-text-enc
+```
+
