@@ -303,9 +303,11 @@ navbar:
     - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tool-fill" }
-    - { key: "tools", icon: "iconfont icon-tags-fill",
+    - { key: "工具", icon: "iconfont icon-tags-fill",
         submenu:[
           { key: 'drawDB', link: 'https://draw.oujun.work/editor/' },
+          { key: '云盘', link: 'https://pan.oujun.work/' },
+          { key: '签到', link: 'https://qiandao.oujun.work/' }
         ]
     }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
