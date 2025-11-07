@@ -286,7 +286,7 @@ navbar:
   # Navigation bar frosted glass special animation. It is an experimental feature
   ground_glass:
     enable: false
-
+javascript:Publish()
     # 模糊像素，只能为数字，数字越大模糊度越高
     # Number of blurred pixel. the larger the number, the higher the blur
     px: 3
@@ -308,7 +308,7 @@ navbar:
           { key: 'drawDB', link: 'https://draw.oujun.work/editor/' },
           { key: '云盘', link: 'https://pan.oujun.work/' },
           { key: '签到', link: 'https://qiandao.oujun.work/' },
-          { key: 'New', link: 'https://edit.oujun.work/' }
+          { key: 'Editor', link: 'https://edit.oujun.work/' }
         ]
     }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
