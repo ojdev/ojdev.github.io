@@ -38,6 +38,36 @@ comfy launch -- --lowvram --bf16-unet --bf16-vae --bf16-text-enc
 # PostgreSQL碎片整理
 
 
+## VACUM
+
+
+会重写表中的每一行数据，整理存储碎片，压缩表空间；会重建表的所有索引，整理索引碎片压缩索引空间。
+
+VACUM不会锁表
+
 ```pgsql
+VACUM 表名
 VACUM FULL 表名
+```
+
+
+## pg_repack
+
+
+注意事项
+
+* **存储空间**：全表重组时，剩余存储空间需至少为待重组表大小的两倍。
+* **限制**：pg\_repack 无法操作临时表和 GiST 索引。
+* **性能影响**：重组表和索引时会占用较多磁盘 IO，需提前评估对业务的影响。
+* **权限问题**：若遇到权限报错，可使用 *--no-superuser-check* 参数，但全表重组仍需超级用户权限。
+
+通过 pg\_repack，您可以高效地优化 PostgreSQL 数据库的表空间，提升性能并减少存储浪费。
+
+```pgsql
+postgres -hCREATE EXTENSION pg_repack
+
+# 检查但不执行
+pg_repack --dry-run --no-superuser-check --echo --no-order -h 主机 -p 端口 -d 数据库 -U 用户 --table schema1.table1
+# 检查并执行
+pg_repack --no-superuser-check --echo --no-order -h 主机 -p 端口 -d 数据库 -U 用户 --table schema1.table1
 ```
