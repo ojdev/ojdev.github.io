@@ -3,7 +3,7 @@ date: '2021-07-29T13:57:45+08:00'
 layout: about
 mermaid: true
 title: about
-updated: '2025-11-07T10:59:57.850+08:00'
+updated: '2025-11-07T14:41:03.305+08:00'
 ---
 # 使用mklink转移目录增加C盘空间
 
@@ -34,12 +34,9 @@ git config --global http.proxy 127.0.0.1:10808
 comfy launch -- --lowvram --bf16-unet --bf16-vae --bf16-text-enc
 ```
 
-
 # PostgreSQL碎片整理
 
-
 ## VACUM
-
 
 会重写表中的每一行数据，整理存储碎片，压缩表空间；会重建表的所有索引，整理索引碎片压缩索引空间。
 
@@ -50,9 +47,7 @@ VACUM 表名
 VACUM FULL 表名
 ```
 
-
 ## pg_repack
-
 
 注意事项
 
@@ -71,3 +66,22 @@ pg_repack --dry-run --no-superuser-check --echo --no-order -h 主机 -p 端口 -
 # 检查并执行
 pg_repack --no-superuser-check --echo --no-order -h 主机 -p 端口 -d 数据库 -U 用户 --table schema1.table1
 ```
+
+# windows环境下的使用ssh鉴权登录
+
+```powershell
+type $env:USERPROFILE\.ssh\id_rsa.pub | ssh -p 端口 用户名@IP "cat >> ./.ssh/authorized_keys"
+
+```
+
+# kubectl在linux中按tab不提示
+
+```shell
+echo 'source <(kubectl completion bash)' >>~/.bashrc
+or
+apt install bash-completion
+kubectl completion bash >/etc/bash_completion.d/kubectl
+source /usr/share/bash-completion/bash_completion
+```
+
+#
