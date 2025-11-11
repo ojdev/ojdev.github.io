@@ -34,7 +34,6 @@ pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ --tru
 
 ## 下载模型
 
-
 大约4G左右，需要持续一段时间。
 
 ```powershell
@@ -45,9 +44,7 @@ git clone https://huggingface.co/SparkAudio/Spark-TTS-0.5B pretrained_models/Spa
 
 # 使用
 
-
 启动命令`python webui.py --device 0` 表示启动webui，并使用第一个GPU设备。
-
 
 如果出现下面的报错信息，那么就是gradio版本太高了，降低版本`pip install "gradio<4"`就能解决。
 
