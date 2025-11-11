@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>本地化部署AI语音克隆模型</title>
+    <link href="/2025/11/10/ai-spark-tts.html"/>
+    <url>/2025/11/10/ai-spark-tts.html</url>
+    
+    <content type="html"><![CDATA[<p>Spark-TTS 是一种先进的文本转语音系统，它利用大型语言模型 （LLM） 的强大功能进行高度准确和自然的语音合成。它的设计高效、灵活、强大，适用于研究和生产用途。</p><h1 id="github"><a href="#github" class="headerlink" title="github"></a>github</h1><p><a href="https://github.com/sparkaudio/spark-tts">SparkAudio&#x2F;Spark-TTS: Spark-TTS Inference Code</a></p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">git clone https://github.com/SparkAudio/Spark<span class="hljs-literal">-TTS</span>.git<br><span class="hljs-built_in">cd</span> Spark<span class="hljs-literal">-TTS</span><br></code></pre></td></tr></table></figure><h2 id="创建虚拟环境并安装依赖"><a href="#创建虚拟环境并安装依赖" class="headerlink" title="创建虚拟环境并安装依赖"></a>创建虚拟环境并安装依赖</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda create <span class="hljs-literal">-n</span> sparktts <span class="hljs-literal">-y</span> python=<span class="hljs-number">3.12</span><br>conda activate sparktts<br>pip install <span class="hljs-literal">-r</span> requirements.txt <span class="hljs-literal">-i</span> https://mirrors.aliyun.com/pypi/simple/ <span class="hljs-literal">--trusted-host</span>=mirrors.aliyun.com<br></code></pre></td></tr></table></figure><h2 id="下载模型"><a href="#下载模型" class="headerlink" title="下载模型"></a>下载模型</h2><p>大约4G左右，需要持续一段时间。</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">mkdir <span class="hljs-literal">-p</span> pretrained_models<br>git lfs install<br>git clone https://huggingface.co/SparkAudio/Spark<span class="hljs-literal">-TTS-0</span>.<span class="hljs-number">5</span>B pretrained_models/Spark<span class="hljs-literal">-TTS-0</span>.<span class="hljs-number">5</span>B<br></code></pre></td></tr></table></figure><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>启动命令<code>python webui.py --device 0</code> 表示启动webui，并使用第一个GPU设备。</p><p>如果出现下面的报错信息，那么就是gradio版本太高了，降低版本<code>pip install &quot;gradio&lt;4&quot;</code>就能解决。</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs powershell">D:\anaconda3\envs\sparktts\Lib\site<span class="hljs-literal">-packages</span>\torch\nn\utils\weight_norm.py:<span class="hljs-number">143</span>: FutureWarning: `torch.nn.utils.weight_norm` is deprecated <span class="hljs-keyword">in</span> favor of `torch.nn.utils.parametrizations.weight_norm`.<br>  WeightNorm.apply(module, name, dim)<br>Missing tensor: mel_transformer.spectrogram.window<br>Missing tensor: mel_transformer.mel_scale.fb<br>信息: 用提供的模式无法找到文件。<br>* Running on local URL:  http://<span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>:<span class="hljs-number">7860</span><br>ERROR:    Exception <span class="hljs-keyword">in</span> ASGI application<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;D:\anaconda3\envs\sparktts\Lib\site-packages\uvicorn\protocols\http\h11_impl.py&quot;</span>, line <span class="hljs-number">403</span>, <span class="hljs-keyword">in</span> run_asgi<br>.......<br>  File <span class="hljs-string">&quot;D:\anaconda3\envs\sparktts\Lib\site-packages\gradio_client\utils.py&quot;</span>, line <span class="hljs-number">898</span>, <span class="hljs-keyword">in</span> get_type<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;const&quot;</span> <span class="hljs-keyword">in</span> schema:<br>       ^^^^^^^^^^^^^^^^^<br>TypeError: argument of <span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;bool&#x27;</span> is not iterable<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>AI</tag>
+      
+      <tag>本地部署</tag>
+      
+      <tag>克隆语音</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>组织机构的实体设计与时态表的应用</title>
     <link href="/2025/09/15/%E7%BB%84%E7%BB%87%E6%9C%BA%E6%9E%84%E7%9A%84%E5%AE%9E%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%97%B6%E6%80%81%E8%A1%A8%E7%9A%84%E5%BA%94%E7%94%A8.html"/>
     <url>/2025/09/15/%E7%BB%84%E7%BB%87%E6%9C%BA%E6%9E%84%E7%9A%84%E5%AE%9E%E4%BD%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%97%B6%E6%80%81%E8%A1%A8%E7%9A%84%E5%BA%94%E7%94%A8.html</url>
