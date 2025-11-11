@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://oujun.work/2022/05/30/%E4%BD%BF%E7%94%A8IHostedService%E6%97%B6%E9%97%B4%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%8A%9F%E8%83%BD.html</loc>
+    
+    <lastmod>2025-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://oujun.work/2011/04/06/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AE%B9%E9%87%8F.html</loc>
     
     <lastmod>2025-11-11</lastmod>
@@ -83,7 +92,7 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2012/06/30/july-1-2012-1-seconds.html</loc>
+    <loc>https://oujun.work/2022/02/07/github-to-nuget.html</loc>
     
     <lastmod>2025-11-11</lastmod>
     
@@ -93,6 +102,15 @@
   
   <url>
     <loc>https://oujun.work/2012/08/14/jinyong.html</loc>
+    
+    <lastmod>2025-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/2012/06/30/july-1-2012-1-seconds.html</loc>
     
     <lastmod>2025-11-11</lastmod>
     
@@ -209,15 +227,6 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2022/05/30/%E4%BD%BF%E7%94%A8IHostedService%E6%97%B6%E9%97%B4%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%8A%9F%E8%83%BD.html</loc>
-    
-    <lastmod>2025-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://oujun.work/2011/01/12/asp-net%E5%90%8E%E5%8F%B0%E6%89%A7%E8%A1%8Cjs%E9%80%A0%E6%88%90%E6%A0%B7%E5%BC%8F%E5%A4%B1%E6%95%88.html</loc>
     
     <lastmod>2025-11-11</lastmod>
@@ -263,7 +272,7 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2010/03/30/canpian-3.html</loc>
+    <loc>https://oujun.work/2010/03/30/canpian-4.html</loc>
     
     <lastmod>2025-11-11</lastmod>
     
@@ -272,7 +281,7 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2010/03/30/canpian-4.html</loc>
+    <loc>https://oujun.work/2010/03/30/canpian-3.html</loc>
     
     <lastmod>2025-11-11</lastmod>
     
@@ -308,7 +317,7 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2010/04/08/canpian-9.html</loc>
+    <loc>https://oujun.work/2010/04/02/canpian-8.html</loc>
     
     <lastmod>2025-11-11</lastmod>
     
@@ -317,7 +326,7 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2010/04/02/canpian-8.html</loc>
+    <loc>https://oujun.work/2010/04/08/canpian-9.html</loc>
     
     <lastmod>2025-11-11</lastmod>
     
@@ -389,7 +398,7 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2022/02/07/github-to-nuget.html</loc>
+    <loc>https://oujun.work/2011/08/12/19271231.html</loc>
     
     <lastmod>2025-11-11</lastmod>
     
@@ -407,7 +416,7 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/2011/08/12/19271231.html</loc>
+    <loc>https://oujun.work/2011/07/10/C-%E4%B8%8E%E7%9B%97%E6%A2%A6%E7%A9%BA%E9%97%B4-%E6%88%91%E4%BB%AC%E8%A6%81%E8%BF%9B%E5%85%A5%E4%B8%8B%E4%B8%80%E5%B1%82%E6%A2%A6%E5%A2%83.html</loc>
     
     <lastmod>2025-11-11</lastmod>
     
@@ -417,15 +426,6 @@
   
   <url>
     <loc>https://oujun.work/2019/07/16/Architecture.html</loc>
-    
-    <lastmod>2025-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/2011/07/10/C-%E4%B8%8E%E7%9B%97%E6%A2%A6%E7%A9%BA%E9%97%B4-%E6%88%91%E4%BB%AC%E8%A6%81%E8%BF%9B%E5%85%A5%E4%B8%8B%E4%B8%80%E5%B1%82%E6%A2%A6%E5%A2%83.html</loc>
     
     <lastmod>2025-11-11</lastmod>
     
@@ -677,6 +677,13 @@
 
   
   <url>
+    <loc>https://oujun.work/tags/%E8%B0%9C%E6%A1%88/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://oujun.work/tags/%E5%9C%B0%E9%9C%87/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -691,20 +698,6 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/tags/%E8%B0%9C%E6%A1%88/</loc>
-    <lastmod>2025-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/tags/%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2025-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://oujun.work/tags/C/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -713,6 +706,13 @@
   
   <url>
     <loc>https://oujun.work/tags/%E7%9B%97%E6%A2%A6/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/tags/%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -971,20 +971,6 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/tags/%E6%8A%BD%E5%8D%A1/</loc>
-    <lastmod>2025-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/tags/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2025-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://oujun.work/tags/Freenom/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -1007,6 +993,20 @@
   
   <url>
     <loc>https://oujun.work/tags/%E5%85%8D%E8%B4%B9%E9%A1%B6%E7%BA%A7%E5%9F%9F%E5%90%8D/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/tags/%E6%8A%BD%E5%8D%A1/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/tags/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1048,6 +1048,13 @@
   </url>
   
   <url>
+    <loc>https://oujun.work/tags/MVC/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://oujun.work/tags/hyperV/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -1070,13 +1077,6 @@
   
   <url>
     <loc>https://oujun.work/tags/windows10/</loc>
-    <lastmod>2025-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/tags/MVC/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1223,13 +1223,6 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</loc>
-    <lastmod>2025-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://oujun.work/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -1238,6 +1231,13 @@
   
   <url>
     <loc>https://oujun.work/tags/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1358,14 +1358,14 @@
 
   
   <url>
-    <loc>https://oujun.work/categories/%E7%8B%90%E8%AF%B4%E5%85%AB%E9%81%93/</loc>
+    <loc>https://oujun.work/categories/%E6%94%B6%E9%9B%86/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://oujun.work/categories/%E6%94%B6%E9%9B%86/</loc>
+    <loc>https://oujun.work/categories/%E7%8B%90%E8%AF%B4%E5%85%AB%E9%81%93/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1379,14 +1379,14 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E6%9E%B6%E6%9E%84/</loc>
+    <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Net/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Net/</loc>
+    <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1414,20 +1414,6 @@
   </url>
   
   <url>
-    <loc>https://oujun.work/categories/AI/</loc>
-    <lastmod>2025-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Net/%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2025-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Net/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -1436,6 +1422,20 @@
   
   <url>
     <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Net/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/categories/AI/</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://oujun.work/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Net/%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
