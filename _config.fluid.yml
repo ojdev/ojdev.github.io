@@ -286,7 +286,6 @@ navbar:
   # Navigation bar frosted glass special animation. It is an experimental feature
   ground_glass:
     enable: false
-javascript:Publish()
     # 模糊像素，只能为数字，数字越大模糊度越高
     # Number of blurred pixel. the larger the number, the higher the blur
     px: 3
