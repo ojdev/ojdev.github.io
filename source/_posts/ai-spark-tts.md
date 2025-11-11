@@ -8,7 +8,7 @@ tags:
 - 本地部署
 - 克隆语音
 title: 本地化部署AI语音克隆模型
-updated: '2025-11-11T12:54:58.883+08:00'
+updated: '2025-11-11T13:02:04.195+08:00'
 ---
 Spark-TTS 是一种先进的文本转语音系统，它利用大型语言模型 （LLM） 的强大功能进行高度准确和自然的语音合成。它的设计高效、灵活、强大，适用于研究和生产用途。
 
@@ -66,4 +66,4 @@ TypeError: argument of type 'bool' is not iterable
 
 # 参考
 
-> 1. Spark-TTS ^[https://sparkaudio.github.io/spark-tts]^
+> 1. Spark-TTS [https://sparkaudio.github.io/spark-tts]
