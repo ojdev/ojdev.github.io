@@ -3,7 +3,7 @@ date: '2021-07-29T13:57:45+08:00'
 layout: about
 mermaid: true
 title: about
-updated: '2025-11-07T14:41:03.305+08:00'
+updated: '2025-11-13T09:15:34.268+08:00'
 ---
 # 使用mklink转移目录增加C盘空间
 
@@ -70,6 +70,7 @@ pg_repack --no-superuser-check --echo --no-order -h 主机 -p 端口 -d 数据�
 # windows环境下的使用ssh鉴权登录
 
 ```powershell
+ssh-keygen -t rsa -C "a@b.work"
 type $env:USERPROFILE\.ssh\id_rsa.pub | ssh -p 端口 用户名@IP "cat >> ./.ssh/authorized_keys"
 
 ```
