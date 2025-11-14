@@ -3,7 +3,7 @@ date: '2021-07-29T13:57:45+08:00'
 layout: about
 mermaid: true
 title: about
-updated: '2025-11-13T09:15:34.268+08:00'
+updated: '2025-11-14T18:28:05.263+08:00'
 ---
 # 使用mklink转移目录增加C盘空间
 
@@ -32,6 +32,28 @@ git config --global http.proxy 127.0.0.1:10808
 
 ```shell
 comfy launch -- --lowvram --bf16-unet --bf16-vae --bf16-text-enc
+```
+
+# 在python中使用gpu
+
+由于有些时候直接安装依赖后并未使用gpu，所以需要单独处理一下,cuda13可以向下兼容。
+
+先下载[CUDA Toolkit - Free Tools and Training | NVIDIA Developer](https://developer.nvidia.com/cuda-toolkit) 并安装。
+
+然后下载 [cuDNN 历史版本 | NVIDIA 开发者](https://developer.nvidia.cn/rdp/cudnn-archive)，然后解压后将`bin`,`include`,`lib`三个文件夹复制到CUDA Toolkit的目录中，默认为`C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0`
+
+```shell
+pip uninstall torch
+pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu130
+```
+
+验证
+
+```python
+import torch
+print(torch.cuda.is_available())
+
+# 会输出 True
 ```
 
 # PostgreSQL碎片整理
