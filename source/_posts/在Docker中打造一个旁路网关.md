@@ -9,7 +9,7 @@ tags:
 - 旁路网关
 - 科学上网
 title: 在Docker中打造一个旁路网关
-updated: '2025-11-16T19:53:13.006+08:00'
+updated: '2025-11-16T19:57:51.602+08:00'
 ---
 家里设备较多，有些设备有需要保持代理状态，所以每个设备都去做代理，遇到更新的时候就会很麻烦，单独部署一个软路由又会增加不必要的成本，十有八九是性能浪费，我并不需要极端小的延迟，够用就好，于是在Proxmox VE 9中本身存在的Docker中安装一个Mihomo，用来作为网关代理局域网中的流量。
 
@@ -291,7 +291,7 @@ HOST_IP="192.168.50.254"            # PVE 宿主机 IP
 MIHOMO_REDIR_PORT="7892"            # Mihomo TCP/UDP 透明代理端口 (用于 REDIRECT)
 MIHOMO_TPROXY_PORT="7893"           # Mihomo TPROXY 端口 (用于 UDP/未来 TCP 优化)
 MIHOMO_API_PORT="9090"              # 💡 增加：Mihomo 外部控制/Web UI 端口
-XRAY_SERVER_IP="67.230.168.97"      # Vless/Xray 上游服务器 IP
+XRAY_SERVER_IP="⬛⬛⬛.⬛⬛⬛.⬛⬛⬛.⬛⬛⬛"      # Vless/Xray 上游服务器 IP
 LOCAL_LAN="192.168.50.0/24"         # 您的局域网 CIDR
 PVE_OUT_INTERFACE="vmbr0"           # PVE 宿主机用于连接局域网/互联网的接口
 
