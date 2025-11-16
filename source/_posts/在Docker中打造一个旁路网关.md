@@ -73,17 +73,17 @@ proxies:
     udp: true
   - name: "代理节点"
     type: vless
-    server: ⬛⬛⬛.⬛⬛⬛.⬛⬛⬛.⬛⬛⬛
-    port: ⬛⬛⬛
-    uuid: ⬛⬛⬛⬛⬛-⬛⬛⬛⬛-⬛⬛⬛⬛-⬛⬛⬛⬛-⬛⬛⬛⬛
+    server: ███.███.███.███
+    port: ███
+    uuid: ████████-████-████-████-████████
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.⬛⬛⬛⬛⬛.com # REALITY servername
+    servername: www.█████████.com # REALITY servername
     reality-opts:
-      public-key: ⬛⬛⬛⬛
-      short-id: "⬛⬛⬛⬛" # optional
+      public-key: ██████████████████████
+      short-id: "██" # optional
       support-x25519mlkem768: false # 如果服务端支持可手动设置为true
     client-fingerprint: chrome # cannot be empty
 
@@ -291,7 +291,7 @@ HOST_IP="192.168.50.254"            # PVE 宿主机 IP
 MIHOMO_REDIR_PORT="7892"            # Mihomo TCP/UDP 透明代理端口 (用于 REDIRECT)
 MIHOMO_TPROXY_PORT="7893"           # Mihomo TPROXY 端口 (用于 UDP/未来 TCP 优化)
 MIHOMO_API_PORT="9090"              # 💡 增加：Mihomo 外部控制/Web UI 端口
-XRAY_SERVER_IP="⬛⬛⬛.⬛⬛⬛.⬛⬛⬛.⬛⬛⬛"      # Vless/Xray 上游服务器 IP
+XRAY_SERVER_IP="███.███.███.███"      # Vless/Xray 上游服务器 IP
 LOCAL_LAN="192.168.50.0/24"         # 您的局域网 CIDR
 PVE_OUT_INTERFACE="vmbr0"           # PVE 宿主机用于连接局域网/互联网的接口
 
