@@ -9,10 +9,9 @@ tags:
 - 旁路网关
 - 科学上网
 title: 在Docker中打造一个旁路网关
-updated: '2025-11-15T16:26:11.055+08:00'
+updated: '2025-11-16T19:53:13.006+08:00'
 ---
 家里设备较多，有些设备有需要保持代理状态，所以每个设备都去做代理，遇到更新的时候就会很麻烦，单独部署一个软路由又会增加不必要的成本，十有八九是性能浪费，我并不需要极端小的延迟，够用就好，于是在Proxmox VE 9中本身存在的Docker中安装一个Mihomo，用来作为网关代理局域网中的流量。
-
 
 # 方案对比
 
@@ -20,13 +19,11 @@ updated: '2025-11-15T16:26:11.055+08:00'
 
 经过gemini的一番比对，所有选择了Mihomo。
 
-
 # 准备工作
 
 mihomo作为clash后续的替代，保持了更新，而且配置上又可以直接使用clash的文件，所以方便多了。
 
 不包含docker的安装过程，如果需要可以参考：[docker-ce | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/)
-
 
 ## 开启 IP 转发
 
@@ -49,25 +46,17 @@ services:
     # 启用特权模式，允许创建 TUN 接口并修改 iptables
     privileged: true
     network_mode: host # 使用 host 网络模式，方便设置透明网关和让 PVE 宿主机使用
-    environment:
-      # mihomo 监听的 TPROXY 端口，与 config.yaml 中的 TPROXY 端口保持一致
-      TPROXY_PORT: 7893
-      # 启用透明代理模式（重要）
-      TPROXY_MODE: "true"
-      # 是否绕过中国大陆 IP（重要：设置为 false，mihomo才能根据规则处理所有流量）
-      BYPASS_CN: "false"
     volumes:
       - ./mihomo/config.yaml:/root/.config/mihomo/config.yaml # 映射配置文件
-      - ./mihomo/ruleset:/root/.config/mihomo/ruleset
       - ./mihomo/ui:/root/.config/mihomo/ui
       - /etc/localtime:/etc/localtime:ro
-      - /lib/modules:/lib/modules:ro
     # 允许访问 /dev/net/tun 接口
     devices:
       - /dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN # 允许容器操作网络配置（如 iptables）
-    command: mihomo -d /etc/mihomo -m /etc/mihomo/config.yaml -ext-ctl 0.0.0.0:9090 -ext-ui /etc/mihomo/ui -redir :7892
+      - NET_BROADCAST
+      - SYS_MODULE
 ```
 
 ## config.yaml
@@ -75,268 +64,211 @@ services:
 文件保存:`/root/docker/mihomo/config.yaml`
 
 ```yaml
-# ----------------------------------------------------------------------
-# Mihomo 核心配置 (参考您的模板，调整为透明网关模式)
-# ----------------------------------------------------------------------
-port: 7890             # HTTP 代理端口 (可选)
-socks-port: 7891       # SOCKS5 代理端口 (可选)
-redir-port: 7892       # 💡 透明代理 (Redir) 端口 - 用于 IPTables
-tproxy-port: 7893      # TProxy 代理端口 (备用)
-
-# 移除 mixed-port，因为我们使用了专用的 redir-port
-# mixed-port: 7894
-
-# authentication: ["user:password"] # 仅在公网暴露时推荐，局域网可以省略
-
-ipv6: false
-allow-lan: true        # 允许局域网设备连接
-mode: rule             # 使用规则模式
-log-level: info
-unified-delay: false
-tcp-concurrent: true
-
-# 外部控制和 Web UI
-external-controller: 0.0.0.0:9090 # 💡 监听 0.0.0.0 允许局域网访问
-external-ui: ui
-external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip" # 确保 URL 可用
-secret: '122333'     # API 密码 (可以自行设置)
-
-find-process-mode: strict
-global-client-fingerprint: chrome
-
-profile:
-  store-selected: true
-  store-fake-ip: true
-
-# ----------------------------------------------------------------------
-# 代理配置 (Proxies) - 整合您的 XRAY 节点
-# ----------------------------------------------------------------------
+# --------------------------------------------------------
+# 核心代理节点定义
+# --------------------------------------------------------
 proxies:
   - name: "直连"
     type: direct
     udp: true
-  # 您的 VLESS Reality 节点配置
-  - name: "XRAY"
+  - name: "代理节点"
     type: vless
-    server: 服务端IP
-    port: 服务端端口
-    uuid: 服务端的ID
+    server: ⬛⬛⬛.⬛⬛⬛.⬛⬛⬛.⬛⬛⬛
+    port: ⬛⬛⬛
+    uuid: ⬛⬛⬛⬛⬛-⬛⬛⬛⬛-⬛⬛⬛⬛-⬛⬛⬛⬛-⬛⬛⬛⬛
     network: tcp
     tls: true
-    flow: ■■■■■■■■■■■
-    servername: ■■■■■■■■■■■
+    udp: true
+    flow: xtls-rprx-vision
+    servername: www.⬛⬛⬛⬛⬛.com # REALITY servername
     reality-opts:
-      public-key: ■■■■■■■■■■■
-      short-id: ■■■■■■■■■■■
-#      spider-x: ■■■■■■■■■■■
-#      fingerprint: chrome
-# ----------------------------------------------------------------------
-# 代理组 (Proxy Groups)
-# ----------------------------------------------------------------------
-proxy-groups:
-  # 默认自动选择组 - 仅包含 Vless 节点和直连
-  - name: 默认
-    type: select
-    proxies: [自动选择, 直连]
+      public-key: ⬛⬛⬛⬛
+      short-id: "⬛⬛⬛⬛" # optional
+      support-x25519mlkem768: false # 如果服务端支持可手动设置为true
+    client-fingerprint: chrome # cannot be empty
 
-  - name: 自动选择
-    type: url-test
-    url: "https://www.gstatic.com/generate_204" # 测试地址
-    include-all: true
-    exclude-type: direct
-    interval: 300
-#    proxies: [XRAY, 直连] # 💡 仅包含您的 Reality 节点和直连
+mode: rule
+# ipv6 支持
+ipv6: false
+log-level: debug
+# 允许局域网连接
+allow-lan: true
+# socks5/http 端口
+mixed-port: 7890
+socks-port: 7891       # SOCKS5 代理端口 (可选)
+redir-port: 7892       # 💡 透明代理 (Redir) 端口 - 用于 IPTables
+tproxy-port: 7893      # TProxy 代理端口 (备用)
+# Meta 内核特性 https://wiki.metacubex.one/config/general
+# 统一延迟
+# 更换延迟计算方式,去除握手等额外延迟
+unified-delay: true
+# TCP 并发
+# 同时对所有ip进行连接，返回延迟最低的地址
+tcp-concurrent: true
+# 外部控制端口
+external-controller: :9090
+external-ui: ui
+external-ui-url: "https://ghfast.top/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip" # 确保 URL 可用
+secret: '122333'     # API 密码 (可以自行设置)
 
-  - name: 全球代理 # 所有需要代理的流量都指向这个组
-    type: select
-    proxies: [自动选择, XRAY, 直连]
+geodata-mode: true
 
-  - name: 国内
-    type: select
-    proxies: [直连, 自动选择]
+# Geo 数据库下载地址
+# 源地址 https://github.com/MetaCubeX/meta-rules-dat
+# 可以更换镜像站但不要更换其他数据库，可能导致无法启动
+geox-url:
+  geoip: "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  geosite: "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
 
-  - name: 🚫 阻止
-    type: select
-    proxies: [REJECT]
+# 进程匹配模式
+# 路由器上请设置为 off
+# always 开启，强制匹配所有进程
+# strict 默认，由 Clash 判断是否开启
+# off 不匹配进程，推荐在路由器上使用此模式
+find-process-mode: off
 
-  # 将所有服务特定的组都指向 "全球代理" 或 "自动选择"
-  - name: Google
-    type: select
-    proxies: [全球代理, 直连]
-  - name: Telegram
-    type: select
-    proxies: [全球代理, 直连]
-  - name: Twitter
-    type: select
-    proxies: [全球代理, 直连]
-  - name: 哔哩哔哩
-    type: select
-    proxies: [国内, 全球代理, 直连] # B站国内流量多
-  - name: YouTube
-    type: select
-    proxies: [全球代理, 直连]
-  - name: Spotify
-    type: select
-    proxies: [全球代理, 直连]
-  - name: NETFLIX
-    type: select
-    proxies: [全球代理, 直连]
-  - name: Github
-    type: select
-    proxies: [全球代理, 直连]
-  - name: 其他
-    type: select
-    proxies: [全球代理, 直连]
+# 全局客户端指纹
+global-client-fingerprint: random # 随机指纹
 
-# ----------------------------------------------------------------------
-# 流量嗅探 (Sniffer)
-# ----------------------------------------------------------------------
+# 缓存
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+# 自动同步时间以防止时间不准导致无法正常联网
+ntp:
+  enable: true
+  # 是否同步至系统时间，需要 root/管理员权限
+  write-to-system: false
+  server: time.apple.com
+  port: 123
+  interval: 30
+
+# 域名嗅探
 sniffer:
-  enable: false
-#  sniff:
-#    HTTP:
-#      ports: [80, 8080-8880]
-#      override-destination: true
-#    TLS:
-#      ports: [443, 8443]
-#    QUIC:
-#      ports: [443, 8443]
-#  skip-domain:
-#    - "Mijia Cloud"
-#    - "+.push.apple.com"
+  enable: true
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
 
-# ----------------------------------------------------------------------
-# 透明网关/TUN 配置
-# ----------------------------------------------------------------------
+# tun 模式
 tun:
-  enable: false  # 💡 在 Docker 透明网关场景下，不使用内置 TUN，而是使用 Redir + IPTables
-  # 如果要启用，请确保容器拥有足够的权限，并理解其与 Redir 的区别。
-  # stack: mixed
-  # dns-hijack:
-  #   - "any:53"
-  # auto-route: true
-  # auto-redirect: true
-  # auto-detect-interface: true
+  enable: false  # enable 'true'
+  stack: system  # or 'gvisor'
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-detect-interface: true
 
-# ----------------------------------------------------------------------
-# DNS 配置
-# ----------------------------------------------------------------------
+# dns 设置
+# 已配置 ipv6
 dns:
   enable: true
+  listen: :1053
   ipv6: false
-#  enhanced-mode: fake-ip
-#  fake-ip-filter:
-#    - "*"
-#    - "+.lan"
-#    - "+.local"
-#    - "+.market.xiaomi.com"
+  # 路由器个人建议使用 redir-host 以最佳兼容性
+  # 其他设备可以使用 fake-ip
+  enhanced-mode: redir-host
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter:
+    - '*'
+    - '+.lan'
+    - '+.local'
   default-nameserver:
-    - tls://223.5.5.5
-    - tls://223.6.6.6
+    - 223.5.5.5
+    - 119.29.29.29
+    - 114.114.114.114
+    - '[2402:4e00::]'
+    - '[2400:3200::1]'
   nameserver:
+    - 'tls://8.8.4.4#dns'
+    - 'tls://1.0.0.1#dns'
+    - 'tls://[2001:4860:4860::8844]#dns'
+    - 'tls://[2606:4700:4700::1001]#dns'
+  proxy-server-nameserver:
     - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-  # 添加一个外部 DNS 服务器，用于解析国际域名
-  fallback:
-    - tls://1.0.0.1
-    - tls://8.8.4.4
-  fallback-filter:
-    geoip: true
-    geoip-code: CN # 针对 CN 地区
-    domain: ["+.google.com", "+.facebook.com"] # 包含这些域名的查询使用 fallback
+  nameserver-policy:
+    "geosite:cn,private":
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
+    "geosite:!cn,!private":
+      - "tls://dns.google"
+      - "tls://cloudflare-dns.com"
 
-# ----------------------------------------------------------------------
-# 路由规则 (Rules)
-# ----------------------------------------------------------------------
+# --------------------------------------------------------
+# 策略组定义
+# --------------------------------------------------------
+proxy-groups:
+# 默认组现在只允许在代理和直连之间选择
+  - {name: 默认, type: select, proxies: [自动选择, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Proxy.png"}
+
+# 所有服务策略组现在都使用简化的 &pr 模板
+  - {name: Google, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Google_Search.png"}
+  - {name: Github, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/GitHub.png"}
+  - {name: Apple, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Apple.png"}
+  - {name: Telegram, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Telegram.png"}
+  - {name: Twitter, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Twitter.png"}
+  - {name: TikTok, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/TikTok.png"}
+  - {name: Pixiv, type: select, proxies: [自动选择, 直连, 代理节点]}
+  - {name: Steam, type: select, proxies: [自动选择, 直连, 代理节点]}
+  - {name: OneDrive, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/OneDrive.png"}
+  - {name: 微软服务, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Microsoft.png"}
+  - {name: ehentai, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Panda.png"}
+  - {name: 哔哩哔哩, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/bilibili.png"}
+  - {name: 哔哩东南亚, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/bilibili.png"}
+  - {name: 巴哈姆特, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Bahamut.png"}
+  - {name: YouTube, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/YouTube.png"}
+  - {name: NETFLIX, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Netflix.png"}
+  - {name: Spotify, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Spotify.png"}
+  - {name: 国内, type: select, proxies: [直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/China_Map.png"}
+  - {name: 其他, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Final.png"}
+  - {name: 自动选择, type: url-test, include-all: true, exclude-type: direct, tolerance: 10}
 rules:
-  # -------------------- 优先级最高的黑白名单 (按需添加) --------------------
-  # 黑名单示例：强制阻止某些域名或IP
-  - DOMAIN-SUFFIX,example.com,🚫 阻止
-  - IP-CIDR,1.1.1.1/32,🚫 阻止
-
-  # 白名单示例：强制走代理的域名
-  - DOMAIN-SUFFIX,always-proxy.com,全球代理
-
-  # -------------------- 规则提供者 (Rule Providers) --------------------
-  - RULE-SET,private_ip,直连,no-resolve # 私有 IP 直连
-  - RULE-SET,github_domain,Github
-  - RULE-SET,twitter_domain,Twitter
-  - RULE-SET,youtube_domain,YouTube
-  - RULE-SET,google_domain,Google
-  - RULE-SET,telegram_domain,Telegram
-  - RULE-SET,netflix_domain,NETFLIX
-  - RULE-SET,bilibili_domain,哔哩哔哩
-  - RULE-SET,spotify_domain,Spotify
-
-  # -------------------- 国内外分流核心 --------------------
-  - RULE-SET,cn_domain,国内      # 国内域名走国内组 (直连优先)
-  - RULE-SET,geolocation-!cn,全球代理 # 非中国大陆域名/国家代码走代理
-
-  - RULE-SET,cn_ip,国内          # 国内 IP 走国内组 (直连优先)
-
-  # -------------------- 最终匹配规则 --------------------
-  - MATCH,全球代理              # 剩余所有流量走全局代理组 (实现国内外流量分离)
-
-# ----------------------------------------------------------------------
-# 规则提供者 (Rule Providers) - 采用您提供的 MetaCubeX/meta-rules-dat 仓库
-# ----------------------------------------------------------------------
-rule-anchor:
-  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs, health-check-proxy: DIRECT} # 💡 添加 DIRECT 确保启动下载
-  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs, health-check-proxy: DIRECT} # 💡 添加 DIRECT 确保启动下载
-
-rule-providers:
-  private_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"
-  cn_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"
-  google_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"
-  netflix_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"
-  twitter_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs"
-  telegram_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"
-
-  private_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
-  cn_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
-  github_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"
-  twitter_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs"
-  youtube_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"
-  google_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"
-  telegram_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"
-  netflix_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"
-  bilibili_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bilibili.mrs"
-  spotify_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.mrs"
-  geolocation-!cn:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs
+  # 若需禁用 QUIC 请取消注释 QUIC 两条规则
+  # 防止 YouTube 等使用 QUIC 导致速度不佳, 禁用 443 端口 UDP 流量（不包括国内）
+# - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT
+# - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOIP,CN))),REJECT
+#  - RULE-SET,AWAvenue-Ads,广告拦截
+# - GEOSITE,biliintl,哔哩东南亚
+# - GEOSITE,bilibili,哔哩哔哩
+#  - GEOSITE,category-scholar-!cn,境外AI
+  - GEOSITE,apple,Apple
+  - GEOSITE,apple-cn,Apple
+  - GEOSITE,ehentai,ehentai
+  - GEOSITE,github,Github
+  - GEOSITE,twitter,Twitter
+  - GEOSITE,youtube,YouTube
+  - GEOSITE,google,Google
+  - GEOSITE,google-cn,Google # Google CN 不走代理会导致香港等地区节点 Play Store 异常
+  - GEOSITE,telegram,Telegram
+  - GEOSITE,netflix,NETFLIX
+  - GEOSITE,tiktok,TikTok
+  - GEOSITE,bahamut,巴哈姆特
+  - GEOSITE,spotify,Spotify
+  - GEOSITE,pixiv,Pixiv
+  - GEOSITE,steam@cn,DIRECT
+  - GEOSITE,steam,Steam
+  - GEOSITE,onedrive,OneDrive
+  - GEOSITE,microsoft,微软服务
+  - GEOSITE,geolocation-!cn,其他
+  - GEOIP,google,Google
+  - GEOIP,netflix,NETFLIX
+  - GEOIP,telegram,Telegram
+  - GEOIP,twitter,Twitter
+  - GEOSITE,CN,国内
+  - GEOIP,CN,国内
+  # 绕过局域网地址
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - MATCH,其他
 ```
 
 ## 宿主机流量劫持脚本
@@ -347,8 +279,8 @@ rule-providers:
 #!/bin/bash
 
 # ======================================================================
-# Host 模式下 Mihomo 透明代理 IPTables 脚本 (TCP/UDP 全协议支持)
-# 作者：Gemini AI
+# Host 模式下 Mihomo 透明代理 IPTables 脚本 (优化版 - TCP/UDP 全协议支持)
+# 作者：Gemini AI / 基于用户脚本优化
 # 最后更新：2025-11-15
 # ======================================================================
 
@@ -356,56 +288,78 @@ rule-providers:
 # 核心配置变量 (请根据您的环境修改)
 # ----------------------------------------------------------------------
 HOST_IP="192.168.50.254"            # PVE 宿主机 IP
-MIHOMO_REDIR_PORT="7892"          # Mihomo TCP/UDP 透明代理端口 (用于 REDIRECT)
-MIHOMO_TPROXY_PORT="7893"         # Mihomo TPROXY 端口 (用于 UDP/未来 TCP 优化)
-XRAY_SERVER_IP="■■■■■■■■"    # Vless/Xray 上游服务器 IP
+MIHOMO_REDIR_PORT="7892"            # Mihomo TCP/UDP 透明代理端口 (用于 REDIRECT)
+MIHOMO_TPROXY_PORT="7893"           # Mihomo TPROXY 端口 (用于 UDP/未来 TCP 优化)
+MIHOMO_API_PORT="9090"              # 💡 增加：Mihomo 外部控制/Web UI 端口
+XRAY_SERVER_IP="67.230.168.97"      # Vless/Xray 上游服务器 IP
 LOCAL_LAN="192.168.50.0/24"         # 您的局域网 CIDR
-PVE_OUT_INTERFACE="vmbr0"           # PVE 宿主机用于连接局域网/互联网的接口 (如 eth0 或 vmbr0)
+PVE_OUT_INTERFACE="vmbr0"           # PVE 宿主机用于连接局域网/互联网的接口
 
 # ----------------------------------------------------------------------
-# 1. 清除旧规则和自定义链
+# 排除列表 (私有 IP 范围)
+# ----------------------------------------------------------------------
+EXCLUDE_IPS="\
+10.0.0.0/8 \
+172.16.0.0/12 \
+192.168.0.0/16 \
+127.0.0.0/8 \
+"
+
+# ----------------------------------------------------------------------
+# 1. 清除旧规则和自定义链 (提高幂等性)
 # ----------------------------------------------------------------------
 echo "--- 1. 清除旧规则和自定义链 ---"
-# 清除 nat 表中的自定义链
+
+# 💡 清除 TPROXY 路由规则
+ip rule del fwmark 1 table 100 2>/dev/null
+ip route del local 0.0.0.0/0 dev lo table 100 2>/dev/null
+
+# 从 PREROUTING 链中移除引用
+iptables -t nat -D PREROUTING -p tcp -s "$LOCAL_LAN" -d "$HOST_IP" -j RETURN 2>/dev/null
+iptables -t nat -D PREROUTING -p tcp -s "$LOCAL_LAN" ! -d "$LOCAL_LAN" -j MIHOMO_PROXY 2>/dev/null
+iptables -t mangle -D PREROUTING -p udp -s "$LOCAL_LAN" -d "$HOST_IP" -j RETURN 2>/dev/null
+iptables -t mangle -D PREROUTING -p udp -s "$LOCAL_LAN" ! -d "$LOCAL_LAN" -j MIHOMO_TPROXY 2>/dev/null
+
+# 清除自定义链
 iptables -t nat -F MIHOMO_PROXY 2>/dev/null
 iptables -t nat -X MIHOMO_PROXY 2>/dev/null
-# 清除 mangle 表中的自定义链
 iptables -t mangle -F MIHOMO_TPROXY 2>/dev/null
 iptables -t mangle -X MIHOMO_TPROXY 2>/dev/null
 
-# 从 PREROUTING 链中移除引用
-iptables -t nat -D PREROUTING -j MIHOMO_PROXY 2>/dev/null
-iptables -t mangle -D PREROUTING -j MIHOMO_TPROXY 2>/dev/null
+# 清除 POSTROUTING MASQUERADE 规则 (防止重复)
+iptables -t nat -D POSTROUTING -s "$LOCAL_LAN" -o "$PVE_OUT_INTERFACE" -j MASQUERADE 2>/dev/null
 
 # ----------------------------------------------------------------------
 # 2. 启用系统内核转发
 # ----------------------------------------------------------------------
 echo "--- 2. 启用系统内核转发 ---"
 echo 1 > /proc/sys/net/ipv4/ip_forward
-sysctl -p
+sysctl -p > /dev/null
 
 # ----------------------------------------------------------------------
-# 3. 配置 Mihomo 代理转发链 (NAT 表用于 TCP 重定向)
+# 3. 配置 Mihomo 代理转发链 (NAT 表用于 TCP REDIRECT)
 # ----------------------------------------------------------------------
 echo "--- 3. 配置 MIHOMO_PROXY (NAT 表) ---"
 iptables -t nat -N MIHOMO_PROXY
 
-# 排除 Vless 服务器 IP (避免自代理/回环 - 解决 i/o timeout)
-echo "排除 Xray 服务端 IP ($XRAY_SERVER_IP)..."
+# 排除 Vless 服务器 IP (避免自代理/回环)
 iptables -t nat -A MIHOMO_PROXY -d "$XRAY_SERVER_IP" -j RETURN
 
-# 排除本地和私有网络流量 (避免内网通信被代理)
+# 排除本地和私有网络流量 (宿主机自用/内网通信)
 echo "排除私有网络地址..."
-iptables -t nat -A MIHOMO_PROXY -d 10.0.0.0/8 -j RETURN
-iptables -t nat -A MIHOMO_PROXY -d 172.16.0.0/12 -j RETURN
-iptables -t nat -A MIHOMO_PROXY -d 192.168.0.0/16 -j RETURN
-iptables -t nat -A MIHOMO_PROXY -d 127.0.0.0/8 -j RETURN
+for ip_cidr in $EXCLUDE_IPS; do
+    iptables -t nat -A MIHOMO_PROXY -d "$ip_cidr" -j RETURN
+done
+
+# 排除 Mihomo 自身的端口 (防止回环)
+echo "排除 Mihomo 自身端口 ($MIHOMO_REDIR_PORT, $MIHOMO_API_PORT)..."
+iptables -t nat -A MIHOMO_PROXY -p tcp --dport "$MIHOMO_REDIR_PORT" -j RETURN
+iptables -t nat -A MIHOMO_PROXY -p tcp --dport "$MIHOMO_API_PORT" -j RETURN
 
 # 排除 SSH 端口 (22)
-echo "排除 SSH 端口 (22)..."
 iptables -t nat -A MIHOMO_PROXY -p tcp --dport 22 -j RETURN
 
-# TCP 流量重定向到 Mihomo REDIR 端口 (7892)
+# TCP 流量重定向到 Mihomo REDIR 端口
 echo "重定向剩余 TCP 流量到本机 $MIHOMO_REDIR_PORT..."
 iptables -t nat -A MIHOMO_PROXY -p tcp -j REDIRECT --to-ports "$MIHOMO_REDIR_PORT"
 
@@ -415,55 +369,57 @@ iptables -t nat -A MIHOMO_PROXY -p tcp -j REDIRECT --to-ports "$MIHOMO_REDIR_POR
 echo "--- 4. 配置 MIHOMO_TPROXY (MANGLE 表) ---"
 iptables -t mangle -N MIHOMO_TPROXY
 
-# 排除 Vless 服务器 IP (避免自代理/回环)
+# 排除 Vless 服务器 IP
 iptables -t mangle -A MIHOMO_TPROXY -d "$XRAY_SERVER_IP" -j RETURN
 
 # 排除本地和私有网络流量
-iptables -t mangle -A MIHOMO_TPROXY -d 10.0.0.0/8 -j RETURN
-iptables -t mangle -A MIHOMO_TPROXY -d 172.16.0.0/12 -j RETURN
-iptables -t mangle -A MIHOMO_TPROXY -d 192.168.0.0/16 -j RETURN
-iptables -t mangle -A MIHOMO_TPROXY -d 127.0.0.0/8 -j RETURN
+for ip_cidr in $EXCLUDE_IPS; do
+    iptables -t mangle -A MIHOMO_TPROXY -d "$ip_cidr" -j RETURN
+done
 
-# TPROXY 处理 UDP 流量 (使用 mark 标记)
+# 排除 Mihomo 自身的端口 (防止回环)
+echo "排除 Mihomo 自身端口 ($MIHOMO_TPROXY_PORT, $MIHOMO_API_PORT)..."
+iptables -t mangle -A MIHOMO_TPROXY -p udp --dport "$MIHOMO_TPROXY_PORT" -j RETURN
+iptables -t mangle -A MIHOMO_TPROXY -p tcp --dport "$MIHOMO_API_PORT" -j RETURN
+
+# TPROXY 处理 UDP 流量 (使用 mark 标记 1)
 echo "重定向剩余 UDP 流量到本机 $MIHOMO_TPROXY_PORT..."
-# TPROXY 将数据包重定向到 Mihomo 的 TPROXY 端口 (7893) 并标记
 iptables -t mangle -A MIHOMO_TPROXY -p udp -j TPROXY --on-ip 0.0.0.0 --on-port "$MIHOMO_TPROXY_PORT" --tproxy-mark 1
 
 # ----------------------------------------------------------------------
 # 5. 拦截和重定向客户端流量 (PREROUTING)
 # ----------------------------------------------------------------------
 echo "--- 5. 拦截客户端流量 (PREROUTING) ---"
-# 仅拦截源 IP 在局域网内且目标 IP 不在局域网内的流量
 
-# TCP 流量通过 nat 表的 MIHOMO_PROXY 链进行处理
+# 💡 排除目标为宿主机本身的流量 (如访问 Web UI 或 SSH)
+iptables -t nat -A PREROUTING -p tcp -s "$LOCAL_LAN" -d "$HOST_IP" -j RETURN
+iptables -t mangle -A PREROUTING -p udp -s "$LOCAL_LAN" -d "$HOST_IP" -j RETURN
+
+# TCP 流量：拦截局域网内设备且目标不在局域网内的流量，转发至 MIHOMO_PROXY
 iptables -t nat -A PREROUTING -p tcp -s "$LOCAL_LAN" ! -d "$LOCAL_LAN" -j MIHOMO_PROXY
 
-# UDP 流量通过 mangle 表的 MIHOMO_TPROXY 链进行处理
+# UDP 流量：拦截局域网内设备且目标不在局域网内的流量，转发至 MIHOMO_TPROXY
 iptables -t mangle -A PREROUTING -p udp -s "$LOCAL_LAN" ! -d "$LOCAL_LAN" -j MIHOMO_TPROXY
 
 # ----------------------------------------------------------------------
-# 6. 配置 IP 转发伪装 (SNAT/MASQUERADE) - 解决国内直连 I/O Timeout
+# 6. 配置 IP 转发伪装 (MASQUERADE)
 # ----------------------------------------------------------------------
 echo "--- 6. 配置 IP 转发伪装 (MASQUERADE) ---"
-# 清除旧的转发规则，以防冲突
-iptables -t nat -D POSTROUTING -s "$LOCAL_LAN" -o "$PVE_OUT_INTERFACE" -j MASQUERADE 2>/dev/null
-
-# 添加新的 MASQUERADE 规则，确保所有转发出去的流量源IP被伪装成PVE宿主机IP
-# 解决客户端直连请求无法返回的问题
+# 确保所有转发出去的流量源IP被伪装成PVE宿主机IP，解决客户端直连请求无法返回的问题。
 echo "添加 POSTROUTING MASQUERADE 规则到 $PVE_OUT_INTERFACE..."
 iptables -t nat -A POSTROUTING -s "$LOCAL_LAN" -o "$PVE_OUT_INTERFACE" -j MASQUERADE
 
 # ----------------------------------------------------------------------
 # 7. 必要的路由设置 (TPROXY 需要)
 # ----------------------------------------------------------------------
+echo "--- 7. 配置 TPROXY 路由规则 ---"
 # 设置 IP 路由规则，使标记为 1 的数据包进入 TPROXY 流程
-ip rule add fwmark 1 table 100 2>/dev/null
-ip route add local 0.0.0.0/0 dev lo table 100 2>/dev/null
+ip rule add fwmark 1 table 100
+ip route add local 0.0.0.0/0 dev lo table 100
 
-echo "✅ Mihomo Host 模式透明代理配置完成！"
-exit 
+echo "✅ Mihomo Host 模式透明代理配置完成！请确保 Mihomo 正在运行。"
+exit
 ```
-
 
 ## 流量劫持脚本自启动
 
@@ -484,7 +440,6 @@ StandardOutput=journal
 [Install]
 WantedBy=multi-user.target
 ```
-
 
 ## 启动！
 
@@ -516,8 +471,7 @@ docker compose logs mihomo -f
 
 随后打开路由器，修改局域网设置，将DHCP服务中的默认网关改为宿主机的IP，比如我这里就是192.168.50.254，随后保存，重启路由器，验证设备上网是否正常。
 
-可以打开http://192.168.50.254:9090，查看ui界面中的流量以及配置信息。
-
+可以打开`http://192.168.50.254:9090/ui`，查看ui界面中的流量以及配置信息。
 
 # 后续
 
