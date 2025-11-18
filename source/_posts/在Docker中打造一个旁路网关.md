@@ -8,8 +8,9 @@ tags:
 - Docker
 - 旁路网关
 - 科学上网
+- 透明代理
 title: 在Docker中打造一个旁路网关
-updated: '2025-11-16T19:57:51.602+08:00'
+updated: '2025-11-18T10:27:47.678+08:00'
 ---
 家里设备较多，有些设备有需要保持代理状态，所以每个设备都去做代理，遇到更新的时候就会很麻烦，单独部署一个软路由又会增加不必要的成本，十有八九是性能浪费，我并不需要极端小的延迟，够用就好，于是在Proxmox VE 9中本身存在的Docker中安装一个Mihomo，用来作为网关代理局域网中的流量。
 
@@ -89,15 +90,17 @@ proxies:
 
 mode: rule
 # ipv6 支持
-ipv6: false
-log-level: debug
+ipv6: true
+log-level: warning
+#log-level: debug
 # 允许局域网连接
 allow-lan: true
 # socks5/http 端口
-mixed-port: 7890
-socks-port: 7891       # SOCKS5 代理端口 (可选)
+#mixed-port: 7890
+#socks-port: 7891       # SOCKS5 代理端口 (可选)
 redir-port: 7892       # 💡 透明代理 (Redir) 端口 - 用于 IPTables
 tproxy-port: 7893      # TProxy 代理端口 (备用)
+tproxy: true
 # Meta 内核特性 https://wiki.metacubex.one/config/general
 # 统一延迟
 # 更换延迟计算方式,去除握手等额外延迟
@@ -106,20 +109,26 @@ unified-delay: true
 # 同时对所有ip进行连接，返回延迟最低的地址
 tcp-concurrent: true
 # 外部控制端口
-external-controller: :9090
+external-controller: 0.0.0.0:9090
 external-ui: ui
-external-ui-url: "https://ghfast.top/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip" # 确保 URL 可用
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip" # 确保 URL 可用
 secret: '122333'     # API 密码 (可以自行设置)
 
 geodata-mode: true
-
+geodata-loader: memconservative
 # Geo 数据库下载地址
 # 源地址 https://github.com/MetaCubeX/meta-rules-dat
 # 可以更换镜像站但不要更换其他数据库，可能导致无法启动
 geox-url:
-  geoip: "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
-  geosite: "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
-  mmdb: "https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
+  geoip: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  geosite: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+#  geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+#  geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
+  mmdb: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
+  asn: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+
+geo-auto-update: true # 是否自动更新 geodata
+geo-update-interval: 24 # 更新间隔，单位：小时
 
 # 进程匹配模式
 # 路由器上请设置为 off
@@ -154,7 +163,10 @@ sniffer:
     HTTP:
       ports: [80, 8080-8880]
       override-destination: true
-
+  skip-domain:
+    - "+.baidu.com"
+    - "+.bilibili.com"
+    - "+.hanime1.me"
 # tun 模式
 tun:
   enable: false  # enable 'true'
@@ -169,74 +181,122 @@ tun:
 # 已配置 ipv6
 dns:
   enable: true
-  listen: :1053
-  ipv6: false
+  listen: 0.0.0.0:1053
+  ipv6: true
   # 路由器个人建议使用 redir-host 以最佳兼容性
   # 其他设备可以使用 fake-ip
   enhanced-mode: redir-host
+  prefer-h3: true
+  respect-rules: true
+  cache-algorithm: arc
+  cache-size: 4096
+#  enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.1/8
+  fake-ip-filter-mode: blacklist
   fake-ip-filter:
     - '*'
     - '+.lan'
     - '+.local'
+    - "+.market.xiaomi.com"
   default-nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-    - 114.114.114.114
-    - '[2402:4e00::]'
-    - '[2400:3200::1]'
+    - 192.168.50.1
+    - tls://223.5.5.5
+    - tls://223.6.6.6
   nameserver:
+    - 192.168.50.1
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
     - 'tls://8.8.4.4#dns'
     - 'tls://1.0.0.1#dns'
-    - 'tls://[2001:4860:4860::8844]#dns'
-    - 'tls://[2606:4700:4700::1001]#dns'
   proxy-server-nameserver:
     - https://doh.pub/dns-query
+    - https://dns.google/dns-query
   nameserver-policy:
+    "geosite:gfw":
+      - "tls://dns.google"
+      - "tls://cloudflare-dns.com"
     "geosite:cn,private":
-      - https://doh.pub/dns-query
-      - https://dns.alidns.com/dns-query
+#      - https://doh.pub/dns-query
+#      - https://dns.alidns.com/dns-query
+      - https://223.5.5.5/dns-query
     "geosite:!cn,!private":
       - "tls://dns.google"
       - "tls://cloudflare-dns.com"
+  fallback:
+    - tls://8.8.4.4
+    - tls://1.1.1.1
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+    ipcidr:
+      - 240.0.0.0/4
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+
+# 规则订阅
+rule-providers:
+  # 秋风广告拦截规则
+  # https://awavenue.top
+  # 由于 Anti-AD 误杀率高，本项目已在 1.11-241024 版本更换秋风广告规则
+  AWAvenue-Ads:
+    type: http
+    behavior: domain
+    format: yaml
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    path: ./rule_provider/AWAvenue-Ads.yaml
+    url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/refs/heads/main/Filters/AWAvenue-Ads-Rule-Clash-Classical.yaml"
+    interval: 600
 
 # --------------------------------------------------------
 # 策略组定义
 # --------------------------------------------------------
 proxy-groups:
-# 默认组现在只允许在代理和直连之间选择
-  - {name: 默认, type: select, proxies: [自动选择, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Proxy.png"}
+  # 默认组现在只允许在代理和直连之间选择
+  - {name: 默认, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Proxy.png"}
 
-# 所有服务策略组现在都使用简化的 &pr 模板
-  - {name: Google, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Google_Search.png"}
-  - {name: Github, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/GitHub.png"}
-  - {name: Apple, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Apple.png"}
-  - {name: Telegram, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Telegram.png"}
-  - {name: Twitter, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Twitter.png"}
-  - {name: TikTok, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/TikTok.png"}
-  - {name: Pixiv, type: select, proxies: [自动选择, 直连, 代理节点]}
-  - {name: Steam, type: select, proxies: [自动选择, 直连, 代理节点]}
-  - {name: OneDrive, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/OneDrive.png"}
+  # 所有服务策略组现在都使用简化的 &pr 模板
+  - {name: Google, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Google_Search.png"}
+  - {name: Github, type: select, proxies: [自动选择, 代理节点, 直连]}
+  - {name: Apple, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Apple.png"}
+  - {name: Telegram, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Telegram.png"}
+  - {name: Twitter, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Twitter.png"}
+  - {name: TikTok, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/TikTok.png"}
+  - {name: Pixiv, type: select, proxies: [自动选择, 代理节点, 直连]}
+  - {name: Steam, type: select, proxies: [自动选择, 代理节点, 直连]}
+  - {name: OneDrive, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/OneDrive.png"}
   - {name: 微软服务, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Microsoft.png"}
-  - {name: ehentai, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Panda.png"}
-  - {name: 哔哩哔哩, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/bilibili.png"}
-  - {name: 哔哩东南亚, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/bilibili.png"}
-  - {name: 巴哈姆特, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Bahamut.png"}
-  - {name: YouTube, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/YouTube.png"}
-  - {name: NETFLIX, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Netflix.png"}
-  - {name: Spotify, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Spotify.png"}
+  - {name: ehentai, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Panda.png"}
+  - {name: 哔哩哔哩, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/bilibili.png"}
+  - {name: 哔哩东南亚, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/bilibili.png"}
+  - {name: 巴哈姆特, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Bahamut.png"}
+  - {name: YouTube, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/YouTube.png"}
+  - {name: NETFLIX, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Netflix.png"}
+  - {name: Spotify, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Spotify.png"}
+
   - {name: 国内, type: select, proxies: [直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/China_Map.png"}
-  - {name: 其他, type: select, proxies: [自动选择, 直连, 代理节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Final.png"}
-  - {name: 自动选择, type: url-test, include-all: true, exclude-type: direct, tolerance: 10}
+  - {name: 其他, type: select, proxies: [自动选择, 代理节点, 直连], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Final.png"}
+
+  - {name: 广告拦截, type: select, proxies: [REJECT, DIRECT, 自动选择] }
+
+  - {name: 自动选择, type: url-test, include-all: true, exclude-type: direct, url: "https://www.gstatic.com/generate_204", interval: 800, tolerance: 10}
+
 rules:
   # 若需禁用 QUIC 请取消注释 QUIC 两条规则
   # 防止 YouTube 等使用 QUIC 导致速度不佳, 禁用 443 端口 UDP 流量（不包括国内）
-# - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT
-# - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOIP,CN))),REJECT
-#  - RULE-SET,AWAvenue-Ads,广告拦截
-# - GEOSITE,biliintl,哔哩东南亚
-# - GEOSITE,bilibili,哔哩哔哩
-#  - GEOSITE,category-scholar-!cn,境外AI
+  - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT
+  - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOIP,CN))),REJECT
+
+  - RULE-SET,AWAvenue-Ads,广告拦截
+
+  - DOMAIN-SUFFIX,immersivetranslate.com,DIRECT
+  # 自定义
+  # - GEOSITE,bilibili,哔哩哔哩
+  # - GEOSITE,category-scholar-!cn,境外AI
+  - GEOSITE,gfw,其他
   - GEOSITE,apple,Apple
   - GEOSITE,apple-cn,Apple
   - GEOSITE,ehentai,ehentai
@@ -251,29 +311,37 @@ rules:
   - GEOSITE,bahamut,巴哈姆特
   - GEOSITE,spotify,Spotify
   - GEOSITE,pixiv,Pixiv
-  - GEOSITE,steam@cn,DIRECT
+  - GEOSITE,steam@cn,国内
   - GEOSITE,steam,Steam
   - GEOSITE,onedrive,OneDrive
+  - GEOSITE,microsoft@cn,国内
   - GEOSITE,microsoft,微软服务
   - GEOSITE,geolocation-!cn,其他
   - GEOIP,google,Google
   - GEOIP,netflix,NETFLIX
   - GEOIP,telegram,Telegram
   - GEOIP,twitter,Twitter
-  - GEOSITE,CN,国内
-  - GEOIP,CN,国内
+
+  - GEOSITE,CN,DIRECT
+  - GEOIP,CN,DIRECT,no-resolve
+
   # 绕过局域网地址
   - IP-CIDR,10.0.0.0/8,DIRECT
   - IP-CIDR,172.16.0.0/12,DIRECT
   - IP-CIDR,192.168.0.0/16,DIRECT
   - IP-CIDR,100.64.0.0/10,DIRECT
   - IP-CIDR,127.0.0.0/8,DIRECT
+
   - MATCH,其他
 ```
 
 ## 宿主机流量劫持脚本
 
-文件保存:`/root/redirect.sh`
+文件保存:`/root/`redirect
+
+
+
+`.sh`
 
 ```shel
 #!/bin/bash
@@ -291,6 +359,7 @@ HOST_IP="192.168.50.254"            # PVE 宿主机 IP
 MIHOMO_REDIR_PORT="7892"            # Mihomo TCP/UDP 透明代理端口 (用于 REDIRECT)
 MIHOMO_TPROXY_PORT="7893"           # Mihomo TPROXY 端口 (用于 UDP/未来 TCP 优化)
 MIHOMO_API_PORT="9090"              # 💡 增加：Mihomo 外部控制/Web UI 端口
+MIHOMO_DNS_PORT="1053"              # 💡 增加：Mihomo DNS 监听端口 (来自您的配置文件)
 XRAY_SERVER_IP="███.███.███.███"      # Vless/Xray 上游服务器 IP
 LOCAL_LAN="192.168.50.0/24"         # 您的局域网 CIDR
 PVE_OUT_INTERFACE="vmbr0"           # PVE 宿主机用于连接局域网/互联网的接口
@@ -391,6 +460,12 @@ iptables -t mangle -A MIHOMO_TPROXY -p udp -j TPROXY --on-ip 0.0.0.0 --on-port "
 # ----------------------------------------------------------------------
 echo "--- 5. 拦截客户端流量 (PREROUTING) ---"
 
+# 💡 A. 强制接管 DNS (53 端口) 并重定向到 Mihomo DNS 端口 (1053)
+# 仅拦截来自局域网的 DNS 查询
+echo "强制接管局域网 DNS (53) -> $MIHOMO_DNS_PORT..."
+iptables -t nat -A PREROUTING -p udp -s "$LOCAL_LAN" --dport 53 -j REDIRECT --to-ports "$MIHOMO_DNS_PORT"
+iptables -t nat -A PREROUTING -p tcp -s "$LOCAL_LAN" --dport 53 -j REDIRECT --to-ports "$MIHOMO_DNS_PORT"
+
 # 💡 排除目标为宿主机本身的流量 (如访问 Web UI 或 SSH)
 iptables -t nat -A PREROUTING -p tcp -s "$LOCAL_LAN" -d "$HOST_IP" -j RETURN
 iptables -t mangle -A PREROUTING -p udp -s "$LOCAL_LAN" -d "$HOST_IP" -j RETURN
@@ -418,7 +493,7 @@ ip rule add fwmark 1 table 100
 ip route add local 0.0.0.0/0 dev lo table 100
 
 echo "✅ Mihomo Host 模式透明代理配置完成！请确保 Mihomo 正在运行。"
-exit
+exi
 ```
 
 ## 流量劫持脚本自启动
@@ -469,7 +544,7 @@ docker compose up -d
 docker compose logs mihomo -f
 ```
 
-随后打开路由器，修改局域网设置，将DHCP服务中的默认网关改为宿主机的IP，比如我这里就是192.168.50.254，随后保存，重启路由器，验证设备上网是否正常。
+随后打开路由器，修改局域网设置，将DHCP服务中的默认网关与DNS改为宿主机的IP，比如我这里就是192.168.50.254，随后保存，重启路由器，验证设备上网是否正常。
 
 可以打开`http://192.168.50.254:9090/ui`，查看ui界面中的流量以及配置信息。
 
