@@ -54,4 +54,29 @@ cmake -G "Visual Studio 17 2022" -A x64 -DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/
 
 完成后，使用visual studio 2022打开`openMVG_Build`目录下的`openMVG.sln`点菜单中的`生成`->`生成解决方案`
 
-等生成完成后，会在目录下生成一个`Windows-AMD64-`，至此编译完成。
+等生成完成后，会在目录下生成一个`Windows-AMD64-`，至此编译完成，可以将此目录添加到环境变量中。
+
+
+# 使用
+
+将拍摄的照片放到`D:\imgs`中，输出到`D:\imgsout`
+
+```powershell
+openMVG_main_SfMInit_ImageListing.exe -i D:\imgs -o D:\imgsout -f 4838 sfm_data.json
+
+openMVG_main_ComputeFeatures.exe -i D:\imgsout\sfm_data.json -o D:\imgsout
+
+openMVG_main_ComputeMatches.exe -i D:\imgsout\sfm_data.json -o D:\imgsout\matches.putatives.bin
+
+openMVG_main_GeometricFilter.exe -i D:\imgsout\sfm_data.json -m D:\imgsout\matches.putatives.bin -g f -o D:\imgsout\matches.f.bin
+
+openMVG_main_SfM.exe --sfm_engine "INCREMENTAL" -i D:\imgsout\sfm_data.json -m D:\imgsout -o D:\imgsout\regconstruction
+
+openMVG_main_ExportUndistortedImages.exe -i D:\imgsout\sfm_data.json -o D:\imgsout\regconstruction\undistortedimage
+
+CD D:\imgsout\regconstruction
+openMVG_main_openMVG2PMVS.exe -i sfm_data.bin -o scene.mvs
+```
+
+
+然后打开`ui_openMVG_MatchesViewer.exe`,File中选择`sfm_data.json`,再选择`matches.putatives.bin`就可以查看了。
