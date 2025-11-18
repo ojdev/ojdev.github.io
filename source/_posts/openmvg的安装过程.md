@@ -6,10 +6,9 @@ date: '2025-11-18T14:34:53.576742+08:00'
 tags:
 - openmvg
 title: openmvg的安装过程
-updated: '2025-11-18T14:34:53.984+08:00'
+updated: '2025-11-18T16:01:04.932+08:00'
 ---
 参考：[openMVG/BUILD.md](https://github.com/openMVG/openMVG/blob/develop/BUILD.md#windows)
-
 
 # 准备工作
 
@@ -56,7 +55,6 @@ cmake -G "Visual Studio 17 2022" -A x64 -DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/
 
 等生成完成后，会在目录下生成一个`Windows-AMD64-`，至此编译完成，可以将此目录添加到环境变量中。
 
-
 # 使用
 
 将拍摄的照片放到`D:\imgs`中，输出到`D:\imgsout`
@@ -78,5 +76,7 @@ CD D:\imgsout\regconstruction
 openMVG_main_openMVG2PMVS.exe -i sfm_data.bin -o scene.mvs
 ```
 
-
 然后打开`ui_openMVG_MatchesViewer.exe`,File中选择`sfm_data.json`,再选择`matches.putatives.bin`就可以查看了。
+
+
+下载[Releases · cdcseacave/openMVS](https://github.com/cdcseacave/openMVS/releases) 解压后，将上面生成的`D:\imgsout\regconstruction\scene.ms`拖到`Viewer.exe`上可以查看生成的3D模型。
