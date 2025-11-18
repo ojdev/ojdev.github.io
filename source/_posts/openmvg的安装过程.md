@@ -15,9 +15,9 @@ updated: '2025-11-18T14:34:53.984+08:00'
 
 需要安装Visual Studio 2022
 
-安装CMake 3.30.9
+安装[CMake 3.30.9](https://cmake.org/files/v3.30/)
 
-安装Graphviz`winget install --id Graphviz.Graphviz --source winget`
+安装[Graphviz](https://graphviz.org/download/) 要选中添加到环境变量
 
 ## 安装vcpkg
 
