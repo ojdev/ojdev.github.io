@@ -73,7 +73,7 @@ openMVG_main_SfM.exe --sfm_engine "INCREMENTAL" -i D:\imgsout\sfm_data.json -m D
 openMVG_main_ExportUndistortedImages.exe -i D:\imgsout\sfm_data.json -o D:\imgsout\regconstruction\undistortedimage
 
 CD D:\imgsout\regconstruction
-openMVG_main_openMVG2PMVS.exe -i sfm_data.bin -o scene.mvs
+openMVG_main_openMVG2openMVS.exe -i sfm_data.bin -o scene.mvs
 ```
 
 然后打开`ui_openMVG_MatchesViewer.exe`,File中选择`sfm_data.json`,再选择`matches.putatives.bin`就可以查看了。
