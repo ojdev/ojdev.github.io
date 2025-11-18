@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>openmvg的安装过程</title>
+    <link href="/2025/11/17/openmvg%E7%9A%84%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B.html"/>
+    <url>/2025/11/17/openmvg%E7%9A%84%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B.html</url>
+    
+    <content type="html"><![CDATA[<p>参考：<a href="https://github.com/openMVG/openMVG/blob/develop/BUILD.md#windows">openMVG&#x2F;BUILD.md</a></p><h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>需要安装Visual Studio 2022</p><p>安装CMake 3.30.9</p><h2 id="安装vcpkg"><a href="#安装vcpkg" class="headerlink" title="安装vcpkg"></a>安装vcpkg</h2><p>在D盘根目录</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell">git clone https://github.com/Microsoft/vcpkg<br><span class="hljs-built_in">cd</span> vcpkg<br>./bootstrap<span class="hljs-literal">-vcpkg</span>.bat<br><br>.\vcpkg.exe install openmvg[<span class="hljs-type">core</span>,<span class="hljs-type">openmp</span>,<span class="hljs-type">opencv</span>]<br><br></code></pre></td></tr></table></figure><h2 id="编译openMVG"><a href="#编译openMVG" class="headerlink" title="编译openMVG"></a>编译openMVG</h2><p>同样在D盘根目录</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">git clone <span class="hljs-literal">--recursive</span> https://github.com/openMVG/openMVG.git<br></code></pre></td></tr></table></figure><p>打开<code>D:\openMVG\src\CMakeLists.txt</code></p><p>找到<code>option(OpenMVG_USE_RERUN &quot;Enable Rerun logging&quot; ON)</code>修改为<code>option(OpenMVG_USE_RERUN &quot;Enable Rerun logging&quot; OFF)</code></p><p>然后继续在D盘根目录</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">mkdir openMVG_Build<br><span class="hljs-built_in">cd</span> openMVG_Build<br>cmake <span class="hljs-literal">-G</span> <span class="hljs-string">&quot;Visual Studio 17 2022&quot;</span> <span class="hljs-literal">-A</span> x64 <span class="hljs-literal">-DCMAKE_TOOLCHAIN_FILE</span>=D:/vcpkg/scripts/buildsystems/vcpkg.cmake <span class="hljs-literal">-DOPENMVG_USE_RERUN</span>=OFF <span class="hljs-literal">-DEIGEN_INCLUDE_DIR_HINTS</span>=<span class="hljs-string">&quot;D:/vcpkg/installed/x64-windows/include&quot;</span> ../openMVG/src/<br></code></pre></td></tr></table></figure><p>完成后，使用visual studio 2022打开<code>openMVG_Build</code>目录下的<code>openMVG.sln</code>点菜单中的<code>生成</code>-&gt;<code>生成解决方案</code></p><p>等生成完成后，会在目录下生成一个<code>Windows-AMD64-</code>，至此编译完成。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>知识储备</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>openmvg</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>在Docker中打造一个旁路网关</title>
     <link href="/2025/11/15/%E5%9C%A8Docker%E4%B8%AD%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E6%97%81%E8%B7%AF%E7%BD%91%E5%85%B3.html"/>
     <url>/2025/11/15/%E5%9C%A8Docker%E4%B8%AD%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E6%97%81%E8%B7%AF%E7%BD%91%E5%85%B3.html</url>
