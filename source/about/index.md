@@ -3,7 +3,7 @@ date: '2021-07-29T13:57:45+08:00'
 layout: about
 mermaid: true
 title: about
-updated: '2025-11-14T18:28:05.263+08:00'
+updated: '2025-11-18T10:52:26.923+08:00'
 ---
 # 使用mklink转移目录增加C盘空间
 
@@ -50,10 +50,7 @@ pip install torch torchvision torchaudio --extra-index-url https://download.pyto
 在python中验证
 
 ```python
-import torch
-print(torch.cuda.is_available())
-
-# 会输出 True
+python -c "import torch; print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0))"
 ```
 
 # PostgreSQL碎片整理
