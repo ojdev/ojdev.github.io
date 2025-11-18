@@ -17,6 +17,8 @@ updated: '2025-11-18T14:34:53.984+08:00'
 
 安装CMake 3.30.9
 
+安装Graphviz`winget install --id Graphviz.Graphviz --source winget`
+
 ## 安装vcpkg
 
 在D盘根目录
