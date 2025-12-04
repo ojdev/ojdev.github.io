@@ -307,6 +307,7 @@ navbar:
           { key: 'drawDB', link: 'https://draw.oujun.work/editor/' },
           { key: '云盘', link: 'https://pan.oujun.work/' },
           { key: '签到', link: 'https://qiandao.oujun.work/' },
+          { key: '导航', link: 'https://link.oujun.work/' },
           { key: 'Editor', link: 'https://edit.oujun.work/' }
         ]
     }
