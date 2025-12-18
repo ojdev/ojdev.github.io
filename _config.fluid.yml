@@ -308,6 +308,7 @@ navbar:
           { key: '云盘', link: 'https://pan.oujun.work/' },
           { key: '签到', link: 'https://qiandao.oujun.work/' },
           { key: '导航', link: 'https://link.oujun.work/' },
+          { key: '彩票', link: '/lottery_pro.html' },
           { key: 'Editor', link: 'https://edit.oujun.work/' }
         ]
     }
