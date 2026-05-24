@@ -178,6 +178,12 @@ openclaw.json
       }
     }
   ],
+  "browser": {
+    "defaultProfile": "openclaw",
+    "enabled": true,
+    "headless": true,
+    "noSandbox": true
+  },
   "channels": {
     "defaults": {
       "contextVisibility": "all"
@@ -411,6 +417,9 @@ openclaw.json
       },
       "memory-lancedb": {
         "enabled": true //改为true
+      },
+      "browser": {
+        "enabled": true
       }
     },
     "slots": {
@@ -534,4 +543,10 @@ openclaw.json
   }
 }
 
+```
+
+## 增加浏览器支持
+```shell
+npm install -g playwright
+npx playwright install chromium
 ```
