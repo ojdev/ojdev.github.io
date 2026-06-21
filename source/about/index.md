@@ -3,7 +3,7 @@ date: '2021-07-29T13:57:45+08:00'
 layout: about
 mermaid: true
 title: about
-updated: '2025-11-18T10:52:26.923+08:00'
+updated: '2026-06-21T13:15:40.004+08:00'
 ---
 # 使用mklink转移目录增加C盘空间
 
@@ -104,4 +104,12 @@ kubectl completion bash >/etc/bash_completion.d/kubectl
 source /usr/share/bash-completion/bash_completion
 ```
 
-#
+# 快速复制
+
+```powershell
+robocopy "G:\sync\Documents" "\\xxx.xxx.xxx.xxx\datecenter\Documents" /E /MT:30 /ZB
+```
+
+- /E 复制包含子目录在内的所有内容（包括空目录）。
+- /MT:30 启用多线程复制，这里的 30 表示同时使用 30个线程（最大可设置到 128）。线程越多小文件拷贝越快，但网络占用也越大。
+- 优先使用可重启模式，若被拒绝则使用备份模式，保证大文件稳定性并支持断点续传。
