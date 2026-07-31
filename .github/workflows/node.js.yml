@@ -36,7 +36,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
-          publish_branch: master  # deploying branch
   deploy:
     needs: build
     permissions:
@@ -50,3 +49,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          branch: master
