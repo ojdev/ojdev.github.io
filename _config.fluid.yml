@@ -304,7 +304,8 @@ navbar:
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "工具", icon: "iconfont icon-tool-fill",
         submenu:[
-          { key: '云盘', link: 'https://pan.oujun.work/' }
+          { key: '云盘', link: 'https://pan.oujun.work/' },
+          { key: 'Edit', link: 'https://edit.oujun.work/' },
         ]
     }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
